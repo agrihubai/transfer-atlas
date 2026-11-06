@@ -1,0 +1,34 @@
+name: Mine candidate genes
+
+on:
+  workflow_dispatch:
+    inputs:
+      trait:
+        description: "Trait key from traits.json (salt, seedless)"
+        default: "salt"
+
+permissions:
+  contents: write
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Mine
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        run: python scripts/mine_candidates.py "${{ github.event.inputs.trait }}"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add results
+          if git diff --cached --quiet; then echo "no changes"; else
+            git commit -m "Mine candidate genes: ${{ github.event.inputs.trait }}"
+            git push
+          fi

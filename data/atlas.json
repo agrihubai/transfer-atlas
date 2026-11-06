@@ -1,0 +1,86 @@
+{
+  "_schema": {
+    "fields": ["trait", "name", "gene", "source", "does", "evidence", "ref", "url",
+               "linkage", "pleiotropy", "ip", "targets"],
+    "tiers": {"t1": "native edit (crop's own gene, NGT cat-1 candidate)",
+              "t2": "cisgenic (crossable wild relative)",
+              "t3": "transgenic (source outside the gene pool)"},
+    "note": "Gene/function/evidence are sourced facts. Portability tier, linkage, pleiotropy and IP are indicative research signals, not lab results or legal advice."
+  },
+  "entries": [
+    {
+      "trait": "salt", "name": "Shoot sodium exclusion", "gene": "HKT1;5",
+      "source": "Wild wheat (Triticum monococcum, Nax2); rice OsHKT1;5 / SKC1",
+      "does": "Retrieves Na+ from the xylem so less reaches the shoot; keeps leaf Na+/K+ low under salinity.",
+      "evidence": "Functional: introgression + field yield", "ref": "Munns et al., 2012, Nat. Biotechnol.",
+      "url": "https://www.nature.com/articles/nbt.2120",
+      "linkage": "Native edit: no drag. Via wild-wheat introgression the Nax2 region first needed fine-mapping.",
+      "pleiotropy": "Strong Na+ exclusion usually well tolerated; very high K+ retrieval can trade off without salinity.",
+      "ip": {"flag": "query planned", "text": "HKT salt-tolerance applications have commercial history; run a patent query before use."},
+      "targets": {"tomato": {"tier": "t1", "note": "Tomato has SlHKT1;2; wild-tomato alleles track leaf Na+/K+ -> favourable native allele is an edit candidate."},
+                   "wheat": {"tier": "t2", "note": "Wheat's own story: Nax2 from crossable wild wheat."},
+                   "rice": {"tier": "t1", "note": "Rice OsHKT1;5 (SKC1) allele governs the trait."}}
+    },
+    {
+      "trait": "salt", "name": "Plasma-membrane Na+ export", "gene": "SOS1",
+      "source": "Tomato SlSOS1; Arabidopsis AtSOS1",
+      "does": "Pumps Na+ out of the cell at the root surface and loads it for controlled long-distance handling.",
+      "evidence": "Functional: gene silencing", "ref": "Olias et al., 2009, Plant Cell Environ.",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1365-3040.2009.02009.x",
+      "linkage": "Editing the crop's own gene -> no drag.",
+      "pleiotropy": "Dosage-sensitive: full knockout impairs growth under salt, so tune expression, do not remove.",
+      "ip": {"flag": "query planned", "text": "No specific patent confirmed in seed pass."},
+      "targets": {"tomato": {"tier": "t1", "note": "SlSOS1 is native and validated; tune its own expression/allele."},
+                   "wheat": {"tier": "t1", "note": "Native SOS1 orthologs."},
+                   "rice": {"tier": "t1", "note": "OsSOS1 native and characterised."}}
+    },
+    {
+      "trait": "salt", "name": "Vacuolar sodium storage", "gene": "NHX1",
+      "source": "Arabidopsis AtNHX1; many crop orthologs",
+      "does": "Moves Na+ into the vacuole; overexpression raises tolerance in several species.",
+      "evidence": "Functional: overexpression", "ref": "Apse et al., 1999; later crop work",
+      "url": "https://link.springer.com/article/10.1007/s44154-021-00014-1",
+      "linkage": "Native gene -> no drag.",
+      "pleiotropy": "Constitutive overexpression can perturb K+ balance and growth; conditional expression safer.",
+      "ip": {"flag": "query planned", "text": "Long patent history across companies; confirm freedom-to-operate."},
+      "targets": {"tomato": {"tier": "t1", "note": "Native LeNHX family; edit the crop's own gene."},
+                   "wheat": {"tier": "t1", "note": "TaNHX native."}, "rice": {"tier": "t1", "note": "OsNHX1 native."}}
+    },
+    {
+      "trait": "salt", "name": "Proton pump powering Na+ handling", "gene": "AVP1 (H+-PPase)",
+      "source": "Arabidopsis AVP1; validated across crops",
+      "does": "Vacuolar proton-pyrophosphatase; overexpression energises Na+ sequestration, improves salt/drought tolerance.",
+      "evidence": "Functional: overexpression, multi-crop", "ref": "Gaxiola et al., 2001; reviews",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4907263/table/tab1",
+      "linkage": "Native gene -> no drag.",
+      "pleiotropy": "Highly pleiotropic: also affects auxin transport, root growth and P nutrition.",
+      "ip": {"flag": "likely crowded", "text": "AVP1 stress applications patented/licensed historically; verify before investing."},
+      "targets": {"tomato": {"tier": "t1", "note": "Native H+-PPase genes; up-regulate own copy."},
+                   "wheat": {"tier": "t1", "note": "TaVP1 native."}, "rice": {"tier": "t1", "note": "OsVP1 native."}}
+    },
+    {
+      "trait": "salt", "name": "Whole-trait source: wild-tomato salt loci", "gene": "QTLs (S. pimpinellifolium / S. pennellii)",
+      "source": "Wild tomato relatives",
+      "does": "Mapped loci raise salt tolerance and fruit Na+/K+ balance; clearest salt-tolerance reservoir for cultivated tomato.",
+      "evidence": "QTL / introgression lines", "ref": "Review 2024 (Seed World); Asins et al.",
+      "url": "https://www.seedworld.com/us/2024/08/21/wild-relatives-could-offer-key-to-improved-salt-tolerance-in-tomatoes/",
+      "linkage": "HIGH linkage drag - the classic problem; salt loci often co-segregate with small fruit and poor quality. Fine-map + native edit to keep benefit without baggage.",
+      "pleiotropy": "Multi-gene loci; yield/fruit-size/quality effects common.",
+      "ip": {"flag": "query planned", "text": "Introgression lines may carry plant-breeders' rights; check registry."},
+      "targets": {"tomato": {"tier": "t2", "note": "Crossable with cultivated tomato - classic cisgenic/introgression route."}}
+    },
+    {
+      "trait": "seedless", "name": "Seedlessness (stenospermocarpy)", "gene": "AGL11 (VviAGL11, D-class MADS-box)",
+      "source": "Grape (Vitis vinifera VviAGL11); muscadine VroAGL11",
+      "does": "Master gene for seed/ovule development in fleshy fruits; suppression or knockout triggers seedlessness.",
+      "evidence": "Functional: suppression -> seedless; editing projects", "ref": "Royo et al. 2016; Florida A&M muscadine editing (USDA NIFA)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3076230/",
+      "linkage": "Editing the crop's own AGL11 -> no drag, unlike crossing seedlessness in from another background.",
+      "pleiotropy": "AGL11/STK governs ovule and seed-coat development; loss can reduce berry size, firmness and fruit set.",
+      "ip": {"flag": "crowded - got there first", "text": "Concept published and actively pursued incl. public gene-editing projects for seedless grape. The case Burcu hit on blackberry: sound idea, taken space. Confirm freedom-to-operate first."},
+      "targets": {"blackberry": {"tier": "t1", "note": "Rubus carries its own AGL11; loss-of-function edit of the crop's own gene is the native route."},
+                   "grape": {"tier": "t1", "note": "Native VviAGL11 edit; most crowded IP space."},
+                   "tomato": {"tier": "t1", "note": "Tomato TAGL11 governs seed development; native-edit route, weigh fruit-set effects."}}
+    }
+  ]
+}

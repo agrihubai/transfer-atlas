@@ -1,0 +1,15 @@
+{
+  "_comment": "Each trait defines PubMed query parts. The miner requires FUNCTIONAL evidence terms so we surface genes with experimental proof, not mere associations.",
+  "salt": {
+    "label": "Salt tolerance",
+    "trait_terms": "(\"salt tolerance\"[tiab] OR \"salinity tolerance\"[tiab] OR \"salt stress\"[tiab] OR \"salinity stress\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR \"knock-out\"[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"gain-of-function\"[tiab])",
+    "context_terms": "(plant*[tiab] OR crop*[tiab] OR Arabidopsis[tiab] OR rice[tiab] OR tomato[tiab] OR wheat[tiab] OR maize[tiab])"
+  },
+  "seedless": {
+    "label": "Seedlessness",
+    "trait_terms": "(seedless*[tiab] OR parthenocarp*[tiab] OR stenospermocarp*[tiab] OR \"seed development\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR \"knock-out[tiab]\" OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR silenc*[tiab])",
+    "context_terms": "(fruit[tiab] OR grape[tiab] OR tomato[tiab] OR Arabidopsis[tiab] OR plant*[tiab])"
+  }
+}
