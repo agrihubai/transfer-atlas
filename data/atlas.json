@@ -70,6 +70,31 @@
       "targets": {"tomato": {"tier": "t2", "note": "Crossable with cultivated tomato - classic cisgenic/introgression route."}}
     },
     {
+      "trait": "salt", "name": "Cytokinin-signalling brake (loss-of-function)", "gene": "OsRR22",
+      "source": "Rice (Oryza sativa) - CRISPR knockout",
+      "does": "A B-type response regulator in cytokinin signalling; knocking it out raises seedling salinity tolerance.",
+      "evidence": "Functional: CRISPR/Cas9 knockout", "ref": "Zhang et al., 2019, Mol. Breeding",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7413041/",
+      "linkage": "Native loss-of-function edit of the crop's own gene -> no linkage drag. The textbook NGT-style salt edit.",
+      "pleiotropy": "Cytokinin signalling touches development; the knockout was tolerated in rice but wider effects should be checked per crop.",
+      "ip": {"flag": "active CRISPR space", "text": "CRISPR salt-tolerance edits are an active patent area; confirm freedom-to-operate."},
+      "targets": {"rice": {"tier": "t1", "note": "Rice's own gene, already edited successfully - the native route proven."},
+                   "wheat": {"tier": "t1", "note": "Cereal response-regulator orthologs exist; native-edit candidate, needs mapping."},
+                   "tomato": {"tier": "t1", "note": "Tomato has response regulators; an ortholog edit is a candidate but unproven in tomato."}}
+    },
+    {
+      "trait": "salt", "name": "SOS-pathway activating kinase + a lost allele", "gene": "SlSOS2 (SlCIPK24)",
+      "source": "Tomato SlSOS2",
+      "does": "Activates the SOS Na+-export module; overexpression confers salt tolerance. A favourable promoter allele was partly LOST during tomato domestication, lowering salt resistance.",
+      "evidence": "Functional: overexpression; domestication allele study", "ref": "Huertas et al., 2012, Plant Cell Environ.; Wang et al., 2022, Hortic. Res.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3477699",
+      "linkage": "Native gene -> no drag. Restoring the lost promoter allele is a clean native edit.",
+      "pleiotropy": "SOS module is fairly salt-specific; kinase dosage still matters.",
+      "ip": {"flag": "query planned", "text": "No specific patent confirmed in seed pass."},
+      "targets": {"tomato": {"tier": "t1", "note": "Native SlSOS2; domestication thinned a favourable promoter allele -> restoring it is an NGT cat-1 candidate. A 'lost potential' case."},
+                   "pepper": {"tier": "t1", "note": "Native CIPK24 ortholog expected; native route."}}
+    },
+    {
       "trait": "seedless", "name": "Seedlessness (stenospermocarpy)", "gene": "AGL11 (VviAGL11, D-class MADS-box)",
       "source": "Grape (Vitis vinifera VviAGL11); muscadine VroAGL11",
       "does": "Master gene for seed/ovule development in fleshy fruits; suppression or knockout triggers seedlessness.",
