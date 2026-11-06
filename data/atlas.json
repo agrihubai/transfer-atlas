@@ -95,6 +95,30 @@
                    "pepper": {"tier": "t1", "note": "Native CIPK24 ortholog expected; native route."}}
     },
     {
+      "trait": "salt", "name": "Master stress transcription factor", "gene": "DREB2A",
+      "source": "Arabidopsis DREB2A; crop DREB2 orthologs",
+      "does": "A master regulator that switches on many downstream drought/salt genes at once; a constitutively active form raises tolerance.",
+      "evidence": "Functional: constitutive-active overexpression", "ref": "Sakuma et al., 2006, PNAS",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1693746",
+      "linkage": "Native gene -> no drag.",
+      "pleiotropy": "Strong trade-off: constitutive activity stunts growth. Needs a stress-inducible promoter, not constitutive expression - HOW you edit matters as much as WHAT.",
+      "ip": {"flag": "likely crowded", "text": "DREB/CBF stress-tolerance patents are numerous across companies; verify freedom-to-operate."},
+      "targets": {"tomato": {"tier": "t1", "note": "Native SlDREB orthologs; edit for stress-inducible, not constitutive, activity."},
+                   "wheat": {"tier": "t1", "note": "Native DREB2 orthologs."}, "rice": {"tier": "t1", "note": "Native OsDREB2A."}}
+    },
+    {
+      "trait": "salt", "name": "Protective LEA protein", "gene": "OsLEA3-1",
+      "source": "Rice OsLEA3-1; LEA family across plants",
+      "does": "A late-embryogenesis-abundant protein that shields cells under dehydration/salt; overexpression improved tolerance and field yield.",
+      "evidence": "Functional: overexpression, field yield", "ref": "Xiao et al., 2007, Theor. Appl. Genet.",
+      "url": "https://link.springer.com/doi/10.1007/s00122-007-0538-9",
+      "linkage": "Native gene -> no drag.",
+      "pleiotropy": "LEA proteins are protective with few reported growth penalties - relatively clean.",
+      "ip": {"flag": "query planned", "text": "LEA stress applications have patent history; confirm."},
+      "targets": {"tomato": {"tier": "t1", "note": "Native LEA family; up-regulate the crop's own protective genes."},
+                   "wheat": {"tier": "t1", "note": "Native LEA genes."}, "rice": {"tier": "t1", "note": "Rice's own OsLEA3-1 - proven."}}
+    },
+    {
       "trait": "seedless", "name": "Seedlessness (stenospermocarpy)", "gene": "AGL11 (VviAGL11, D-class MADS-box)",
       "source": "Grape (Vitis vinifera VviAGL11); muscadine VroAGL11",
       "does": "Master gene for seed/ovule development in fleshy fruits; suppression or knockout triggers seedlessness.",
