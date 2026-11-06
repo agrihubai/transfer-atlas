@@ -28,9 +28,16 @@ OUT = ROOT / "results"
 # Gene-symbol-like tokens: letters+digit core, optional species prefix / suffix (SlSOS1, OsHKT1;5, DREB2A)
 GENE_RE = re.compile(r"\b([A-Za-z]{2,6}[0-9][A-Za-z0-9;.\-]{0,6})\b")
 CAUSAL = re.compile(r"\b(improv|enhanc|confer|increas|reduc|require|regulat|trigger|restor|confers|mediat)", re.I)
-STOP = {"CO2", "H2O", "H2O2", "NA+", "K+", "NACL", "ABA", "ROS", "ATP", "NADPH", "PCR", "QRT",
-        "RNA", "DNA", "CDNA", "MRNA", "RT", "QPCR", "GWAS", "QTL", "SNP", "LED", "UV", "PH",
-        "3D", "2D", "P5CS", "F1", "F2", "T2", "T3"}  # noisy non-genes (keep real ones like SOS1)
+STOP = {  # noisy non-genes (real symbols like SOS1/HKT1 are kept)
+    "CO2", "H2O", "H2O2", "NA+", "K+", "NACL", "ABA", "ROS", "ATP", "NADPH", "PCR", "QRT",
+    "RNA", "DNA", "CDNA", "MRNA", "RT", "QPCR", "GWAS", "QTL", "SNP", "LED", "UV", "PH",
+    "3D", "2D", "P5CS", "F1", "F2", "T2", "T3", "CA2", "MG2", "ZN2", "CL-",
+    # chemicals / treatments
+    "MG132", "GA3", "NAA", "IAA", "PEG", "PEG6000", "H2", "SA", "JA", "MEJA", "SNP-",
+    # methods / tags
+    "CAS9", "GFP", "GUS", "YFP", "HIS6", "35S",
+    # cultivars / lines seen as false hits
+    "IR64", "ZH11", "FL478", "RH8706-49", "N22", "M1", "M2", "L1", "L2"}
 
 
 def call(endpoint, params, retries=4):
@@ -87,6 +94,10 @@ def main():
         for m in set(GENE_RE.findall(text)):
             key = m.upper()
             if key in STOP or len(m) < 3:
+                continue
+            if key.startswith("CAS9"):           # Cas9, Cas9-...
+                continue
+            if re.match(r"^[A-Z]{2}\d{2,}$", key):   # 2-letter cultivar/line codes: ZH11, IR64, FL478
                 continue
             gene_pmids[m].add(r["pmid"])
             if causal_here:
