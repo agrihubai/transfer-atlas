@@ -1,0 +1,342 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Transfer Atlas</title>
+<style>
+  /* Layout: a lookup tool — trait + target selectors on top, sourced solution cards below. */
+  :root {
+    --bg: #f7f6f0; --surface: #ffffff; --fg: #1b231f; --muted: #5c655d;
+    --line: #e3e1d6; --accent: #2f6b4f; --accent-soft: #e7efe8;
+    --t1: #1f7a4d; --t1-bg: #e4f1e7;   /* native edit  */
+    --t2: #9a6b1e; --t2-bg: #f4ecd8;   /* cisgenic     */
+    --t3: #9a3b2e; --t3-bg: #f6e5e1;   /* transgenic   */
+    --ip: #8a2f6b; --ip-bg: #f3e3ee;   /* IP signal    */
+    --font-display: "Spectral", Georgia, serif;
+    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg:#11140e; --surface:#1a1e16; --fg:#edefdf; --muted:#9aa392; --line:#2a2f25;
+    --accent:#85bd9c; --accent-soft:#1d2a22;
+    --t1:#7fc99b; --t1-bg:#17241b; --t2:#d8ab57; --t2-bg:#2a2416; --t3:#e0968a; --t3-bg:#2e1c18;
+    --ip:#d58ab9; --ip-bg:#2b1a25;
+    color-scheme: dark; } }
+  :root[data-theme="dark"] {
+    --bg:#11140e; --surface:#1a1e16; --fg:#edefdf; --muted:#9aa392; --line:#2a2f25;
+    --accent:#85bd9c; --accent-soft:#1d2a22;
+    --t1:#7fc99b; --t1-bg:#17241b; --t2:#d8ab57; --t2-bg:#2a2416; --t3:#e0968a; --t3-bg:#2e1c18;
+    --ip:#d58ab9; --ip-bg:#2b1a25;
+    color-scheme: dark; }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font-body); line-height: 1.55; }
+  .wrap { max-width: 880px; margin: 0 auto;
+    padding-left: max(18px, env(safe-area-inset-left,0px)); padding-right: max(18px, env(safe-area-inset-right,0px)); }
+  a { color: var(--accent); }
+  h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem,5vw,2.7rem); line-height:1.1; margin:0; text-wrap:balance; }
+  .mono { font-family: var(--font-mono); }
+
+  header.mast { border-bottom:1px solid var(--line); }
+  .mast-in { padding-block:16px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .logo { font-family:var(--font-mono); font-weight:600; border:1.5px solid var(--accent); border-radius:7px; padding:3px 9px; font-size:.95rem; }
+  .logo b { color:var(--accent); }
+  .mast-in .sub { font-family:var(--font-mono); font-size:.74rem; color:var(--muted); letter-spacing:.04em; }
+
+  .hero { padding-block:34px 10px; }
+  .eyebrow { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+  .hero p { color:var(--muted); max-width:62ch; margin:14px 0 0; }
+
+  .controls { display:flex; gap:18px; flex-wrap:wrap; padding:18px; margin-top:22px; background:var(--surface); border:1px solid var(--line); border-radius:12px; }
+  .field { display:flex; flex-direction:column; gap:6px; min-width:200px; flex:1; }
+  .field label { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  select { font-family:var(--font-body); font-size:1rem; padding:9px 11px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg); }
+  select:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+
+  .count { font-family:var(--font-mono); font-size:.8rem; color:var(--muted); margin:24px 0 12px; }
+  .grid { display:flex; flex-direction:column; gap:14px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 18px 16px; }
+  .card .top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap; }
+  .card h3 { font-family:var(--font-display); font-size:1.3rem; margin:0; }
+  .card h3 .gene { font-family:var(--font-mono); font-size:.95rem; color:var(--accent); }
+  .tier { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+  .tier.t1 { color:var(--t1); background:var(--t1-bg); }
+  .tier.t2 { color:var(--t2); background:var(--t2-bg); }
+  .tier.t3 { color:var(--t3); background:var(--t3-bg); }
+  .rows { display:grid; grid-template-columns:auto 1fr; gap:6px 16px; margin-top:13px; font-size:.92rem; }
+  .rows .k { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
+  .rows .v { min-width:0; }
+  .target-line { margin-top:13px; padding:11px 13px; background:var(--accent-soft); border-radius:8px; font-size:.92rem; }
+  .target-line b { color:var(--accent); }
+  .ip-line { margin-top:10px; padding:11px 13px; background:var(--ip-bg); border-radius:8px; font-size:.9rem; display:flex; gap:10px; align-items:flex-start; }
+  .ip-flag { font-family:var(--font-mono); font-size:.66rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ip); border:1px solid var(--ip); border-radius:5px; padding:2px 7px; white-space:nowrap; margin-top:1px; }
+  .evidence { display:inline-block; font-family:var(--font-mono); font-size:.68rem; padding:2px 7px; border:1px solid var(--line); border-radius:5px; color:var(--muted); }
+
+  .legend { display:flex; gap:16px; flex-wrap:wrap; margin:20px 0 4px; font-size:.78rem; color:var(--muted); }
+  .legend span b { font-family:var(--font-mono); font-weight:600; }
+  .disc { margin:30px 0 10px; padding:14px 16px; border:1px dashed var(--line); border-radius:10px; font-size:.84rem; color:var(--muted); }
+  footer { border-top:1px solid var(--line); margin-top:34px; }
+  .foot { padding-block:26px 46px; font-size:.82rem; color:var(--muted); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .foot .mono { font-size:.78rem; }
+</style>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <span class="logo">AgriHub<b>·AI</b></span>
+    <span class="sub">Transfer Atlas · proof-of-concept</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Solutions that already exist — mapped by portability and IP</div>
+    <h1>Stop breeding the same trait from scratch.</h1>
+    <p>Pick a trait and your target crop. The Atlas shows where a genetic solution is already documented — in another crop or a wild relative — tags how reachable it is in the gene-editing / NGT era (native-allele edit, cisgenic, or cross-species transgene), and flags whether the gene and its use already carry patent activity, so you see who got there first before you invest.</p>
+
+    <div class="controls">
+      <div class="field">
+        <label for="trait">Trait</label>
+        <select id="trait">
+          <option value="salt">Salt tolerance</option>
+          <option value="seedless">Seedlessness</option>
+          <option value="heat" disabled>Heat tolerance — coming soon</option>
+          <option value="drought" disabled>Drought tolerance — coming soon</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="target">Target crop</label>
+        <select id="target">
+          <option value="tomato">Tomato</option>
+          <option value="pepper">Pepper</option>
+          <option value="wheat">Wheat</option>
+          <option value="rice">Rice</option>
+          <option value="grape">Grape</option>
+          <option value="blackberry">Blackberry / berry</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><b style="color:var(--t1)">● native edit</b> — the crop's own gene (NGT cat-1 candidate)</span>
+      <span><b style="color:var(--t2)">● cisgenic</b> — from a crossable wild relative</span>
+      <span><b style="color:var(--t3)">● transgenic</b> — source outside the gene pool</span>
+      <span><b style="color:var(--ip)">● IP</b> — patent activity on the gene/use</span>
+    </div>
+  </section>
+
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+  <div class="count" id="empty" hidden>No seeded solution for this trait × crop yet. Try Salt tolerance → Tomato, or Seedlessness → Blackberry / berry.</div>
+
+  <div class="disc">
+    <b>Proof-of-concept seed.</b> A few curated, functionally-validated entries — not a complete atlas.
+    Gene function, source species and evidence are sourced (links on each card). The portability tag, the
+    target-crop note and the IP flag are <i>indicative research signals</i>, not lab results or legal advice:
+    an IP flag means patent/application activity appears to touch this gene or use and freedom-to-operate must be
+    checked, not that a given use is barred. Every candidate still needs allele checking and validation in the target crop.
+    Patent status is meant to be filled automatically from open patent data (PatentsView / Lens).
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <span>Built with open literature + AI · hypotheses, not verdicts · the breeder's judgement decides.</span>
+    <a class="mono" href="https://github.com/agrihubai">github.com/agrihubai →</a>
+  </div>
+</footer>
+
+<script>
+  // Seed entries. Each: trait, and per-target {tier, note}. ip = patent signal (research aid, not legal advice).
+  const DATA = [
+    {
+      trait:"salt", name:"Shoot sodium exclusion", gene:"HKT1;5",
+      source:"Wild wheat (Triticum monococcum, Nax2); rice OsHKT1;5 / SKC1",
+      does:"Retrieves Na⁺ from the xylem so less reaches the shoot; keeps leaf Na⁺/K⁺ low under salinity.",
+      evidence:"Functional: introgression + field yield",
+      url:"https://www.nature.com/articles/nbt.2120", ref:"Munns et al., 2012, Nat. Biotechnol.",
+      ip:{ flag:"query planned", text:"No specific patent confirmed in this seed pass; HKT salt-tolerance applications have commercial history — run an automated patent query before use." },
+      linkage:"Native-allele edit carries no linkage drag. Via wild-wheat introgression the Nax2 region first needed fine-mapping to shed neighbouring genes.",
+      pleio:"Strong shoot Na⁺ exclusion is usually well tolerated; very high K⁺ retrieval can trade off in non-saline conditions.",
+      target:{
+        tomato:{tier:"t1", note:"Tomato carries its own <b>SlHKT1;2</b>; wild-tomato allelic variation already tracks leaf Na⁺/K⁺, so a favourable native allele is an edit/allele-swap candidate."},
+        pepper:{tier:"t1", note:"Pepper carries native HKT genes; a favourable-allele edit is the likely route — allele survey needed."},
+        wheat:{tier:"t2", note:"This is wheat's own story: Nax2 came from a crossable wild wheat — the documented cisgenic/introgression success."},
+        rice:{tier:"t1", note:"Rice's own <b>OsHKT1;5 (SKC1)</b> allele governs the trait — a native-allele target."}
+      }
+    },
+    {
+      trait:"salt", name:"Plasma-membrane Na⁺ export", gene:"SOS1",
+      source:"Tomato SlSOS1; Arabidopsis AtSOS1 (SOS pathway)",
+      does:"Pumps Na⁺ out of the cell at the root surface and loads it for controlled long-distance handling.",
+      evidence:"Functional: gene silencing",
+      url:"https://onlinelibrary.wiley.com/doi/10.1111/j.1365-3040.2009.02009.x", ref:"Olías et al., 2009, Plant Cell Environ.",
+      ip:{ flag:"query planned", text:"No specific patent confirmed in this seed pass — automated query planned." },
+      linkage:"Editing the crop's own gene → no linkage drag.",
+      pleio:"SOS1 is dosage-sensitive: full knockout impairs growth under salt, so the route is tuning expression, not removing it.",
+      target:{
+        tomato:{tier:"t1", note:"<b>SlSOS1</b> is native and validated in tomato; the route is tuning its own expression/allele, not transfer."},
+        pepper:{tier:"t1", note:"A native SOS1 ortholog is expected in pepper — native-allele/expression route."},
+        wheat:{tier:"t1", note:"Wheat has native SOS1 orthologs — native route; cross-species transfer not needed."},
+        rice:{tier:"t1", note:"Rice OsSOS1 is native and characterised — native-allele route."}
+      }
+    },
+    {
+      trait:"salt", name:"Vacuolar sodium storage", gene:"NHX1",
+      source:"Arabidopsis AtNHX1; many crop orthologs",
+      does:"Moves Na⁺ into the vacuole, keeping the cytoplasm clear; overexpression raises tolerance in several species.",
+      evidence:"Functional: overexpression",
+      url:"https://link.springer.com/article/10.1007/s44154-021-00014-1", ref:"Apse et al., 1999; later crop work",
+      ip:{ flag:"query planned", text:"NHX overexpression for stress tolerance has a long patent history across companies — confirm freedom-to-operate." },
+      linkage:"Native gene → no linkage drag.",
+      pleio:"Constitutive overexpression can perturb K⁺ balance and growth; tissue/stress-conditional expression is safer.",
+      target:{
+        tomato:{tier:"t1", note:"Tomato has a native <b>LeNHX</b> family; higher vacuolar activity is reachable by editing the crop's own gene."},
+        pepper:{tier:"t1", note:"Native NHX orthologs expected — native-expression route."},
+        wheat:{tier:"t1", note:"Wheat TaNHX genes are native — native route."},
+        rice:{tier:"t1", note:"Rice OsNHX1 is native — native-expression route."}
+      }
+    },
+    {
+      trait:"salt", name:"Proton pump powering Na⁺ handling", gene:"AVP1 (H⁺-PPase)",
+      source:"Arabidopsis AVP1; validated across crops",
+      does:"A vacuolar proton-pyrophosphatase; overexpression energises Na⁺ sequestration and improves salt (and drought) tolerance.",
+      evidence:"Functional: overexpression, multi-crop",
+      url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC4907263/table/tab1", ref:"Gaxiola et al., 2001; multi-crop reviews",
+      ip:{ flag:"likely crowded", text:"AVP1 stress-tolerance applications have been patented/licensed historically — treat as a crowded IP space and verify before investing." },
+      linkage:"Native gene → no linkage drag.",
+      pleio:"Highly pleiotropic: also affects auxin transport, root growth and phosphorus nutrition — broad effects beyond salt, for better or worse.",
+      target:{
+        tomato:{tier:"t1", note:"Native <b>H⁺-PPase</b> genes exist in tomato; up-regulating the crop's own copy is the native route."},
+        pepper:{tier:"t1", note:"Native H⁺-PPase expected — native-expression route."},
+        wheat:{tier:"t1", note:"Wheat TaVP1 is native — native route."},
+        rice:{tier:"t1", note:"Rice OsVP1 is native — native route."}
+      }
+    },
+    {
+      trait:"salt", name:"Whole-trait source: wild-tomato salt loci", gene:"QTLs (S. pimpinellifolium / S. pennellii)",
+      source:"Wild tomato relatives",
+      does:"Several mapped loci raise salt tolerance and fruit Na⁺/K⁺ balance; the clearest reservoir of salt tolerance for cultivated tomato.",
+      evidence:"QTL / introgression lines",
+      url:"https://www.seedworld.com/us/2024/08/21/wild-relatives-could-offer-key-to-improved-salt-tolerance-in-tomatoes/", ref:"Review, 2024 (Seed World); Asins et al.",
+      ip:{ flag:"query planned", text:"Specific introgression lines may carry variety/plant-breeders' rights — check registry status." },
+      linkage:"HIGH linkage drag — the classic problem. Wild-tomato salt loci often co-segregate with small fruit and poor quality, which is why this tolerance rarely reached commercial varieties. Fine-mapping + native editing is the way to keep the benefit without the baggage.",
+      pleio:"Multi-gene loci; effects on yield, fruit size and quality are common and must be separated from the salt benefit.",
+      target:{
+        tomato:{tier:"t2", note:"Crossable with cultivated tomato — the classic <b>cisgenic / introgression</b> route; fine-mapping narrows which gene to edit natively."}
+      }
+    },
+    {
+      trait:"salt", name:"Cytokinin-signalling brake (loss-of-function)", gene:"OsRR22",
+      source:"Rice (Oryza sativa) — CRISPR knockout",
+      does:"A B-type response regulator in cytokinin signalling; knocking it out raises seedling salinity tolerance.",
+      evidence:"Functional: CRISPR/Cas9 knockout",
+      url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7413041/", ref:"Zhang et al., 2019, Mol. Breeding",
+      ip:{ flag:"active CRISPR space", text:"CRISPR salt-tolerance edits are an active patent area — confirm freedom-to-operate." },
+      linkage:"Native loss-of-function edit of the crop's own gene → no linkage drag. The textbook NGT-style salt edit.",
+      pleio:"Cytokinin signalling touches development; the knockout was tolerated in rice but wider effects should be checked per crop.",
+      target:{
+        rice:{tier:"t1", note:"Rice's own gene, <b>already edited successfully</b> — the native route proven."},
+        wheat:{tier:"t1", note:"Cereal response-regulator orthologs exist; native-edit candidate, needs mapping."},
+        tomato:{tier:"t1", note:"Tomato has response regulators; an ortholog edit is a candidate but unproven in tomato."}
+      }
+    },
+    {
+      trait:"salt", name:"SOS-pathway activating kinase + a lost allele", gene:"SlSOS2 (SlCIPK24)",
+      source:"Tomato SlSOS2",
+      does:"Activates the SOS Na⁺-export module; overexpression confers salt tolerance. A favourable promoter allele was partly <b>lost during tomato domestication</b>, lowering salt resistance.",
+      evidence:"Functional: overexpression + domestication allele study",
+      url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC3477699", ref:"Huertas 2012, Plant Cell Environ.; Wang 2022, Hortic. Res.",
+      ip:{ flag:"query planned", text:"No specific patent confirmed in this seed pass." },
+      linkage:"Native gene → no drag. Restoring the lost promoter allele is a clean native edit.",
+      pleio:"SOS module is fairly salt-specific; kinase dosage still matters.",
+      target:{
+        tomato:{tier:"t1", note:"Native <b>SlSOS2</b>; domestication thinned a favourable promoter allele → restoring it is an NGT cat-1 candidate. A 'lost potential' case where the solution is the crop's own, mislaid gene."},
+        pepper:{tier:"t1", note:"Native CIPK24 ortholog expected — native route."}
+      }
+    },
+    {
+      trait:"salt", name:"Master stress transcription factor", gene:"DREB2A",
+      source:"Arabidopsis DREB2A; crop DREB2 orthologs",
+      does:"A master regulator that switches on many downstream drought/salt genes at once; a constitutively active form raises tolerance.",
+      evidence:"Functional: constitutive-active overexpression",
+      url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC1693746", ref:"Sakuma et al., 2006, PNAS",
+      ip:{ flag:"likely crowded", text:"DREB/CBF stress-tolerance patents are numerous across companies — verify freedom-to-operate." },
+      linkage:"Native gene → no drag.",
+      pleio:"Strong trade-off: constitutive activity stunts growth. Needs a <b>stress-inducible</b> promoter, not constitutive expression — how you edit matters as much as what.",
+      target:{
+        tomato:{tier:"t1", note:"Native SlDREB orthologs; edit for stress-inducible, not constitutive, activity."},
+        wheat:{tier:"t1", note:"Native DREB2 orthologs."},
+        rice:{tier:"t1", note:"Native OsDREB2A."}
+      }
+    },
+    {
+      trait:"salt", name:"Protective LEA protein", gene:"OsLEA3-1",
+      source:"Rice OsLEA3-1; LEA family across plants",
+      does:"A late-embryogenesis-abundant protein that shields cells under dehydration/salt; overexpression improved tolerance and field yield.",
+      evidence:"Functional: overexpression + field yield",
+      url:"https://link.springer.com/doi/10.1007/s00122-007-0538-9", ref:"Xiao et al., 2007, Theor. Appl. Genet.",
+      ip:{ flag:"query planned", text:"LEA stress applications have patent history — confirm." },
+      linkage:"Native gene → no drag.",
+      pleio:"LEA proteins are protective with few reported growth penalties — relatively clean.",
+      target:{
+        tomato:{tier:"t1", note:"Native LEA family; up-regulate the crop's own protective genes."},
+        wheat:{tier:"t1", note:"Native LEA genes."},
+        rice:{tier:"t1", note:"Rice's own OsLEA3-1 — proven in field."}
+      }
+    },
+    {
+      trait:"seedless", name:"Seedlessness (stenospermocarpy)", gene:"AGL11 (VviAGL11, D-class MADS-box)",
+      source:"Grape (Vitis vinifera VviAGL11); muscadine VroAGL11",
+      does:"The master gene for seed/ovule development in fleshy fruits; suppressing or knocking it out triggers seedlessness.",
+      evidence:"Functional: suppression → seedless; editing projects",
+      url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3076230/", ref:"Royo et al. 2016; Florida A&M muscadine editing project (USDA NIFA)",
+      ip:{ flag:"crowded — got there first", text:"The AGL11→seedlessness concept is published and actively pursued, incl. public gene-editing projects for seedless grape. This is the case Burcu hit on blackberry: the idea was sound, but the space was already taken. Treat as high IP activity — confirm freedom-to-operate first." },
+      linkage:"Editing the crop's own AGL11 → no linkage drag, unlike crossing seedlessness in from another background.",
+      pleio:"AGL11/STK governs ovule and seed-coat development, so loss can also reduce berry size, firmness and fruit set — seedlessness rarely comes free.",
+      target:{
+        blackberry:{tier:"t1", note:"Blackberry (Rubus) carries its own <b>AGL11</b> ortholog; a loss-of-function edit of the crop's own gene is a native (NGT cat-1-style) route — the approach you designed."},
+        grape:{tier:"t1", note:"Grape's own VviAGL11 — editing the native gene; but the most crowded IP space of all here."},
+        tomato:{tier:"t1", note:"Tomato's D-class ortholog (TAGL11) governs seed development; a native-edit route, though seedlessness changes fruit set and must be weighed."}
+      }
+    }
+  ];
+
+  const tierLabel = { t1:"native edit", t2:"cisgenic", t3:"transgenic" };
+  const grid = document.getElementById("grid");
+  const count = document.getElementById("count");
+  const empty = document.getElementById("empty");
+  const traitSel = document.getElementById("trait");
+  const targetSel = document.getElementById("target");
+
+  function render() {
+    const trait = traitSel.value, tgt = targetSel.value;
+    grid.innerHTML = "";
+    const cards = DATA.filter(d => d.trait === trait).map(d => ({ d, t: d.target[tgt] })).filter(x => x.t);
+    const traitText = traitSel.options[traitSel.selectedIndex].text;
+    const tgtText = targetSel.options[targetSel.selectedIndex].text;
+    empty.hidden = cards.length > 0;
+    count.textContent = cards.length + " documented solution(s) · " + traitText + " → " + tgtText;
+    for (const { d, t } of cards) {
+      const el = document.createElement("div");
+      el.className = "card";
+      const geneTerm = d.gene.split(" (")[0];
+      const pw = trait === "salt" ? "salt tolerance" : trait === "seedless" ? "seedless" : trait;
+      const purl = "https://patents.google.com/?q=" + encodeURIComponent(geneTerm + " " + pw);
+      el.innerHTML =
+        '<div class="top"><h3>' + d.name + ' <span class="gene">' + d.gene + '</span></h3>' +
+        '<span class="tier ' + t.tier + '">' + tierLabel[t.tier] + '</span></div>' +
+        '<div class="rows">' +
+          '<div class="k">Source</div><div class="v">' + d.source + '</div>' +
+          '<div class="k">Does</div><div class="v">' + d.does + '</div>' +
+          '<div class="k">Evidence</div><div class="v"><span class="evidence">' + d.evidence + '</span> · ' +
+            '<a href="' + d.url + '">' + d.ref + '</a></div>' +
+          '<div class="k">Linkage</div><div class="v">' + d.linkage + '</div>' +
+          '<div class="k">Side-effects</div><div class="v">' + d.pleio + '</div>' +
+        '</div>' +
+        '<div class="target-line">In <b>' + tgtText + '</b>: ' + t.note + '</div>' +
+        '<div class="ip-line"><span class="ip-flag">IP · ' + d.ip.flag + '</span><span>' + d.ip.text +
+          ' <a href="' + purl + '" style="color:var(--ip);white-space:nowrap">🔎 search patents →</a></span></div>';
+      grid.appendChild(el);
+    }
+  }
+  traitSel.addEventListener("change", render);
+  targetSel.addEventListener("change", render);
+  render();
+</script>
