@@ -23,5 +23,55 @@
     "trait_terms": "(\"drought tolerance\"[tiab] OR \"drought stress\"[tiab] OR \"water deficit\"[tiab] OR \"water-use efficiency\"[tiab])",
     "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR \"knock-out\"[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"gain-of-function\"[tiab])",
     "context_terms": "(plant*[tiab] OR crop*[tiab] OR Arabidopsis[tiab] OR rice[tiab] OR tomato[tiab] OR wheat[tiab] OR maize[tiab])"
+  },
+  "_evidence": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"gain-of-function\"[tiab])",
+  "_context": "(plant*[tiab] OR crop*[tiab] OR Arabidopsis[tiab] OR rice[tiab] OR tomato[tiab] OR wheat[tiab] OR maize[tiab] OR pepper[tiab] OR potato[tiab])",
+  "cold": {
+    "label": "Cold / chilling tolerance",
+    "trait_terms": "(\"cold tolerance\"[tiab] OR \"chilling tolerance\"[tiab] OR \"freezing tolerance\"[tiab] OR \"cold stress\"[tiab] OR \"low temperature stress\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"gain-of-function\"[tiab])",
+    "context_terms": "(plant*[tiab] OR crop*[tiab] OR Arabidopsis[tiab] OR rice[tiab] OR tomato[tiab] OR wheat[tiab] OR maize[tiab])"
+  },
+  "disease": {
+    "label": "Disease resistance",
+    "trait_terms": "(\"disease resistance\"[tiab] OR \"pathogen resistance\"[tiab] OR \"broad-spectrum resistance\"[tiab] OR \"blast resistance\"[tiab] OR \"powdery mildew resistance\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"gain-of-function\"[tiab])",
+    "context_terms": "(plant*[tiab] OR crop*[tiab] OR Arabidopsis[tiab] OR rice[tiab] OR tomato[tiab] OR wheat[tiab] OR barley[tiab])"
+  },
+  "firmness": {
+    "label": "Fruit firmness / shelf life",
+    "trait_terms": "(\"fruit firmness\"[tiab] OR \"shelf life\"[tiab] OR \"fruit softening\"[tiab] OR \"fruit ripening\"[tiab] OR \"postharvest\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR silenc*[tiab] OR \"loss-of-function\"[tiab])",
+    "context_terms": "(tomato[tiab] OR fruit[tiab] OR plant*[tiab] OR crop*[tiab])"
+  },
+  "quality": {
+    "label": "Fruit quality (sugar / size)",
+    "trait_terms": "(Brix[tiab] OR \"sugar content\"[tiab] OR \"soluble solids\"[tiab] OR \"fruit size\"[tiab] OR \"fruit weight\"[tiab] OR \"fruit quality\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR RNAi[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR QTL[tiab])",
+    "context_terms": "(tomato[tiab] OR fruit[tiab] OR plant*[tiab] OR crop*[tiab])"
+  },
+  "yield": {
+    "label": "Yield",
+    "trait_terms": "(\"grain yield\"[tiab] OR \"yield improvement\"[tiab] OR \"yield-related\"[tiab] OR \"grain number\"[tiab] OR \"panicle architecture\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR QTL[tiab])",
+    "context_terms": "(rice[tiab] OR wheat[tiab] OR maize[tiab] OR tomato[tiab] OR crop*[tiab])"
+  },
+  "flowering": {
+    "label": "Flowering time / earliness",
+    "trait_terms": "(\"flowering time\"[tiab] OR \"heading date\"[tiab] OR earliness[tiab] OR photoperiod[tiab] OR \"flowering locus\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab])",
+    "context_terms": "(Arabidopsis[tiab] OR rice[tiab] OR tomato[tiab] OR wheat[tiab] OR crop*[tiab])"
+  },
+  "nue": {
+    "label": "Nitrogen-use efficiency",
+    "trait_terms": "(\"nitrogen use efficiency\"[tiab] OR \"nitrogen uptake\"[tiab] OR \"nitrate transporter\"[tiab] OR \"nitrogen assimilation\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"natural variation\"[tiab])",
+    "context_terms": "(rice[tiab] OR wheat[tiab] OR maize[tiab] OR plant*[tiab] OR crop*[tiab])"
+  },
+  "aluminum": {
+    "label": "Aluminium / acid-soil tolerance",
+    "trait_terms": "(\"aluminum tolerance\"[tiab] OR \"aluminium tolerance\"[tiab] OR \"acid soil\"[tiab] OR \"Al tolerance\"[tiab] OR \"aluminum resistance\"[tiab])",
+    "evidence_terms": "(overexpress*[tiab] OR knockout[tiab] OR knockdown[tiab] OR CRISPR[tiab] OR transgenic[tiab] OR mutant[tiab] OR \"loss-of-function\"[tiab] OR \"natural variation\"[tiab])",
+    "context_terms": "(wheat[tiab] OR sorghum[tiab] OR maize[tiab] OR rice[tiab] OR plant*[tiab] OR crop*[tiab])"
   }
 }
