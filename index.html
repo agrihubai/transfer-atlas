@@ -95,9 +95,9 @@
         <label for="trait">Trait</label>
         <select id="trait">
           <option value="salt">Salt tolerance</option>
+          <option value="drought">Drought tolerance</option>
+          <option value="heat">Heat tolerance</option>
           <option value="seedless">Seedlessness</option>
-          <option value="heat" disabled>Heat tolerance — coming soon</option>
-          <option value="drought" disabled>Drought tolerance — coming soon</option>
         </select>
       </div>
       <div class="field">
@@ -107,6 +107,12 @@
           <option value="pepper">Pepper</option>
           <option value="wheat">Wheat</option>
           <option value="rice">Rice</option>
+          <option value="maize">Maize</option>
+          <option value="barley">Barley</option>
+          <option value="potato">Potato</option>
+          <option value="cucumber">Cucumber</option>
+          <option value="melon">Melon</option>
+          <option value="soybean">Soybean</option>
           <option value="grape">Grape</option>
           <option value="blackberry">Blackberry / berry</option>
         </select>
@@ -282,6 +288,67 @@
       }
     },
     {
+      trait:"heat", name:"Thermotolerance QTL — clears heat-damaged proteins", gene:"TT1 (OgTT1, 26S proteasome α2)",
+      source:"African rice (Oryza glaberrima); cultivated rice allele",
+      does:"Encodes a 26S-proteasome subunit that clears heat-denatured proteins; a superior allele is a major thermotolerance QTL.",
+      evidence:"Functional: QTL cloning, allele swap, field",
+      url:"https://www.nature.com/articles/ng.3305", ref:"Li et al., 2015, Nat. Genetics",
+      ip:{ flag:"query planned", text:"Thermotolerance alleles can carry breeding IP — check." },
+      linkage:"A natural superior allele within the rice gene pool — cisgenic introgression or native-allele edit; little drag if fine-mapped.",
+      pleio:"Proteasome housekeeping; the tolerant allele was carried in adapted rice without obvious penalty.",
+      target:{
+        rice:{tier:"t2", note:"From African rice into cultivated rice — a documented allele route; or edit the native allele."},
+        tomato:{tier:"t1", note:"Proteasome subunits are conserved; a native-allele candidate, unproven in tomato."},
+        pepper:{tier:"t1", note:"Conserved proteasome; candidate, unproven."}
+      }
+    },
+    {
+      trait:"heat", name:"Heat-shock master switch", gene:"HsfA2",
+      source:"Tomato & Arabidopsis HsfA2",
+      does:"A master heat-shock transcription factor; alternative splicing of HsfA2 drives the thermotolerance program in tomato.",
+      evidence:"Functional: splicing / overexpression",
+      url:"https://publikationen.ub.uni-frankfurt.de/opus4/frontdoor/index/index/year/2017/docId/44389", ref:"Alt-splicing of HsfA2 mediates thermotolerance in tomato, 2017",
+      ip:{ flag:"query planned", text:"HSF thermotolerance applications exist — check." },
+      linkage:"Native gene → no drag.",
+      pleio:"HSF network is broad, but HsfA2 is stress-activated; generally tolerated.",
+      target:{
+        tomato:{tier:"t1", note:"Native SlHsfA2 — edit for a stronger stress-induced splice form."},
+        pepper:{tier:"t1", note:"Native HsfA2 ortholog."},
+        wheat:{tier:"t1", note:"Native HSF orthologs."},
+        rice:{tier:"t1", note:"Native HSF orthologs."}
+      }
+    },
+    {
+      trait:"drought", name:"Drought NAC regulator (field-proven)", gene:"SNAC1",
+      source:"Rice SNAC1",
+      does:"A stress-responsive NAC transcription factor; overexpression improved drought resistance and raised field grain yield under drought, with little penalty.",
+      evidence:"Functional: overexpression + field yield",
+      url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC1559740", ref:"Hu et al., 2006, PNAS",
+      ip:{ flag:"likely crowded", text:"NAC drought-yield applications are widely patented — verify freedom-to-operate." },
+      linkage:"Native gene → no drag.",
+      pleio:"Notably low yield penalty for a stress TF — a key reason it's attractive.",
+      target:{
+        rice:{tier:"t1", note:"Rice's own SNAC1 — <b>proven in field</b>."},
+        wheat:{tier:"t1", note:"Native NAC orthologs; candidate."},
+        maize:{tier:"t1", note:"Native NAC orthologs; candidate."},
+        tomato:{tier:"t1", note:"Native NAC orthologs; candidate, unproven."}
+      }
+    },
+    {
+      trait:"drought", name:"Drought NAC silenced by a jumping gene", gene:"ZmNAC111",
+      source:"Maize ZmNAC111",
+      does:"A NAC factor whose promoter carries a transposon (MITE) insertion in many lines; the insertion silences the gene and lowers seedling drought tolerance — the favourable state is the TE-free allele.",
+      evidence:"Functional: natural variation + knockdown",
+      url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4595727/", ref:"Mao et al., 2015, Nat. Commun.",
+      ip:{ flag:"query planned", text:"Check patent activity on the allele/use." },
+      linkage:"The favourable allele is native (TE-free) → selecting or editing it carries no foreign drag. A 'lost by a jumping gene' case.",
+      pleio:"Seedling-stage drought; broader effects to check.",
+      target:{
+        maize:{tier:"t1", note:"Maize's own gene — select the TE-free allele or edit to restore expression."},
+        wheat:{tier:"t1", note:"Native NAC orthologs; candidate."}
+      }
+    },
+    {
       trait:"seedless", name:"Seedlessness (stenospermocarpy)", gene:"AGL11 (VviAGL11, D-class MADS-box)",
       source:"Grape (Vitis vinifera VviAGL11); muscadine VroAGL11",
       does:"The master gene for seed/ovule development in fleshy fruits; suppressing or knocking it out triggers seedlessness.",
@@ -317,7 +384,7 @@
       const el = document.createElement("div");
       el.className = "card";
       const geneTerm = d.gene.split(" (")[0];
-      const pw = trait === "salt" ? "salt tolerance" : trait === "seedless" ? "seedless" : trait;
+      const pw = {salt:"salt tolerance", drought:"drought tolerance", heat:"heat tolerance", seedless:"seedless"}[trait] || trait;
       const purl = "https://patents.google.com/?q=" + encodeURIComponent(geneTerm + " " + pw);
       el.innerHTML =
         '<div class="top"><h3>' + d.name + ' <span class="gene">' + d.gene + '</span></h3>' +
