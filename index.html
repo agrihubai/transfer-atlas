@@ -51,7 +51,7 @@
   select:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
 
   .count { font-family:var(--font-mono); font-size:.8rem; color:var(--muted); margin:24px 0 12px; }
-  .grid { display:flex; flex-direction:column; gap:14px; }
+  .grid { display:grid; gap:16px; }
   .card { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 18px 16px; }
   .card .top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap; }
   .card h3 { font-family:var(--font-display); font-size:1.3rem; margin:0; }
@@ -75,6 +75,23 @@
   .chip-g:hover { border-color:var(--accent); color:var(--accent); }
   .chip-g .n { font-size:.68rem; color:var(--muted); }
   .cand-note { font-size:.8rem; color:var(--muted); margin-top:12px; max-width:72ch; }
+  .card { border-left:4px solid var(--line); padding:20px; }
+  .card.tier-t1 { border-left-color:var(--t1); }
+  .card.tier-t2 { border-left-color:var(--t2); }
+  .card.tier-t3 { border-left-color:var(--t3); }
+  .c-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+  .c-eyebrow { font-family:var(--font-mono); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+  .c-gene { font-family:var(--font-mono); font-weight:600; font-size:1.25rem; color:var(--accent); margin:3px 0 2px; word-break:break-word; }
+  .c-name { font-size:.92rem; color:var(--fg); }
+  .c-does { font-size:1rem; line-height:1.5; margin:14px 0 0; }
+  .c-route { margin-top:14px; padding:12px 14px; background:var(--accent-soft); border-radius:9px; font-size:.92rem; }
+  .c-route .lbl { display:block; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:4px; }
+  .c-meta { display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; margin:16px 0 0; }
+  .c-meta > div { min-width:0; }
+  .c-meta dt { font-family:var(--font-mono); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+  .c-meta dd { margin:0; font-size:.88rem; line-height:1.45; }
+  .ip-line { margin-top:16px; }
+  @media (max-width:520px) { .c-meta { grid-template-columns:1fr; } }
   .legend { display:flex; gap:16px; flex-wrap:wrap; margin:20px 0 4px; font-size:.78rem; color:var(--muted); }
   .legend span b { font-family:var(--font-mono); font-weight:600; }
   .disc { margin:30px 0 10px; padding:14px 16px; border:1px dashed var(--line); border-radius:10px; font-size:.84rem; color:var(--muted); }
@@ -505,24 +522,26 @@
     count.textContent = cards.length + " documented solution(s) · " + traitText + " → " + tgtText;
     for (const { d, t } of cards) {
       const el = document.createElement("div");
-      el.className = "card";
+      el.className = "card tier-" + t.tier;
       const geneTerm = d.gene.split(" (")[0];
       const pw = {salt:"salt tolerance", drought:"drought tolerance", heat:"heat tolerance", seedless:"seedless"}[trait] || trait;
       const purl = "https://patents.google.com/?q=" + encodeURIComponent(geneTerm + " " + pw);
       el.innerHTML =
-        '<div class="top"><h3>' + d.name + ' <span class="gene">' + d.gene + '</span></h3>' +
-        '<span class="tier ' + t.tier + '">' + tierLabel[t.tier] + '</span></div>' +
-        '<div class="rows">' +
-          '<div class="k">Source</div><div class="v">' + d.source + '</div>' +
-          '<div class="k">Does</div><div class="v">' + d.does + '</div>' +
-          '<div class="k">Evidence</div><div class="v"><span class="evidence">' + d.evidence + '</span> · ' +
-            '<a href="' + d.url + '">' + d.ref + '</a></div>' +
-          '<div class="k">Linkage</div><div class="v">' + d.linkage + '</div>' +
-          '<div class="k">Side-effects</div><div class="v">' + d.pleio + '</div>' +
-        '</div>' +
-        '<div class="target-line">In <b>' + tgtText + '</b>: ' + t.note + '</div>' +
-        '<div class="ip-line"><span class="ip-flag">IP · ' + d.ip.flag + '</span><span>' + d.ip.text +
-          ' <a href="' + purl + '" style="color:var(--ip);white-space:nowrap">🔎 search patents →</a></span></div>';
+        '<div class="c-head"><div>' +
+            '<div class="c-eyebrow">' + traitText + '</div>' +
+            '<div class="c-gene">' + d.gene + '</div>' +
+            '<div class="c-name">' + d.name + '</div>' +
+          '</div><span class="tier ' + t.tier + '">' + tierLabel[t.tier] + '</span></div>' +
+        '<p class="c-does">' + d.does + '</p>' +
+        '<div class="c-route"><span class="lbl">In ' + tgtText + ' · reachability</span>' + t.note + '</div>' +
+        '<dl class="c-meta">' +
+          '<div><dt>Source</dt><dd>' + d.source + '</dd></div>' +
+          '<div><dt>Evidence</dt><dd><span class="evidence">' + d.evidence + '</span> · <a href="' + d.url + '">' + d.ref + '</a></dd></div>' +
+          '<div><dt>Linkage drag</dt><dd>' + d.linkage + '</dd></div>' +
+          '<div><dt>Side-effects</dt><dd>' + d.pleio + '</dd></div>' +
+        '</dl>' +
+        '<div class="ip-line"><span class="ip-flag">IP · ' + d.ip.flag + '</span>' + d.ip.text +
+          ' <a href="' + purl + '" style="color:var(--ip);white-space:nowrap">🔎 patents →</a></div>';
       grid.appendChild(el);
     }
     const cl = CANDIDATES[trait] || [];
