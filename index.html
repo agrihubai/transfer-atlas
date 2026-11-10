@@ -69,6 +69,12 @@
   .ip-flag { font-family:var(--font-mono); font-size:.66rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ip); border:1px solid var(--ip); border-radius:5px; padding:2px 7px; white-space:nowrap; margin-top:1px; }
   .evidence { display:inline-block; font-family:var(--font-mono); font-size:.68rem; padding:2px 7px; border:1px solid var(--line); border-radius:5px; color:var(--muted); }
 
+  .cand-head { font-family:var(--font-mono); font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:34px 0 12px; }
+  .cand-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip-g { font-family:var(--font-mono); font-size:.82rem; border:1px solid var(--line); border-radius:7px; padding:5px 10px; color:var(--fg); background:var(--surface); text-decoration:none; display:inline-flex; gap:6px; align-items:center; }
+  .chip-g:hover { border-color:var(--accent); color:var(--accent); }
+  .chip-g .n { font-size:.68rem; color:var(--muted); }
+  .cand-note { font-size:.8rem; color:var(--muted); margin-top:12px; max-width:72ch; }
   .legend { display:flex; gap:16px; flex-wrap:wrap; margin:20px 0 4px; font-size:.78rem; color:var(--muted); }
   .legend span b { font-family:var(--font-mono); font-weight:600; }
   .disc { margin:30px 0 10px; padding:14px 16px; border:1px dashed var(--line); border-radius:10px; font-size:.84rem; color:var(--muted); }
@@ -94,10 +100,26 @@
       <div class="field">
         <label for="trait">Trait</label>
         <select id="trait">
-          <option value="salt">Salt tolerance</option>
-          <option value="drought">Drought tolerance</option>
-          <option value="heat">Heat tolerance</option>
-          <option value="seedless">Seedlessness</option>
+          <optgroup label="Abiotic stress">
+            <option value="salt">Salt tolerance</option>
+            <option value="drought">Drought tolerance</option>
+            <option value="heat">Heat tolerance</option>
+            <option value="cold">Cold / chilling tolerance</option>
+            <option value="aluminum">Aluminium / acid-soil tolerance</option>
+          </optgroup>
+          <optgroup label="Biotic stress">
+            <option value="disease">Disease resistance</option>
+          </optgroup>
+          <optgroup label="Fruit & quality">
+            <option value="firmness">Fruit firmness / shelf life</option>
+            <option value="quality">Fruit quality (sugar / size)</option>
+            <option value="seedless">Seedlessness</option>
+          </optgroup>
+          <optgroup label="Yield & development">
+            <option value="yield">Yield</option>
+            <option value="flowering">Flowering time / earliness</option>
+            <option value="nue">Nitrogen-use efficiency</option>
+          </optgroup>
         </select>
       </div>
       <div class="field">
@@ -129,7 +151,8 @@
 
   <div class="count" id="count"></div>
   <div class="grid" id="grid"></div>
-  <div class="count" id="empty" hidden>No seeded solution for this trait × crop yet. Try Salt tolerance → Tomato, or Seedlessness → Blackberry / berry.</div>
+  <div class="count" id="empty" hidden>No <em>curated</em> card for this trait × crop yet — see the literature-scan candidates below, or try Salt tolerance → Tomato.</div>
+  <div id="cand"></div>
 
   <div class="disc">
     <b>Proof-of-concept seed.</b> A few curated, functionally-validated entries — not a complete atlas.
@@ -463,10 +486,12 @@
     }
   ];
 
+  const CANDIDATES = {"aluminum":[{"g":"STOP1","p":22,"ids":"17535918"},{"g":"AtALMT1","p":16,"ids":"16740662"},{"g":"ART1","p":13,"ids":"21829395"},{"g":"ALMT1","p":8,"ids":"15471989"},{"g":"ALS3","p":7,"ids":"15659095"},{"g":"RAE1","p":6,"ids":"30559192"},{"g":"TaALMT1","p":6,"ids":"17028155"},{"g":"AtSTOP1","p":5,"ids":"31677167"},{"g":"OsFRDL4","p":4,"ids":"21880027"}],"cold":[{"g":"ICE1","p":14,"ids":"16214899"},{"g":"CBF1","p":10,"ids":"15640027"},{"g":"DREB1","p":8,"ids":"17653269"},{"g":"AtCOR47","p":6,"ids":"35659253"},{"g":"SlCBF1","p":6,"ids":"30096237"},{"g":"CBF2","p":6,"ids":"28089951"},{"g":"COR15A","p":5,"ids":"17653269"},{"g":"OsICE1","p":4,"ids":"21136294"},{"g":"AtCBF3","p":4,"ids":"22336381"},{"g":"OsDREB1A","p":4,"ids":"32924751"}],"disease":[{"g":"NPR1","p":9,"ids":"17601827"},{"g":"BSR1","p":5,"ids":"24166434"},{"g":"PR1","p":4,"ids":"19825553"},{"g":"Pm3","p":4,"ids":"22176579"},{"g":"MYC2","p":3,"ids":"32372640"},{"g":"WRKY45","p":3,"ids":"17601827"},{"g":"EDS1","p":3,"ids":"21617027"},{"g":"OsWRKY45","p":3,"ids":"21726399"},{"g":"OsPAL1","p":3,"ids":"29432165"},{"g":"EDR1","p":2,"ids":"11114160"}],"drought":[{"g":"DREB2A","p":5,"ids":"26025529"},{"g":"ATAF1","p":4,"ids":"27663409"},{"g":"OsLEA3","p":4,"ids":"28659944"},{"g":"OsDREB2A","p":3,"ids":"35682553"},{"g":"OsbZIP23","p":3,"ids":"28659944"},{"g":"SnRK2","p":2,"ids":"28659944"},{"g":"ZmEREB24","p":2,"ids":"38215602"},{"g":"BES1","p":2,"ids":"35682705"}],"firmness":[{"g":"ACO1","p":17,"ids":"22919320"},{"g":"ACS2","p":16,"ids":"19891701"},{"g":"FUL1","p":10,"ids":"25036675"},{"g":"ACS4","p":10,"ids":"28801625"},{"g":"ACO3","p":9,"ids":"28649000"},{"g":"PSY1","p":8,"ids":"28649000"},{"g":"TAGL1","p":7,"ids":"19880793"},{"g":"TBG4","p":7,"ids":"26862200"},{"g":"XTH5","p":6,"ids":"28649000"},{"g":"FUL2","p":6,"ids":"25036675"}],"flowering":[{"g":"Hd3a","p":35,"ids":"19521518"},{"g":"Ehd1","p":31,"ids":"22527521"},{"g":"Hd1","p":28,"ids":"12974813"},{"g":"RFT1","p":26,"ids":"22527521"},{"g":"SOC1","p":20,"ids":"16240176"},{"g":"Ghd7","p":21,"ids":"22527521"},{"g":"TFL1","p":8,"ids":"15055534"},{"g":"DTH8","p":8,"ids":"30619400"},{"g":"Ehd2","p":7,"ids":"22527521"},{"g":"OsMADS14","p":6,"ids":"33246053"}],"heat":[{"g":"HSFA2","p":9,"ids":"30367612"},{"g":"HSP70","p":7,"ids":"30080608"},{"g":"APX2","p":6,"ids":"23238922"},{"g":"Hsp101","p":5,"ids":"19125253"},{"g":"DREB2A","p":4,"ids":"17030801"},{"g":"HSP17","p":3,"ids":"35622526"},{"g":"HSP90","p":3,"ids":"30080608"},{"g":"HSP101","p":3,"ids":"21835493"},{"g":"HsfA1a","p":3,"ids":"30187931"},{"g":"Hsp100","p":3,"ids":"25438142"}],"nue":[{"g":"NRT2.1","p":12,"ids":"26864608"},{"g":"NRT1.1","p":10,"ids":"18780802"},{"g":"OsNAR2.1","p":7,"ids":"23093362"},{"g":"OsNRT2.1","p":6,"ids":"23093362"},{"g":"OsNRT1.1A","p":4,"ids":"29475937"},{"g":"OsNRT2.3b","p":4,"ids":"23093362"},{"g":"GS2","p":4,"ids":"29577547"},{"g":"NRT2.4","p":4,"ids":"27208309"},{"g":"NRT1.1B","p":3,"ids":"26053497"},{"g":"DEP1","p":3,"ids":"27520410"}],"quality":[{"g":"FW2.2","p":5,"ids":"23793979"},{"g":"CLV3","p":4,"ids":"26005869"},{"g":"SlGLK2","p":4,"ids":"30729007"},{"g":"SlGAD3","p":4,"ids":"28765632"},{"g":"FW3.2","p":4,"ids":"24520021"},{"g":"CYP78A","p":3,"ids":"24520021"},{"g":"SlPSY1","p":3,"ids":"33790255"},{"g":"SlMYC2","p":3,"ids":"36388521"},{"g":"SlBRI1","p":3,"ids":"31196007"},{"g":"FaPG1","p":2,"ids":"36960432"}],"salt":[{"g":"SOS3","p":7,"ids":"31858132"},{"g":"OsSOS1","p":6,"ids":"32750653"},{"g":"OsHKT1;5","p":5,"ids":"20838445"},{"g":"HKT1","p":4,"ids":"32744336"},{"g":"OsHKT2;1","p":4,"ids":"31359043"},{"g":"AtNHX1","p":4,"ids":"10455050"},{"g":"SOS2","p":4,"ids":"31858132"},{"g":"SlSOS2","p":4,"ids":"22390672"},{"g":"OsRR22","p":3,"ids":"32803201"},{"g":"OsLEA3","p":3,"ids":"27216423"}],"yield":[{"g":"Ghd7","p":5,"ids":"28346447"},{"g":"DEP1","p":5,"ids":"29365136"},{"g":"TaGW2","p":4,"ids":"24890396"},{"g":"GS3","p":4,"ids":"28034842"},{"g":"OsCKX2","p":3,"ids":"15976269"},{"g":"GW2","p":3,"ids":"28034842"},{"g":"GIF1","p":3,"ids":"34692021"},{"g":"APO1","p":3,"ids":"32528064"},{"g":"miR156","p":3,"ids":"31207122"},{"g":"Gn1a","p":2,"ids":"15976269"}]};
   const tierLabel = { t1:"native edit", t2:"cisgenic", t3:"transgenic" };
   const grid = document.getElementById("grid");
   const count = document.getElementById("count");
   const empty = document.getElementById("empty");
+  const cand = document.getElementById("cand");
   const traitSel = document.getElementById("trait");
   const targetSel = document.getElementById("target");
 
@@ -500,6 +525,14 @@
           ' <a href="' + purl + '" style="color:var(--ip);white-space:nowrap">🔎 search patents →</a></span></div>';
       grid.appendChild(el);
     }
+    const cl = CANDIDATES[trait] || [];
+    cand.innerHTML = cl.length ? (
+      '<div class="cand-head">Literature-scan candidates for ' + traitText + ' — uncurated, crop-agnostic</div>' +
+      '<div class="cand-wrap">' + cl.map(c =>
+        '<a class="chip-g" href="https://pubmed.ncbi.nlm.nih.gov/' + c.ids + '/" title="' + c.p + ' functional-evidence papers">' +
+        c.g + ' <span class="n">' + c.p + '</span></a>').join("") + '</div>' +
+      '<div class="cand-note">Straight from the automated PubMed scan (functional-evidence filter): gene + number of papers + a sample paper. These are not yet curated into the cards above (no portability / linkage / IP review) and are not crop-specific — they show how much the literature already holds for this trait. The cards above are the verified subset.</div>'
+    ) : "";
   }
   traitSel.addEventListener("change", render);
   targetSel.addEventListener("change", render);
