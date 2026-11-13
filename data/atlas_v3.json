@@ -45,8 +45,8 @@
   },
   "stats": {
     "total_entries": 31,
-    "verified": 15,
-    "partial": 15,
+    "verified": 18,
+    "partial": 12,
     "unverified": 1,
     "conflicted": 0,
     "last_verified": "2026-11-13",
@@ -287,8 +287,18 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "Sl7-DR2[tiab] AND Provitamin D3[tiab]"
+              "found": true,
+              "query": "Sl7-DR2[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42201953",
+                  "title": "Multiplex gene editing enables the multibiofortification of essential vitamins and other health-promoting phytonutrients in tomato.",
+                  "journal": "Proc Natl Acad Sci U S A",
+                  "year": "2026",
+                  "doi": "10.1073/pnas.2603937123"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001366114.1",
@@ -339,13 +349,16 @@
           "NCBI:101256596"
         ],
         "pmids": [
+          "42201953",
           "35606499"
         ],
         "dois": [
-          "10.1038/s41477-022-01154-6"
+          "10.1038/s41477-022-01154-6",
+          "10.1073/pnas.2603937123"
         ],
         "notes": [
-          "locus ID(s) Solyc06g074090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
+          "locus ID(s) Solyc06g074090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
+          "Sl7-DR2: PMID 42201953 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "correction": {
@@ -734,14 +747,13 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Nekrasov[Author] AND 2017[dp]",
+              "query": "Nekrasov[Author] AND 2017[dp] in Sci. Rep",
               "match_type": "author+year+journal, trait matched in title",
               "matched_terms": [
                 "mildew",
                 "powdery",
                 "tomato"
               ],
-              "candidates_considered": 15,
               "hits": [
                 {
                   "pmid": "28352080",
@@ -1670,7 +1682,7 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Uluisik[Author] AND 2016[dp]",
+              "query": "Uluisik[Author] AND 2016[dp] in Nat. Biotechnol",
               "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
               "matched_terms": [
                 "tomato"
@@ -1716,7 +1728,7 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Uluisik[Author] AND 2016[dp]",
+              "query": "Uluisik[Author] AND 2016[dp] in Nat. Biotechnol",
               "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
               "matched_terms": [
                 "tomato"
@@ -1762,7 +1774,7 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Uluisik[Author] AND 2016[dp]",
+              "query": "Uluisik[Author] AND 2016[dp] in Nat. Biotechnol",
               "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
               "matched_terms": [
                 "tomato"
@@ -1804,9 +1816,22 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "partial",
+        "status": "verified",
         "genes_resolved": "3/3",
-        "curated_references": [],
+        "curated_references": [
+          {
+            "pmid": "27454737",
+            "doi": "",
+            "suggested_by": "external AI suggestion (Gemini), confirmed on request by maintainer 2026-11-13",
+            "supports": "Targeted control of fruit softening in tomato; the intended reference for SlPL, SlPG2a and SlCEL2 per the supplier's explicit confirmation.",
+            "does_not_support": "Read the paper before attributing the firmness effect to all three genes equally — it is the pectate lyase work, and the other two were listed alongside it in the draft.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Genetic improvement of tomato by targeted control of fruit softening.",
+            "pubmed_journal": "Nat Biotechnol",
+            "pubmed_year": "2016",
+            "pubmed_doi": "10.1038/nbt.3602"
+          }
+        ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
@@ -1844,11 +1869,10 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 4",
-        "basis": "3/3 genes resolved, no confirmed reference",
+        "derived_level": "Level 2",
+        "basis": "all 3 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 4 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -2133,43 +2157,19 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "eIF4E1[tiab] AND Potyvirus resistance[tiab]",
-              "match_type": "gene+trait topic search",
+              "query": "Ruffel[Author] AND 2002[dp] in The Plant Journal",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "pepper",
+                "resistance"
+              ],
               "hits": [
                 {
-                  "pmid": "42374852",
-                  "title": "Imprecise Cas12a/ssODN-Mediated Editing of eIF4E1 Confers Dominant-Negative Resistance to Potato Virus Y in Solanum tuberosum.",
-                  "journal": "Mol Plant Pathol",
-                  "year": "2026",
-                  "doi": "10.1111/mpp.70305"
-                },
-                {
-                  "pmid": "39715933",
-                  "title": "Interaction Between Translation Initiation Factor eIF4E in Banana and the VPg Protein of Banana Bract Mosaic Virus Reveals Potential Targets for Genome Editing.",
-                  "journal": "Mol Biotechnol",
-                  "year": "2025",
-                  "doi": "10.1007/s12033-024-01337-w"
-                },
-                {
-                  "pmid": "37983287",
-                  "title": "Arabidopsis eIF4E1 protects the translational machinery during TuMV infection and restricts virus accumulation.",
-                  "journal": "PLoS Pathog",
-                  "year": "2023",
-                  "doi": "10.1371/journal.ppat.1011417"
-                },
-                {
-                  "pmid": "36592244",
-                  "title": "Virus Evolution Faced to Multiple Host Targets: The Potyvirus-Pepper Case Study.",
-                  "journal": "Curr Top Microbiol Immunol",
-                  "year": "2023",
-                  "doi": "10.1007/978-3-031-15640-3_3"
-                },
-                {
-                  "pmid": "35722301",
-                  "title": "CRISPR-Cas9 Targeting of the eIF4E1 Gene Extends the Potato Virus Y Resistance Spectrum of the Solanum tuberosum L. cv. Desirée.",
-                  "journal": "Front Microbiol",
-                  "year": "2022",
-                  "doi": "10.3389/fmicb.2022.873930"
+                  "pmid": "12492847",
+                  "title": "A natural recessive resistance gene against potato virus Y in pepper corresponds to the eukaryotic initiation factor 4E (eIF4E).",
+                  "journal": "Plant J",
+                  "year": "2002",
+                  "doi": "10.1046/j.1365-313x.2002.01499.x"
                 }
               ]
             },
@@ -2203,43 +2203,19 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "eIFiso4E[tiab] AND Potyvirus resistance[tiab]",
-              "match_type": "gene+trait topic search",
+              "query": "Ruffel[Author] AND 2002[dp] in The Plant Journal",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "pepper",
+                "resistance"
+              ],
               "hits": [
                 {
-                  "pmid": "42239849",
-                  "title": "Enhancing papaya resistance to ringspot virus through CRISPR/Cas9-mediated gene editing of eIF4E.",
-                  "journal": "Front Plant Sci",
-                  "year": "2026",
-                  "doi": "10.3389/fpls.2026.1799408"
-                },
-                {
-                  "pmid": "35722301",
-                  "title": "CRISPR-Cas9 Targeting of the eIF4E1 Gene Extends the Potato Virus Y Resistance Spectrum of the Solanum tuberosum L. cv. Desirée.",
-                  "journal": "Front Microbiol",
-                  "year": "2022",
-                  "doi": "10.3389/fmicb.2022.873930"
-                },
-                {
-                  "pmid": "33899980",
-                  "title": "High overexpression of CERES, a plant regulator of translation, induces different phenotypical defence responses during TuMV infection.",
+                  "pmid": "12492847",
+                  "title": "A natural recessive resistance gene against potato virus Y in pepper corresponds to the eukaryotic initiation factor 4E (eIF4E).",
                   "journal": "Plant J",
-                  "year": "2021",
-                  "doi": "10.1111/tpj.15290"
-                },
-                {
-                  "pmid": "29633509",
-                  "title": "Mutation of a Nicotiana tabacum L. eukaryotic translation-initiation factor gene reduces susceptibility to a resistance-breaking strain of Potato virus Y.",
-                  "journal": "Mol Plant Pathol",
-                  "year": "2018",
-                  "doi": "10.1111/mpp.12686"
-                },
-                {
-                  "pmid": "27103354",
-                  "title": "Engineering of CRISPR/Cas9-mediated potyvirus resistance in transgene-free Arabidopsis plants.",
-                  "journal": "Mol Plant Pathol",
-                  "year": "2016",
-                  "doi": "10.1111/mpp.12417"
+                  "year": "2002",
+                  "doi": "10.1046/j.1365-313x.2002.01499.x"
                 }
               ]
             },
@@ -2270,7 +2246,7 @@
         "gene_action": "Loss of function or specific amino acid substitution (Base Editing)"
       },
       "verification": {
-        "status": "partial",
+        "status": "verified",
         "genes_resolved": "2/2",
         "curated_references": [],
         "verified_on": "2026-11-13",
@@ -2280,33 +2256,34 @@
           "NCBI:107868427"
         ],
         "pmids": [
-          "42239849",
-          "42374852"
+          "12492847"
         ],
         "dois": [
-          "10.1111/mpp.70305",
-          "10.3389/fpls.2026.1799408"
+          "10.1046/j.1365-313x.2002.01499.x"
         ],
         "notes": [
           "eIF4E1: matched NCBI gene LOC107868427 (107868427) as weak — symbol not in name or aliases — confirm it is the same gene",
-          "eIF4E1: PMID 42374852 found by topic search, not by the cited author/year — citation not confirmed",
-          "eIFiso4E: matched NCBI gene LOC107853558 (107853558) as listed as alias — confirm it is the same gene",
-          "eIFiso4E: PMID 42239849 found by topic search, not by the cited author/year — citation not confirmed"
+          "eIFiso4E: matched NCBI gene LOC107853558 (107853558) as listed as alias — confirm it is the same gene"
         ]
       },
       "correction": {
         "decided_by": "maintainer, 2026-11-13",
-        "commercial_status": "NOT set to Level 1: no cultivar was named, only 'commercial hybrid lines bred with pvr1/pvr2' and a list of seed companies. A category is not a product."
+        "commercial_status": "NOT set to Level 1: no cultivar was named, only 'commercial hybrid lines bred with pvr1/pvr2' and a list of seed companies. A category is not a product.",
+        "citation_journals": [
+          "The Plant Journal",
+          "Frontiers in Plant Science"
+        ],
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
       },
       "locus_check": {
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 4",
-        "basis": "2/2 genes resolved, no confirmed reference",
+        "derived_level": "Level 2",
+        "basis": "all 2 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 4 from what it could verify"
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -2920,8 +2897,46 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CsACS2[tiab] AND Gynoecy & parthenocarpy[tiab]"
+              "found": true,
+              "query": "CsACS2[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "41688921",
+                  "title": "Integrative transcriptomic and metabolomic analyses reveal mechanisms underlying calcium-induced enhancement of female flower production in Cucumis sativus L.",
+                  "journal": "BMC Plant Biol",
+                  "year": "2026",
+                  "doi": "10.1186/s12870-026-08338-8"
+                },
+                {
+                  "pmid": "41197429",
+                  "title": "CsNAC25 negatively regulates cold tolerance in tea plants through modulation of CBF pathway and ethylene biosynthesis.",
+                  "journal": "Plant Physiol Biochem",
+                  "year": "2025",
+                  "doi": "10.1016/j.plaphy.2025.110723"
+                },
+                {
+                  "pmid": "39570417",
+                  "title": "Constitutive expression of cucumber CsACS2 in Arabidopsis Thaliana disrupts anther dehiscence through ethylene signaling and DNA methylation pathways.",
+                  "journal": "Plant Cell Rep",
+                  "year": "2024",
+                  "doi": "10.1007/s00299-024-03374-w"
+                },
+                {
+                  "pmid": "39394409",
+                  "title": "Female flowers with short ovaries in 'Lemon' cucumber (Cucumis sativus) plants and their progeny carrying the mm genotype (CS-ACS2 genes with c.97G > T mutations): a novel trimonoecious phenotype.",
+                  "journal": "J Plant Res",
+                  "year": "2025",
+                  "doi": "10.1007/s10265-024-01583-8"
+                },
+                {
+                  "pmid": "36430508",
+                  "title": "Relationship between Key Environmental Factors and the Architecture of Fruit Shape and Size in Near-Isogenic Lines of Cucumber (Cucumis sativus L.).",
+                  "journal": "Int J Mol Sci",
+                  "year": "2022",
+                  "doi": "10.3390/ijms232214033"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001305700.2",
@@ -2953,8 +2968,32 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CsACS11[tiab] AND Gynoecy & parthenocarpy[tiab]"
+              "found": true,
+              "query": "CsACS11[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "30154805",
+                  "title": "Differential Gene Expression Caused by the F and M Loci Provides Insight Into Ethylene-Mediated Female Flower Differentiation in Cucumber.",
+                  "journal": "Front Plant Sci",
+                  "year": "2018",
+                  "doi": "10.3389/fpls.2018.01091"
+                },
+                {
+                  "pmid": "29659946",
+                  "title": "Ethylene responsive factor ERF110 mediates ethylene-regulated transcription of a sex determination-related orthologous gene in two Cucumis species.",
+                  "journal": "J Exp Bot",
+                  "year": "2018",
+                  "doi": "10.1093/jxb/ery128"
+                },
+                {
+                  "pmid": "27403533",
+                  "title": "An ACC Oxidase Gene Essential for Cucumber Carpel Development.",
+                  "journal": "Mol Plant",
+                  "year": "2016",
+                  "doi": "10.1016/j.molp.2016.06.018"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "XM_004142861.3",
@@ -2974,8 +3013,39 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CsWIP1[tiab] AND Gynoecy & parthenocarpy[tiab]"
+              "found": true,
+              "query": "CsWIP1[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42262565",
+                  "title": "Using aco multiple mutants to elucidate the differential regulation of ethylene in sex determination and fruit elongation in cucumber.",
+                  "journal": "Plant Physiol",
+                  "year": "2026",
+                  "doi": "10.1093/plphys/kiag351"
+                },
+                {
+                  "pmid": "41379936",
+                  "title": "ARF3-mediated auxin signaling is essential for sex determination in cucumber.",
+                  "journal": "Science",
+                  "year": "2026",
+                  "doi": "10.1126/science.adv2006"
+                },
+                {
+                  "pmid": "27403533",
+                  "title": "An ACC Oxidase Gene Essential for Cucumber Carpel Development.",
+                  "journal": "Mol Plant",
+                  "year": "2016",
+                  "doi": "10.1016/j.molp.2016.06.018"
+                },
+                {
+                  "pmid": "10354473",
+                  "title": "SWiP-1: novel SOCS box containing WD-protein regulated by signalling centres and by Shh during development.",
+                  "journal": "Mech Dev",
+                  "year": "1999",
+                  "doi": "10.1016/s0925-4773(99)00014-3"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
@@ -2993,8 +3063,25 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CsARF8[tiab] AND Gynoecy & parthenocarpy[tiab]"
+              "found": true,
+              "query": "CsARF8[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "30604453",
+                  "title": "Enhancing microRNA167A expression in seed decreases the α-linolenic acid content and increases seed size in Camelina sativa.",
+                  "journal": "Plant J",
+                  "year": "2019",
+                  "doi": "10.1111/tpj.14223"
+                },
+                {
+                  "pmid": "30590760",
+                  "title": "Methane Control of Adventitious Rooting Requires γ-Glutamyl Cysteine Synthetase-Mediated Glutathione Homeostasis.",
+                  "journal": "Plant Cell Physiol",
+                  "year": "2019",
+                  "doi": "10.1093/pcp/pcy241"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
@@ -3030,12 +3117,26 @@
           "NCBI:101213522",
           "NCBI:101217331"
         ],
-        "pmids": [],
-        "dois": [],
+        "pmids": [
+          "30154805",
+          "30604453",
+          "41688921",
+          "42262565"
+        ],
+        "dois": [
+          "10.1093/plphys/kiag351",
+          "10.1111/tpj.14223",
+          "10.1186/s12870-026-08338-8",
+          "10.3389/fpls.2018.01091"
+        ],
         "notes": [
           "locus ID(s) Csa1G580750, Csa4G290830 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CsACS2: matched NCBI gene LOC101217331 (101217331) as listed as alias — confirm it is the same gene",
-          "CsACS11: matched NCBI gene LOC101213522 (101213522) as listed as alias — confirm it is the same gene"
+          "CsACS2: PMID 41688921 found by topic search, not by the cited author/year — citation not confirmed",
+          "CsACS11: matched NCBI gene LOC101213522 (101213522) as listed as alias — confirm it is the same gene",
+          "CsACS11: PMID 30154805 found by topic search, not by the cited author/year — citation not confirmed",
+          "CsWIP1: PMID 42262565 found by topic search, not by the cited author/year — citation not confirmed",
+          "CsARF8: PMID 30604453 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "correction": null,
@@ -3145,8 +3246,23 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CmACS7[tiab] AND Extended shelf life & climacteric ripening control[tiab]"
+              "found": true,
+              "query": "Ayub[Author] AND 1996[dp] in Nature Biotechnology",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "melo",
+                "melon",
+                "ripening"
+              ],
+              "hits": [
+                {
+                  "pmid": "9631011",
+                  "title": "Expression of ACC oxidase antisense gene inhibits ripening of cantaloupe melon fruits.",
+                  "journal": "Nat Biotechnol",
+                  "year": "1996",
+                  "doi": "10.1038/nbt0796-862"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001328455.1",
@@ -3166,8 +3282,23 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CmNAC-NOR[tiab] AND Extended shelf life & climacteric ripening control[tiab]"
+              "found": true,
+              "query": "Ayub[Author] AND 1996[dp] in Nature Biotechnology",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "melo",
+                "melon",
+                "ripening"
+              ],
+              "hits": [
+                {
+                  "pmid": "9631011",
+                  "title": "Expression of ACC oxidase antisense gene inhibits ripening of cantaloupe melon fruits.",
+                  "journal": "Nat Biotechnol",
+                  "year": "1996",
+                  "doi": "10.1038/nbt0796-862"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
@@ -3204,9 +3335,11 @@
           "NCBI:103492295"
         ],
         "pmids": [
-          "37304010"
+          "37304010",
+          "9631011"
         ],
         "dois": [
+          "10.1038/nbt0796-862",
           "10.3389/fgeed.2023.1176125"
         ],
         "notes": [
@@ -3215,7 +3348,14 @@
           "CmACS7: matched NCBI gene LOC103492295 (103492295) as weak — symbol not in name or aliases — confirm it is the same gene"
         ]
       },
-      "correction": null,
+      "correction": {
+        "citation_journals": [
+          "Frontiers in Genome Editing",
+          "Nature Biotechnology"
+        ],
+        "decided_by": "maintainer, 2026-11-13",
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3318,7 +3458,13 @@
           "locus ID(s) Cla97C07G144940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "citation_journals": [
+          "Horticulture Research"
+        ],
+        "decided_by": "maintainer, 2026-11-13",
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3737,7 +3883,11 @@
           "gene": "SmMYB_candidates",
           "why": "Not supported by PMID 38974191. Kept here so the earlier hypothesis is not silently erased; if another source supports an SmMYB role, it can return as its own entry."
         },
-        "second_suggestion_note": "A later suggestion attributed PMID 38974191 to 'Satterlee et al., 2024, Science'. That is wrong and contradicts the same supplier's earlier, correct attribution: the paper is Zhang L, Horticulture Research 2024. It also offered the locus tag SMEL4.1_06g011220.1.01, which cannot be checked here because eggplant has no NCBI build."
+        "second_suggestion_note": "A later suggestion attributed PMID 38974191 to 'Satterlee et al., 2024, Science'. That is wrong and contradicts the same supplier's earlier, correct attribution: the paper is Zhang L, Horticulture Research 2024. It also offered the locus tag SMEL4.1_06g011220.1.01, which cannot be checked here because eggplant has no NCBI build.",
+        "citation_journals": [
+          "Breeding Science"
+        ],
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
       },
       "locus_check": {
         "checked": true,
@@ -4286,13 +4436,12 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Traka[Author] AND 2013[dp]",
+              "query": "Traka[Author] AND 2013[dp] in New Phytol",
               "match_type": "author+year+journal, trait matched in title",
               "matched_terms": [
                 "broccoli",
                 "glucoraphanin"
               ],
-              "candidates_considered": 5,
               "hits": [
                 {
                   "pmid": "23560984",
@@ -4319,13 +4468,12 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Traka[Author] AND 2013[dp]",
+              "query": "Traka[Author] AND 2013[dp] in New Phytol",
               "match_type": "author+year+journal, trait matched in title",
               "matched_terms": [
                 "broccoli",
                 "glucoraphanin"
               ],
-              "candidates_considered": 5,
               "hits": [
                 {
                   "pmid": "23560984",
@@ -4352,13 +4500,12 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Traka[Author] AND 2013[dp]",
+              "query": "Traka[Author] AND 2013[dp] in New Phytol",
               "match_type": "author+year+journal, trait matched in title",
               "matched_terms": [
                 "broccoli",
                 "glucoraphanin"
               ],
-              "candidates_considered": 5,
               "hits": [
                 {
                   "pmid": "23560984",
@@ -4448,18 +4595,8 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": true,
-              "query": "2024[dp] AND DcRPGE1[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "38593056",
-                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
-                  "journal": "Plant Cell",
-                  "year": "2024",
-                  "doi": "10.1093/plcell/koae111"
-                }
-              ]
+              "found": false,
+              "query": "DcRPGE1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
             "checked_on": "2026-11-13"
           }
@@ -4477,18 +4614,8 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": true,
-              "query": "2024[dp] AND DcAPRR2[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "38593056",
-                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
-                  "journal": "Plant Cell",
-                  "year": "2024",
-                  "doi": "10.1093/plcell/koae111"
-                }
-              ]
+              "found": false,
+              "query": "DcAPRR2[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
             "checked_on": "2026-11-13"
           }
@@ -4518,18 +4645,8 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": true,
-              "query": "2024[dp] AND DcPSY1[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "38593056",
-                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
-                  "journal": "Plant Cell",
-                  "year": "2024",
-                  "doi": "10.1093/plcell/koae111"
-                }
-              ]
+              "found": false,
+              "query": "DcPSY1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001329177.1",
@@ -4561,18 +4678,8 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": true,
-              "query": "2024[dp] AND DcPSY2[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "38593056",
-                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
-                  "journal": "Plant Cell",
-                  "year": "2024",
-                  "doi": "10.1093/plcell/koae111"
-                }
-              ]
+              "found": false,
+              "query": "DcPSY2[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "XM_017386783.2",
@@ -4644,19 +4751,11 @@
           "NCBI:108214656",
           "NCBI:108227339"
         ],
-        "pmids": [
-          "38593056"
-        ],
-        "dois": [
-          "10.1093/plcell/koae111"
-        ],
+        "pmids": [],
+        "dois": [],
         "notes": [
-          "DcRPGE1: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
-          "DcAPRR2: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
           "DcPSY1: matched NCBI gene LOC108227339 (108227339) as listed as alias — confirm it is the same gene",
-          "DcPSY1: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
           "DcPSY2: matched NCBI gene LOC108214656 (108214656) as listed as alias — confirm it is the same gene",
-          "DcPSY2: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
           "DcLCYB1: matched NCBI gene LOC108193045 (108193045) as listed as alias — confirm it is the same gene"
         ]
       },
@@ -4699,13 +4798,12 @@
             },
             "pubmed": {
               "found": true,
-              "query": "Eady[Author] AND 2008[dp]",
+              "query": "Eady[Author] AND 2008[dp] in Plant Physiol",
               "match_type": "author+year+journal, trait matched in title",
               "matched_terms": [
                 "lachrymatory",
                 "onion"
               ],
-              "candidates_considered": 12,
               "hits": [
                 {
                   "pmid": "18583530",
@@ -4826,8 +4924,19 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "SOS1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "found": true,
+              "query": "Zandalinas[Author] AND 2021[dp] in New Phytologist",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [],
+              "hits": [
+                {
+                  "pmid": "33496342",
+                  "title": "The impact of multifactorial stress combination on plant growth and survival.",
+                  "journal": "New Phytol",
+                  "year": "2021",
+                  "doi": "10.1111/nph.17232"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001247769.3",
@@ -4858,8 +4967,19 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "SOS2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "found": true,
+              "query": "Zandalinas[Author] AND 2021[dp] in New Phytologist",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [],
+              "hits": [
+                {
+                  "pmid": "33496342",
+                  "title": "The impact of multifactorial stress combination on plant growth and survival.",
+                  "journal": "New Phytol",
+                  "year": "2021",
+                  "doi": "10.1111/nph.17232"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "XM_069291846.1",
@@ -4890,8 +5010,19 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "NHX1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "found": true,
+              "query": "Zandalinas[Author] AND 2021[dp] in New Phytologist",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [],
+              "hits": [
+                {
+                  "pmid": "33496342",
+                  "title": "The impact of multifactorial stress combination on plant growth and survival.",
+                  "journal": "New Phytol",
+                  "year": "2021",
+                  "doi": "10.1111/nph.17232"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "XM_026031303.2",
@@ -4932,8 +5063,19 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "DREB2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "found": true,
+              "query": "Zandalinas[Author] AND 2021[dp] in New Phytologist",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [],
+              "hits": [
+                {
+                  "pmid": "33496342",
+                  "title": "The impact of multifactorial stress combination on plant growth and survival.",
+                  "journal": "New Phytol",
+                  "year": "2021",
+                  "doi": "10.1111/nph.17232"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001247830.1",
@@ -4964,8 +5106,19 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "HsfA2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "found": true,
+              "query": "Zandalinas[Author] AND 2021[dp] in New Phytologist",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [],
+              "hits": [
+                {
+                  "pmid": "33496342",
+                  "title": "The impact of multifactorial stress combination on plant growth and survival.",
+                  "journal": "New Phytol",
+                  "year": "2021",
+                  "doi": "10.1111/nph.17232"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "XR_742804.4",
@@ -5006,10 +5159,19 @@
           "NCBI:778208",
           "NCBI:778340"
         ],
-        "pmids": [],
-        "dois": [],
+        "pmids": [
+          "33496342"
+        ],
+        "dois": [
+          "10.1111/nph.17232"
+        ],
         "notes": [
-          "HsfA2: matched NCBI gene LOC101255223 (101255223) as listed as alias — confirm it is the same gene"
+          "SOS1: PMID 33496342 found by topic search, not by the cited author/year — citation not confirmed",
+          "SOS2: PMID 33496342 found by topic search, not by the cited author/year — citation not confirmed",
+          "NHX1: PMID 33496342 found by topic search, not by the cited author/year — citation not confirmed",
+          "DREB2: PMID 33496342 found by topic search, not by the cited author/year — citation not confirmed",
+          "HsfA2: matched NCBI gene LOC101255223 (101255223) as listed as alias — confirm it is the same gene",
+          "HsfA2: PMID 33496342 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "correction": {
@@ -5025,7 +5187,17 @@
         },
         "unpinned": [
           "HKT1;2 — no gene of that name is annotated for Solanum lycopersicum in NCBI Gene. The draft's HKT1;2 claim most likely refers to SlHKT1;2 from the S. pennellii introgression literature, which is a different (cisgenic) route and should become its own entry rather than part of this network."
-        ]
+        ],
+        "citation_journals": [
+          "New Phytologist",
+          "Trends in Plant Science",
+          "The Plant Journal"
+        ],
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands",
+        "max_level": {
+          "level": "Level 3",
+          "why": "Network entry: the genes were pinned to tomato orthologs, but a confirmed paper about combined drought, heat and salinity stress does not functionally validate SOS1, SOS2, NHX1, DREB2 and HsfA2 individually. Capped at Level 3 until a paper tests a named gene in a named crop."
+        }
       },
       "locus_check": {
         "checked": false
@@ -5070,8 +5242,23 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "HsfA2[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+              "found": true,
+              "query": "Fragkostefanakis[Author] AND 2016[dp] in Plant Physiology",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "heat",
+                "hsfa2",
+                "tomato"
+              ],
+              "hits": [
+                {
+                  "pmid": "26917685",
+                  "title": "HsfA2 Controls the Activity of Developmentally and Stress-Regulated Heat Stress Protection Mechanisms in Tomato Male Reproductive Tissues.",
+                  "journal": "Plant Physiol",
+                  "year": "2016",
+                  "doi": "10.1104/pp.15.01913"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "XR_742804.4",
@@ -5102,8 +5289,22 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "HSP70[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+              "found": true,
+              "query": "Fragkostefanakis[Author] AND 2016[dp] in Plant Physiology",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "heat",
+                "tomato"
+              ],
+              "hits": [
+                {
+                  "pmid": "26917685",
+                  "title": "HsfA2 Controls the Activity of Developmentally and Stress-Regulated Heat Stress Protection Mechanisms in Tomato Male Reproductive Tissues.",
+                  "journal": "Plant Physiol",
+                  "year": "2016",
+                  "doi": "10.1104/pp.15.01913"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001246851.3",
@@ -5134,8 +5335,22 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "APX1[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+              "found": true,
+              "query": "Fragkostefanakis[Author] AND 2016[dp] in Plant Physiology",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "heat",
+                "tomato"
+              ],
+              "hits": [
+                {
+                  "pmid": "26917685",
+                  "title": "HsfA2 Controls the Activity of Developmentally and Stress-Regulated Heat Stress Protection Mechanisms in Tomato Male Reproductive Tissues.",
+                  "journal": "Plant Physiol",
+                  "year": "2016",
+                  "doi": "10.1104/pp.15.01913"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001247853.2",
@@ -5164,7 +5379,7 @@
         "gene_action": "Tapetum/anther-specific expression tuning"
       },
       "verification": {
-        "status": "partial",
+        "status": "verified",
         "genes_resolved": "3/3",
         "curated_references": [],
         "verified_on": "2026-11-13",
@@ -5174,8 +5389,12 @@
           "NCBI:101255223",
           "NCBI:778223"
         ],
-        "pmids": [],
-        "dois": [],
+        "pmids": [
+          "26917685"
+        ],
+        "dois": [
+          "10.1104/pp.15.01913"
+        ],
         "notes": [
           "HsfA2: matched NCBI gene LOC101255223 (101255223) as listed as alias — confirm it is the same gene"
         ]
@@ -5192,16 +5411,26 @@
         "unpinned": [
           "ROS scavengers — a functional class, not a gene; APX1 above is one member and stands for itself.",
           "MADS-box regulators — too generic to pin; needs a specific gene before it can be an entry."
-        ]
+        ],
+        "citation_journals": [
+          "Euphytica",
+          "Plant Physiology"
+        ],
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands",
+        "max_level": {
+          "level": "Level 3",
+          "why": "Network entry: same reason. A paper on pollen thermotolerance is not functional validation of HsfA2, HSP70 and APX1 one by one."
+        }
       },
       "locus_check": {
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 4",
-        "basis": "3/3 genes resolved, no confirmed reference",
+        "derived_level": "Level 3",
+        "basis": "capped by curator: Network entry: same reason. A paper on pollen thermotolerance is not functional validation of HsfA2, HSP70 and APX1 one by one.",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 4"
+        "draft_claimed": "Level 4",
+        "disagrees_with_draft": "the draft claimed Level 4; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -5237,9 +5466,30 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "2025[dp] AND CYP707A1[tiab]",
+              "query": "CYP707A1[tiab]",
               "match_type": "gene+trait topic search",
               "hits": [
+                {
+                  "pmid": "42956402",
+                  "title": "CLE25 peptide enhances drought tolerance in cotton (Gossypium hirsutum) by inducing abscisic acid biosynthesis.",
+                  "journal": "Funct Plant Biol",
+                  "year": "2026",
+                  "doi": "10.1071/FP26189"
+                },
+                {
+                  "pmid": "42845036",
+                  "title": "Root-sourced 1-aminocyclopropane-1-carboxylic acid modulates development and adaptive responses to salinity in tomato.",
+                  "journal": "Plant J",
+                  "year": "2026",
+                  "doi": "10.1111/tpj.71133"
+                },
+                {
+                  "pmid": "42193177",
+                  "title": "Hydrogen-Rich Water Suppresses Dark- and ABA-Induced Postharvest Senescence in Non-Heading Chinese Cabbage (Brassica rapa ssp. chinensis).",
+                  "journal": "Antioxidants (Basel)",
+                  "year": "2026",
+                  "doi": "10.3390/antiox15050554"
+                },
                 {
                   "pmid": "41253153",
                   "title": "Evolutionary trade-off between stomatal defense and gas exchange in Brassicaceae.",
@@ -5253,27 +5503,6 @@
                   "journal": "Int J Mol Sci",
                   "year": "2025",
                   "doi": "10.3390/ijms26199429"
-                },
-                {
-                  "pmid": "41082577",
-                  "title": "The transcriptional landscape and dynamics regulating organ differentiation and dormancy in Curcuma alismatifolia.",
-                  "journal": "Plant Physiol",
-                  "year": "2025",
-                  "doi": "10.1093/plphys/kiaf501"
-                },
-                {
-                  "pmid": "40945456",
-                  "title": "The plantacyanin gene family in tomato: genome-wide identification, expression analysis, and regulation of salt stress tolerance.",
-                  "journal": "Plant Physiol Biochem",
-                  "year": "2025",
-                  "doi": "10.1016/j.plaphy.2025.110485"
-                },
-                {
-                  "pmid": "40821025",
-                  "title": "Integrative multi-omics analysis unravels chitosan-mediated delay of mango fruit ripening through hormonal and metabolic reprogramming.",
-                  "journal": "Food Chem (Oxf)",
-                  "year": "2025",
-                  "doi": "10.1016/j.fochms.2025.100281"
                 }
               ]
             },
@@ -5313,13 +5542,13 @@
           "NCBI:100136887"
         ],
         "pmids": [
-          "41253153"
+          "42956402"
         ],
         "dois": [
-          "10.1016/j.cub.2025.10.037"
+          "10.1071/FP26189"
         ],
         "notes": [
-          "CYP707A1: PMID 41253153 found by topic search, not by the cited author/year — citation not confirmed"
+          "CYP707A1: PMID 42956402 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "correction": {
@@ -5331,7 +5560,11 @@
         },
         "unpinned": [
           "WOX, PLT (PLETHORA), LBD, DRO1 — none are annotated under those names for Solanum lycopersicum in NCBI Gene. Root-architecture work in tomato uses different symbols; until one is named, post-stress root recovery stays a research question, not an atlas target."
-        ]
+        ],
+        "max_level": {
+          "level": "Level 3",
+          "why": "Network entry: same reason. Post-stress recovery frameworks do not validate CYP707A1 as a recovery target."
+        }
       },
       "locus_check": {
         "checked": false

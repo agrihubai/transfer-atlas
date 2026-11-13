@@ -164,19 +164,29 @@ def split_genes(field: str) -> list[str]:
     return uniq
 
 
+def parse_references(ref: str) -> list[tuple[str, str]]:
+    """Every (author, year) pair in a citation string, not just the first.
+
+    Drafts cite more than one paper per entry — "Nonaka et al., 2023; Ayub et al.,
+    1996" — and the one that matters is often not the first. Taking only the first
+    pair left the melon ripening entry unmatched while the paper it needed, the
+    1996 antisense ACO work, sat in the second half of the same string.
+    """
+    out: list[tuple[str, str]] = []
+    for part in re.split(r"[;]", ref or ""):
+        m = re.search(r"([A-Z][A-Za-z\u00C0-\u024F'\-]{2,})\s*(?:et al\.?)?[^0-9]{0,24}"
+                      r"\b(19[89]\d|20[0-4]\d)\b", part)
+        if m:
+            pair = (m.group(1), m.group(2))
+            if pair not in out:
+                out.append(pair)
+    return out
+
+
 def parse_reference(ref: str) -> tuple[str, str]:
-    """'Nonaka et al., 2017 (Sci. Rep.)' -> ('Nonaka', '2017'). Empty strings if absent."""
-    if not ref:
-        return "", ""
-    author = ""
-    m = re.match(r"\s*([A-Z][A-Za-zÀ-ɏ'\-]+)", ref)
-    if m:
-        author = m.group(1)
-    year = ""
-    y = re.search(r"\b(19[89]\d|20[0-4]\d)\b", ref)
-    if y:
-        year = y.group(1)
-    return author, year
+    """First (author, year) pair, kept for callers that want just one."""
+    pairs = parse_references(ref)
+    return pairs[0] if pairs else ("", "")
 
 
 # --------------------------------------------------------------------------
@@ -367,7 +377,9 @@ def check_locus_id(locus_field: str, species: str) -> dict:
 
 
 def pubmed_reference(gene: str, author: str, year: str, trait: str,
-                     crop: str = "", journal: str = "") -> dict:
+                     crop: str = "", journal: str = "",
+                     journals: list[str] | None = None,
+                     pairs: list[tuple[str, str]] | None = None) -> dict:
     """Find the PMID for a cited reference. Only returns what PubMed actually matched."""
     if not author and not gene:
         return {"found": False, "reason": "no searchable reference"}
@@ -384,25 +396,37 @@ def pubmed_reference(gene: str, author: str, year: str, trait: str,
     res = fetch_json(url)
     ids = (res or {}).get("esearchresult", {}).get("idlist", []) if isinstance(res, dict) else []
 
-    if not ids and author and year:
+    if not ids and pairs:
         # The cited author and year are often right while the gene symbol never
         # appears in the title or abstract as the draft spells it. Search on
         # author+year and pick the paper whose TITLE carries the crop and the
         # trait. A surname can be shared across fields entirely — "Nekrasov 2017"
         # returns cardiology and oncology papers — so a candidate is accepted
         # only on term overlap, never because it came first.
-        cand = _author_year_titles(author, year)
-        best = _pick_by_title(cand, trait, crop, gene, journal)
+        jl = ([journal] if journal else []) + list(journals or [])
+        best, used = None, None
+        for (a2, y2) in pairs:
+            cand = _author_year_titles(a2, y2)
+            for j in jl:
+                got = _pick_by_title(cand, trait, crop, gene, j)
+                if got and not got.get("near_miss"):
+                    best, used = got, (a2, y2, j)
+                    break
+                if got and best is None:
+                    best, used = got, (a2, y2, j)
+            if best and not best.get("near_miss"):
+                break
         if best and best.get("near_miss"):
-            return {"found": True, "query": f"{author}[Author] AND {year}[dp]",
+            return {"found": True,
+                    "query": f"{used[0]}[Author] AND {used[1]}[dp] in {used[2]}",
                     "match_type": "awaiting human confirmation: journal and author "
                                   "match, title does not confirm the trait",
                     "matched_terms": best["terms"], "hits": [best["hit"]]}
         if best:
-            return {"found": True, "query": f"{author}[Author] AND {year}[dp]",
+            return {"found": True,
+                    "query": f"{used[0]}[Author] AND {used[1]}[dp] in {used[2]}",
                     "match_type": "author+year+journal, trait matched in title",
-                    "matched_terms": best["terms"], "candidates_considered": len(cand),
-                    "hits": [best["hit"]]}
+                    "matched_terms": best["terms"], "hits": [best["hit"]]}
 
     if not ids and gene and trait:
         # fall back to a topic search; flagged as weaker evidence of the exact citation
@@ -739,7 +763,9 @@ def verify(only: str | None = None) -> dict:
                 gene_ids.append(f"NCBI:{ncbi_id}")
             ref = pubmed_reference(sym, author, year, trait,
                                    f"{e.get('crop','')} {species}",
-                                   parse_journal(e["claims"].get("scientific_reference", "")))
+                                   parse_journal(e["claims"].get("scientific_reference", "")),
+                                   corr.get("citation_journals") or [],
+                                   parse_references(e["claims"].get("scientific_reference", "")))
 
             g["verification"] = {"ncbi_gene": ncbi, "genbank_locus": gb_id or None,
                                  "pubmed": ref, "checked_on": today}
@@ -947,8 +973,13 @@ def derive_level(entry: dict) -> dict:
     ref = strong or supplied
     product = (entry.get("claims") or {}).get("commercial_product", "")
 
-    if product:
+    if product and ok:
         lvl, why = "Level 1", f"commercial product named by a human: {product}"
+    elif product:
+        # a named product cannot carry an entry whose gene resolves nowhere:
+        # without identity there is nothing tying the product to this gene
+        lvl, why = ("Level 3", "a commercial product is named, but none of the entry's gene "
+                               "symbols resolve, so the product cannot be tied to this gene")
     elif n and ok == n and ref:
         lvl, why = "Level 2", f"all {n} gene(s) resolved and a reference confirmed"
     elif ref and ok:
@@ -960,6 +991,10 @@ def derive_level(entry: dict) -> dict:
         lvl, why = "Level 4", f"{ok}/{n} genes resolved, no confirmed reference"
     else:
         lvl, why = "Level 5", "no gene record and no confirmed reference resolved"
+
+    cap = ((entry.get("correction") or {}).get("max_level") or {})
+    if cap.get("level") and lvl < cap["level"]:
+        lvl, why = cap["level"], f"capped by curator: {cap.get('why','')}"
 
     claimed = (entry.get("claims") or {}).get("evidence_level", "")
     out = {"derived_level": lvl, "basis": why, "rule": "see _schema.level_derivation",

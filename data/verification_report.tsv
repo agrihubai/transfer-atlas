@@ -1,7 +1,7 @@
 entry_id	crop	gene	ncbi_gene_id	official_symbol	locus_ids_exist	pmid	doi	match_type	status
 TOM-GABA-01	Tomato	SlGAD3	100147723	GAD3		28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
 TOM-GABA-01	Tomato	SlGAD2	544002	gad2		28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
-TOM-VITD-01	Tomato	Sl7-DR2	101256596	DWF5-2					partial
+TOM-VITD-01	Tomato	Sl7-DR2	101256596	DWF5-2		42201953	10.1073/pnas.2603937123	gene+trait topic search	partial
 TOM-TOBRFV-01	Tomato	SlTOM1a	778361	TH3					partial
 TOM-TOBRFV-01	Tomato	SlTOM3	778313	TH1					partial
 TOM-TYLCV-01	Tomato	SlPelo	101251671	PELOTA					partial
@@ -24,8 +24,8 @@ TOM-FIRM-01	Tomato	SlCEL2	543996	Cel2		27454737	10.1038/nbt.3602	awaiting human 
 PEP-PUNG-01	Pepper	Pun1	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
 PEP-PUNG-01	Pepper	AT3	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
 PEP-PAMT-01	Pepper	pAMT	107854420	LOC107854420		19473323	10.1111/j.1365-313X.2009.03921.x	author+year+gene	verified
-PEP-VIRUS-01	Pepper	eIF4E1	107868427	LOC107868427		42374852	10.1111/mpp.70305	gene+trait topic search	partial
-PEP-VIRUS-01	Pepper	eIFiso4E	107853558	LOC107853558		42239849	10.3389/fpls.2026.1799408	gene+trait topic search	partial
+PEP-VIRUS-01	Pepper	eIF4E1	107868427	LOC107868427		12492847	10.1046/j.1365-313x.2002.01499.x	author+year+journal, trait matched in title	verified
+PEP-VIRUS-01	Pepper	eIFiso4E	107853558	LOC107853558		12492847	10.1046/j.1365-313x.2002.01499.x	author+year+journal, trait matched in title	verified
 PEP-MILDEW-01	Pepper	CaMlo2	107871340	LOC107871340		23923019	10.1371/journal.pone.0070723	author+year+gene	verified
 PEP-MILDEW-01	Pepper	CaMlo1	107848305	LOC107848305		23923019	10.1371/journal.pone.0070723	author+year+gene	verified
 CUC-BITTER-01	Cucumber	Bt			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	verified
@@ -34,13 +34,13 @@ CUC-BITTER-01	Cucumber	Bi			Csa5G157230;Csa5G156220;Csa6G088690	25307789	10.1111
 CUC-MILDEW-01	Cucumber	CsMLO1				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
 CUC-MILDEW-01	Cucumber	CsMLO8				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
 CUC-MILDEW-01	Cucumber	CsMLO11							unverified
-CUC-SEX-01	Cucumber	CsACS2	101217331	LOC101217331					partial
-CUC-SEX-01	Cucumber	CsACS11	101213522	LOC101213522					partial
-CUC-SEX-01	Cucumber	CsWIP1							unverified
-CUC-SEX-01	Cucumber	CsARF8							unverified
+CUC-SEX-01	Cucumber	CsACS2	101217331	LOC101217331		41688921	10.1186/s12870-026-08338-8	gene+trait topic search	partial
+CUC-SEX-01	Cucumber	CsACS11	101213522	LOC101213522		30154805	10.3389/fpls.2018.01091	gene+trait topic search	partial
+CUC-SEX-01	Cucumber	CsWIP1				42262565	10.1093/plphys/kiag351	gene+trait topic search	partial
+CUC-SEX-01	Cucumber	CsARF8				30604453	10.1111/tpj.14223	gene+trait topic search	partial
 MEL-SHELF-01	Melon	CmACO1	103491357	LOC103491357		37304010	10.3389/fgeed.2023.1176125	author+year+gene	verified
-MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295					partial
-MEL-SHELF-01	Melon	CmNAC-NOR							unverified
+MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295		9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	verified
+MEL-SHELF-01	Melon	CmNAC-NOR				9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	partial
 WAT-SEED-01	Watermelon	ClAGL11							unverified
 WAT-SEED-01	Watermelon	ClWIP1 for gynoecy							unverified
 WAT-BRIX-01	Watermelon	ClTST2				29118248	10.1104/pp.17.01290	author+year+gene	verified
@@ -58,18 +58,18 @@ BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB28	106313100	LOC106313100
 BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	HAG1				23560984	10.1111/nph.12232	author+year+journal, trait matched in title	partial
 BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB29				23560984	10.1111/nph.12232	author+year+journal, trait matched in title	partial
 BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB34				23560984	10.1111/nph.12232	author+year+journal, trait matched in title	partial
-CAR-COLOR-01	Carrot	DcRPGE1				38593056	10.1093/plcell/koae111	gene+trait topic search	partial
-CAR-COLOR-01	Carrot	DcAPRR2				38593056	10.1093/plcell/koae111	gene+trait topic search	partial
-CAR-COLOR-01	Carrot	DcPSY1	108227339	LOC108227339		38593056	10.1093/plcell/koae111	gene+trait topic search	partial
-CAR-COLOR-01	Carrot	DcPSY2	108214656	LOC108214656		38593056	10.1093/plcell/koae111	gene+trait topic search	partial
+CAR-COLOR-01	Carrot	DcRPGE1							unverified
+CAR-COLOR-01	Carrot	DcAPRR2							unverified
+CAR-COLOR-01	Carrot	DcPSY1	108227339	LOC108227339					partial
+CAR-COLOR-01	Carrot	DcPSY2	108214656	LOC108214656					partial
 CAR-COLOR-01	Carrot	DcLCYB1	108193045	LOC108193045					partial
 ONI-TEAR-01	Onion	LFS				18583530	10.1104/pp.108.123273	author+year+journal, trait matched in title	verified
-GAP-COMB-01	Tomato	SOS1	778208	sos1					partial
-GAP-COMB-01	Tomato	SOS2	778340	SOS2					partial
-GAP-COMB-01	Tomato	NHX1	543771	NHX1					partial
-GAP-COMB-01	Tomato	DREB2	544235	DREB2					partial
-GAP-COMB-01	Tomato	HsfA2	101255223	LOC101255223					partial
-GAP-REPRO-01	Tomato	HsfA2	101255223	LOC101255223					partial
-GAP-REPRO-01	Tomato	HSP70	100134914	HSP70					partial
-GAP-REPRO-01	Tomato	APX1	778223	APX1					partial
-GAP-RECOV-01	Tomato	CYP707A1	100136887	CYP707A1		41253153	10.1016/j.cub.2025.10.037	gene+trait topic search	partial
+GAP-COMB-01	Tomato	SOS1	778208	sos1		33496342	10.1111/nph.17232	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+GAP-COMB-01	Tomato	SOS2	778340	SOS2		33496342	10.1111/nph.17232	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+GAP-COMB-01	Tomato	NHX1	543771	NHX1		33496342	10.1111/nph.17232	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+GAP-COMB-01	Tomato	DREB2	544235	DREB2		33496342	10.1111/nph.17232	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+GAP-COMB-01	Tomato	HsfA2	101255223	LOC101255223		33496342	10.1111/nph.17232	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+GAP-REPRO-01	Tomato	HsfA2	101255223	LOC101255223		26917685	10.1104/pp.15.01913	author+year+journal, trait matched in title	verified
+GAP-REPRO-01	Tomato	HSP70	100134914	HSP70		26917685	10.1104/pp.15.01913	author+year+journal, trait matched in title	verified
+GAP-REPRO-01	Tomato	APX1	778223	APX1		26917685	10.1104/pp.15.01913	author+year+journal, trait matched in title	verified
+GAP-RECOV-01	Tomato	CYP707A1	100136887	CYP707A1		42956402	10.1071/FP26189	gene+trait topic search	partial

@@ -110,6 +110,15 @@
         "supports": "Molecular characterisation of CRa, conferring clubroot resistance in Brassica rapa; CRa mRNA deposited as AB751517.",
         "does_not_support": "It covers CRa only — not CRb, Crr1 or Crr3."
       }
+    ],
+    "TOM-FIRM-01": [
+      {
+        "pmid": "27454737",
+        "doi": "",
+        "suggested_by": "external AI suggestion (Gemini), confirmed on request by maintainer 2026-11-13",
+        "supports": "Targeted control of fruit softening in tomato; the intended reference for SlPL, SlPG2a and SlCEL2 per the supplier's explicit confirmation.",
+        "does_not_support": "Read the paper before attributing the firmness effect to all three genes equally — it is the pectate lyase work, and the other two were listed alongside it in the draft."
+      }
     ]
   }
 }
