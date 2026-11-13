@@ -205,24 +205,26 @@
           "10.1038/s41598-017-06400-y"
         ],
         "notes": [
-          "claimed locus Solyc01g005000: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) Solyc01g005000, Solyc11g011920 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc01g005000",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc01g005000 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Solyc11g011920",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc11g011920 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -282,18 +284,19 @@
         "pmids": [],
         "dois": [],
         "notes": [
-          "claimed locus Solyc06g074090: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) Solyc06g074090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc06g074090",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc06g074090 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -371,24 +374,26 @@
         "pmids": [],
         "dois": [],
         "notes": [
-          "claimed locus Solyc01g105140: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) Solyc02g080370, Solyc01g105140 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc02g080370",
-            "ncbi_nucleotide_records": 3,
-            "exists": true,
-            "status": "identifier present in 3 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc02g080370 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Solyc01g105140",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc01g105140 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -447,17 +452,20 @@
         "gene_ids": [],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "locus ID(s) Solyc04g009810 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
+        ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc04g009810",
-            "ncbi_nucleotide_records": 5,
-            "exists": true,
-            "status": "identifier present in 5 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc04g009810 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -573,18 +581,20 @@
           "10.6026/97320630017637"
         ],
         "notes": [
+          "locus ID(s) Solyc04g049090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "SlMlo1: PMID 35173386 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc04g049090",
-            "ncbi_nucleotide_records": 2,
-            "exists": true,
-            "status": "identifier present in 2 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc04g049090 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -672,18 +682,19 @@
           "10.1073/pnas.2026152118"
         ],
         "notes": [
-          "claimed locus Solyc03g080190: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) Solyc03g080190 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc03g080190",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc03g080190 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -917,25 +928,27 @@
           "10.11646/zootaxa.4896.4.5"
         ],
         "notes": [
-          "claimed locus Solyc05g053850: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) Solyc08g061560, Solyc05g053850 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "SlYABBY2b: matched NCBI gene YABBY2 (100191118) as listed as alias — confirm it is the same gene"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc08g061560",
-            "ncbi_nucleotide_records": 2,
-            "exists": true,
-            "status": "identifier present in 2 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc08g061560 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Solyc05g053850",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc05g053850 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -1151,6 +1164,7 @@
           "10.1111/nph.71503"
         ],
         "notes": [
+          "locus ID(s) Solyc04g076850, Solyc01g093960 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "SlAGL6: PMID 40839424 found by topic search, not by the cited author/year — citation not confirmed",
           "SlARF8: matched NCBI gene ARF8b (100301945) as listed as alias — confirm it is the same gene",
           "SlARF8: PMID 42576618 found by topic search, not by the cited author/year — citation not confirmed"
@@ -1158,19 +1172,21 @@
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc04g076850",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc04g076850 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Solyc01g093960",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc01g093960 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -1303,24 +1319,26 @@
           "10.1093/plphys/kiab464"
         ],
         "notes": [
-          "claimed locus Solyc07g008100: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) Solyc02g090730, Solyc07g008100 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc02g090730",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Solyc02g090730 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Solyc07g008100",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc07g008100 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -1456,19 +1474,20 @@
         "pmids": [],
         "dois": [],
         "notes": [
-          "claimed locus Solyc03g111690: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) Solyc03g111690 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "SlPG2a: matched NCBI gene PG2 (544051) as listed as alias — confirm it is the same gene"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Solyc03g111690",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Solyc03g111690 AND \"Solanum lycopersicum\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -2136,25 +2155,28 @@
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Csa5G157230",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Csa5G157230 AND \"Cucumis sativus\"[Organism]",
+            "ncbi_records_in_species": 1,
+            "state": "confirmed_in_species",
+            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
           },
           {
             "locus": "Csa5G156220",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Csa5G156220 AND \"Cucumis sativus\"[Organism]",
+            "ncbi_records_in_species": 1,
+            "state": "confirmed_in_species",
+            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
           },
           {
             "locus": "Csa6G088690",
-            "ncbi_nucleotide_records": 1,
-            "exists": true,
-            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+            "query": "Csa6G088690 AND \"Cucumis sativus\"[Organism]",
+            "ncbi_records_in_species": 1,
+            "state": "confirmed_in_species",
+            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
           }
         ]
       }
@@ -2288,20 +2310,21 @@
           "10.1093/plphys/kiae047"
         ],
         "notes": [
-          "claimed locus Csa5G623470: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) Csa5G623470 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CsMLO1: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed",
           "CsMLO8: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Csa5G623470",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Csa5G623470 AND \"Cucumis sativus\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -2442,27 +2465,28 @@
         "pmids": [],
         "dois": [],
         "notes": [
-          "claimed locus Csa1G580750: no NCBI sequence record contains this identifier — check the ID",
-          "claimed locus Csa4G290830: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) Csa1G580750, Csa4G290830 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CsACS2: matched NCBI gene LOC101217331 (101217331) as listed as alias — confirm it is the same gene",
           "CsACS11: matched NCBI gene LOC101213522 (101213522) as listed as alias — confirm it is the same gene"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Csa1G580750",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Csa1G580750 AND \"Cucumis sativus\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Csa4G290830",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Csa4G290830 AND \"Cucumis sativus\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -2599,20 +2623,21 @@
           "10.3389/fgeed.2023.1176125"
         ],
         "notes": [
-          "claimed locus MELO3C014437: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) MELO3C014437 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CmACO1: matched NCBI gene LOC103491357 (103491357) as listed as alias — confirm it is the same gene",
           "CmACS7: matched NCBI gene LOC103492295 (103492295) as weak — symbol not in name or aliases — confirm it is the same gene"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "MELO3C014437",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "MELO3C014437 AND \"Cucumis melo\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -2690,18 +2715,19 @@
         "pmids": [],
         "dois": [],
         "notes": [
-          "claimed locus Cla97C07G144940: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) Cla97C07G144940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Cla97C07G144940",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Cla97C07G144940 AND \"Citrullus lanatus\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -2823,26 +2849,27 @@
           "10.1104/pp.17.01290"
         ],
         "notes": [
-          "claimed locus Cla97C02G036390: no NCBI sequence record contains this identifier — check the ID",
-          "claimed locus Cla97C04G070940: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) Cla97C02G036390, Cla97C04G070940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "ClSWEET3: PMID 33570606 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "Cla97C02G036390",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Cla97C02G036390 AND \"Citrullus lanatus\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           },
           {
             "locus": "Cla97C04G070940",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "Cla97C04G070940 AND \"Citrullus lanatus\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -2952,18 +2979,19 @@
           "10.3389/fpls.2020.607161"
         ],
         "notes": [
-          "claimed locus SMEL4.1_08g017350: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) SMEL4.1_08g017350 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "SMEL4.1_08g017350",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "SMEL4.1_08g017350 AND \"Solanum melongena\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -3040,18 +3068,19 @@
         "pmids": [],
         "dois": [],
         "notes": [
-          "claimed locus SMEL4.1_06g...: no NCBI sequence record contains this identifier — check the ID"
+          "locus ID(s) SMEL4.1_06g... not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "SMEL4.1_06g...",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "SMEL4.1_06g... AND \"Solanum melongena\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }
@@ -3581,7 +3610,7 @@
           "10.3389/fpls.2025.1726940"
         ],
         "notes": [
-          "claimed locus BraA03g012133E: no NCBI sequence record contains this identifier — check the ID",
+          "locus ID(s) BraA03g012133E not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CRb: PMID 41477250 found by topic search, not by the cited author/year — citation not confirmed",
           "Crr1: PMID 40406504 found by topic search, not by the cited author/year — citation not confirmed",
           "Crr3: PMID 34262060 found by topic search, not by the cited author/year — citation not confirmed"
@@ -3589,13 +3618,14 @@
       },
       "locus_check": {
         "checked": true,
-        "scope": "existence only, not gene assignment",
+        "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "BraA03g012133E",
-            "ncbi_nucleotide_records": 0,
-            "exists": false,
-            "status": "no NCBI record contains this identifier"
+            "query": "BraA03g012133E AND \"Brassica oleracea / B. rapa\"[Organism]",
+            "ncbi_records_in_species": 0,
+            "state": "not_checkable_here",
+            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
       }

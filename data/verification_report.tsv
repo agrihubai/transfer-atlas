@@ -1,23 +1,23 @@
 entry_id	crop	gene	ncbi_gene_id	official_symbol	locus_ids_exist	pmid	doi	match_type	status
-TOM-GABA-01	Tomato	SlGAD3	100147723	GAD3	Solyc11g011920	28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
-TOM-GABA-01	Tomato	SlGAD2	544002	gad2	Solyc11g011920	28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
+TOM-GABA-01	Tomato	SlGAD3	100147723	GAD3		28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
+TOM-GABA-01	Tomato	SlGAD2	544002	gad2		28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
 TOM-VITD-01	Tomato	Sl7-DR2							unverified
-TOM-TOBRFV-01	Tomato	SlTOM1a			Solyc02g080370				unverified
-TOM-TOBRFV-01	Tomato	SlTOM3			Solyc02g080370				unverified
-TOM-TYLCV-01	Tomato	SlPelo			Solyc04g009810				unverified
-TOM-MILDEW-01	Tomato	SlMlo1	778228	MLO1	Solyc04g049090	35173386	10.6026/97320630017637	gene+trait topic search	partial
+TOM-TOBRFV-01	Tomato	SlTOM1a							unverified
+TOM-TOBRFV-01	Tomato	SlTOM3							unverified
+TOM-TYLCV-01	Tomato	SlPelo							unverified
+TOM-MILDEW-01	Tomato	SlMlo1	778228	MLO1		35173386	10.6026/97320630017637	gene+trait topic search	partial
 TOM-BROAD-01	Tomato	SlDMR6-1	100736526	DMR6-1		34215692	10.1073/pnas.2026152118	author+year+gene	verified
-TOM-DWARF-01	Tomato	SlER			Solyc08g061560	31873217	10.1038/s41587-019-0361-2	author+year+gene	partial
-TOM-DWARF-01	Tomato	SP5G	101254900	SP5G	Solyc08g061560	31873217	10.1038/s41587-019-0361-2	author+year+gene	verified
-TOM-DWARF-01	Tomato	SP	544038	SP	Solyc08g061560	33756848	10.11646/zootaxa.4896.4.5	author+year+gene	verified
-TOM-DWARF-01	Tomato	SlYABBY2b	100191118	YABBY2	Solyc08g061560				partial
-TOM-DWARF-01	Tomato	SlYTH2			Solyc08g061560				unverified
-TOM-PARTH-01	Tomato	SlIAA9	543750	IAA9	Solyc04g076850;Solyc01g093960	28360425	10.1038/s41598-017-00501-4	author+year+gene	verified
-TOM-PARTH-01	Tomato	SlAGL6	101268317	AGL6	Solyc04g076850;Solyc01g093960	40839424	10.1093/plphys/kiaf363	gene+trait topic search	partial
-TOM-PARTH-01	Tomato	SlARF8	100301945	ARF8b	Solyc04g076850;Solyc01g093960	42576618	10.1111/nph.71503	gene+trait topic search	partial
-TOM-SIZE-01	Tomato	FW2.2	101245309	fw2.2	Solyc02g090730				partial
-TOM-SIZE-01	Tomato	SlKIX8			Solyc02g090730	34601614	10.1093/plphys/kiab464	author+year+gene	partial
-TOM-SIZE-01	Tomato	SlKIX9			Solyc02g090730	34601614	10.1093/plphys/kiab464	author+year+gene	partial
+TOM-DWARF-01	Tomato	SlER				31873217	10.1038/s41587-019-0361-2	author+year+gene	partial
+TOM-DWARF-01	Tomato	SP5G	101254900	SP5G		31873217	10.1038/s41587-019-0361-2	author+year+gene	verified
+TOM-DWARF-01	Tomato	SP	544038	SP		33756848	10.11646/zootaxa.4896.4.5	author+year+gene	verified
+TOM-DWARF-01	Tomato	SlYABBY2b	100191118	YABBY2					partial
+TOM-DWARF-01	Tomato	SlYTH2							unverified
+TOM-PARTH-01	Tomato	SlIAA9	543750	IAA9		28360425	10.1038/s41598-017-00501-4	author+year+gene	verified
+TOM-PARTH-01	Tomato	SlAGL6	101268317	AGL6		40839424	10.1093/plphys/kiaf363	gene+trait topic search	partial
+TOM-PARTH-01	Tomato	SlARF8	100301945	ARF8b		42576618	10.1111/nph.71503	gene+trait topic search	partial
+TOM-SIZE-01	Tomato	FW2.2	101245309	fw2.2					partial
+TOM-SIZE-01	Tomato	SlKIX8				34601614	10.1093/plphys/kiab464	author+year+gene	partial
+TOM-SIZE-01	Tomato	SlKIX9				34601614	10.1093/plphys/kiab464	author+year+gene	partial
 TOM-FIRM-01	Tomato	SlPL	101254471	PL					partial
 TOM-FIRM-01	Tomato	SlPG2a	544051	PG2					partial
 TOM-FIRM-01	Tomato	SlCEL2	543996	Cel2					partial

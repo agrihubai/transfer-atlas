@@ -259,35 +259,50 @@ def ncbi_gene(symbol: str, species: str) -> dict:
     return {"found": bool(hits), "queries": queries, "hits": hits}
 
 
-def check_locus_id(locus_field: str) -> dict:
-    """Does a claimed locus ID (Solyc01g005000, …) exist as a real identifier?
+def check_locus_id(locus_field: str, species: str) -> dict:
+    """Try to confirm a claimed locus ID (Solyc01g005000, Csa5G623470, …).
 
-    LIMITATION, stated rather than hidden: ITAG/Solyc-style locus tags are not
-    indexed in NCBI Gene, and nucleotide->gene elinks do not resolve them, so this
-    check can confirm only that the identifier appears in NCBI sequence records —
-    NOT that it belongs to the gene the entry names. Confirming the locus-to-gene
-    mapping needs Sol Genomics Network or Ensembl Plants, neither of which this
-    environment can reach. Until then the mapping stays a curated claim.
+    LIMITATION, stated rather than hidden. Genome-project locus tags — ITAG
+    (Solyc), Csa, Cla97, MELO3C, SMEL4.1, BraA — are not indexed in NCBI at all:
+    NCBI Gene carries its own symbols (MLO1) and numeric GeneIDs instead, and
+    nucleotide->gene elinks do not resolve these tags either. So a 'no match' here
+    says nothing about whether the ID is right; it says NCBI is the wrong place to
+    ask. An UNCONSTRAINED text search does return hits, but they are incidental
+    matches in unrelated organisms (searching Solyc04g049090 returns a Genlisea
+    aurea scaffold), so the search is constrained by organism and a cross-species
+    hit is never counted as confirmation.
+
+    Resolving these IDs needs Ensembl Plants (rest.ensemblgenomes.org) or Sol
+    Genomics Network (solgenomics.net); neither is reachable from this
+    environment. Until one is, the locus-to-gene mapping stays a curated claim
+    and is labelled as such.
     """
     loci = re.findall(r"[A-Za-z]{3,}\d[A-Za-z0-9._\-]{4,}", locus_field or "")[:6]
     if not loci:
         return {"checked": False}
     results = []
     for locus in loci:
+        term = f'{locus} AND "{species}"[Organism]' if species else locus
         url = (f"{EUTILS}/esearch.fcgi?db=nuccore&retmode=json&retmax=3"
-               f"&term={urllib.parse.quote(locus)}{eutils_key()}")
+               f"&term={urllib.parse.quote(term)}{eutils_key()}")
         res = fetch_json(url)
         sr = (res or {}).get("esearchresult", {}) if isinstance(res, dict) else {}
         count = int(sr.get("count", "0") or 0)
         results.append({
             "locus": locus,
-            "ncbi_nucleotide_records": count,
-            "exists": count > 0,
-            "status": (f"identifier present in {count} NCBI sequence record(s); "
-                       f"gene assignment not verifiable here" if count
-                       else "no NCBI record contains this identifier"),
+            "query": term,
+            "ncbi_records_in_species": count,
+            "state": "confirmed_in_species" if count else "not_checkable_here",
+            "status": (f"appears in {count} NCBI sequence record(s) for {species}"
+                       if count else
+                       "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; "
+                       "this is not evidence the ID is wrong"),
         })
-    return {"checked": True, "scope": "existence only, not gene assignment", "results": results}
+    return {
+        "checked": True,
+        "scope": "identifier presence within the stated species; never gene assignment",
+        "results": results,
+    }
 
 
 def pubmed_reference(gene: str, author: str, year: str, trait: str) -> dict:
@@ -443,12 +458,16 @@ def verify(only: str | None = None) -> dict:
         gene_ids, pmids, dois, notes = [], [], [], []
 
         # Locus IDs are listed per entry, not per gene, so check them once.
-        locus = check_locus_id(e["claims"].get("gene_id", ""))
-        loci_exist = [r["locus"] for r in locus.get("results", []) if r["exists"]]
-        for r in locus.get("results", []):
-            if not r["exists"]:
-                notes.append(f"claimed locus {r['locus']}: no NCBI sequence record contains "
-                             f"this identifier — check the ID")
+        locus = check_locus_id(e["claims"].get("gene_id", ""), species)
+        loci_exist = [r["locus"] for r in locus.get("results", [])
+                      if r["state"] == "confirmed_in_species"]
+        unresolved = [r["locus"] for r in locus.get("results", [])
+                      if r["state"] == "not_checkable_here"]
+        if unresolved:
+            # a limitation of this pipeline, not a fault in the data
+            notes.append(f"locus ID(s) {', '.join(unresolved)} not checkable against NCBI "
+                         f"(genome-project tags are not indexed there) — needs Ensembl Plants "
+                         f"or Sol Genomics; the IDs may well be correct")
         e["locus_check"] = locus
 
         for g in e["genes"]:
