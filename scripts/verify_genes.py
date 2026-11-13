@@ -366,7 +366,8 @@ def check_locus_id(locus_field: str, species: str) -> dict:
     }
 
 
-def pubmed_reference(gene: str, author: str, year: str, trait: str) -> dict:
+def pubmed_reference(gene: str, author: str, year: str, trait: str,
+                     crop: str = "", journal: str = "") -> dict:
     """Find the PMID for a cited reference. Only returns what PubMed actually matched."""
     if not author and not gene:
         return {"found": False, "reason": "no searchable reference"}
@@ -383,6 +384,26 @@ def pubmed_reference(gene: str, author: str, year: str, trait: str) -> dict:
     res = fetch_json(url)
     ids = (res or {}).get("esearchresult", {}).get("idlist", []) if isinstance(res, dict) else []
 
+    if not ids and author and year:
+        # The cited author and year are often right while the gene symbol never
+        # appears in the title or abstract as the draft spells it. Search on
+        # author+year and pick the paper whose TITLE carries the crop and the
+        # trait. A surname can be shared across fields entirely — "Nekrasov 2017"
+        # returns cardiology and oncology papers — so a candidate is accepted
+        # only on term overlap, never because it came first.
+        cand = _author_year_titles(author, year)
+        best = _pick_by_title(cand, trait, crop, gene, journal)
+        if best and best.get("near_miss"):
+            return {"found": True, "query": f"{author}[Author] AND {year}[dp]",
+                    "match_type": "awaiting human confirmation: journal and author "
+                                  "match, title does not confirm the trait",
+                    "matched_terms": best["terms"], "hits": [best["hit"]]}
+        if best:
+            return {"found": True, "query": f"{author}[Author] AND {year}[dp]",
+                    "match_type": "author+year+journal, trait matched in title",
+                    "matched_terms": best["terms"], "candidates_considered": len(cand),
+                    "hits": [best["hit"]]}
+
     if not ids and gene and trait:
         # fall back to a topic search; flagged as weaker evidence of the exact citation
         term = f"{gene}[tiab] AND {trait}[tiab]"
@@ -396,6 +417,120 @@ def pubmed_reference(gene: str, author: str, year: str, trait: str) -> dict:
     if not ids:
         return {"found": False, "query": term}
     return _pubmed_summaries(ids, term, exact=bool(author and year))
+
+
+STOP = {"and", "the", "for", "with", "via", "under", "from", "into", "high", "low",
+        "fruit", "plant", "gene", "trait", "type", "development", "accumulation"}
+
+
+def _author_year_titles(author: str, year: str) -> list[dict]:
+    term = f"{author}[Author] AND {year}[dp]"
+    url = (f"{EUTILS}/esearch.fcgi?db=pubmed&retmode=json&retmax=20"
+           f"&term={urllib.parse.quote(term)}{eutils_key()}")
+    res = fetch_json(url)
+    ids = ((res or {}).get("esearchresult", {}) or {}).get("idlist", []) if isinstance(res, dict) else []
+    if not ids:
+        return []
+    summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=pubmed&retmode=json"
+                      f"&id={','.join(ids)}{eutils_key()}")
+    out = []
+    if isinstance(summ, dict):
+        for pid in ids:
+            rec = summ.get("result", {}).get(pid)
+            if not isinstance(rec, dict):
+                continue
+            doi = ""
+            for aid in rec.get("articleids", []) or []:
+                if aid.get("idtype") == "doi":
+                    doi = aid.get("value", "")
+            out.append({"pmid": pid, "title": rec.get("title", ""),
+                        "journal": rec.get("source", ""),
+                        "year": (rec.get("pubdate", "") or "")[:4], "doi": doi})
+    return out
+
+
+def parse_journal(ref: str) -> str:
+    """Pull the journal out of a draft citation: 'Uluisik et al., 2016, Nat. Biotechnol.'"""
+    if not ref:
+        return ""
+    m = re.search(r"\b(19|20)\d{2}\b[,.)\s]*\(?([A-Z][A-Za-z.&\s]{3,40})", ref)
+    if not m:
+        return ""
+    return re.sub(r"[.\s]+$", "", m.group(2)).strip()
+
+
+def _journal_matches(cited: str, candidate: str) -> bool:
+    """Do two journal names refer to the same journal, allowing for abbreviation?"""
+    def toks(x):
+        x = (x or "").lower().replace(".", " ")
+        return [t for t in re.findall(r"[a-z]+", x) if t not in {"of", "the", "and", "in", "for"}]
+    a, b = toks(cited), toks(candidate)
+    if not a or not b:
+        return False
+    # every cited token must prefix-match a candidate token: 'nat biotechnol' ~ 'Nat Biotechnol',
+    # 'new phytol' ~ 'New Phytologist'
+    used = set()
+    for t in a:
+        hit = next((i for i, u in enumerate(b)
+                    if i not in used and (u.startswith(t) or t.startswith(u))), None)
+        if hit is None:
+            return False
+        used.add(hit)
+    return True
+
+
+def _pick_by_title(cands: list[dict], trait: str, crop: str, gene: str,
+                   cited_journal: str) -> dict | None:
+    """Choose the candidate that is the cited paper, or none at all.
+
+    Three guards, each added after a wrong match got through:
+    - the journal named in the draft citation must match the candidate's journal.
+      Without this, 'Uluisik 2016' matched an immunohistochemistry paper and
+      'Traka 2013' matched a human nutrition trial by the same author in the same
+      year as the genetics paper actually cited;
+    - gene tokens under three characters are ignored, since 'PL' matches inside
+      unrelated words;
+    - every candidate is scored and the best is taken, not the first.
+    A citation that names no journal is left unconfirmed: author and year alone
+    cannot tell two papers apart, and guessing is worse than an open gap.
+    """
+    if not cited_journal:
+        return None
+    traitw = {w for w in re.findall(r"[a-z]{4,}", (trait or "").lower()) if w not in STOP}
+    cropw = {w for w in re.findall(r"[a-z]{4,}", (crop or "").lower()) if w not in STOP}
+    genew = {w for w in ({(gene or "").lower(), strip_prefix(gene or "").lower()} - {""})
+             if len(w) >= 3}
+    best = None
+    near = None
+    for c in cands:
+        if not _journal_matches(cited_journal, c.get("journal", "")):
+            continue
+        t = (c["title"] or "").lower()
+        # a corrigendum or erratum carries the same title as the paper it fixes;
+        # prefer the paper itself
+        if re.match(r"\s*(corrigendum|erratum|retraction|author correction)", t):
+            if near is None:
+                near = {"hit": c, "terms": [], "deprioritised": "corrigendum/erratum"}
+            continue
+        def found(words):
+            return {w for w in words if re.search(r"\b" + re.escape(w), t)}
+        hit_t, hit_c, hit_g = found(traitw), found(cropw), found(genew)
+        score = 2 * len(hit_g) + len(hit_c) + len(hit_t)
+        if len(hit_g | hit_c | hit_t) < 2:
+            # journal agrees but the title does not carry enough of the trait to
+            # confirm. Not evidence — but worth showing a human, who can settle
+            # it in one look. See near_miss below.
+            if near is None or near.get("deprioritised"):
+                near = {"hit": c, "terms": sorted(hit_g | hit_c | hit_t)}
+            continue
+        if best is None or score > best["score"]:
+            best = {"hit": c, "terms": sorted(hit_g | hit_c | hit_t), "score": score}
+    if best is None and near is not None and not near.get("deprioritised"):
+        near["near_miss"] = True
+    if best is None and near is not None:
+        near["near_miss"] = True
+        return near
+    return best
 
 
 def _pubmed_summaries(ids: list[str], term: str, *, exact: bool) -> dict:
@@ -602,7 +737,9 @@ def verify(only: str | None = None) -> dict:
                 h = ncbi["hits"][0]
                 ncbi_id, official = h["ncbi_gene_id"], h["official_symbol"]
                 gene_ids.append(f"NCBI:{ncbi_id}")
-            ref = pubmed_reference(sym, author, year, trait)
+            ref = pubmed_reference(sym, author, year, trait,
+                                   f"{e.get('crop','')} {species}",
+                                   parse_journal(e["claims"].get("scientific_reference", "")))
 
             g["verification"] = {"ncbi_gene": ncbi, "genbank_locus": gb_id or None,
                                  "pubmed": ref, "checked_on": today}
@@ -615,13 +752,15 @@ def verify(only: str | None = None) -> dict:
                     dois.append(doi)
 
             gene_ok = bool(ncbi_id or gb_id)
-            ref_ok = bool(pmid) and mtype == "author+year+gene"
+            ref_ok = mtype in ("author+year+gene",
+                               "author+year+journal, trait matched in title")
             status = ("verified" if gene_ok and ref_ok else
                       "partial" if gene_ok or pmid else "unverified")
             if ncbi_id and ncbi["hits"][0]["match"] != "official symbol":
                 notes.append(f"{sym}: matched NCBI gene {official} ({ncbi_id}) "
                              f"as {ncbi['hits'][0]['match']} — confirm it is the same gene")
-            if pmid and mtype != "author+year+gene":
+            if pmid and mtype not in ("author+year+gene",
+                                      "author+year+journal, trait matched in title"):
                 notes.append(f"{sym}: PMID {pmid} found by topic search, not by the cited "
                              f"author/year — citation not confirmed")
             rows.append((e["id"], e.get("crop", ""), sym, ncbi_id, official,
@@ -630,7 +769,8 @@ def verify(only: str | None = None) -> dict:
         gene_ids = sorted(set(gene_ids))
         pmids = sorted(set(pmids))
         any_strong = any(
-            (g.get("verification") or {}).get("pubmed", {}).get("match_type") == "author+year+gene"
+            (g.get("verification") or {}).get("pubmed", {}).get("match_type")
+            in ("author+year+gene", "author+year+journal, trait matched in title")
             for g in e["genes"])
         curated = check_curated(e["id"])
         curated_ok = [c for c in curated if c.get("pipeline_check", "").startswith("confirmed")
@@ -799,8 +939,9 @@ def derive_level(entry: dict) -> dict:
     ver = entry.get("verification") or {}
     # Only confirmed references count. A topic-search PMID is not evidence for the
     # cited claim, so it must not raise the level.
+    CONFIRMED = {"author+year+gene", "author+year+journal, trait matched in title"}
     strong = any(((g.get("verification") or {}).get("pubmed") or {}).get("match_type")
-                 == "author+year+gene" for g in genes)
+                 in CONFIRMED for g in genes)
     supplied = any(str(c.get("pipeline_check", "")).startswith(("confirmed", "PMID resolves"))
                    for c in (ver.get("curated_references") or []))
     ref = strong or supplied

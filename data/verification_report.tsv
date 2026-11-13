@@ -5,7 +5,7 @@ TOM-VITD-01	Tomato	Sl7-DR2	101256596	DWF5-2					partial
 TOM-TOBRFV-01	Tomato	SlTOM1a	778361	TH3					partial
 TOM-TOBRFV-01	Tomato	SlTOM3	778313	TH1					partial
 TOM-TYLCV-01	Tomato	SlPelo	101251671	PELOTA					partial
-TOM-MILDEW-01	Tomato	SlMlo1	778228	MLO1		35173386	10.6026/97320630017637	gene+trait topic search	partial
+TOM-MILDEW-01	Tomato	SlMlo1	778228	MLO1		28352080	10.1038/s41598-017-00578-x	author+year+journal, trait matched in title	verified
 TOM-BROAD-01	Tomato	SlDMR6-1	100736526	DMR6-1		34215692	10.1073/pnas.2026152118	author+year+gene	verified
 TOM-DWARF-01	Tomato	SlER				31873217	10.1038/s41587-019-0361-2	author+year+gene	partial
 TOM-DWARF-01	Tomato	SP5G	101254900	SP5G		31873217	10.1038/s41587-019-0361-2	author+year+gene	verified
@@ -18,9 +18,9 @@ TOM-PARTH-01	Tomato	SlARF8	100301945	ARF8b		42576618	10.1111/nph.71503	gene+trai
 TOM-SIZE-01	Tomato	FW2.2	101245309	fw2.2					partial
 TOM-SIZE-01	Tomato	SlKIX8				34601614	10.1093/plphys/kiab464	author+year+gene	partial
 TOM-SIZE-01	Tomato	SlKIX9				34601614	10.1093/plphys/kiab464	author+year+gene	partial
-TOM-FIRM-01	Tomato	SlPL	101254471	PL					partial
-TOM-FIRM-01	Tomato	SlPG2a	544051	PG2					partial
-TOM-FIRM-01	Tomato	SlCEL2	543996	Cel2					partial
+TOM-FIRM-01	Tomato	SlPL	101254471	PL		27454737	10.1038/nbt.3602	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+TOM-FIRM-01	Tomato	SlPG2a	544051	PG2		27454737	10.1038/nbt.3602	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
+TOM-FIRM-01	Tomato	SlCEL2	543996	Cel2		27454737	10.1038/nbt.3602	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
 PEP-PUNG-01	Pepper	Pun1	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
 PEP-PUNG-01	Pepper	AT3	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
 PEP-PAMT-01	Pepper	pAMT	107854420	LOC107854420		19473323	10.1111/j.1365-313X.2009.03921.x	author+year+gene	verified
@@ -55,15 +55,15 @@ LET-BOLT-01	Lettuce	LsSOC1				29772090	10.1111/tpj.13968	author+year+gene	partia
 LET-VITC-01	Lettuce	LsGGP2	111907963	LOC111907963		30080209	10.1038/nbt.4202	author+year+gene	verified
 BRA-CLUB-01	Brassica rapa	CRa	103861267	LOC103861267		23054353	10.1007/s11103-012-9971-5	author+year+gene	verified
 BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB28	106313100	LOC106313100		23560984	10.1111/nph.12232	author+year+gene	verified
-BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	HAG1							unverified
-BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB29							unverified
-BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB34							unverified
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	HAG1				23560984	10.1111/nph.12232	author+year+journal, trait matched in title	partial
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB29				23560984	10.1111/nph.12232	author+year+journal, trait matched in title	partial
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB34				23560984	10.1111/nph.12232	author+year+journal, trait matched in title	partial
 CAR-COLOR-01	Carrot	DcRPGE1				38593056	10.1093/plcell/koae111	gene+trait topic search	partial
 CAR-COLOR-01	Carrot	DcAPRR2				38593056	10.1093/plcell/koae111	gene+trait topic search	partial
 CAR-COLOR-01	Carrot	DcPSY1	108227339	LOC108227339		38593056	10.1093/plcell/koae111	gene+trait topic search	partial
 CAR-COLOR-01	Carrot	DcPSY2	108214656	LOC108214656		38593056	10.1093/plcell/koae111	gene+trait topic search	partial
 CAR-COLOR-01	Carrot	DcLCYB1	108193045	LOC108193045					partial
-ONI-TEAR-01	Onion	LFS							partial
+ONI-TEAR-01	Onion	LFS				18583530	10.1104/pp.108.123273	author+year+journal, trait matched in title	verified
 GAP-COMB-01	Tomato	SOS1	778208	sos1					partial
 GAP-COMB-01	Tomato	SOS2	778340	SOS2					partial
 GAP-COMB-01	Tomato	NHX1	543771	NHX1					partial

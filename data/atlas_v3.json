@@ -45,8 +45,8 @@
   },
   "stats": {
     "total_entries": 31,
-    "verified": 14,
-    "partial": 16,
+    "verified": 15,
+    "partial": 15,
     "unverified": 1,
     "conflicted": 0,
     "last_verified": "2026-11-13",
@@ -734,43 +734,21 @@
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "SlMlo1[tiab] AND Powdery mildew resistance[tiab]",
-              "match_type": "gene+trait topic search",
+              "query": "Nekrasov[Author] AND 2017[dp]",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "mildew",
+                "powdery",
+                "tomato"
+              ],
+              "candidates_considered": 15,
               "hits": [
                 {
-                  "pmid": "35173386",
-                  "title": "Screening of CRISPR/Cas9 gRNA for mimicking Powdery Mildew resistant MLO ol-2 mutant.",
-                  "journal": "Bioinformation",
-                  "year": "2021",
-                  "doi": "10.6026/97320630017637"
-                },
-                {
-                  "pmid": "34064921",
-                  "title": "Discovery and Characterization of a Novel Tomato mlo Mutant from an EMS Mutagenized Micro-Tom Population.",
-                  "journal": "Genes (Basel)",
-                  "year": "2021",
-                  "doi": "10.3390/genes12050719"
-                },
-                {
-                  "pmid": "30667341",
-                  "title": "Identification and Characterization of a Potential Candidate Mlo Gene Conferring Susceptibility to Powdery Mildew in Rubber Tree.",
-                  "journal": "Phytopathology",
-                  "year": "2019",
-                  "doi": "10.1094/PHYTO-05-18-0171-R"
-                },
-                {
-                  "pmid": "30134125",
-                  "title": "Development of DNA markers for Slmlo1.1, a new mutant allele of the powdery mildew resistance gene SlMlo1 in tomato (Solanum lycopersicum).",
-                  "journal": "Genome",
-                  "year": "2018",
-                  "doi": "10.1139/gen-2018-0114"
-                },
-                {
-                  "pmid": "27579028",
-                  "title": "Genome-Wide Study of the Tomato SlMLO Gene Family and Its Functional Characterization in Response to the Powdery Mildew Fungus Oidium neolycopersici.",
-                  "journal": "Front Plant Sci",
-                  "year": "2016",
-                  "doi": "10.3389/fpls.2016.00380"
+                  "pmid": "28352080",
+                  "title": "Rapid generation of a transgene-free powdery mildew resistant tomato by genome deletion.",
+                  "journal": "Sci Rep",
+                  "year": "2017",
+                  "doi": "10.1038/s41598-017-00578-x"
                 }
               ]
             },
@@ -801,7 +779,7 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "partial",
+        "status": "verified",
         "genes_resolved": "1/1",
         "curated_references": [],
         "verified_on": "2026-11-13",
@@ -810,14 +788,13 @@
           "NCBI:778228"
         ],
         "pmids": [
-          "35173386"
+          "28352080"
         ],
         "dois": [
-          "10.6026/97320630017637"
+          "10.1038/s41598-017-00578-x"
         ],
         "notes": [
-          "locus ID(s) Solyc04g049090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
-          "SlMlo1: PMID 35173386 found by topic search, not by the cited author/year — citation not confirmed"
+          "locus ID(s) Solyc04g049090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
       "correction": null,
@@ -836,11 +813,10 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 4",
-        "basis": "1/1 genes resolved, no confirmed reference",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 4 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -1693,8 +1669,21 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "SlPL[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
+              "found": true,
+              "query": "Uluisik[Author] AND 2016[dp]",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [
+                "tomato"
+              ],
+              "hits": [
+                {
+                  "pmid": "27454737",
+                  "title": "Genetic improvement of tomato by targeted control of fruit softening.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2016",
+                  "doi": "10.1038/nbt.3602"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001365026.2",
@@ -1726,8 +1715,21 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "SlPG2a[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
+              "found": true,
+              "query": "Uluisik[Author] AND 2016[dp]",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [
+                "tomato"
+              ],
+              "hits": [
+                {
+                  "pmid": "27454737",
+                  "title": "Genetic improvement of tomato by targeted control of fruit softening.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2016",
+                  "doi": "10.1038/nbt.3602"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001247092.2",
@@ -1759,8 +1761,21 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "SlCEL2[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
+              "found": true,
+              "query": "Uluisik[Author] AND 2016[dp]",
+              "match_type": "awaiting human confirmation: journal and author match, title does not confirm the trait",
+              "matched_terms": [
+                "tomato"
+              ],
+              "hits": [
+                {
+                  "pmid": "27454737",
+                  "title": "Genetic improvement of tomato by targeted control of fruit softening.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2016",
+                  "doi": "10.1038/nbt.3602"
+                }
+              ]
             },
             "checked_on": "2026-11-13",
             "refseq_accession": "NM_001247938.1",
@@ -1799,11 +1814,18 @@
           "NCBI:543996",
           "NCBI:544051"
         ],
-        "pmids": [],
-        "dois": [],
+        "pmids": [
+          "27454737"
+        ],
+        "dois": [
+          "10.1038/nbt.3602"
+        ],
         "notes": [
           "locus ID(s) Solyc03g111690 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
-          "SlPG2a: matched NCBI gene PG2 (544051) as listed as alias — confirm it is the same gene"
+          "SlPL: PMID 27454737 found by topic search, not by the cited author/year — citation not confirmed",
+          "SlPG2a: matched NCBI gene PG2 (544051) as listed as alias — confirm it is the same gene",
+          "SlPG2a: PMID 27454737 found by topic search, not by the cited author/year — citation not confirmed",
+          "SlCEL2: PMID 27454737 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "correction": null,
@@ -4263,8 +4285,23 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "HAG1[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
+              "found": true,
+              "query": "Traka[Author] AND 2013[dp]",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "broccoli",
+                "glucoraphanin"
+              ],
+              "candidates_considered": 5,
+              "hits": [
+                {
+                  "pmid": "23560984",
+                  "title": "Genetic regulation of glucoraphanin accumulation in Beneforté broccoli.",
+                  "journal": "New Phytol",
+                  "year": "2013",
+                  "doi": "10.1111/nph.12232"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
@@ -4281,8 +4318,23 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "MYB29[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
+              "found": true,
+              "query": "Traka[Author] AND 2013[dp]",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "broccoli",
+                "glucoraphanin"
+              ],
+              "candidates_considered": 5,
+              "hits": [
+                {
+                  "pmid": "23560984",
+                  "title": "Genetic regulation of glucoraphanin accumulation in Beneforté broccoli.",
+                  "journal": "New Phytol",
+                  "year": "2013",
+                  "doi": "10.1111/nph.12232"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
@@ -4299,8 +4351,23 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "MYB34[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
+              "found": true,
+              "query": "Traka[Author] AND 2013[dp]",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "broccoli",
+                "glucoraphanin"
+              ],
+              "candidates_considered": 5,
+              "hits": [
+                {
+                  "pmid": "23560984",
+                  "title": "Genetic regulation of glucoraphanin accumulation in Beneforté broccoli.",
+                  "journal": "New Phytol",
+                  "year": "2013",
+                  "doi": "10.1111/nph.12232"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
@@ -4631,8 +4698,23 @@
               "protein_id": "BAC21275.1"
             },
             "pubmed": {
-              "found": false,
-              "query": "LFS[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
+              "found": true,
+              "query": "Eady[Author] AND 2008[dp]",
+              "match_type": "author+year+journal, trait matched in title",
+              "matched_terms": [
+                "lachrymatory",
+                "onion"
+              ],
+              "candidates_considered": 12,
+              "hits": [
+                {
+                  "pmid": "18583530",
+                  "title": "Silencing onion lachrymatory factor synthase causes a significant change in the sulfur secondary metabolite profile.",
+                  "journal": "Plant Physiol",
+                  "year": "2008",
+                  "doi": "10.1104/pp.108.123273"
+                }
+              ]
             },
             "checked_on": "2026-11-13"
           }
