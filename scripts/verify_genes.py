@@ -376,10 +376,32 @@ CURATED_FIELDS = (
 )
 
 
+CORRECTIONS = DATA / "corrections.json"
+
+
+def load_corrections() -> dict:
+    if not CORRECTIONS.exists():
+        return {}
+    try:
+        return json.loads(CORRECTIONS.read_text(encoding="utf-8")).get("entries", {}) or {}
+    except json.JSONDecodeError:
+        return {}
+
+
 def migrate() -> dict:
+    """Build the working atlas from the untouched draft plus curated corrections.
+
+    The draft (atlas_v2.json) is never edited, so the difference between what an
+    external tool proposed and what a breeder decided stays visible in git and in
+    the corrections file.
+    """
     v2 = json.loads(V2.read_text(encoding="utf-8"))
+    fixes = load_corrections()
     entries = []
     for e in v2.get("entries", []):
+        fix = fixes.get(e.get("id")) or {}
+        if fix.get("set"):
+            e = {**e, **fix["set"]}
         genes = split_genes(e.get("gene", ""))
         entries.append({
             "id": e.get("id"),
@@ -410,6 +432,7 @@ def migrate() -> dict:
                 "dois": [],
                 "notes": [],
             },
+            "correction": {k: v for k, v in fix.items() if k != "set"} or None,
         })
     out = {
         "_schema": {
@@ -427,6 +450,7 @@ def migrate() -> dict:
                 "conflicted": "Database answer disagrees with the curated claim — needs human review.",
             },
             "evidence_levels": v2.get("_schema", {}).get("evidence_levels", {}),
+            "level_derivation": DERIVATION_RULE,
             "portability_tiers": v2.get("_schema", {}).get("portability_tiers", {}),
         },
         "stats": {"total_entries": len(entries), "verified": 0, "partial": 0, "unverified": len(entries)},
@@ -538,6 +562,9 @@ def verify(only: str | None = None) -> dict:
             "notes": notes,
         }
 
+    for e in atlas["entries"]:
+        e["evidence"] = derive_level(e)
+
     counts = {"verified": 0, "partial": 0, "unverified": 0, "conflicted": 0}
     for e in atlas["entries"]:
         counts[e["verification"]["status"]] = counts.get(e["verification"]["status"], 0) + 1
@@ -643,6 +670,60 @@ def fetch_accessions() -> dict:
     V3.write_text(json.dumps(atlas, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"attached {n} RefSeq accession(s)")
     return atlas
+
+
+DERIVATION_RULE = (
+    "A reference counts as confirmed only when PubMed matched the cited author, year and gene, "
+    "or when a supplied reference resolved by its PMID. A PMID found by topic search alone does "
+    "NOT count: it may be a different paper about the same gene. "
+    "Level 1 is never derived — it requires a human to name a commercial cultivar or released "
+    "product in corrections.json (commercial_product). "
+    "Level 2 — every gene named in the entry resolves in the stated species AND a reference is "
+    "confirmed. "
+    "Level 3 — a reference is confirmed but gene identity is incomplete: either only some of the "
+    "named genes resolve, or none of them do. "
+    "Level 4 — genes resolve but no reference is confirmed: a candidate by identity only. "
+    "Level 5 — neither a gene record nor a confirmed reference."
+)
+
+
+def derive_level(entry: dict) -> dict:
+    """Compute an evidence level from what was verified, instead of trusting the draft."""
+    genes = entry.get("genes") or []
+    n = len(genes)
+    ok = sum(1 for g in genes
+             if ((g.get("verification") or {}).get("ncbi_gene") or {}).get("found"))
+    ver = entry.get("verification") or {}
+    # Only confirmed references count. A topic-search PMID is not evidence for the
+    # cited claim, so it must not raise the level.
+    strong = any(((g.get("verification") or {}).get("pubmed") or {}).get("match_type")
+                 == "author+year+gene" for g in genes)
+    supplied = any(str(c.get("pipeline_check", "")).startswith(("confirmed", "PMID resolves"))
+                   for c in (ver.get("curated_references") or []))
+    ref = strong or supplied
+    product = (entry.get("claims") or {}).get("commercial_product", "")
+
+    if product:
+        lvl, why = "Level 1", f"commercial product named by a human: {product}"
+    elif n and ok == n and ref:
+        lvl, why = "Level 2", f"all {n} gene(s) resolved and a reference confirmed"
+    elif ref and ok:
+        lvl, why = "Level 3", f"only {ok}/{n} genes resolved, with a confirmed reference"
+    elif ref:
+        lvl, why = ("Level 3", "a reference is confirmed, but none of the named gene symbols "
+                               "resolve in the stated species — identity unestablished")
+    elif ok:
+        lvl, why = "Level 4", f"{ok}/{n} genes resolved, no confirmed reference"
+    else:
+        lvl, why = "Level 5", "no gene record and no confirmed reference resolved"
+
+    claimed = (entry.get("claims") or {}).get("evidence_level", "")
+    out = {"derived_level": lvl, "basis": why, "rule": "see _schema.level_derivation",
+           "draft_claimed": claimed}
+    if claimed and claimed != lvl:
+        out["disagrees_with_draft"] = (
+            f"the draft claimed {claimed}; this pipeline derives {lvl} from what it could verify")
+    return out
 
 
 def report(atlas: dict | None = None) -> None:

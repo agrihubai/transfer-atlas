@@ -36,6 +36,7 @@
         "desc": "Exploratory polygenic or multi-stress target requiring functional validation."
       }
     },
+    "level_derivation": "A reference counts as confirmed only when PubMed matched the cited author, year and gene, or when a supplied reference resolved by its PMID. A PMID found by topic search alone does NOT count: it may be a different paper about the same gene. Level 1 is never derived — it requires a human to name a commercial cultivar or released product in corrections.json (commercial_product). Level 2 — every gene named in the entry resolves in the stated species AND a reference is confirmed. Level 3 — a reference is confirmed but gene identity is incomplete: either only some of the named genes resolve, or none of them do. Level 4 — genes resolve but no reference is confirmed: a candidate by identity only. Level 5 — neither a gene record nor a confirmed reference.",
     "portability_tiers": {
       "t1": "Native Edit (NGT Cat-1 candidate — crop's own gene/promoter)",
       "t2": "Cisgenic / Introgression (Crossable wild relative — check linkage drag)",
@@ -45,11 +46,11 @@
   "stats": {
     "total_entries": 31,
     "verified": 5,
-    "partial": 23,
-    "unverified": 3,
+    "partial": 25,
+    "unverified": 1,
     "conflicted": 0,
     "last_verified": "2026-11-13",
-    "genes_with_accession": 28
+    "genes_with_accession": 37
   },
   "entries": [
     {
@@ -214,6 +215,7 @@
           "locus ID(s) Solyc01g005000, Solyc11g011920 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -233,6 +235,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 2",
+        "basis": "all 2 gene(s) resolved and a reference confirmed",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -311,6 +320,7 @@
           "locus ID(s) Solyc06g074090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -323,6 +333,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -419,6 +436,7 @@
           "locus ID(s) Solyc02g080370, Solyc01g105140 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -438,6 +456,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -530,6 +555,7 @@
           "locus ID(s) Solyc04g009810 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -542,6 +568,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -662,6 +695,7 @@
           "SlMlo1: PMID 35173386 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -674,6 +708,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "1/1 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 4 from what it could verify"
       }
     },
     {
@@ -765,6 +806,7 @@
           "locus ID(s) Solyc03g080190 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -777,6 +819,12 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -1019,6 +1067,7 @@
           "SlYABBY2b: matched NCBI gene YABBY2 (100191118) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -1038,6 +1087,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "only 3/5 genes resolved, with a confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -1264,6 +1320,7 @@
           "SlARF8: PMID 42576618 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -1283,6 +1340,12 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 2",
+        "basis": "all 3 gene(s) resolved and a reference confirmed",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -1419,6 +1482,7 @@
           "locus ID(s) Solyc02g090730, Solyc07g008100 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -1438,6 +1502,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "only 1/3 genes resolved, with a confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -1582,6 +1653,7 @@
           "SlPG2a: matched NCBI gene PG2 (544051) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -1594,6 +1666,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "3/3 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 4 from what it could verify"
       }
     },
     {
@@ -1726,8 +1805,16 @@
           "AT3: matched NCBI gene LOC107859694 (107859694) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 2",
+        "basis": "all 2 gene(s) resolved and a reference confirmed",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -1818,8 +1905,15 @@
           "pAMT: matched NCBI gene LOC107854420 (107854420) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -2013,8 +2107,16 @@
           "eIFiso4E: PMID 42239849 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "2/2 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 4 from what it could verify"
       }
     },
     {
@@ -2091,8 +2193,16 @@
         ],
         "notes": []
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -2289,6 +2399,7 @@
         ],
         "notes": []
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -2315,6 +2426,13 @@
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -2452,6 +2570,7 @@
           "CsMLO8: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -2464,6 +2583,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 5",
+        "basis": "no gene record and no confirmed reference resolved",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 5 from what it could verify"
       }
     },
     {
@@ -2612,6 +2738,7 @@
           "CsACS11: matched NCBI gene LOC101213522 (101213522) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -2631,6 +2758,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "2/4 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 4 from what it could verify"
       }
     },
     {
@@ -2775,6 +2909,7 @@
           "CmACS7: matched NCBI gene LOC103492295 (103492295) as weak — symbol not in name or aliases — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -2787,6 +2922,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "only 2/3 genes resolved, with a confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -2866,6 +3008,7 @@
           "locus ID(s) Cla97C07G144940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -2878,6 +3021,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 5",
+        "basis": "no gene record and no confirmed reference resolved",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 3",
+        "disagrees_with_draft": "the draft claimed Level 3; this pipeline derives Level 5 from what it could verify"
       }
     },
     {
@@ -3002,6 +3152,7 @@
           "ClSWEET3: PMID 33570606 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3021,6 +3172,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -3132,6 +3290,7 @@
           "locus ID(s) SMEL4.1_08g017350 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3144,6 +3303,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -3152,39 +3318,22 @@
       "scientific_name": "Solanum melongena",
       "category": "Harvestability & Morphology",
       "trait": "Prickle-free calyx & stem",
-      "gene_label": "SmMYB candidates / LOG-related prickle loci",
+      "gene_label": "SmLOG1",
       "genes": [
         {
-          "symbol": "SmMYB",
+          "symbol": "SmLOG1",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
               "found": false,
               "queries": [
-                "SmMYB[Gene Name] AND \"Solanum melongena\"[Organism]",
-                "MYB[Gene Name] AND \"Solanum melongena\"[Organism]"
+                "SmLOG1[Gene Name] AND \"Solanum melongena\"[Organism]",
+                "LOG1[Gene Name] AND \"Solanum melongena\"[Organism]"
               ]
             },
             "pubmed": {
               "found": false,
-              "query": "SmMYB[tiab] AND Prickle-free calyx & stem[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "LOG-related prickle loci",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "LOG-related prickle loci[Gene Name] AND \"Solanum melongena\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "LOG-related prickle loci[tiab] AND Prickle-free calyx & stem[tiab]"
+              "query": "SmLOG1[tiab] AND Prickle-free calyx & stem[tiab]"
             },
             "checked_on": "2026-11-13"
           }
@@ -3192,7 +3341,7 @@
       ],
       "portability": "t1",
       "claims": {
-        "gene_function": "Transcriptional regulators of epidermal prickle initiation.",
+        "gene_function": "LONELY GUY (LOG) family cytokinin biosynthetic enzyme; expressed mainly in immature prickles.",
         "gene_id": "SMEL4.1_06g... (Candidate locus)",
         "evidence_level": "Level 4",
         "evidence_note": "Scientific distinction: SmMYB candidates are under investigation; should NOT be presented as a single-gene proven CRISPR solution.",
@@ -3204,14 +3353,14 @@
         "tissue": "Calyx, stem, leaf midrib",
         "environmental_interaction": "Low",
         "conventional_breeding": "Classical prickle-free cultivars",
-        "recommended_strategy": "Classical Breeding / Candidate Validation",
-        "editing_possibility": "Candidate research target (requires functional confirmation)",
-        "trait_inheritance": "Oligogenic",
+        "recommended_strategy": "Promoter editing or marker-assisted selection",
+        "editing_possibility": "Promoter editing, or marker-assisted selection on the CAPS marker at -735 bp: the causal variation reported is non-coding, so a coding knockout is not the route the natural prickleless allele uses.",
+        "trait_inheritance": "Single dominant nuclear gene (PE locus, chromosome 6)",
         "gene_action": "Loss of function"
       },
       "verification": {
         "status": "partial",
-        "genes_resolved": "0/2",
+        "genes_resolved": "0/1",
         "curated_references": [
           {
             "pmid": "38974191",
@@ -3239,6 +3388,15 @@
           "locus ID(s) SMEL4.1_06g... not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13",
+        "decision": "Replace the draft's SmMYB candidates with SmLOG1 as the gene, keeping SmMYB recorded as a superseded candidate.",
+        "rationale": "PMID 38974191 fine-mapped the PE locus on chromosome 6 to a 9233 bp interval holding one candidate, SmLOG1, a LONELY GUY family cytokinin biosynthetic enzyme, and CRISPR-Cas9 knockout of it abolished prickles in all tissues. The draft's SmMYB candidates are a different gene and that paper does not support them.",
+        "superseded": {
+          "gene": "SmMYB_candidates",
+          "why": "Not supported by PMID 38974191. Kept here so the earlier hypothesis is not silently erased; if another source supports an SmMYB role, it can return as its own entry."
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3251,6 +3409,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 4",
+        "disagrees_with_draft": "the draft claimed Level 4; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -3428,8 +3593,16 @@
           "LsCO: PMID 41793314 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "only 1/4 genes resolved, with a confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -3539,8 +3712,16 @@
         ],
         "notes": []
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -3789,6 +3970,7 @@
           "Crr3: PMID 34262060 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3801,6 +3983,13 @@
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
           }
         ]
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -3952,8 +4141,16 @@
           "MYB28: matched NCBI gene LOC106313100 (106313100) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "only 1/4 genes resolved, with a confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
@@ -4183,8 +4380,16 @@
           "DcLCYB1: matched NCBI gene LOC108193045 (108193045) as listed as alias — confirm it is the same gene"
         ]
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "3/5 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 2",
+        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 4 from what it could verify"
       }
     },
     {
@@ -4297,84 +4502,158 @@
         ],
         "notes": []
       },
+      "correction": null,
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 3",
+        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 1",
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
       }
     },
     {
       "id": "GAP-COMB-01",
-      "crop": "Multi-Crop (Tomato, Pepper, Cucurbits)",
-      "scientific_name": "Solanaceae & Cucurbitaceae",
+      "crop": "Tomato",
+      "scientific_name": "Solanum lycopersicum",
       "category": "Research Gap — Combined Stress",
       "trait": "Combined Heat + Salinity + Drought Tolerance (Mediterranean field conditions)",
-      "gene_label": "SOS1/2, NHX, HKT1;2, DREB2A, HsfA2 (Network)",
+      "gene_label": "SOS1, SOS2, NHX1, DREB2, HsfA2",
       "genes": [
         {
           "symbol": "SOS1",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "SOS1[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "SOS1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "778208",
+                  "official_symbol": "sos1",
+                  "description": "plasmalemma Na+/H+ antiporter",
+                  "other_aliases": "SlSOS1",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "1",
+                  "coordinates": "NC_090800.1:402631-389414",
+                  "match": "official symbol"
+                }
               ]
             },
             "pubmed": {
               "found": false,
               "query": "SOS1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001247769.3",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
-          "symbol": "NHX",
+          "symbol": "SOS2",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "NHX[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "SOS2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "778340",
+                  "official_symbol": "SOS2",
+                  "description": "calcineurin B-like interacting protein kinase",
+                  "other_aliases": "CIPK, CIPK24",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "12",
+                  "coordinates": "NC_090811.1:3255318-3247838",
+                  "match": "official symbol"
+                }
               ]
             },
             "pubmed": {
               "found": false,
-              "query": "NHX[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "query": "SOS2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_069291846.1",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
-          "symbol": "HKT1",
+          "symbol": "NHX1",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "HKT1[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "NHX1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "543771",
+                  "official_symbol": "NHX1",
+                  "description": "Na+/H+ antiporter",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "6",
+                  "coordinates": "NC_090805.1:2780925-2788651",
+                  "match": "official symbol"
+                }
               ]
             },
             "pubmed": {
               "found": false,
-              "query": "HKT1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "query": "NHX1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_026031303.2",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
-          "symbol": "DREB2A",
+          "symbol": "DREB2",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "DREB2A[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "DREB2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "544235",
+                  "official_symbol": "DREB2",
+                  "description": "dehydration responsive element binding protein",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "12",
+                  "coordinates": "NC_090811.1:2180713-2181933",
+                  "match": "official symbol"
+                },
+                {
+                  "ncbi_gene_id": "101261712",
+                  "official_symbol": "ERF-H14",
+                  "description": "ethylene response factor H.14",
+                  "other_aliases": "DREB2, SlERF-H14",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "5",
+                  "coordinates": "NC_090804.1:65901354-65904068",
+                  "match": "listed as alias"
+                }
               ]
             },
             "pubmed": {
               "found": false,
-              "query": "DREB2A[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+              "query": "DREB2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001247830.1",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
@@ -4382,16 +4661,30 @@
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "HsfA2[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "HsfA2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101255223",
+                  "official_symbol": "LOC101255223",
+                  "description": "heat stress transcription factor HsfA2",
+                  "other_aliases": "HsfA2",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "8",
+                  "coordinates": "NC_090807.1:53795739-53792824",
+                  "match": "listed as alias"
+                }
               ]
             },
             "pubmed": {
               "found": false,
               "query": "HsfA2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XR_742804.4",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -4415,43 +4708,87 @@
         "gene_action": "Inducible promoter tuning + Polygenic allele stacking"
       },
       "verification": {
-        "status": "unverified",
-        "genes_resolved": "0/5",
+        "status": "partial",
+        "genes_resolved": "5/5",
         "curated_references": [],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:101255223",
+          "NCBI:543771",
+          "NCBI:544235",
+          "NCBI:778208",
+          "NCBI:778340"
+        ],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "HsfA2: matched NCBI gene LOC101255223 (101255223) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13",
+        "decision": "Pin the gene families to named tomato orthologs so the entry stops naming families as if they were targets. Tomato chosen as the reference crop because it is the best annotated of the three the draft listed.",
+        "rationale": "Symbols resolved by querying NCBI Gene for Solanum lycopersicum.",
+        "pinned_ids": {
+          "SOS1": "NCBI 778208 (plasmalemma Na+/H+ antiporter)",
+          "SOS2": "NCBI 778340 (calcineurin B-like interacting protein kinase)",
+          "NHX1": "NCBI 543771 (Na+/H+ antiporter)",
+          "DREB2": "NCBI 544235 (dehydration responsive element binding protein)",
+          "HsfA2": "NCBI 101255223 (heat stress transcription factor HsfA2)"
+        },
+        "unpinned": [
+          "HKT1;2 — no gene of that name is annotated for Solanum lycopersicum in NCBI Gene. The draft's HKT1;2 claim most likely refers to SlHKT1;2 from the S. pennellii introgression literature, which is a different (cisgenic) route and should become its own entry rather than part of this network."
+        ]
       },
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "5/5 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 5",
+        "disagrees_with_draft": "the draft claimed Level 5; this pipeline derives Level 4 from what it could verify"
       }
     },
     {
       "id": "GAP-REPRO-01",
-      "crop": "Multi-Crop (Tomato, Pepper, Cucumber)",
-      "scientific_name": "Solanaceae & Cucurbitaceae",
+      "crop": "Tomato",
+      "scientific_name": "Solanum lycopersicum",
       "category": "Research Gap — Reproductive Resilience",
       "trait": "Pollen & ovule thermotolerance + stigma receptivity under heat waves",
-      "gene_label": "HsfA2, HSP70, ROS scavengers (APX), MADS-box regulators",
+      "gene_label": "HsfA2, HSP70, APX1",
       "genes": [
         {
           "symbol": "HsfA2",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "HsfA2[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "HsfA2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101255223",
+                  "official_symbol": "LOC101255223",
+                  "description": "heat stress transcription factor HsfA2",
+                  "other_aliases": "HsfA2",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "8",
+                  "coordinates": "NC_090807.1:53795739-53792824",
+                  "match": "listed as alias"
+                }
               ]
             },
             "pubmed": {
               "found": false,
               "query": "HsfA2[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XR_742804.4",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
@@ -4459,67 +4796,61 @@
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "HSP70[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "HSP70[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "100134914",
+                  "official_symbol": "HSP70",
+                  "description": "heat shock protein 70",
+                  "other_aliases": "SlHSP70",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "11",
+                  "coordinates": "NC_090810.1:10848300-10852753",
+                  "match": "official symbol"
+                }
               ]
             },
             "pubmed": {
               "found": false,
               "query": "HSP70[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001246851.3",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
-          "symbol": "ROS scavengers",
+          "symbol": "APX1",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "ROS scavengers[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+                "APX1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "778223",
+                  "official_symbol": "APX1",
+                  "description": "cytosolic ascorbate peroxidase 1",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "6",
+                  "coordinates": "NC_090805.1:201241-204644",
+                  "match": "official symbol"
+                }
               ]
             },
             "pubmed": {
               "found": false,
-              "query": "ROS scavengers[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+              "query": "APX1[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
             },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "APX",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "APX[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "APX[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "MADS-box regulators",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "MADS-box regulators[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "MADS-box regulators[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
-            },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001247853.2",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -4543,303 +4874,87 @@
         "gene_action": "Tapetum/anther-specific expression tuning"
       },
       "verification": {
-        "status": "unverified",
-        "genes_resolved": "0/5",
+        "status": "partial",
+        "genes_resolved": "3/3",
         "curated_references": [],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:100134914",
+          "NCBI:101255223",
+          "NCBI:778223"
+        ],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "HsfA2: matched NCBI gene LOC101255223 (101255223) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13",
+        "decision": "Pin to named tomato orthologs; keep the unpinnable part explicit.",
+        "rationale": "Symbols resolved by querying NCBI Gene for Solanum lycopersicum.",
+        "pinned_ids": {
+          "HsfA2": "NCBI 101255223 (heat stress transcription factor HsfA2)",
+          "HSP70": "NCBI 100134914 (heat shock protein 70)",
+          "APX1": "NCBI 778223 (cytosolic ascorbate peroxidase 1)"
+        },
+        "unpinned": [
+          "ROS scavengers — a functional class, not a gene; APX1 above is one member and stands for itself.",
+          "MADS-box regulators — too generic to pin; needs a specific gene before it can be an entry."
+        ]
       },
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "3/3 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 4"
       }
     },
     {
       "id": "GAP-RECOV-01",
-      "crop": "Multi-Crop (All Vegetables)",
-      "scientific_name": "Dicotyledonae",
+      "crop": "Tomato",
+      "scientific_name": "Solanum lycopersicum",
       "category": "Research Gap — Post-Stress Recovery",
       "trait": "Post-stress growth & yield recovery kinetics",
-      "gene_label": "WOX, PLT (PLETHORA), LBD, DRO1, ABA catabolism (CYP707A)",
+      "gene_label": "CYP707A1",
       "genes": [
         {
-          "symbol": "WOX",
+          "symbol": "CYP707A1",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "WOX[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
-            "pubmed": {
               "found": true,
-              "query": "2025[dp] AND WOX[tiab]",
-              "match_type": "gene+trait topic search",
+              "queries": [
+                "CYP707A1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
               "hits": [
                 {
-                  "pmid": "41695523",
-                  "title": "Transcriptome-wide identification of the WUSCHEL-related homeobox transcription factors and their expression patterns underlying drought and salt stress in Populus euphratica.",
-                  "journal": "Front Plant Sci",
-                  "year": "2025",
-                  "doi": "10.3389/fpls.2025.1747710"
-                },
-                {
-                  "pmid": "41463419",
-                  "title": "Research Advances in the Regulation of Fruit Size: An Integrated Perspective of Genetic, Hormonal, Epigenetic, and Environmental Control.",
-                  "journal": "Biology (Basel)",
-                  "year": "2025",
-                  "doi": "10.3390/biology14121643"
-                },
-                {
-                  "pmid": "41422566",
-                  "title": "Actin represses stem cell maintenance in Arabidopsis under drought stress.",
-                  "journal": "Plant Physiol Biochem",
-                  "year": "2026",
-                  "doi": "10.1016/j.plaphy.2025.110966"
-                },
-                {
-                  "pmid": "41404934",
-                  "title": "Intrinsically Bifunctional and Tunable Tungsten Carbide Catalysts Enable Efficient PVC-Compatible Polyolefin Hydrocracking.",
-                  "journal": "J Am Chem Soc",
-                  "year": "2025",
-                  "doi": "10.1021/jacs.5c11845"
-                },
-                {
-                  "pmid": "41343720",
-                  "title": "Phylogeny, chromosomal mapping and expression analyses of wheat CLAVATA pathway components suggest differential selection on receptor-like kinases, CLEs and T3 WOXes.",
-                  "journal": "Plant J",
-                  "year": "2025",
-                  "doi": "10.1111/tpj.70580"
+                  "ncbi_gene_id": "100136887",
+                  "official_symbol": "CYP707A1",
+                  "description": "abscisic acid 8'-hydroxylase CYP707A1",
+                  "other_aliases": "SlCYP707A1, SlCYP707A8",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "4",
+                  "coordinates": "NC_090803.1:65405749-65409025",
+                  "match": "official symbol"
                 }
               ]
             },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "PLT",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "PLT[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
             "pubmed": {
               "found": true,
-              "query": "2025[dp] AND PLT[tiab]",
+              "query": "2025[dp] AND CYP707A1[tiab]",
               "match_type": "gene+trait topic search",
               "hits": [
                 {
-                  "pmid": "42540664",
-                  "title": "Predicting hypertension in preeclampsia patients within five years postpartum: analysis of influencing factors and nomogram development.",
-                  "journal": "Arch Med Sci",
-                  "year": "2026",
-                  "doi": "10.5114/aoms/208999"
-                },
-                {
-                  "pmid": "42344632",
-                  "title": "The role of platelet transfusion in modulating platelet indices and leukocyte dynamics in dengue fever patients.",
-                  "journal": "Asian J Transfus Sci",
-                  "year": "2026",
-                  "doi": "10.4103/ajts.ajts_190_24"
-                },
-                {
-                  "pmid": "42333208",
-                  "title": "Influencing Factor Analysis and Predictive Model Development for Platelet Transfusion Refractoriness in Pediatric Oncology Patients.",
-                  "journal": "Indian J Hematol Blood Transfus",
-                  "year": "2026",
-                  "doi": "10.1007/s12288-025-02191-9"
-                },
-                {
-                  "pmid": "42178956",
-                  "title": "Prognostic value of novel serological markers in predicting postoperative complications of ileocecal resection in Crohn&apos;s disease patients.",
-                  "journal": "Pol Przegl Chir",
+                  "pmid": "41253153",
+                  "title": "Evolutionary trade-off between stomatal defense and gas exchange in Brassicaceae.",
+                  "journal": "Curr Biol",
                   "year": "2025",
-                  "doi": "10.5604/01.3001.0055.5120"
-                },
-                {
-                  "pmid": "42146835",
-                  "title": "Association Between Liver Function Grade and Post-Hepatectomy Liver Failure in Patients With Hepatocellular Carcinoma: A Latent Class Analysis.",
-                  "journal": "Ann Gastroenterol Surg",
-                  "year": "2026",
-                  "doi": "10.1002/ags3.70138"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "PLETHORA",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "PLETHORA[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": true,
-              "query": "2025[dp] AND PLETHORA[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "42266637",
-                  "title": "The Evolution of Colorectal Surgery Training.",
-                  "journal": "Clin Colon Rectal Surg",
-                  "year": "2026",
-                  "doi": "10.1055/s-0045-1813660"
-                },
-                {
-                  "pmid": "42110564",
-                  "title": "A Historical Review of Cryogenic Mechanical Testing on Type 304 Stainless Steels - State of the Art and Current Outlooks.",
-                  "journal": "Cryogenics (Guildf)",
-                  "year": "2025",
-                  "doi": "10.1016/j.cryogenics.2025.104105"
-                },
-                {
-                  "pmid": "42078678",
-                  "title": "Factors Influencing Physical Therapists' Rehabilitation Prescription in the ICU: Semi-Structured Interviews with Qualitative Analysis.",
-                  "journal": "Physiother Can",
-                  "year": "2025",
-                  "doi": "10.3138/ptc-2023-0017"
-                },
-                {
-                  "pmid": "41868648",
-                  "title": "The Role of Attachment Insecurity in the Intergenerational Transmission of Violence.",
-                  "journal": "J Child Adolesc Trauma",
-                  "year": "2026",
-                  "doi": "10.1007/s40653-025-00766-2"
-                },
-                {
-                  "pmid": "41744054",
-                  "title": "Usage of a split CH2 domain as building block for new antibody formats.",
-                  "journal": "Protein Eng Des Sel",
-                  "year": "2025",
-                  "doi": "10.1093/protein/gzag005"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "LBD",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "LBD[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": true,
-              "query": "2025[dp] AND LBD[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "41788840",
-                  "title": "Sensitivity of Paucilactobacillus wasatchensis strains to nisin.",
-                  "journal": "JDS Commun",
-                  "year": "2026",
-                  "doi": "10.3168/jdsc.2025-0887"
-                },
-                {
-                  "pmid": "41728190",
-                  "title": "Transcriptomic and hormonal dynamics in relation to adventitious rooting of two parental Petunia species highlight a coordinated activation of the jasmonate and auxin pathways and an important role of upper-shoot-derived auxin influx.",
-                  "journal": "Front Plant Sci",
-                  "year": "2025",
-                  "doi": "10.3389/fpls.2025.1707238"
-                },
-                {
-                  "pmid": "41649650",
-                  "title": "Cellular plasticity and transcriptional reprogramming in plant-nematode interactions: insights into feeding site formation and plant defense.",
-                  "journal": "Crop Health",
-                  "year": "2025",
-                  "doi": "10.1007/s44297-025-00056-1"
-                },
-                {
-                  "pmid": "41594559",
-                  "title": "Transcriptome and Metabolome Analyses Reveal the Accumulation Mechanism of Carbohydrates During Paeonia ostii Seed Development.",
-                  "journal": "Biomolecules",
-                  "year": "2025",
-                  "doi": "10.3390/biom16010017"
-                },
-                {
-                  "pmid": "41573935",
-                  "title": "Root growth promotion by Penicillium melinii: mechanistic insights and agricultural applications.",
-                  "journal": "bioRxiv",
-                  "year": "2025",
-                  "doi": "10.64898/2025.12.05.692050"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "DRO1",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "DRO1[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": true,
-              "query": "2025[dp] AND DRO1[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "40851219",
-                  "title": "Phenome-to-genome insights for evaluating root system architecture in field studies of maize.",
-                  "journal": "Plant Genome",
-                  "year": "2025",
-                  "doi": "10.1002/tpg2.70100"
-                },
-                {
-                  "pmid": "40659747",
-                  "title": "Transfer of deeper rooting and phosphorus uptake QTL into the popular rice variety 'maudamani' via marker-assisted backcross breeding.",
-                  "journal": "Sci Rep",
-                  "year": "2025",
-                  "doi": "10.1038/s41598-025-10951-w"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "ABA catabolism",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "ABA catabolism[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": true,
-              "query": "2025[dp] AND ABA catabolism[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "41624417",
-                  "title": "FveDAD2 negatively regulates branch crowns by affecting abscisic acid metabolism through FveHB7 in woodland strawberry.",
-                  "journal": "Hortic Res",
-                  "year": "2026",
-                  "doi": "10.1093/hr/uhaf250"
+                  "doi": "10.1016/j.cub.2025.10.037"
                 },
                 {
                   "pmid": "41096694",
@@ -4849,84 +4964,31 @@
                   "doi": "10.3390/ijms26199429"
                 },
                 {
-                  "pmid": "40982645",
-                  "title": "Auxin Response Factor 4 Regulates the ABA Catabolism Gene CYP707A2 to Reduce the Accumulation of ABA and Inhibit Anthocyanin Synthesis in Malus \"Pinkspire\" Fruits.",
-                  "journal": "J Agric Food Chem",
+                  "pmid": "41082577",
+                  "title": "The transcriptional landscape and dynamics regulating organ differentiation and dormancy in Curcuma alismatifolia.",
+                  "journal": "Plant Physiol",
                   "year": "2025",
-                  "doi": "10.1021/acs.jafc.5c05701"
+                  "doi": "10.1093/plphys/kiaf501"
                 },
                 {
-                  "pmid": "40976169",
-                  "title": "ABA orchestrates molecular networks linking antioxidant defense, sugar metabolism and circadian clock for combined stress tolerance in Quinoa (Chenopodium quinoa Willd.).",
+                  "pmid": "40945456",
+                  "title": "The plantacyanin gene family in tomato: genome-wide identification, expression analysis, and regulation of salt stress tolerance.",
                   "journal": "Plant Physiol Biochem",
                   "year": "2025",
-                  "doi": "10.1016/j.plaphy.2025.110536"
+                  "doi": "10.1016/j.plaphy.2025.110485"
                 },
                 {
-                  "pmid": "40882725",
-                  "title": "Identification of JmjC-domain-containing histone demethylases in sweet cherry reveals PavJMJ12 is required for bud dormancy release.",
-                  "journal": "Int J Biol Macromol",
+                  "pmid": "40821025",
+                  "title": "Integrative multi-omics analysis unravels chitosan-mediated delay of mango fruit ripening through hormonal and metabolic reprogramming.",
+                  "journal": "Food Chem (Oxf)",
                   "year": "2025",
-                  "doi": "10.1016/j.ijbiomac.2025.146910"
+                  "doi": "10.1016/j.fochms.2025.100281"
                 }
               ]
             },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "CYP707A",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "CYP707A[Gene Name] AND \"Dicotyledonae\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": true,
-              "query": "2025[dp] AND CYP707A[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "42152181",
-                  "title": "ABA-centric signaling networks for drought resilience in cereals: from transcriptional reprogramming to epigenetic memory.",
-                  "journal": "Funct Plant Biol",
-                  "year": "2025",
-                  "doi": "10.1071/FP25173"
-                },
-                {
-                  "pmid": "41344249",
-                  "title": "Pulsed light treatment mediated ethylene and abscisic acid synthesis effectively inhibited bell pepper turning red and softening.",
-                  "journal": "Food Chem",
-                  "year": "2026",
-                  "doi": "10.1016/j.foodchem.2025.147303"
-                },
-                {
-                  "pmid": "40976169",
-                  "title": "ABA orchestrates molecular networks linking antioxidant defense, sugar metabolism and circadian clock for combined stress tolerance in Quinoa (Chenopodium quinoa Willd.).",
-                  "journal": "Plant Physiol Biochem",
-                  "year": "2025",
-                  "doi": "10.1016/j.plaphy.2025.110536"
-                },
-                {
-                  "pmid": "40836595",
-                  "title": "Comprehensive analysis of DNA methylome and transcriptome reveals the epigenetic regulation of nitric oxide treatment in delaying apricot fruit senescence.",
-                  "journal": "Plant J",
-                  "year": "2025",
-                  "doi": "10.1111/tpj.70387"
-                },
-                {
-                  "pmid": "40573837",
-                  "title": "Effects of Different Modified Biochars on Growth of Kosteletzkya virginica and Corresponding Transcriptome Analysis.",
-                  "journal": "Plants (Basel)",
-                  "year": "2025",
-                  "doi": "10.3390/plants14121849"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001247588.3",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -4951,41 +5013,43 @@
       },
       "verification": {
         "status": "partial",
-        "genes_resolved": "0/7",
+        "genes_resolved": "1/1",
         "curated_references": [],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:100136887"
+        ],
         "pmids": [
-          "40851219",
-          "41624417",
-          "41695523",
-          "41788840",
-          "42152181",
-          "42266637",
-          "42540664"
+          "41253153"
         ],
         "dois": [
-          "10.1002/tpg2.70100",
-          "10.1055/s-0045-1813660",
-          "10.1071/FP25173",
-          "10.1093/hr/uhaf250",
-          "10.3168/jdsc.2025-0887",
-          "10.3389/fpls.2025.1747710",
-          "10.5114/aoms/208999"
+          "10.1016/j.cub.2025.10.037"
         ],
         "notes": [
-          "WOX: PMID 41695523 found by topic search, not by the cited author/year — citation not confirmed",
-          "PLT: PMID 42540664 found by topic search, not by the cited author/year — citation not confirmed",
-          "PLETHORA: PMID 42266637 found by topic search, not by the cited author/year — citation not confirmed",
-          "LBD: PMID 41788840 found by topic search, not by the cited author/year — citation not confirmed",
-          "DRO1: PMID 40851219 found by topic search, not by the cited author/year — citation not confirmed",
-          "ABA catabolism: PMID 41624417 found by topic search, not by the cited author/year — citation not confirmed",
-          "CYP707A: PMID 42152181 found by topic search, not by the cited author/year — citation not confirmed"
+          "CYP707A1: PMID 41253153 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13",
+        "decision": "Pin what resolves; leave the rest as an open research question rather than an entry.",
+        "rationale": "Symbols resolved by querying NCBI Gene for Solanum lycopersicum.",
+        "pinned_ids": {
+          "CYP707A1": "NCBI 100136887 (abscisic acid 8'-hydroxylase CYP707A1)"
+        },
+        "unpinned": [
+          "WOX, PLT (PLETHORA), LBD, DRO1 — none are annotated under those names for Solanum lycopersicum in NCBI Gene. Root-architecture work in tomato uses different symbols; until one is named, post-stress root recovery stays a research question, not an atlas target."
         ]
       },
       "locus_check": {
         "checked": false
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "1/1 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": "Level 5",
+        "disagrees_with_draft": "the draft claimed Level 5; this pipeline derives Level 4 from what it could verify"
       }
     }
   ]

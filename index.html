@@ -135,6 +135,7 @@
       <div class="row"><label for="f-cat">Category</label><select id="f-cat"></select><span class="chev">⌄</span></div>
       <div class="row"><label for="f-port">Portability</label><select id="f-port"></select><span class="chev">⌄</span></div>
       <div class="row"><label for="f-ver">Verification</label><select id="f-ver"></select><span class="chev">⌄</span></div>
+      <div class="row"><label for="f-lvl">Evidence</label><select id="f-lvl"></select><span class="chev">⌄</span></div>
     </div>
     <div class="count"><span id="count">—</span><span id="asof"></span></div>
     <div id="results"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
@@ -223,8 +224,8 @@ function links(gene, entry){
 function card(e, i){
   const p = PORT[e.portability] || PORT.t1;
   const v = VER[(e.verification || {}).status] || VER.unverified;
-  const lvl = e.claims.evidence_level;
-  const showLvl = (e.verification || {}).status === 'verified' && lvl;
+  // The level shown is derived from what was verified, never the draft's claim.
+  const lvl = (e.evidence || {}).derived_level;
   return `<div class="card" data-i="${i}" tabindex="0" role="button">
     <div class="rail" style="background:${v.rail}"></div>
     <div class="top"><div class="trait">${esc(e.trait)}</div><div class="crop">${esc(e.crop)}</div></div>
@@ -232,8 +233,37 @@ function card(e, i){
     <div class="chips">
       <span class="chip" style="background:${p.bg};color:${p.fg}"><i class="dot" style="background:${p.dot}"></i>${p.label}</span>
       <span class="chip" style="background:${v.bg};color:${v.fg}"><i class="dot" style="background:${v.dot}"></i>${v.label} ${esc((e.verification||{}).genes_resolved||'')}</span>
-      ${showLvl ? `<span class="chip" style="background:var(--fill);color:var(--txt2)">${esc(lvl)}</span>` : ''}
+      ${lvl ? `<span class="chip" style="background:var(--fill);color:var(--txt2)">${esc(lvl)}</span>` : ''}
     </div></div>`;
+}
+
+/* ---------- derived evidence level ----------
+   The level is computed from what the pipeline could verify. Where the draft
+   claimed something different, both are shown: a demotion is a finding, not a
+   detail to bury. */
+function evidence(e){
+  const ev = e.evidence || {};
+  if (!ev.derived_level) return '';
+  const dis = ev.disagrees_with_draft;
+  return `<h3>Evidence level</h3>
+    <dl class="kv"><dt>Derived</dt><dd><b>${esc(ev.derived_level)}</b> — ${esc(ev.basis || '')}</dd>
+    ${ev.draft_claimed ? `<dt>Draft claimed</dt><dd>${esc(ev.draft_claimed)}</dd>` : ''}</dl>
+    ${dis ? `<p class="note warn">${esc(dis)}</p>` : ''}`;
+}
+
+/* ---------- curated correction ---------- */
+function correction(e){
+  const c = e.correction;
+  if (!c) return '';
+  const pin = c.pinned_ids ? Object.entries(c.pinned_ids).map(([k, v]) =>
+    `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('') : '';
+  const un = (c.unpinned || []).map(x => `<li>${esc(x)}</li>`).join('');
+  return `<h3>Curated decision</h3>
+    <p class="note">${esc(c.decision || '')} <span style="color:var(--txt3)">— ${esc(c.decided_by || '')}</span></p>
+    ${c.rationale ? `<p class="note flat" style="font-size:13px">${esc(c.rationale)}</p>` : ''}
+    ${pin ? `<dl class="kv">${pin}</dl>` : ''}
+    ${un ? `<p class="note warn">Not pinned to a named gene:<ul style="margin:6px 0 0 16px">${un}</ul></p>` : ''}
+    ${c.superseded ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">Superseded: ${esc(c.superseded.gene)} — ${esc(c.superseded.why)}</p>` : ''}`;
 }
 
 /* ---------- supplied references ----------
@@ -323,11 +353,13 @@ function sheet(e){
       <span class="chip" style="background:${v.bg};color:${v.fg}"><i class="dot" style="background:${v.dot}"></i>${v.label}</span>
     </div>
     <p class="note">${v.says}${ver.genes_resolved ? ` Genes resolved: ${esc(ver.genes_resolved)}.` : ''}</p>
+    ${evidence(e)}
     ${(ver.notes || []).length ? `<p class="note warn">${(ver.notes || []).map(esc).join('<br>')}</p>` : ''}
 
     <h3>Genes and sources</h3>
     <ul class="glist">${genes || '<li class="gmeta">No gene symbols parsed.</li>'}</ul>
     ${curated(ver)}
+    ${correction(e)}
 
     ${kv ? `<h3>What it does</h3><dl class="kv">${kv}</dl>` : ''}
     ${locusTxt ? `<h3>Locus IDs</h3><dl class="kv">${locusTxt}</dl>` : ''}
@@ -359,11 +391,12 @@ function isFrontier(e){
 }
 function apply(){
   const crop = el('f-crop').value, cat = el('f-cat').value,
-        port = el('f-port').value, ver = el('f-ver').value;
+        port = el('f-port').value, ver = el('f-ver').value, lvl = el('f-lvl').value;
   FILTERED = ATLAS.entries.filter(e => !isFrontier(e))
     .filter(e => (!crop || e.crop === crop) && (!cat || e.category === cat) &&
                  (!port || e.portability === port) &&
-                 (!ver || (e.verification || {}).status === ver))
+                 (!ver || (e.verification || {}).status === ver) &&
+                 (!lvl || (e.evidence || {}).derived_level === lvl))
     .sort((a, b) => {
       const r = {verified:0, partial:1, conflicted:2, unverified:3};
       const d = (r[(a.verification||{}).status] ?? 9) - (r[(b.verification||{}).status] ?? 9);
@@ -417,6 +450,7 @@ function frontiers(){
 function method(){
   const s = ATLAS.stats || {}, sc = ATLAS._schema || {};
   el('method-text').textContent = sc.principle || '';
+  const mr = el('method-rule'); if (mr) mr.textContent = sc.level_derivation || '';
   el('method-stats').innerHTML = [
     ['Entries', s.total_entries], ['Verified', s.verified], ['Partly verified', s.partial],
     ['Unverified', s.unverified], ['Genes with accession', s.genes_with_accession],
@@ -433,7 +467,9 @@ fetch('data/atlas_v3.json', {cache:'no-cache'})
     fill(el('f-port'), Object.entries(PORT).map(([k, p]) => [k, p.label]), 'Any route');
     fill(el('f-ver'), [['verified','Verified only'],['partial','Partly verified'],
                        ['unverified','Unverified']], 'Any status');
-    ['f-crop','f-cat','f-port','f-ver'].forEach(i => el(i).onchange = apply);
+    fill(el('f-lvl'), [...new Set(d.entries.map(x => (x.evidence||{}).derived_level).filter(Boolean))]
+           .sort().map(l => [l, l]), 'Any level');
+    ['f-crop','f-cat','f-port','f-ver','f-lvl'].forEach(i => el(i).onchange = apply);
     el('asof').textContent = d.stats && d.stats.last_verified ? 'checked ' + d.stats.last_verified : '';
     apply(); frontiers(); method();
   })

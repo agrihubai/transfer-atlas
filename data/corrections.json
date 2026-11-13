@@ -1,0 +1,80 @@
+{
+  "_about": {
+    "purpose": "Curated decisions applied on top of the original draft (data/atlas_v2.json), which is kept untouched for provenance.",
+    "rule": "Every correction records who decided it, why, and where the replacement came from. Gene symbols introduced here are resolved by the pipeline like any other — a correction is an instruction, never a verification.",
+    "pinning_note": "Where a gene family could not be pinned to a named ortholog in the stated crop, it is listed in unpinned[] rather than replaced by a guess."
+  },
+  "entries": {
+    "EGG-PRICKLE-01": {
+      "decided_by": "maintainer, 2026-11-13",
+      "decision": "Replace the draft's SmMYB candidates with SmLOG1 as the gene, keeping SmMYB recorded as a superseded candidate.",
+      "rationale": "PMID 38974191 fine-mapped the PE locus on chromosome 6 to a 9233 bp interval holding one candidate, SmLOG1, a LONELY GUY family cytokinin biosynthetic enzyme, and CRISPR-Cas9 knockout of it abolished prickles in all tissues. The draft's SmMYB candidates are a different gene and that paper does not support them.",
+      "set": {
+        "gene": "SmLOG1",
+        "gene_function": "LONELY GUY (LOG) family cytokinin biosynthetic enzyme; expressed mainly in immature prickles.",
+        "editing_possibility": "Promoter editing, or marker-assisted selection on the CAPS marker at -735 bp: the causal variation reported is non-coding, so a coding knockout is not the route the natural prickleless allele uses.",
+        "trait_inheritance": "Single dominant nuclear gene (PE locus, chromosome 6)",
+        "recommended_strategy": "Promoter editing or marker-assisted selection"
+      },
+      "superseded": {
+        "gene": "SmMYB_candidates",
+        "why": "Not supported by PMID 38974191. Kept here so the earlier hypothesis is not silently erased; if another source supports an SmMYB role, it can return as its own entry."
+      }
+    },
+    "GAP-COMB-01": {
+      "decided_by": "maintainer, 2026-11-13",
+      "decision": "Pin the gene families to named tomato orthologs so the entry stops naming families as if they were targets. Tomato chosen as the reference crop because it is the best annotated of the three the draft listed.",
+      "rationale": "Symbols resolved by querying NCBI Gene for Solanum lycopersicum.",
+      "set": {
+        "gene": "SOS1, SOS2, NHX1, DREB2, HsfA2",
+        "crop": "Tomato",
+        "scientific_name": "Solanum lycopersicum"
+      },
+      "pinned_ids": {
+        "SOS1": "NCBI 778208 (plasmalemma Na+/H+ antiporter)",
+        "SOS2": "NCBI 778340 (calcineurin B-like interacting protein kinase)",
+        "NHX1": "NCBI 543771 (Na+/H+ antiporter)",
+        "DREB2": "NCBI 544235 (dehydration responsive element binding protein)",
+        "HsfA2": "NCBI 101255223 (heat stress transcription factor HsfA2)"
+      },
+      "unpinned": [
+        "HKT1;2 — no gene of that name is annotated for Solanum lycopersicum in NCBI Gene. The draft's HKT1;2 claim most likely refers to SlHKT1;2 from the S. pennellii introgression literature, which is a different (cisgenic) route and should become its own entry rather than part of this network."
+      ]
+    },
+    "GAP-REPRO-01": {
+      "decided_by": "maintainer, 2026-11-13",
+      "decision": "Pin to named tomato orthologs; keep the unpinnable part explicit.",
+      "rationale": "Symbols resolved by querying NCBI Gene for Solanum lycopersicum.",
+      "set": {
+        "gene": "HsfA2, HSP70, APX1",
+        "crop": "Tomato",
+        "scientific_name": "Solanum lycopersicum"
+      },
+      "pinned_ids": {
+        "HsfA2": "NCBI 101255223 (heat stress transcription factor HsfA2)",
+        "HSP70": "NCBI 100134914 (heat shock protein 70)",
+        "APX1": "NCBI 778223 (cytosolic ascorbate peroxidase 1)"
+      },
+      "unpinned": [
+        "ROS scavengers — a functional class, not a gene; APX1 above is one member and stands for itself.",
+        "MADS-box regulators — too generic to pin; needs a specific gene before it can be an entry."
+      ]
+    },
+    "GAP-RECOV-01": {
+      "decided_by": "maintainer, 2026-11-13",
+      "decision": "Pin what resolves; leave the rest as an open research question rather than an entry.",
+      "rationale": "Symbols resolved by querying NCBI Gene for Solanum lycopersicum.",
+      "set": {
+        "gene": "CYP707A1",
+        "crop": "Tomato",
+        "scientific_name": "Solanum lycopersicum"
+      },
+      "pinned_ids": {
+        "CYP707A1": "NCBI 100136887 (abscisic acid 8'-hydroxylase CYP707A1)"
+      },
+      "unpinned": [
+        "WOX, PLT (PLETHORA), LBD, DRO1 — none are annotated under those names for Solanum lycopersicum in NCBI Gene. Root-architecture work in tomato uses different symbols; until one is named, post-stress root recovery stays a research question, not an atlas target."
+      ]
+    }
+  }
+}

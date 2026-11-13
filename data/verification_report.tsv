@@ -51,8 +51,7 @@ WAT-BRIX-01	Watermelon	ClLCYB							unverified
 EGG-BROWN-01	Eggplant	SmPPO4							unverified
 EGG-BROWN-01	Eggplant	SmPPO5							unverified
 EGG-BROWN-01	Eggplant	SmPPO6 (PPO				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
-EGG-PRICKLE-01	Eggplant	SmMYB							unverified
-EGG-PRICKLE-01	Eggplant	LOG-related prickle loci							unverified
+EGG-PRICKLE-01	Eggplant	SmLOG1							unverified
 LET-BOLT-01	Lettuce	LsFT	111907824	LOC111907824		29403510	10.3389/fpls.2017.02248	author+year+gene	verified
 LET-BOLT-01	Lettuce	LsCO				41793314	10.1111/pbi.70630	gene+trait topic search	partial
 LET-BOLT-01	Lettuce	LsRGL1							unverified
@@ -75,20 +74,12 @@ CAR-COLOR-01	Carrot	DcLCYB1	108193045	LOC108193045					partial
 ONI-TEAR-01	Onion	AcLFS							unverified
 ONI-TEAR-01	Onion	AcACS1							unverified
 ONI-TEAR-01	Onion	AcACS2							unverified
-GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	SOS1							unverified
-GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	NHX							unverified
-GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	HKT1							unverified
-GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	DREB2A							unverified
-GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	HsfA2							unverified
-GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	HsfA2							unverified
-GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	HSP70							unverified
-GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	ROS scavengers							unverified
-GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	APX							unverified
-GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	MADS-box regulators							unverified
-GAP-RECOV-01	Multi-Crop (All Vegetables)	WOX				41695523	10.3389/fpls.2025.1747710	gene+trait topic search	partial
-GAP-RECOV-01	Multi-Crop (All Vegetables)	PLT				42540664	10.5114/aoms/208999	gene+trait topic search	partial
-GAP-RECOV-01	Multi-Crop (All Vegetables)	PLETHORA				42266637	10.1055/s-0045-1813660	gene+trait topic search	partial
-GAP-RECOV-01	Multi-Crop (All Vegetables)	LBD				41788840	10.3168/jdsc.2025-0887	gene+trait topic search	partial
-GAP-RECOV-01	Multi-Crop (All Vegetables)	DRO1				40851219	10.1002/tpg2.70100	gene+trait topic search	partial
-GAP-RECOV-01	Multi-Crop (All Vegetables)	ABA catabolism				41624417	10.1093/hr/uhaf250	gene+trait topic search	partial
-GAP-RECOV-01	Multi-Crop (All Vegetables)	CYP707A				42152181	10.1071/FP25173	gene+trait topic search	partial
+GAP-COMB-01	Tomato	SOS1	778208	sos1					partial
+GAP-COMB-01	Tomato	SOS2	778340	SOS2					partial
+GAP-COMB-01	Tomato	NHX1	543771	NHX1					partial
+GAP-COMB-01	Tomato	DREB2	544235	DREB2					partial
+GAP-COMB-01	Tomato	HsfA2	101255223	LOC101255223					partial
+GAP-REPRO-01	Tomato	HsfA2	101255223	LOC101255223					partial
+GAP-REPRO-01	Tomato	HSP70	100134914	HSP70					partial
+GAP-REPRO-01	Tomato	APX1	778223	APX1					partial
+GAP-RECOV-01	Tomato	CYP707A1	100136887	CYP707A1		41253153	10.1016/j.cub.2025.10.037	gene+trait topic search	partial
