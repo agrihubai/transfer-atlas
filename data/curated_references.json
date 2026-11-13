@@ -10,8 +10,8 @@
         "pmid": "35706371",
         "doi": "10.1111/mpp.13227",
         "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
-        "supports": "Knockout of tomato TOM genes gives differential tobamovirus resistance.",
-        "does_not_support": "The draft writes SlTOM1a; the paper's title names SlTOM1. The nomenclature must be reconciled before either symbol is presented as validated. The claimed locus Solyc02g080370 is not shown to map to either symbol."
+        "supports": "CRISPR/Cas9 knockout of SlTOM1a and SlTOM3 (sltom1a/sltom3) makes tomato asymptomatic to ToBRFV, with 516-fold lower viral RNA and 25-fold lower coat protein than wild type at 12 days post-inoculation. The abstract uses SlTOM1a, SlTOM1b and SlTOM3, so the draft's SlTOM1a is the paper's own symbol — the title's 'SlTOM1' is the generic form.",
+        "does_not_support": "The claimed locus Solyc01g105140 is not shown to map to either symbol. The same paper reports that sltom1a/sltom3 plants remain susceptible to another tobamovirus, so the resistance is virus-specific and must not be presented as broad tobamovirus resistance."
       }
     ],
     "EGG-PRICKLE-01": [
@@ -19,8 +19,8 @@
         "pmid": "38974191",
         "doi": "10.1093/hr/uhae134",
         "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
-        "supports": "A cytokinin-activating enzyme controls prickle formation in eggplant, shown by CRISPR knockout.",
-        "does_not_support": "The paper's gene symbol is PE (Prickly Eggplant). The suggestion called it SmLOG1; a LOG-family assignment is consistent with a cytokinin-activating enzyme but the symbol SmLOG1 is not confirmed here. The draft's SmMYB candidates are a different gene and are not supported by this paper."
+        "supports": "Prickle formation in eggplant is governed by a single dominant gene at the PE (Prickly Eggplant) locus on chromosome 6, fine-mapped to a 9233 bp interval holding one candidate: SmLOG1, a LONELY GUY (LOG)-family cytokinin biosynthetic enzyme expressed mainly in immature prickles. CRISPR-Cas9 knockout of SmLOG1 abolished prickles in all tissues. So SmLOG1 is the paper's own symbol and PE is the locus name, not a competing symbol.",
+        "does_not_support": "The draft's SmMYB candidates are a different gene and are not supported by this paper. Note also that the causal sequence variation reported here lies only in the non-coding region, with a CAPS marker from a SNP at -735 bp in the SmLOG1 promoter — so the route is promoter editing or marker-assisted selection, not a coding knockout of the natural allele."
       }
     ],
     "TOM-VITD-01": [
