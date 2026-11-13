@@ -200,7 +200,7 @@ def _gene_search(term: str) -> list[str]:
     return res.get("esearchresult", {}).get("idlist", []) or []
 
 
-def ncbi_gene(symbol: str, species: str) -> dict:
+def ncbi_gene(symbol: str, species: str, aliases: list[str] | None = None) -> dict:
     """Look a gene symbol up in NCBI Gene, constrained to one organism.
 
     Literature symbols carry a species prefix that NCBI does not use, so the
@@ -209,7 +209,7 @@ def ncbi_gene(symbol: str, species: str) -> dict:
     filters out unrelated genes that happen to share an alias.
     """
     queries, ids = [], []
-    for sym in [symbol, strip_prefix(symbol)]:
+    for sym in [symbol, strip_prefix(symbol), *(aliases or [])]:
         if not sym:
             continue
         term = f'{sym}[Gene Name] AND "{species}"[Organism]'
@@ -223,7 +223,8 @@ def ncbi_gene(symbol: str, species: str) -> dict:
     url = f"{EUTILS}/esummary.fcgi?db=gene&retmode=json&id={','.join(ids[:10])}{eutils_key()}"
     summ = fetch_json(url)
     hits = []
-    wanted = {symbol.lower(), strip_prefix(symbol).lower()} - {""}
+    wanted = ({symbol.lower(), strip_prefix(symbol).lower()}
+              | {a.lower() for a in (aliases or [])}) - {""}
     if isinstance(summ, dict):
         for gid in ids[:10]:
             rec = summ.get("result", {}).get(gid)
@@ -259,6 +260,64 @@ def ncbi_gene(symbol: str, species: str) -> dict:
     return {"found": bool(hits), "queries": queries, "hits": hits}
 
 
+def locus_genbank(locus: str, species: str) -> dict:
+    """For a locus tag that NCBI holds in a sequence record, read what the record says.
+
+    Plant genes absent from NCBI Gene are still identifiable this way: a GenBank
+    record whose /locus_tag is the tag, carrying /product and /protein_id, anchors
+    the identity as well as a Gene record does.
+    """
+    term = f'{locus} AND "{species}"[Organism]' if species else locus
+    url = (f"{EUTILS}/esearch.fcgi?db=nuccore&retmode=json&retmax=2"
+           f"&term={urllib.parse.quote(term)}{eutils_key()}")
+    res = fetch_json(url)
+    ids = ((res or {}).get("esearchresult", {}) or {}).get("idlist", []) if isinstance(res, dict) else []
+    if not ids:
+        return {}
+    gb = fetch(f"{EUTILS}/efetch.fcgi?db=nuccore&id={ids[0]}&rettype=gb&retmode=text"
+               f"{eutils_key()}")
+    if not gb or locus not in gb:
+        return {}
+    def grab(key):
+        m = re.search(r'/' + key + r'="([^"]+)"', gb)
+        return m.group(1) if m else ""
+    acc = re.search(r"^ACCESSION\s+(\S+)", gb, re.M)
+    if grab("locus_tag") != locus:
+        return {}
+    return {"accession": acc.group(1) if acc else "", "product": grab("product"),
+            "protein_id": grab("protein_id")}
+
+
+def genbank_accession(acc: str, species: str) -> dict:
+    """Confirm a GenBank accession pinned to a gene: organism, gene name, product.
+
+    Used where neither NCBI Gene nor a locus tag resolves the symbol. A wrong
+    accession fails here instead of being trusted: the organism must match.
+    """
+    if not acc:
+        return {}
+    summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=nuccore&retmode=json"
+                      f"&id={urllib.parse.quote(acc)}{eutils_key()}")
+    rec = None
+    if isinstance(summ, dict):
+        for k in (summ.get("result", {}) or {}).get("uids", []) or []:
+            rec = summ["result"].get(k)
+    if not isinstance(rec, dict) or not rec.get("title"):
+        return {"error": f"accession {acc} did not resolve"}
+    org = (rec.get("organism") or "")
+    title = rec.get("title", "")
+    if species and species.split()[0].lower() not in (org + " " + title).lower():
+        return {"error": f"accession {acc} is {org or title[:40]}, not {species}"}
+    gb = fetch(f"{EUTILS}/efetch.fcgi?db=nuccore&id={urllib.parse.quote(acc)}"
+               f"&rettype=gb&retmode=text{eutils_key()}") or ""
+    def grab(key):
+        m = re.search(r'/' + key + r'="([^"]+)"', gb)
+        return m.group(1) if m else ""
+    return {"accession": rec.get("accessionversion", acc), "title": title,
+            "gene": grab("gene"), "product": grab("product"),
+            "protein_id": grab("protein_id")}
+
+
 def check_locus_id(locus_field: str, species: str) -> dict:
     """Try to confirm a claimed locus ID (Solyc01g005000, Csa5G623470, …).
 
@@ -288,9 +347,11 @@ def check_locus_id(locus_field: str, species: str) -> dict:
         res = fetch_json(url)
         sr = (res or {}).get("esearchresult", {}) if isinstance(res, dict) else {}
         count = int(sr.get("count", "0") or 0)
+        gb = locus_genbank(locus, species) if count else {}
         results.append({
             "locus": locus,
             "query": term,
+            "genbank_identity": gb or None,
             "ncbi_records_in_species": count,
             "state": "confirmed_in_species" if count else "not_checkable_here",
             "status": (f"appears in {count} NCBI sequence record(s) for {species}"
@@ -496,7 +557,27 @@ def verify(only: str | None = None) -> dict:
 
         for g in e["genes"]:
             sym = g["symbol"]
-            ncbi = ncbi_gene(sym, species) if species else {"found": False, "reason": "no species"}
+            corr = e.get("correction") or {}
+            al = corr.get("search_aliases", {}).get(sym, [])
+            ncbi = (ncbi_gene(sym, species, al) if species
+                    else {"found": False, "reason": "no species"})
+            # Identity can also come from a GenBank record carrying the locus tag,
+            # which is how plant genes absent from NCBI Gene are pinned down.
+            gb_id = {}
+            mapped = corr.get("gene_locus", {}).get(sym, "")
+            if not ncbi.get("found") and mapped:
+                gb_id = locus_genbank(mapped, species)
+                if gb_id:
+                    gb_id["locus"] = mapped
+            acc = corr.get("gene_accession", {}).get(sym, "")
+            if not ncbi.get("found") and not gb_id and acc:
+                got = genbank_accession(acc, species)
+                if got.get("error"):
+                    notes.append(f"{sym}: {got['error']}")
+                elif got:
+                    gb_id = got
+            if gb_id and not gb_id.get("error"):
+                gene_ids.append(f"GenBank:{gb_id.get('accession','')}")
             ncbi_id = official = pmid = doi = mtype = ""
             if ncbi.get("found"):
                 h = ncbi["hits"][0]
@@ -504,7 +585,8 @@ def verify(only: str | None = None) -> dict:
                 gene_ids.append(f"NCBI:{ncbi_id}")
             ref = pubmed_reference(sym, author, year, trait)
 
-            g["verification"] = {"ncbi_gene": ncbi, "pubmed": ref, "checked_on": today}
+            g["verification"] = {"ncbi_gene": ncbi, "genbank_locus": gb_id or None,
+                                 "pubmed": ref, "checked_on": today}
 
             if ref.get("found"):
                 h = ref["hits"][0]
@@ -513,7 +595,7 @@ def verify(only: str | None = None) -> dict:
                 if doi:
                     dois.append(doi)
 
-            gene_ok = bool(ncbi_id)
+            gene_ok = bool(ncbi_id or gb_id)
             ref_ok = bool(pmid) and mtype == "author+year+gene"
             status = ("verified" if gene_ok and ref_ok else
                       "partial" if gene_ok or pmid else "unverified")
@@ -542,7 +624,8 @@ def verify(only: str | None = None) -> dict:
 
         n_genes = len(e["genes"])
         n_gene_ok = sum(1 for g in e["genes"]
-                        if (g.get("verification") or {}).get("ncbi_gene", {}).get("found"))
+                        if ((g.get("verification") or {}).get("ncbi_gene", {}).get("found")
+                            or (g.get("verification") or {}).get("genbank_locus")))
         # "verified" requires every named gene to resolve, not just one of them —
         # otherwise an entry listing five genes passes on the strength of one.
         # A curated reference confirmed in PubMed counts as a real reference, but it
@@ -692,7 +775,8 @@ def derive_level(entry: dict) -> dict:
     genes = entry.get("genes") or []
     n = len(genes)
     ok = sum(1 for g in genes
-             if ((g.get("verification") or {}).get("ncbi_gene") or {}).get("found"))
+             if (((g.get("verification") or {}).get("ncbi_gene") or {}).get("found")
+                 or (g.get("verification") or {}).get("genbank_locus")))
     ver = entry.get("verification") or {}
     # Only confirmed references count. A topic-search PMID is not evidence for the
     # cited claim, so it must not raise the level.

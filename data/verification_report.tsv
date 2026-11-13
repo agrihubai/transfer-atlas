@@ -1,10 +1,10 @@
 entry_id	crop	gene	ncbi_gene_id	official_symbol	locus_ids_exist	pmid	doi	match_type	status
 TOM-GABA-01	Tomato	SlGAD3	100147723	GAD3		28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
 TOM-GABA-01	Tomato	SlGAD2	544002	gad2		28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
-TOM-VITD-01	Tomato	Sl7-DR2							unverified
-TOM-TOBRFV-01	Tomato	SlTOM1a							unverified
-TOM-TOBRFV-01	Tomato	SlTOM3							unverified
-TOM-TYLCV-01	Tomato	SlPelo							unverified
+TOM-VITD-01	Tomato	Sl7-DR2	101256596	DWF5-2					partial
+TOM-TOBRFV-01	Tomato	SlTOM1a	778361	TH3					partial
+TOM-TOBRFV-01	Tomato	SlTOM3	778313	TH1					partial
+TOM-TYLCV-01	Tomato	SlPelo	101251671	PELOTA					partial
 TOM-MILDEW-01	Tomato	SlMlo1	778228	MLO1		35173386	10.6026/97320630017637	gene+trait topic search	partial
 TOM-BROAD-01	Tomato	SlDMR6-1	100736526	DMR6-1		34215692	10.1073/pnas.2026152118	author+year+gene	verified
 TOM-DWARF-01	Tomato	SlER				31873217	10.1038/s41587-019-0361-2	author+year+gene	partial
@@ -26,13 +26,11 @@ PEP-PUNG-01	Pepper	AT3	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005
 PEP-PAMT-01	Pepper	pAMT	107854420	LOC107854420		19473323	10.1111/j.1365-313X.2009.03921.x	author+year+gene	verified
 PEP-VIRUS-01	Pepper	eIF4E1	107868427	LOC107868427		42374852	10.1111/mpp.70305	gene+trait topic search	partial
 PEP-VIRUS-01	Pepper	eIFiso4E	107853558	LOC107853558		42239849	10.3389/fpls.2026.1799408	gene+trait topic search	partial
-PEP-MILDEW-01	Pepper	CaMLO2 (CaMLO							unverified
-CUC-BITTER-01	Cucumber	Bt			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	partial
-CUC-BITTER-01	Cucumber	CsBt			Csa5G157230;Csa5G156220;Csa6G088690				unverified
-CUC-BITTER-01	Cucumber	Bl			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	partial
-CUC-BITTER-01	Cucumber	CsBl			Csa5G157230;Csa5G156220;Csa6G088690				unverified
-CUC-BITTER-01	Cucumber	Bi			Csa5G157230;Csa5G156220;Csa6G088690	25307789	10.1111/ane.12300	author+year+gene	partial
-CUC-BITTER-01	Cucumber	CsBi			Csa5G157230;Csa5G156220;Csa6G088690				unverified
+PEP-MILDEW-01	Pepper	CaMlo2	107871340	LOC107871340		23923019	10.1371/journal.pone.0070723	author+year+gene	verified
+PEP-MILDEW-01	Pepper	CaMlo1	107848305	LOC107848305		23923019	10.1371/journal.pone.0070723	author+year+gene	verified
+CUC-BITTER-01	Cucumber	Bt			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	verified
+CUC-BITTER-01	Cucumber	Bl			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	verified
+CUC-BITTER-01	Cucumber	Bi			Csa5G157230;Csa5G156220;Csa6G088690	25307789	10.1111/ane.12300	author+year+gene	verified
 CUC-MILDEW-01	Cucumber	CsMLO1				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
 CUC-MILDEW-01	Cucumber	CsMLO8				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
 CUC-MILDEW-01	Cucumber	CsMLO11							unverified
@@ -45,9 +43,7 @@ MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295					partial
 MEL-SHELF-01	Melon	CmNAC-NOR							unverified
 WAT-SEED-01	Watermelon	ClAGL11							unverified
 WAT-SEED-01	Watermelon	ClWIP1 for gynoecy							unverified
-WAT-BRIX-01	Watermelon	ClTST2				29118248	10.1104/pp.17.01290	author+year+gene	partial
-WAT-BRIX-01	Watermelon	ClSWEET3				33570606	10.1093/plcell/koab055	gene+trait topic search	partial
-WAT-BRIX-01	Watermelon	ClLCYB							unverified
+WAT-BRIX-01	Watermelon	ClTST2				29118248	10.1104/pp.17.01290	author+year+gene	verified
 EGG-BROWN-01	Eggplant	SmPPO4							unverified
 EGG-BROWN-01	Eggplant	SmPPO5							unverified
 EGG-BROWN-01	Eggplant	SmPPO6 (PPO				33343607	10.3389/fpls.2020.607161	author+year+gene	partial

@@ -45,12 +45,12 @@
   },
   "stats": {
     "total_entries": 31,
-    "verified": 5,
-    "partial": 25,
+    "verified": 11,
+    "partial": 19,
     "unverified": 1,
     "conflicted": 0,
     "last_verified": "2026-11-13",
-    "genes_with_accession": 37
+    "genes_with_accession": 43
   },
   "entries": [
     {
@@ -94,6 +94,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Nonaka[Author] AND 2017[dp] AND SlGAD3[tiab]",
@@ -156,6 +157,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Nonaka[Author] AND 2017[dp] AND SlGAD2[tiab]",
@@ -223,6 +225,7 @@
           {
             "locus": "Solyc01g005000",
             "query": "Solyc01g005000 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -230,6 +233,7 @@
           {
             "locus": "Solyc11g011920",
             "query": "Solyc11g011920 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -257,17 +261,34 @@
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
                 "Sl7-DR2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "7-DR2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "DWF5-2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
                 "7-DR2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101256596",
+                  "official_symbol": "DWF5-2",
+                  "description": "7-dehydrocholesterol reductase",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "6",
+                  "coordinates": "NC_090805.1:48282857-48288797",
+                  "match": "official symbol"
+                }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "Sl7-DR2[tiab] AND Provitamin D3[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001366114.1",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -291,8 +312,8 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/1",
+        "status": "verified",
+        "genes_resolved": "1/1",
         "curated_references": [
           {
             "pmid": "35606499",
@@ -309,7 +330,9 @@
         ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:101256596"
+        ],
         "pmids": [
           "35606499"
         ],
@@ -320,7 +343,17 @@
           "locus ID(s) Solyc06g074090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Keep Sl7-DR2 as the literature symbol and search NCBI under DWF5-2, the symbol it indexes.",
+        "rationale": "The suggestion's NCBI id LOC101268773 is wrong: that record is 'protein YIP4b-like' on chromosome 7 and has nothing to do with sterols. The tomato 7-dehydrocholesterol reductase in NCBI Gene is DWF5-2 (101256596) on chromosome 6, which agrees with the claimed locus Solyc06g074090 being a chromosome-6 tag. A second 7-DHC reductase exists on chromosome 1 (LOC101248602), so the chromosome match is corroboration, not proof: confirm against the paper before calling it settled.",
+        "search_aliases": {
+          "Sl7-DR2": [
+            "DWF5-2",
+            "7-DR2"
+          ]
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -328,6 +361,7 @@
           {
             "locus": "Solyc06g074090",
             "query": "Solyc06g074090 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -335,11 +369,10 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -355,17 +388,34 @@
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
                 "SlTOM1a[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
-                "TOM1a[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+                "TOM1a[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "LeTH3[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "TH3[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "778361",
+                  "official_symbol": "TH3",
+                  "description": "tobamovirus multiplication 1 homolog 3",
+                  "other_aliases": "LeTH3",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "2",
+                  "coordinates": "NC_090801.1:60796607-60803928",
+                  "match": "official symbol"
+                }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlTOM1a[tiab] AND ToBRFV resistance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_010317583.4",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         },
         {
@@ -373,17 +423,34 @@
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
                 "SlTOM3[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
-                "TOM3[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+                "TOM3[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "LeTH1[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "TH1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "778313",
+                  "official_symbol": "TH1",
+                  "description": "tobamovirus multiplication 1 homolog",
+                  "other_aliases": "LeTH1",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "4",
+                  "coordinates": "NC_090803.1:2755632-2748596",
+                  "match": "official symbol"
+                }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlTOM3[tiab] AND ToBRFV resistance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001247167.2",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -407,8 +474,8 @@
         "gene_action": "Loss of function (double/multiple knockout)"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/2",
+        "status": "verified",
+        "genes_resolved": "2/2",
         "curated_references": [
           {
             "pmid": "35706371",
@@ -425,7 +492,10 @@
         ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:778313",
+          "NCBI:778361"
+        ],
         "pmids": [
           "35706371"
         ],
@@ -436,7 +506,21 @@
           "locus ID(s) Solyc02g080370, Solyc01g105140 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Search the TOM genes under the older GenBank symbols NCBI indexes: LeTH3/TH3 and LeTH1/TH1.",
+        "rationale": "Confirmed in NCBI: TH3 (778361, alias LeTH3) is 'tobamovirus multiplication 1 homolog 3' on chromosome 2, and TH1 (778313, alias LeTH1) is 'tobamovirus multiplication 1 homolog' on chromosome 4. Both RefSeq proteins given in the suggestion check out: NP_001234306.1 is homolog 3 and NP_001234096.1 is homolog. The chromosomes agree with the suggested loci (SlTOM1a = Solyc02g080370 on chr2, SlTOM3 = Solyc04g008540 on chr4), which means the NCBI names run opposite to the paper's: the gene the paper calls SlTOM1a is indexed as homolog 3. Anyone editing these must key on the locus tag, not the number in the symbol.",
+        "search_aliases": {
+          "SlTOM1a": [
+            "LeTH3",
+            "TH3"
+          ],
+          "SlTOM3": [
+            "LeTH1",
+            "TH1"
+          ]
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -444,6 +528,7 @@
           {
             "locus": "Solyc02g080370",
             "query": "Solyc02g080370 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -451,6 +536,7 @@
           {
             "locus": "Solyc01g105140",
             "query": "Solyc01g105140 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -458,11 +544,10 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 2 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -478,17 +563,34 @@
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
                 "SlPelo[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
-                "Pelo[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+                "Pelo[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "PELOTA[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "Pelota[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101251671",
+                  "official_symbol": "PELOTA",
+                  "description": "protein pelota homolog",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "4",
+                  "coordinates": "NC_090803.1:3702268-3694529",
+                  "match": "official symbol"
+                }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlPelo[tiab] AND TYLCV resistance[tiab]"
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "NM_001279230.1",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -512,15 +614,15 @@
         "gene_action": "Loss of function / Recessive natural allele"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/1",
+        "status": "verified",
+        "genes_resolved": "1/1",
         "curated_references": [
           {
             "pmid": "26448569",
             "doi": "10.1371/journal.pgen.1005538",
             "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
             "supports": "The mRNA surveillance factor Pelota underlies begomovirus (TYLCV) resistance at the ty-5 locus.",
-            "does_not_support": "The symbol SlPelo has no NCBI Gene record for Solanum lycopersicum.",
+            "does_not_support": "The symbol SlPelo is not what NCBI indexes; the record is PELOTA (101251671). Note the paper is in PLoS Genetics — a suggestion that named Plant Cell was wrong about the journal.",
             "pipeline_check": "confirmed in PubMed",
             "pubmed_title": "A Novel Route Controlling Begomovirus Resistance by the Messenger RNA Surveillance Factor Pelota.",
             "pubmed_journal": "PLoS Genet",
@@ -542,7 +644,9 @@
         ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:101251671"
+        ],
         "pmids": [
           "26448569",
           "33668636"
@@ -555,7 +659,17 @@
           "locus ID(s) Solyc04g009810 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Search SlPelo under PELOTA, the symbol NCBI indexes.",
+        "rationale": "Confirmed: NCBI Gene 101251671 is PELOTA, 'protein pelota homolog', chromosome 4 of Solanum lycopersicum, and NM_001279230.1 is its mRNA — both exactly as suggested. Chromosome 4 agrees with the suggested locus Solyc04g009810. One correction to the suggestion: the paper is in PLoS Genetics, not Plant Cell; first author Lapidot M, 2015, as claimed.",
+        "search_aliases": {
+          "SlPelo": [
+            "PELOTA",
+            "Pelota"
+          ]
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -563,6 +677,7 @@
           {
             "locus": "Solyc04g009810",
             "query": "Solyc04g009810 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -570,11 +685,11 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -608,6 +723,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "SlMlo1[tiab] AND Powdery mildew resistance[tiab]",
@@ -703,6 +819,7 @@
           {
             "locus": "Solyc04g049090",
             "query": "Solyc04g049090 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -748,6 +865,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Thomazella[Author] AND 2021[dp] AND SlDMR6-1[tiab]",
@@ -814,6 +932,7 @@
           {
             "locus": "Solyc03g080190",
             "query": "Solyc03g080190 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -846,6 +965,7 @@
                 "ER[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Kwon[Author] AND 2020[dp] AND SlER[tiab]",
@@ -885,6 +1005,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Kwon[Author] AND 2020[dp] AND SP5G[tiab]",
@@ -926,6 +1047,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Kwon[Author] AND 2020[dp] AND SP[tiab]",
@@ -996,6 +1118,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlYABBY2b[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
@@ -1016,6 +1139,7 @@
                 "YTH2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlYTH2[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
@@ -1075,6 +1199,7 @@
           {
             "locus": "Solyc08g061560",
             "query": "Solyc08g061560 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1082,6 +1207,7 @@
           {
             "locus": "Solyc05g053850",
             "query": "Solyc05g053850 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1127,6 +1253,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Ueta[Author] AND 2017[dp] AND SlIAA9[tiab]",
@@ -1169,6 +1296,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "SlAGL6[tiab] AND Parthenocarpy[tiab]",
@@ -1232,6 +1360,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "SlARF8[tiab] AND Parthenocarpy[tiab]",
@@ -1328,6 +1457,7 @@
           {
             "locus": "Solyc04g076850",
             "query": "Solyc04g076850 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1335,6 +1465,7 @@
           {
             "locus": "Solyc01g093960",
             "query": "Solyc01g093960 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1378,6 +1509,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "FW2.2[tiab] AND Fruit size & pericarp thickness[tiab]"
@@ -1398,6 +1530,7 @@
                 "KIX8[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Swinnen[Author] AND 2022[dp] AND SlKIX8[tiab]",
@@ -1426,6 +1559,7 @@
                 "KIX9[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Swinnen[Author] AND 2022[dp] AND SlKIX9[tiab]",
@@ -1490,6 +1624,7 @@
           {
             "locus": "Solyc02g090730",
             "query": "Solyc02g090730 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1497,6 +1632,7 @@
           {
             "locus": "Solyc07g008100",
             "query": "Solyc07g008100 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1542,6 +1678,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlPL[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
@@ -1574,6 +1711,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlPG2a[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
@@ -1606,6 +1744,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SlCEL2[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
@@ -1661,6 +1800,7 @@
           {
             "locus": "Solyc03g111690",
             "query": "Solyc03g111690 AND \"Solanum lycopersicum\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -1705,6 +1845,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Stewart[Author] AND 2005[dp] AND Pun1[tiab]",
@@ -1746,6 +1887,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Stewart[Author] AND 2005[dp] AND AT3[tiab]",
@@ -1847,6 +1989,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Lang[Author] AND 2009[dp] AND pAMT[tiab]",
@@ -1946,6 +2089,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "eIF4E1[tiab] AND Potyvirus resistance[tiab]",
@@ -2015,6 +2159,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "eIFiso4E[tiab] AND Potyvirus resistance[tiab]",
@@ -2125,24 +2270,94 @@
       "scientific_name": "Capsicum annuum",
       "category": "Fungal Resistance",
       "trait": "Powdery mildew resistance (Leveillula taurica)",
-      "gene_label": "CaMLO2 (CaMLO family)",
+      "gene_label": "CaMlo2, CaMlo1",
       "genes": [
         {
-          "symbol": "CaMLO2 (CaMLO",
+          "symbol": "CaMlo2",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "CaMLO2 (CaMLO[Gene Name] AND \"Capsicum annuum\"[Organism]",
-                "MLO2 (CaMLO[Gene Name] AND \"Capsicum annuum\"[Organism]"
+                "CaMlo2[Gene Name] AND \"Capsicum annuum\"[Organism]",
+                "Mlo2[Gene Name] AND \"Capsicum annuum\"[Organism]",
+                "MLO2[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107871340",
+                  "official_symbol": "LOC107871340",
+                  "description": "MLO-like protein 12",
+                  "other_aliases": "MLO2",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "5",
+                  "coordinates": "NC_061115.1:218824592-218837318",
+                  "match": "listed as alias"
+                }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "CaMLO2 (CaMLO[tiab] AND Powdery mildew resistance[tiab]"
+              "found": true,
+              "query": "Zheng[Author] AND 2013[dp] AND CaMlo2[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "23923019",
+                  "title": "Loss of function in Mlo orthologs reduces susceptibility of pepper and tomato to powdery mildew disease caused by Leveillula taurica.",
+                  "journal": "PLoS One",
+                  "year": "2013",
+                  "doi": "10.1371/journal.pone.0070723"
+                }
+              ]
             },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_047412053.1",
+            "refseq_link_type": "gene_nuccore_refseqrna"
+          }
+        },
+        {
+          "symbol": "CaMlo1",
+          "claimed_gene_id": "",
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "CaMlo1[Gene Name] AND \"Capsicum annuum\"[Organism]",
+                "Mlo1[Gene Name] AND \"Capsicum annuum\"[Organism]",
+                "MLO1[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107848305",
+                  "official_symbol": "LOC107848305",
+                  "description": "MLO-like protein 6",
+                  "other_aliases": "MLO1",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "11",
+                  "coordinates": "NC_061121.1:233125491-233116294",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "genbank_locus": null,
+            "pubmed": {
+              "found": true,
+              "query": "Zheng[Author] AND 2013[dp] AND CaMlo1[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "23923019",
+                  "title": "Loss of function in Mlo orthologs reduces susceptibility of pepper and tomato to powdery mildew disease caused by Leveillula taurica.",
+                  "journal": "PLoS One",
+                  "year": "2013",
+                  "doi": "10.1371/journal.pone.0070723"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_047398670.1",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -2166,8 +2381,8 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/1",
+        "status": "verified",
+        "genes_resolved": "2/2",
         "curated_references": [
           {
             "pmid": "23923019",
@@ -2184,25 +2399,42 @@
         ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:107848305",
+          "NCBI:107871340"
+        ],
         "pmids": [
           "23923019"
         ],
         "dois": [
           "10.1371/journal.pone.0070723"
         ],
-        "notes": []
+        "notes": [
+          "CaMlo2: matched NCBI gene LOC107871340 (107871340) as listed as alias — confirm it is the same gene",
+          "CaMlo1: matched NCBI gene LOC107848305 (107848305) as listed as alias — confirm it is the same gene"
+        ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Fix the truncated gene string and search under the symbols NCBI indexes, MLO1 and MLO2.",
+        "rationale": "The draft's gene field read 'CaMLO2 (CaMLO family)', which the parser turned into a stray fragment. The paper (PLoS One 2013, first author Zheng Z, as claimed) tested CaMlo1 and CaMlo2 by VIGS. Confirmed in NCBI for Capsicum annuum: LOC107871340, 'MLO-like protein 12', alias MLO2; and LOC107848305, 'MLO-like protein 6', alias MLO1.",
+        "search_aliases": {
+          "CaMlo2": [
+            "MLO2"
+          ],
+          "CaMlo1": [
+            "MLO1"
+          ]
+        }
+      },
       "locus_check": {
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 2 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -2211,7 +2443,7 @@
       "scientific_name": "Cucumis sativus",
       "category": "Flavor & Tissue-Specific Metabolites",
       "trait": "Non-bitter fruit while retaining bitter-leaf defense",
-      "gene_label": "Bt (CsBt) vs. Bl (CsBl) vs. Bi (CsBi)",
+      "gene_label": "Bt, Bl, Bi",
       "genes": [
         {
           "symbol": "Bt",
@@ -2222,6 +2454,12 @@
               "queries": [
                 "Bt[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
+            },
+            "genbank_locus": {
+              "accession": "KM655852",
+              "product": "bHLH transcription factor",
+              "protein_id": "AIT72027.1",
+              "locus": "Csa5G157230"
             },
             "pubmed": {
               "found": true,
@@ -2241,24 +2479,6 @@
           }
         },
         {
-          "symbol": "CsBt",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "CsBt[Gene Name] AND \"Cucumis sativus\"[Organism]",
-                "Bt[Gene Name] AND \"Cucumis sativus\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "CsBt[tiab] AND Non-bitter fruit while retaining bitter-leaf defense[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
           "symbol": "Bl",
           "claimed_gene_id": "",
           "verification": {
@@ -2267,6 +2487,12 @@
               "queries": [
                 "Bl[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
+            },
+            "genbank_locus": {
+              "accession": "KM655851",
+              "product": "bHLH transcription factor",
+              "protein_id": "AIT72026.1",
+              "locus": "Csa5G156220"
             },
             "pubmed": {
               "found": true,
@@ -2286,24 +2512,6 @@
           }
         },
         {
-          "symbol": "CsBl",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "CsBl[Gene Name] AND \"Cucumis sativus\"[Organism]",
-                "Bl[Gene Name] AND \"Cucumis sativus\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "CsBl[tiab] AND Non-bitter fruit while retaining bitter-leaf defense[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
           "symbol": "Bi",
           "claimed_gene_id": "",
           "verification": {
@@ -2312,6 +2520,12 @@
               "queries": [
                 "Bi[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
+            },
+            "genbank_locus": {
+              "accession": "KM655855",
+              "product": "oxidosqualene cyclase",
+              "protein_id": "AIT72030.1",
+              "locus": "Csa6G088690"
             },
             "pubmed": {
               "found": true,
@@ -2343,24 +2557,6 @@
             },
             "checked_on": "2026-11-13"
           }
-        },
-        {
-          "symbol": "CsBi",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "CsBi[Gene Name] AND \"Cucumis sativus\"[Organism]",
-                "Bi[Gene Name] AND \"Cucumis sativus\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "CsBi[tiab] AND Non-bitter fruit while retaining bitter-leaf defense[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
         }
       ],
       "portability": "t1",
@@ -2383,12 +2579,29 @@
         "gene_action": "Loss of function of Bt specifically"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/6",
-        "curated_references": [],
+        "status": "verified",
+        "genes_resolved": "3/3",
+        "curated_references": [
+          {
+            "pmid": "25430763",
+            "doi": "10.1126/science.1259215",
+            "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+            "supports": "Shang et al., Science 2014: biosynthesis, regulation and domestication of bitterness in cucumber. Establishes the bitterness pathway and the Bt / Bl / Bi genes whose GenBank records carry the Csa5G157230, Csa5G156220 and Csa6G088690 locus tags.",
+            "does_not_support": "Tissue specificity still has to be read off the paper per gene — Bt acts in fruit and Bl in leaf, so a single 'non-bitter' edit is not one decision but two, with the leaf copy tied to herbivore defence.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Plant science. Biosynthesis, regulation, and domestication of bitterness in cucumber.",
+            "pubmed_journal": "Science",
+            "pubmed_year": "2014",
+            "pubmed_doi": "10.1126/science.1259215"
+          }
+        ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "GenBank:KM655851",
+          "GenBank:KM655852",
+          "GenBank:KM655855"
+        ],
         "pmids": [
           "25307789",
           "25430763"
@@ -2399,7 +2612,21 @@
         ],
         "notes": []
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Resolve the three bitterness genes by their GenBank records rather than NCBI Gene symbols.",
+        "rationale": "The suggestion's NCBI ids for Bt and Bl are wrong genes: LOC101214378 is 'UPF0307 protein ECA0281' on chromosome 3 and LOC101214672 is a leucine-rich repeat extensin on chromosome 5. The loci themselves do resolve, in GenBank, with the locus tag on the record: Csa5G157230 = KM655852, bHLH transcription factor, protein AIT72027.1 (Bt); Csa5G156220 = KM655851, bHLH transcription factor, AIT72026.1 (Bl); Csa6G088690 = KM655855, oxidosqualene cyclase, AIT72030.1 (Bi). The cucurbitadienol synthase in NCBI Gene (LOC101204533, chromosome 6) agrees with Bi's chromosome.",
+        "locus_identity": {
+          "Bt (Csa5G157230)": "GenBank KM655852, bHLH transcription factor, protein AIT72027.1",
+          "Bl (Csa5G156220)": "GenBank KM655851, bHLH transcription factor, protein AIT72026.1",
+          "Bi (Csa6G088690)": "GenBank KM655855, oxidosqualene cyclase, protein AIT72030.1"
+        },
+        "gene_locus": {
+          "Bt": "Csa5G157230",
+          "Bl": "Csa5G156220",
+          "Bi": "Csa6G088690"
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -2407,6 +2634,11 @@
           {
             "locus": "Csa5G157230",
             "query": "Csa5G157230 AND \"Cucumis sativus\"[Organism]",
+            "genbank_identity": {
+              "accession": "KM655852",
+              "product": "bHLH transcription factor",
+              "protein_id": "AIT72027.1"
+            },
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
@@ -2414,6 +2646,11 @@
           {
             "locus": "Csa5G156220",
             "query": "Csa5G156220 AND \"Cucumis sativus\"[Organism]",
+            "genbank_identity": {
+              "accession": "KM655851",
+              "product": "bHLH transcription factor",
+              "protein_id": "AIT72026.1"
+            },
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
@@ -2421,6 +2658,11 @@
           {
             "locus": "Csa6G088690",
             "query": "Csa6G088690 AND \"Cucumis sativus\"[Organism]",
+            "genbank_identity": {
+              "accession": "KM655855",
+              "product": "oxidosqualene cyclase",
+              "protein_id": "AIT72030.1"
+            },
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
@@ -2428,11 +2670,11 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 3 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -2454,6 +2696,7 @@
                 "MLO1[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "CsMLO1[tiab] AND Powdery mildew resistance[tiab]",
@@ -2496,6 +2739,7 @@
                 "MLO8[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "CsMLO8[tiab] AND Powdery mildew resistance[tiab]",
@@ -2524,6 +2768,7 @@
                 "MLO11[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CsMLO11[tiab] AND Powdery mildew resistance[tiab]"
@@ -2578,6 +2823,7 @@
           {
             "locus": "Csa5G623470",
             "query": "Csa5G623470 AND \"Cucumis sativus\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -2623,6 +2869,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CsACS2[tiab] AND Gynoecy & parthenocarpy[tiab]"
@@ -2655,6 +2902,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CsACS11[tiab] AND Gynoecy & parthenocarpy[tiab]"
@@ -2675,6 +2923,7 @@
                 "WIP1[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CsWIP1[tiab] AND Gynoecy & parthenocarpy[tiab]"
@@ -2693,6 +2942,7 @@
                 "ARF8[Gene Name] AND \"Cucumis sativus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CsARF8[tiab] AND Gynoecy & parthenocarpy[tiab]"
@@ -2746,6 +2996,7 @@
           {
             "locus": "Csa1G580750",
             "query": "Csa1G580750 AND \"Cucumis sativus\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -2753,6 +3004,7 @@
           {
             "locus": "Csa4G290830",
             "query": "Csa4G290830 AND \"Cucumis sativus\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -2798,6 +3050,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Nonaka[Author] AND 2023[dp] AND CmACO1[tiab]",
@@ -2840,6 +3093,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CmACS7[tiab] AND Extended shelf life & climacteric ripening control[tiab]"
@@ -2860,6 +3114,7 @@
                 "NAC-NOR[Gene Name] AND \"Cucumis melo\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "CmNAC-NOR[tiab] AND Extended shelf life & climacteric ripening control[tiab]"
@@ -2917,6 +3172,7 @@
           {
             "locus": "MELO3C014437",
             "query": "MELO3C014437 AND \"Cucumis melo\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -2950,6 +3206,7 @@
                 "AGL11[Gene Name] AND \"Citrullus lanatus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "ClAGL11[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
@@ -2968,6 +3225,7 @@
                 "WIP1 for gynoecy[Gene Name] AND \"Citrullus lanatus\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "ClWIP1 for gynoecy[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
@@ -3016,6 +3274,7 @@
           {
             "locus": "Cla97C07G144940",
             "query": "Cla97C07G144940 AND \"Citrullus lanatus\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -3035,8 +3294,8 @@
       "crop": "Watermelon",
       "scientific_name": "Citrullus lanatus",
       "category": "Fruit Quality",
-      "trait": "Sugar accumulation (Brix) & flesh color",
-      "gene_label": "ClTST2, ClSWEET3, ClLCYB",
+      "trait": "Sugar accumulation (Brix)",
+      "gene_label": "ClTST2",
       "genes": [
         {
           "symbol": "ClTST2",
@@ -3048,6 +3307,13 @@
                 "ClTST2[Gene Name] AND \"Citrullus lanatus\"[Organism]",
                 "TST2[Gene Name] AND \"Citrullus lanatus\"[Organism]"
               ]
+            },
+            "genbank_locus": {
+              "accession": "KY367352.1",
+              "title": "Citrullus lanatus tonoplast sugar transporter 2 (TST2) mRNA, complete cds",
+              "gene": "TST2",
+              "product": "tonoplast sugar transporter 2",
+              "protein_id": "ATQ36703.1"
             },
             "pubmed": {
               "found": true,
@@ -3062,52 +3328,6 @@
                   "doi": "10.1104/pp.17.01290"
                 }
               ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "ClSWEET3",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "ClSWEET3[Gene Name] AND \"Citrullus lanatus\"[Organism]",
-                "SWEET3[Gene Name] AND \"Citrullus lanatus\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": true,
-              "query": "ClSWEET3[tiab] AND Sugar accumulation[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "33570606",
-                  "title": "Evolutionary gain of oligosaccharide hydrolysis and sugar transport enhanced carbohydrate partitioning in sweet watermelon fruits.",
-                  "journal": "Plant Cell",
-                  "year": "2021",
-                  "doi": "10.1093/plcell/koab055"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "ClLCYB",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "ClLCYB[Gene Name] AND \"Citrullus lanatus\"[Organism]",
-                "LCYB[Gene Name] AND \"Citrullus lanatus\"[Organism]"
-              ]
-            },
-            "pubmed": {
-              "found": false,
-              "query": "ClLCYB[tiab] AND Sugar accumulation[tiab]"
             },
             "checked_on": "2026-11-13"
           }
@@ -3133,26 +3353,49 @@
         "gene_action": "Gain of function (ClTST2) / Loss of function (ClLCYB for red flesh)"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/3",
-        "curated_references": [],
+        "status": "verified",
+        "genes_resolved": "1/1",
+        "curated_references": [
+          {
+            "pmid": "29118248",
+            "doi": "",
+            "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+            "supports": "A tonoplast sugar transporter (ClTST2) underlies a sugar-accumulation QTL in watermelon; includes its upstream regulator.",
+            "does_not_support": "It does not characterise ClSWEET3 or ClLCYB, which the draft listed in the same entry.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "A Tonoplast Sugar Transporter Underlies a Sugar Accumulation QTL in Watermelon.",
+            "pubmed_journal": "Plant Physiol",
+            "pubmed_year": "2018",
+            "pubmed_doi": "10.1104/pp.17.01290"
+          }
+        ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "GenBank:KY367352.1"
+        ],
         "pmids": [
-          "29118248",
-          "33570606"
+          "29118248"
         ],
         "dois": [
-          "10.1093/plcell/koab055",
           "10.1104/pp.17.01290"
         ],
         "notes": [
-          "locus ID(s) Cla97C02G036390, Cla97C04G070940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
-          "ClSWEET3: PMID 33570606 found by topic search, not by the cited author/year — citation not confirmed"
+          "locus ID(s) Cla97C02G036390, Cla97C04G070940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Narrow this entry to ClTST2 and move ClSWEET3 and ClLCYB out of it.",
+        "rationale": "PMID 29118248 (Plant Physiol 2018, first author Ren Y, 'A Tonoplast Sugar Transporter Underlies a Sugar Accumulation QTL in Watermelon') characterises ClTST2 and its upstream regulator, not ClSWEET3 or ClLCYB — so the draft bundled three genes under one paper that covers one of them. Flesh colour (ClLCYB) is a different trait from sugar accumulation and should never have shared an entry with it. Two corrections to the suggestion: the accession it gave for ClTST2, MF497324, is a Marquandomyces marquandii fungal ITS sequence, not watermelon; the real record is KY367352.1, /gene=TST2, product 'tonoplast sugar transporter 2', protein ATQ36703.1. And Citrullus lanatus does have NCBI Gene records (185 of them), though none is named TST, SWEET or LCYB, so the practical conclusion stands: identity has to come from GenBank.",
+        "gene_accession": {
+          "ClTST2": "KY367352"
+        },
+        "superseded": {
+          "gene": "ClSWEET3, ClLCYB",
+          "why": "Not characterised in PMID 29118248. ClSWEET3 needs its own entry and its own paper; ClLCYB is flesh colour, a separate trait. Removed here rather than left implying evidence they do not have."
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3160,6 +3403,7 @@
           {
             "locus": "Cla97C02G036390",
             "query": "Cla97C02G036390 AND \"Citrullus lanatus\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -3167,6 +3411,7 @@
           {
             "locus": "Cla97C04G070940",
             "query": "Cla97C04G070940 AND \"Citrullus lanatus\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -3174,11 +3419,10 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
@@ -3200,6 +3444,7 @@
                 "PPO4[Gene Name] AND \"Solanum melongena\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SmPPO4[tiab] AND Non-browning cut fruit flesh[tiab]"
@@ -3218,6 +3463,7 @@
                 "PPO5[Gene Name] AND \"Solanum melongena\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SmPPO5[tiab] AND Non-browning cut fruit flesh[tiab]"
@@ -3236,6 +3482,7 @@
                 "PPO6 (PPO[Gene Name] AND \"Solanum melongena\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Maioli[Author] AND 2020[dp] AND SmPPO6 (PPO[tiab]",
@@ -3298,6 +3545,7 @@
           {
             "locus": "SMEL4.1_08g017350",
             "query": "SMEL4.1_08g017350 AND \"Solanum melongena\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -3331,6 +3579,7 @@
                 "LOG1[Gene Name] AND \"Solanum melongena\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SmLOG1[tiab] AND Prickle-free calyx & stem[tiab]"
@@ -3404,6 +3653,7 @@
           {
             "locus": "SMEL4.1_06g...",
             "query": "SMEL4.1_06g... AND \"Solanum melongena\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -3449,6 +3699,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Chen[Author] AND 2018[dp] AND LsFT[tiab]",
@@ -3479,6 +3730,7 @@
                 "CO[Gene Name] AND \"Lactuca sativa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "LsCO[tiab] AND Delayed bolting[tiab]",
@@ -3514,6 +3766,7 @@
                 "RGL1[Gene Name] AND \"Lactuca sativa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "LsRGL1[tiab] AND Delayed bolting[tiab]"
@@ -3532,6 +3785,7 @@
                 "SOC1[Gene Name] AND \"Lactuca sativa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Chen[Author] AND 2018[dp] AND LsSOC1[tiab]",
@@ -3624,6 +3878,7 @@
                 "GGP2[Gene Name] AND \"Lactuca sativa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Zhang[Author] AND 2018[dp] AND LsGGP2[tiab]",
@@ -3651,6 +3906,7 @@
                 "uORF[Gene Name] AND \"Lactuca sativa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Zhang[Author] AND 2018[dp] AND uORF[tiab]",
@@ -3742,6 +3998,7 @@
                 "CRa[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Ueno[Author] AND 2012[dp] AND CRa[tiab]",
@@ -3769,6 +4026,7 @@
                 "CRb[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "CRb[tiab] AND Clubroot resistance[tiab]",
@@ -3824,6 +4082,7 @@
                 "Crr1[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Crr1[tiab] AND Clubroot resistance[tiab]",
@@ -3879,6 +4138,7 @@
                 "Crr3[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Crr3[tiab] AND Clubroot resistance[tiab]",
@@ -3978,6 +4238,7 @@
           {
             "locus": "BraA03g012133E",
             "query": "BraA03g012133E AND \"Brassica oleracea / B. rapa\"[Organism]",
+            "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
             "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
@@ -4032,6 +4293,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "Traka[Author] AND 2013[dp] AND MYB28[tiab]",
@@ -4061,6 +4323,7 @@
                 "HAG1[Gene Name] AND \"Brassica oleracea\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "HAG1[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
@@ -4078,6 +4341,7 @@
                 "MYB29[Gene Name] AND \"Brassica oleracea\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "MYB29[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
@@ -4095,6 +4359,7 @@
                 "MYB34[Gene Name] AND \"Brassica oleracea\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "MYB34[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
@@ -4172,6 +4437,7 @@
                 "RPGE1[Gene Name] AND \"Daucus carota\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "2024[dp] AND DcRPGE1[tiab]",
@@ -4200,6 +4466,7 @@
                 "APRR2[Gene Name] AND \"Daucus carota\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "2024[dp] AND DcAPRR2[tiab]",
@@ -4240,6 +4507,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "2024[dp] AND DcPSY1[tiab]",
@@ -4282,6 +4550,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "2024[dp] AND DcPSY2[tiab]",
@@ -4324,6 +4593,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "DcLCYB1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
@@ -4411,6 +4681,7 @@
                 "LFS[Gene Name] AND \"Allium cepa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "AcLFS[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
@@ -4429,6 +4700,7 @@
                 "ACS1[Gene Name] AND \"Allium cepa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "AcACS1[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
@@ -4447,6 +4719,7 @@
                 "ACS2[Gene Name] AND \"Allium cepa\"[Organism]"
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "AcACS2[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
@@ -4544,6 +4817,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SOS1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
@@ -4575,6 +4849,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "SOS2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
@@ -4606,6 +4881,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "NHX1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
@@ -4647,6 +4923,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "DREB2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
@@ -4678,6 +4955,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "HsfA2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
@@ -4782,6 +5060,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "HsfA2[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
@@ -4813,6 +5092,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "HSP70[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
@@ -4844,6 +5124,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": false,
               "query": "APX1[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
@@ -4944,6 +5225,7 @@
                 }
               ]
             },
+            "genbank_locus": null,
             "pubmed": {
               "found": true,
               "query": "2025[dp] AND CYP707A1[tiab]",

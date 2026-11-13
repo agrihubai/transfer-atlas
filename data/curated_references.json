@@ -38,7 +38,7 @@
         "doi": "10.1371/journal.pgen.1005538",
         "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
         "supports": "The mRNA surveillance factor Pelota underlies begomovirus (TYLCV) resistance at the ty-5 locus.",
-        "does_not_support": "The symbol SlPelo has no NCBI Gene record for Solanum lycopersicum."
+        "does_not_support": "The symbol SlPelo is not what NCBI indexes; the record is PELOTA (101251671). Note the paper is in PLoS Genetics — a suggestion that named Plant Cell was wrong about the journal."
       },
       {
         "pmid": "33668636",
@@ -64,6 +64,24 @@
         "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
         "supports": "Silencing onion lachrymatory factor synthase (LFS) changes the sulfur secondary metabolite profile and lowers lachrymatory factor.",
         "does_not_support": "It does not validate AcACS1 or AcACS2, which the draft lists alongside AcLFS in the same entry."
+      }
+    ],
+    "CUC-BITTER-01": [
+      {
+        "pmid": "25430763",
+        "doi": "10.1126/science.1259215",
+        "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+        "supports": "Shang et al., Science 2014: biosynthesis, regulation and domestication of bitterness in cucumber. Establishes the bitterness pathway and the Bt / Bl / Bi genes whose GenBank records carry the Csa5G157230, Csa5G156220 and Csa6G088690 locus tags.",
+        "does_not_support": "Tissue specificity still has to be read off the paper per gene — Bt acts in fruit and Bl in leaf, so a single 'non-bitter' edit is not one decision but two, with the leaf copy tied to herbivore defence."
+      }
+    ],
+    "WAT-BRIX-01": [
+      {
+        "pmid": "29118248",
+        "doi": "",
+        "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+        "supports": "A tonoplast sugar transporter (ClTST2) underlies a sugar-accumulation QTL in watermelon; includes its upstream regulator.",
+        "does_not_support": "It does not characterise ClSWEET3 or ClLCYB, which the draft listed in the same entry."
       }
     ]
   }

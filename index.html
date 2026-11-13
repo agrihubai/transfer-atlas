@@ -206,14 +206,18 @@ function links(gene, entry){
   const sp = entry.scientific_name || '';
   const out = [];
   if (hit) out.push([`NCBI Gene ${hit.ncbi_gene_id}`, `https://www.ncbi.nlm.nih.gov/gene/${hit.ncbi_gene_id}`]);
+  const gl = v.genbank_locus;
+  if (gl && gl.accession) out.push([`GenBank ${gl.accession}`,
+    `https://www.ncbi.nlm.nih.gov/nuccore/${encodeURIComponent(gl.accession)}`]);
   const pm = ((v.pubmed || {}).hits || [])[0];
   if (pm) out.push([`PubMed ${pm.pmid}`, `https://pubmed.ncbi.nlm.nih.gov/${pm.pmid}/`]);
   if (pm && pm.doi) out.push(['DOI', `https://doi.org/${pm.doi}`]);
   // BLAST needs a query sequence: only offered when we hold a RefSeq accession.
-  if (v.refseq_accession){
-    const q = encodeURIComponent(v.refseq_accession);
+  const blastAcc = v.refseq_accession || (gl && gl.accession) || '';
+  if (blastAcc){
+    const q = encodeURIComponent(blastAcc);
     const org = sp ? `&EQ_MENU=${encodeURIComponent(sp)}` : '';
-    out.push([`BLAST ${v.refseq_accession}`,
+    out.push([`BLAST ${blastAcc}`,
       `https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_PROGRAMS=megaBlast&DATABASE=core_nt&QUERY=${q}${org}`]);
   }
   out.push(['Patents', `https://patents.google.com/?q=${encodeURIComponent('"'+gene.symbol+'"')}`]);
@@ -304,12 +308,19 @@ function sheet(e){
     const hit = ((gv.ncbi_gene || {}).hits || [])[0];
     const pm = ((gv.pubmed || {}).hits || [])[0];
     const weak = pm && (gv.pubmed || {}).match_type !== 'author+year+gene';
+    const gl = gv.genbank_locus;
     let meta;
     if (hit){
       meta = `NCBI ${esc(hit.official_symbol)} · ${esc(hit.description || '')}` +
              (hit.match !== 'official symbol' ? ` · <span style="color:var(--mid-fg)">matched ${esc(hit.match)}</span>` : '');
+    } else if (gl && gl.accession){
+      // identity from a GenBank record, which is how plant genes absent from
+      // NCBI Gene are pinned down
+      meta = `GenBank ${esc(gl.accession)} · ${esc(gl.product || gl.gene || '')}` +
+             (gl.locus ? ` · locus ${esc(gl.locus)}` : '') +
+             (gl.protein_id ? ` · protein ${esc(gl.protein_id)}` : '');
     } else {
-      meta = '<span style="color:var(--mid-fg)">no NCBI Gene record found for this symbol</span>';
+      meta = '<span style="color:var(--mid-fg)">no gene record found for this symbol</span>';
     }
     if (weak) meta += ` · <span style="color:var(--mid-fg)">citation unconfirmed (topic search)</span>`;
     return `<li><div class="gname">${esc(g.symbol)}</div><div class="gmeta">${meta}</div>
