@@ -1,0 +1,70 @@
+{
+  "_about": {
+    "purpose": "References supplied by a human or an external tool, each checked against PubMed by scripts/verify_genes.py before it is shown anywhere.",
+    "provenance_rule": "A suggestion is not evidence. Every entry here records who suggested it, what PubMed actually returned, and what the paper does NOT support. The title, journal, year and DOI shown in the site come from PubMed, never from the suggestion.",
+    "status_rule": "A confirmed functional reference alone does not make an entry verified. Gene identity for every named gene must also resolve. Entries below therefore mostly move from unverified to partial."
+  },
+  "entries": {
+    "TOM-TOBRFV-01": [
+      {
+        "pmid": "35706371",
+        "doi": "10.1111/mpp.13227",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "Knockout of tomato TOM genes gives differential tobamovirus resistance.",
+        "does_not_support": "The draft writes SlTOM1a; the paper's title names SlTOM1. The nomenclature must be reconciled before either symbol is presented as validated. The claimed locus Solyc02g080370 is not shown to map to either symbol."
+      }
+    ],
+    "EGG-PRICKLE-01": [
+      {
+        "pmid": "38974191",
+        "doi": "10.1093/hr/uhae134",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "A cytokinin-activating enzyme controls prickle formation in eggplant, shown by CRISPR knockout.",
+        "does_not_support": "The paper's gene symbol is PE (Prickly Eggplant). The suggestion called it SmLOG1; a LOG-family assignment is consistent with a cytokinin-activating enzyme but the symbol SmLOG1 is not confirmed here. The draft's SmMYB candidates are a different gene and are not supported by this paper."
+      }
+    ],
+    "TOM-VITD-01": [
+      {
+        "pmid": "35606499",
+        "doi": "10.1038/s41477-022-01154-6",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "Editing a tomato gene in the sterol pathway raises provitamin D3 (7-DHC) in the fruit.",
+        "does_not_support": "The symbol Sl7-DR2 used in the draft has no NCBI Gene record; the symbol used in the paper still needs to be read off the publication itself."
+      }
+    ],
+    "TOM-TYLCV-01": [
+      {
+        "pmid": "26448569",
+        "doi": "10.1371/journal.pgen.1005538",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "The mRNA surveillance factor Pelota underlies begomovirus (TYLCV) resistance at the ty-5 locus.",
+        "does_not_support": "The symbol SlPelo has no NCBI Gene record for Solanum lycopersicum."
+      },
+      {
+        "pmid": "33668636",
+        "doi": "10.3390/ijms22041878",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "CRISPR/Cas9 editing produces tomato plants resistant to tomato yellow leaf curl virus.",
+        "does_not_support": "Read the paper before attributing the effect to a specific allele of this entry's gene."
+      }
+    ],
+    "PEP-MILDEW-01": [
+      {
+        "pmid": "23923019",
+        "doi": "10.1371/journal.pone.0070723",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "Loss of function in Mlo orthologs reduces powdery mildew (Leveillula taurica) susceptibility in pepper and tomato.",
+        "does_not_support": "The paper works on Mlo orthologs; the specific CaMLO2 symbol and its locus identity are not established by it."
+      }
+    ],
+    "ONI-TEAR-01": [
+      {
+        "pmid": "18583530",
+        "doi": "10.1104/pp.108.123273",
+        "suggested_by": "external AI suggestion (ChatGPT), relayed by maintainer 2026-11-13",
+        "supports": "Silencing onion lachrymatory factor synthase (LFS) changes the sulfur secondary metabolite profile and lowers lachrymatory factor.",
+        "does_not_support": "It does not validate AcACS1 or AcACS2, which the draft lists alongside AcLFS in the same entry."
+      }
+    ]
+  }
+}

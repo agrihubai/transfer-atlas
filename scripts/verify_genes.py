@@ -507,16 +507,29 @@ def verify(only: str | None = None) -> dict:
         any_strong = any(
             (g.get("verification") or {}).get("pubmed", {}).get("match_type") == "author+year+gene"
             for g in e["genes"])
+        curated = check_curated(e["id"])
+        curated_ok = [c for c in curated if c.get("pipeline_check", "").startswith("confirmed")
+                      or c.get("pipeline_check", "").startswith("PMID resolves")]
+        for c in curated_ok:
+            if c.get("pmid") and c["pmid"] not in pmids:
+                pmids.append(c["pmid"])
+            if c.get("pubmed_doi") and c["pubmed_doi"] not in dois:
+                dois.append(c["pubmed_doi"])
+
         n_genes = len(e["genes"])
         n_gene_ok = sum(1 for g in e["genes"]
                         if (g.get("verification") or {}).get("ncbi_gene", {}).get("found"))
         # "verified" requires every named gene to resolve, not just one of them —
         # otherwise an entry listing five genes passes on the strength of one.
-        status = ("verified" if n_genes and n_gene_ok == n_genes and pmids and any_strong else
+        # A curated reference confirmed in PubMed counts as a real reference, but it
+        # cannot by itself make an entry verified: every named gene must resolve too.
+        ref_ok = any_strong or bool(curated_ok)
+        status = ("verified" if n_genes and n_gene_ok == n_genes and ref_ok else
                   "partial" if gene_ids or pmids else "unverified")
         e["verification"] = {
             "status": status,
             "genes_resolved": f"{n_gene_ok}/{n_genes}",
+            "curated_references": curated,
             "verified_on": today,
             "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
             "gene_ids": gene_ids,
@@ -535,6 +548,100 @@ def verify(only: str | None = None) -> dict:
                       encoding="utf-8")
     print(f"\nwrote {V3.relative_to(ROOT)} and {REPORT.relative_to(ROOT)}")
     report(atlas)
+    return atlas
+
+
+CURATED = DATA / "curated_references.json"
+
+
+def check_curated(entry_id: str) -> list[dict]:
+    """Check human- or tool-supplied references for one entry against PubMed.
+
+    A suggestion is never taken on trust: the PMID must resolve, and the title,
+    journal, year and DOI are taken from PubMed rather than from the suggestion.
+    A DOI that disagrees with PubMed's is reported as a mismatch.
+    """
+    if not CURATED.exists():
+        return []
+    try:
+        book = json.loads(CURATED.read_text(encoding="utf-8")).get("entries", {})
+    except json.JSONDecodeError:
+        return []
+    out = []
+    for ref in book.get(entry_id, []) or []:
+        pmid = str(ref.get("pmid", "")).strip()
+        rec = {k: ref.get(k, "") for k in
+               ("pmid", "doi", "suggested_by", "supports", "does_not_support")}
+        if not pmid:
+            rec["pipeline_check"] = "no PMID given — not shown"
+            out.append(rec)
+            continue
+        summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=pubmed&retmode=json"
+                          f"&id={pmid}{eutils_key()}")
+        got = (summ or {}).get("result", {}).get(pmid) if isinstance(summ, dict) else None
+        if not isinstance(got, dict) or not got.get("title"):
+            rec["pipeline_check"] = "PMID did not resolve in PubMed — not shown"
+            out.append(rec)
+            continue
+        doi = ""
+        for aid in got.get("articleids", []) or []:
+            if aid.get("idtype") == "doi":
+                doi = aid.get("value", "")
+        rec.update({
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": got.get("title", ""),
+            "pubmed_journal": got.get("source", ""),
+            "pubmed_year": (got.get("pubdate", "") or "")[:4],
+            "pubmed_doi": doi,
+        })
+        if ref.get("doi") and doi and ref["doi"].lower() != doi.lower():
+            rec["pipeline_check"] = (f"PMID resolves, but the suggested DOI does not match "
+                                     f"PubMed's ({doi}) — suggestion corrected")
+        out.append(rec)
+    return out
+
+
+def fetch_accessions() -> dict:
+    """Attach a RefSeq transcript accession to every resolved gene.
+
+    A BLAST deep link needs a query sequence. Without an accession the link only
+    opens an empty form, so genes without one get no BLAST link in the UI rather
+    than a link that does nothing.
+    """
+    atlas = json.loads(V3.read_text(encoding="utf-8"))
+    n = 0
+    for e in atlas["entries"]:
+        for g in e["genes"]:
+            v = g.get("verification") or {}
+            hits = (v.get("ncbi_gene") or {}).get("hits") or []
+            if not hits:
+                continue
+            uid = hits[0]["ncbi_gene_id"]
+            acc = ""
+            for linkname in ("gene_nuccore_refseqrna", "gene_nuccore_refseqgene"):
+                url = (f"{EUTILS}/elink.fcgi?dbfrom=gene&db=nuccore&retmode=json"
+                       f"&linkname={linkname}&id={uid}{eutils_key()}")
+                res = fetch_json(url)
+                ids = []
+                if isinstance(res, dict):
+                    for ls in res.get("linksets", []) or []:
+                        for ldb in ls.get("linksetdbs", []) or []:
+                            ids += ldb.get("links", []) or []
+                if not ids:
+                    continue
+                summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=nuccore&retmode=json"
+                                  f"&id={ids[0]}{eutils_key()}")
+                if isinstance(summ, dict):
+                    rec = summ.get("result", {}).get(str(ids[0]), {})
+                    acc = rec.get("accessionversion") or rec.get("caption") or ""
+                if acc:
+                    v["refseq_accession"] = acc
+                    v["refseq_link_type"] = linkname
+                    n += 1
+                    break
+    atlas["stats"]["genes_with_accession"] = n
+    V3.write_text(json.dumps(atlas, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"attached {n} RefSeq accession(s)")
     return atlas
 
 
@@ -559,16 +666,20 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Verify Transfer Atlas genes and references.")
     ap.add_argument("--migrate", action="store_true", help="build the v3 skeleton from v2 (offline)")
     ap.add_argument("--verify", action="store_true", help="query databases and fill verification")
+    ap.add_argument("--accessions", action="store_true",
+                    help="attach RefSeq accessions to resolved genes (for BLAST links)")
     ap.add_argument("--report", action="store_true", help="print the current summary")
     ap.add_argument("--only", metavar="CROP", help="restrict to one crop")
     a = ap.parse_args()
-    if not (a.migrate or a.verify or a.report):
+    if not (a.migrate or a.verify or a.accessions or a.report):
         ap.print_help()
         return 1
     if a.migrate:
         migrate()
     if a.verify:
         verify(a.only)
+    if a.accessions:
+        fetch_accessions()
     if a.report and not a.verify:
         report()
     return 0
