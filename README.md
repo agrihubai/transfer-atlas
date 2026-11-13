@@ -26,15 +26,60 @@ Gene, source and evidence are sourced. Portability, linkage, side-effects and IP
 
 ## How it is built
 
-1. **Mine** functional-evidence candidate genes per trait from PubMed (`scripts/mine_candidates.py`, run via Actions). The query *requires* experimental language (overexpression, knockout, CRISPR, mutant…) so associations-only hits are excluded.
-2. **Curate** candidates into the schema (`data/atlas.json`) — a human (breeder) decides what is real and fills portability, linkage, side-effects.
-3. **IP layer** (planned): fill the patent signal automatically from open patent data (PatentsView / Lens).
-4. **Publish** the site from `data/atlas.json`.
+1. **Curate** entries into `data/atlas_v2.json` (the draft, left untouched for provenance) and
+   record every curated decision in `data/corrections.json` — who decided, why, and from what.
+2. **Verify** with `scripts/verify_genes.py`, which asks NCBI Gene, PubMed, Sol Genomics Network
+   and the Ensembl Plants annotation what they actually hold, and writes only what they return.
+   Anything it cannot confirm stays empty and the entry says so.
+3. **Resolve locus tags** with `scripts/resolve_loci_ensembl.py`, which streams Ensembl Plants
+   GFF3 files and writes `data/locus_resolutions.json`, so locus checks need no network and give
+   the same answer every run.
+4. **Publish** the site from `data/atlas_v3.json`.
+
+Run it yourself:
+
+```bash
+python3 scripts/verify_genes.py --migrate --verify --accessions
+python3 scripts/resolve_loci_ensembl.py
+```
 
 ## Status
 
-Proof-of-concept seed: a few curated, functionally-validated entries for **salt tolerance** and **seedlessness** (`data/atlas.json`). Not a complete atlas.
+31 entries across 10 vegetable crops, as of 13 November 2026:
+
+| | entries |
+|---|---|
+| **verified** — every named gene resolves, and a reference is confirmed | 18 |
+| **partial** — some genes or some references resolve | 12 |
+| **unverified** — neither resolved | 1 |
+
+Evidence level is **derived from what was verified**, never from what a draft claimed: 2 at
+Level 1, 16 at Level 2, 7 at Level 3, 4 at Level 4, 2 at Level 5. Level 1 is never derived
+automatically — it needs a person to name a commercial cultivar, and the product has to embody
+*this* entry's genetic solution rather than the same trait by another route.
+
+Locus identifiers: 24 of 28 confirmed. The four that are not need the eggplant and watermelon
+genome databases, which are unreachable from the build environment.
+
+`docs/verification-gaps.md` lists what is still open and what would close it.
+
+## What verification means here
+
+A reference counts only when PubMed matches the cited author, year and journal, or when a
+supplied PMID resolves. A PMID found by a topic search alone does **not** count: it may be a
+different paper about the same gene, and it is labelled as unconfirmed in the data.
+
+Gene identity comes from an NCBI Gene record, a GenBank record carrying the locus tag, or a
+Sol Genomics / Ensembl Plants annotation. For several crops — eggplant, onion, watermelon — no
+NCBI gene build exists, so an accession is the anchor.
 
 ## Honesty
 
-Hypotheses and research signals, not verdicts. AI and open data point to candidates; the breeder's judgement decides.
+Gene identity and references are machine-verified and re-runnable. **Portability, linkage drag,
+pleiotropy and IP remain indicative research signals curated by a breeder** — not lab results
+and not legal classifications. Every candidate still needs allele checking and validation in the
+target crop.
+
+Where something is wrong, the file says so rather than dropping it quietly: `corrections.json`
+records superseded genes, rejected commercial claims, identifiers that turned out to belong to
+other organisms, and open questions about identifiers that do not match their entry.
