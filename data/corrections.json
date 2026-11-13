@@ -9,7 +9,8 @@
     "id_note": "gene_ncbi_id pins a symbol to an NCBI Gene record by ID. The pipeline fetches the record and checks the organism, so a wrong ID fails loudly.",
     "commercial_rule": "Level 1 means THIS entry's genetic solution is in a commercial product — not that a product exists with the same trait by another route. commercial_product is set only when a source ties the named product to the entry's gene or allele.",
     "journal_note": "citation_journals supply the journal a draft citation omitted. They widen the search by one well-defined step; the match still has to find a paper by that author, in that year, in that journal, whose title carries the trait. A wrong journal simply fails.",
-    "max_level_note": "max_level caps what the derivation may claim for an entry, with a reason. Used for network entries where a confirmed paper about the trait is not functional validation of each gene listed."
+    "max_level_note": "max_level caps what the derivation may claim for an entry, with a reason. Used for network entries where a confirmed paper about the trait is not functional validation of each gene listed.",
+    "locus_sources": "Locus tags are resolved at Sol Genomics Network for Solanaceae, which is where ITAG-style Solyc tags actually live, and at GenBank where a record carries the tag. Ensembl Plants (rest.ensemblgenomes.org serves a certificate for another host) and the cucurbit database (certificate does not verify) are unreachable, so cucumber, melon, watermelon and eggplant tags stay unresolved."
   },
   "entries": {
     "EGG-PRICKLE-01": {
@@ -135,7 +136,8 @@
           "LeTH1",
           "TH1"
         ]
-      }
+      },
+      "open_question": "The draft's second locus, Solyc01g105140, resolves at Sol Genomics to an RNA-binding protein, while the TOM genes resolve as tobamovirus multiplication proteins (Solyc02g080370 and Solyc04g008540, both confirmed). The draft's locus is therefore probably wrong for this entry. Gene identity itself is settled through NCBI TH3/TH1, so this is a stale identifier to remove rather than a gap in the evidence."
     },
     "CUC-BITTER-01": {
       "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
@@ -299,6 +301,9 @@
       ],
       "decided_by": "maintainer, 2026-11-13",
       "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
+    },
+    "TOM-SIZE-01": {
+      "open_question": "Locus Solyc07g008100 resolves at Sol Genomics only to a clone name, 'Genomic DNA chromosome 3 P1 clone MUJ8' — no gene function, and it names chromosome 3 while the tag says chromosome 7. Either the annotation is empty for this locus or the ID is wrong. SlKIX8 and SlKIX9 also fail to resolve in NCBI, so this entry currently rests on FW2.2 (Solyc02g090730, confirmed as a cell number regulator) alone."
     }
   }
 }

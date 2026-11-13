@@ -269,7 +269,8 @@ function correction(e){
     ${pin ? `<dl class="kv">${pin}</dl>` : ''}
     ${un ? `<p class="note warn">Not pinned to a named gene:<ul style="margin:6px 0 0 16px">${un}</ul></p>` : ''}
     ${c.superseded ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">Superseded: ${esc(c.superseded.gene)} — ${esc(c.superseded.why)}</p>` : ''}
-    ${cs ? `<h3>Commercial status</h3><p class="note warn">${esc(cs)}</p>` : ''}`;
+    ${cs ? `<h3>Commercial status</h3><p class="note warn">${esc(cs)}</p>` : ''}
+    ${c.open_question ? `<h3>Open question</h3><p class="note warn">${esc(c.open_question)}</p>` : ''}`;
 }
 
 /* ---------- supplied references ----------

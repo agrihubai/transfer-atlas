@@ -214,9 +214,7 @@
         "dois": [
           "10.1038/s41598-017-06400-y"
         ],
-        "notes": [
-          "locus ID(s) Solyc01g005000, Solyc11g011920 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
-        ]
+        "notes": []
       },
       "correction": {
         "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
@@ -231,17 +229,39 @@
             "locus": "Solyc01g005000",
             "query": "Solyc01g005000 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc01g005000.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc01g005000.2 — Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
+            "annotation_agrees": [
+              "decarboxylase",
+              "domain",
+              "glutamate"
+            ]
           },
           {
             "locus": "Solyc11g011920",
             "query": "Solyc11g011920 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc11g011920.1",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc11g011920.1 — Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
+            "annotation_agrees": [
+              "decarboxylase",
+              "domain",
+              "glutamate"
+            ]
           }
         ]
       },
@@ -357,7 +377,6 @@
           "10.1073/pnas.2603937123"
         ],
         "notes": [
-          "locus ID(s) Solyc06g074090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "Sl7-DR2: PMID 42201953 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
@@ -380,9 +399,18 @@
             "locus": "Solyc06g074090",
             "query": "Solyc06g074090 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc06g074090.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Sterol reductase; contains Interpro domain(s)  IPR001171  Ergosterol biosynthesis ERG4/ERG24",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc06g074090.2 — Sterol reductase; contains Interpro domain(s)  IPR001171  Ergosterol biosynthesis ERG4/ERG24",
+            "annotation_agrees": [
+              "reductase"
+            ]
           }
         ]
       },
@@ -522,7 +550,7 @@
           "10.1111/mpp.13227"
         ],
         "notes": [
-          "locus ID(s) Solyc02g080370, Solyc01g105140 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
+          "worth a look: locus Solyc01g105140 is annotated 'RNA-binding protein; contains Interpro domain(s)  IPR012677  Nuc', which this entry describes differently. Usually a naming difference; a wrong ID looks the same"
         ]
       },
       "correction": {
@@ -538,7 +566,8 @@
             "LeTH1",
             "TH1"
           ]
-        }
+        },
+        "open_question": "The draft's second locus, Solyc01g105140, resolves at Sol Genomics to an RNA-binding protein, while the TOM genes resolve as tobamovirus multiplication proteins (Solyc02g080370 and Solyc04g008540, both confirmed). The draft's locus is therefore probably wrong for this entry. Gene identity itself is settled through NCBI TH3/TH1, so this is a stale identifier to remove rather than a gap in the evidence."
       },
       "locus_check": {
         "checked": true,
@@ -548,17 +577,34 @@
             "locus": "Solyc02g080370",
             "query": "Solyc02g080370 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc02g080370.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Tobamovirus multiplication protein (Fragment); contains Interpro domain(s)  IPR009457  Protein of unknown function DUF1084",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc02g080370.2 — Tobamovirus multiplication protein (Fragment); contains Interpro domain(s)  IPR009457  Protein of unknown function DUF1084",
+            "annotation_agrees": [
+              "multiplication",
+              "tobamovirus"
+            ]
           },
           {
             "locus": "Solyc01g105140",
             "query": "Solyc01g105140 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc01g105140.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "RNA-binding protein; contains Interpro domain(s)  IPR012677  Nucleotide-binding, alpha-beta plait",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc01g105140.2 — RNA-binding protein; contains Interpro domain(s)  IPR012677  Nucleotide-binding, alpha-beta plait",
+            "annotation_agrees": false
           }
         ]
       },
@@ -675,9 +721,7 @@
           "10.1371/journal.pgen.1005538",
           "10.3390/ijms22041878"
         ],
-        "notes": [
-          "locus ID(s) Solyc04g009810 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
-        ]
+        "notes": []
       },
       "correction": {
         "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
@@ -699,9 +743,19 @@
             "locus": "Solyc04g009810",
             "query": "Solyc04g009810 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc04g009810.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Pelota homolog; contains Interpro domain(s)  IPR004405  Probable translation factor pelota",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc04g009810.2 — Pelota homolog; contains Interpro domain(s)  IPR004405  Probable translation factor pelota",
+            "annotation_agrees": [
+              "factor",
+              "pelota"
+            ]
           }
         ]
       },
@@ -805,9 +859,7 @@
         "dois": [
           "10.1038/s41598-017-00578-x"
         ],
-        "notes": [
-          "locus ID(s) Solyc04g049090 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
-        ]
+        "notes": []
       },
       "correction": null,
       "locus_check": {
@@ -818,9 +870,18 @@
             "locus": "Solyc04g049090",
             "query": "Solyc04g049090 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc04g049090.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "MLO-like protein 17; contains Interpro domain(s)  IPR004326  Mlo-related protein",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc04g049090.2 — MLO-like protein 17; contains Interpro domain(s)  IPR004326  Mlo-related protein",
+            "annotation_agrees": [
+              "protein"
+            ]
           }
         ]
       },
@@ -918,9 +979,7 @@
         "dois": [
           "10.1073/pnas.2026152118"
         ],
-        "notes": [
-          "locus ID(s) Solyc03g080190 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
-        ]
+        "notes": []
       },
       "correction": null,
       "locus_check": {
@@ -931,9 +990,20 @@
             "locus": "Solyc03g080190",
             "query": "Solyc03g080190 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc03g080190.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Flavanone 3-hydroxylase-like protein; contains Interpro domain(s)  IPR005123  Oxoglutarate and iron-dependent oxygenase",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc03g080190.2 — Flavanone 3-hydroxylase-like protein; contains Interpro domain(s)  IPR005123  Oxoglutarate and iron-dependent oxygenase",
+            "annotation_agrees": [
+              "dependent",
+              "oxoglutarate",
+              "oxygenase"
+            ]
           }
         ]
       },
@@ -1186,7 +1256,7 @@
           "10.11646/zootaxa.4896.4.5"
         ],
         "notes": [
-          "locus ID(s) Solyc08g061560, Solyc05g053850 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
+          "worth a look: locus Solyc05g053850 is annotated 'SELF PRUNING 5G', which this entry describes differently. Usually a naming difference; a wrong ID looks the same",
           "SlYABBY2b: matched NCBI gene YABBY2 (100191118) as listed as alias — confirm it is the same gene"
         ]
       },
@@ -1199,17 +1269,34 @@
             "locus": "Solyc08g061560",
             "query": "Solyc08g061560 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc08g061560.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Receptor like kinase, RLK",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc08g061560.2 — Receptor like kinase, RLK",
+            "annotation_agrees": [
+              "kinase",
+              "receptor"
+            ]
           },
           {
             "locus": "Solyc05g053850",
             "query": "Solyc05g053850 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc05g053850.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "SELF PRUNING 5G",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc05g053850.2 — SELF PRUNING 5G",
+            "annotation_agrees": false
           }
         ]
       },
@@ -1443,7 +1530,7 @@
           "10.1111/nph.71503"
         ],
         "notes": [
-          "locus ID(s) Solyc04g076850, Solyc01g093960 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
+          "worth a look: locus Solyc01g093960 is annotated 'MADS box transcription factor; contains Interpro domain(s)  IPR0', which this entry describes differently. Usually a naming difference; a wrong ID looks the same",
           "SlAGL6: PMID 40839424 found by topic search, not by the cited author/year — citation not confirmed",
           "SlARF8: matched NCBI gene ARF8b (100301945) as listed as alias — confirm it is the same gene",
           "SlARF8: PMID 42576618 found by topic search, not by the cited author/year — citation not confirmed"
@@ -1458,17 +1545,33 @@
             "locus": "Solyc04g076850",
             "query": "Solyc04g076850 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc04g076850.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Auxin responsive protein; contains Interpro domain(s)  IPR003311  AUX/IAA protein",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc04g076850.2 — Auxin responsive protein; contains Interpro domain(s)  IPR003311  AUX/IAA protein",
+            "annotation_agrees": [
+              "auxin"
+            ]
           },
           {
             "locus": "Solyc01g093960",
             "query": "Solyc01g093960 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc01g093960.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "MADS box transcription factor; contains Interpro domain(s)  IPR002487  Transcription factor, K-box",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc01g093960.2 — MADS box transcription factor; contains Interpro domain(s)  IPR002487  Transcription factor, K-box",
+            "annotation_agrees": false
           }
         ]
       },
@@ -1614,10 +1717,12 @@
           "10.1093/plphys/kiab464"
         ],
         "notes": [
-          "locus ID(s) Solyc02g090730, Solyc07g008100 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
+          "worth a look: locus Solyc07g008100 is annotated 'Genomic DNA chromosome 3 P1 clone MUJ8', which this entry describes differently. Usually a naming difference; a wrong ID looks the same"
         ]
       },
-      "correction": null,
+      "correction": {
+        "open_question": "Locus Solyc07g008100 resolves at Sol Genomics only to a clone name, 'Genomic DNA chromosome 3 P1 clone MUJ8' — no gene function, and it names chromosome 3 while the tag says chromosome 7. Either the annotation is empty for this locus or the ID is wrong. SlKIX8 and SlKIX9 also fail to resolve in NCBI, so this entry currently rests on FW2.2 (Solyc02g090730, confirmed as a cell number regulator) alone."
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -1626,17 +1731,34 @@
             "locus": "Solyc02g090730",
             "query": "Solyc02g090730 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc02g090730.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Cell number regulator 1; contains Interpro domain(s)  IPR006461  Protein of unknown function Cys-rich",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc02g090730.2 — Cell number regulator 1; contains Interpro domain(s)  IPR006461  Protein of unknown function Cys-rich",
+            "annotation_agrees": [
+              "number",
+              "regulator"
+            ]
           },
           {
             "locus": "Solyc07g008100",
             "query": "Solyc07g008100 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc07g008100.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Genomic DNA chromosome 3 P1 clone MUJ8",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc07g008100.2 — Genomic DNA chromosome 3 P1 clone MUJ8",
+            "annotation_agrees": false
           }
         ]
       },
@@ -1846,7 +1968,6 @@
           "10.1038/nbt.3602"
         ],
         "notes": [
-          "locus ID(s) Solyc03g111690 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "SlPL: PMID 27454737 found by topic search, not by the cited author/year — citation not confirmed",
           "SlPG2a: matched NCBI gene PG2 (544051) as listed as alias — confirm it is the same gene",
           "SlPG2a: PMID 27454737 found by topic search, not by the cited author/year — citation not confirmed",
@@ -1862,9 +1983,19 @@
             "locus": "Solyc03g111690",
             "query": "Solyc03g111690 AND \"Solanum lycopersicum\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": {
+              "feature": "Solyc03g111690.2",
+              "organism": "Solanum lycopersicum",
+              "annotation": "Pectate lyase; contains Interpro domain(s)  IPR002022  Pectate lyase/Amb allergen",
+              "source": "Sol Genomics Network"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed at Sol Genomics: Solyc03g111690.2 — Pectate lyase; contains Interpro domain(s)  IPR002022  Pectate lyase/Amb allergen",
+            "annotation_agrees": [
+              "lyase",
+              "pectate"
+            ]
           }
         ]
       },
@@ -2634,7 +2765,11 @@
           "10.1111/ane.12300",
           "10.1126/science.1259215"
         ],
-        "notes": []
+        "notes": [
+          "worth a look: locus Csa5G157230 is annotated 'bHLH transcription factor', which this entry describes differently. Usually a naming difference; a wrong ID looks the same",
+          "worth a look: locus Csa5G156220 is annotated 'bHLH transcription factor', which this entry describes differently. Usually a naming difference; a wrong ID looks the same",
+          "worth a look: locus Csa6G088690 is annotated 'oxidosqualene cyclase', which this entry describes differently. Usually a naming difference; a wrong ID looks the same"
+        ]
       },
       "correction": {
         "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
@@ -2664,9 +2799,11 @@
               "product": "bHLH transcription factor",
               "protein_id": "AIT72027.1"
             },
+            "solgenomics": null,
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
-            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
+            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus",
+            "annotation_agrees": false
           },
           {
             "locus": "Csa5G156220",
@@ -2676,9 +2813,11 @@
               "product": "bHLH transcription factor",
               "protein_id": "AIT72026.1"
             },
+            "solgenomics": null,
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
-            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
+            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus",
+            "annotation_agrees": false
           },
           {
             "locus": "Csa6G088690",
@@ -2688,9 +2827,11 @@
               "product": "oxidosqualene cyclase",
               "protein_id": "AIT72030.1"
             },
+            "solgenomics": null,
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
-            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus"
+            "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus",
+            "annotation_agrees": false
           }
         ]
       },
@@ -2850,9 +2991,10 @@
             "locus": "Csa5G623470",
             "query": "Csa5G623470 AND \"Cucumis sativus\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3148,17 +3290,19 @@
             "locus": "Csa1G580750",
             "query": "Csa1G580750 AND \"Cucumis sativus\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           },
           {
             "locus": "Csa4G290830",
             "query": "Csa4G290830 AND \"Cucumis sativus\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3364,9 +3508,10 @@
             "locus": "MELO3C014437",
             "query": "MELO3C014437 AND \"Cucumis melo\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3473,9 +3618,10 @@
             "locus": "Cla97C07G144940",
             "query": "Cla97C07G144940 AND \"Citrullus lanatus\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3603,17 +3749,19 @@
             "locus": "Cla97C02G036390",
             "query": "Cla97C02G036390 AND \"Citrullus lanatus\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           },
           {
             "locus": "Cla97C04G070940",
             "query": "Cla97C04G070940 AND \"Citrullus lanatus\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3783,9 +3931,10 @@
             "locus": "SMEL4.1_08g017350",
             "query": "SMEL4.1_08g017350 AND \"Solanum melongena\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3897,9 +4046,10 @@
             "locus": "SMEL4.1_06g...",
             "query": "SMEL4.1_06g... AND \"Solanum melongena\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -4349,9 +4499,10 @@
             "locus": "BraA03g012133E",
             "query": "BraA03g012133E AND \"Brassica rapa\"[Organism]",
             "genbank_identity": null,
+            "solgenomics": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; this is not evidence the ID is wrong"
+            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
           }
         ]
       },

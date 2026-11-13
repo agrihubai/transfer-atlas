@@ -328,6 +328,41 @@ def genbank_accession(acc: str, species: str) -> dict:
             "protein_id": grab("protein_id")}
 
 
+SGN = "https://solgenomics.net/ajax/search/features"
+
+
+def solgenomics_locus(locus: str, species: str) -> dict:
+    """Resolve a Solanaceae genome locus tag at Sol Genomics Network.
+
+    NCBI does not index ITAG-style tags, so this is where a Solyc or SMEL tag can
+    actually be confirmed, with the annotation's own functional description. Only
+    gene and mRNA rows for the stated organism are used; exon rows are noise.
+    Ensembl Plants and the cucurbit database are unreachable from here, so this
+    covers tomato, pepper and potato but not cucumber, melon or watermelon.
+    """
+    if not locus:
+        return {}
+    res = fetch_json(f"{SGN}?name={urllib.parse.quote(locus)}&length=100")
+    rows = (res or {}).get("data") or [] if isinstance(res, dict) else []
+    gene_row, desc = None, ""
+    for r in rows:
+        if not isinstance(r, list) or len(r) < 4:
+            continue
+        org, kind = (r[0] or ""), (r[1] or "")
+        if species and org and org.split()[0] != species.split()[0]:
+            continue
+        name = re.sub(r"<[^>]+>", "", str(r[2] or ""))
+        if kind == "gene" and gene_row is None:
+            gene_row = {"feature": name, "organism": org}
+        if kind == "mRNA" and not desc:
+            desc = re.sub(r"\s*\(AHRD[^)]*\)", "", str(r[3] or "")).strip()
+    if not gene_row:
+        return {}
+    gene_row["annotation"] = desc
+    gene_row["source"] = "Sol Genomics Network"
+    return gene_row
+
+
 def check_locus_id(locus_field: str, species: str) -> dict:
     """Try to confirm a claimed locus ID (Solyc01g005000, Csa5G623470, …).
 
@@ -358,16 +393,19 @@ def check_locus_id(locus_field: str, species: str) -> dict:
         sr = (res or {}).get("esearchresult", {}) if isinstance(res, dict) else {}
         count = int(sr.get("count", "0") or 0)
         gb = locus_genbank(locus, species) if count else {}
+        sgn = solgenomics_locus(locus, species)
         results.append({
             "locus": locus,
             "query": term,
             "genbank_identity": gb or None,
+            "solgenomics": sgn or None,
             "ncbi_records_in_species": count,
-            "state": "confirmed_in_species" if count else "not_checkable_here",
-            "status": (f"appears in {count} NCBI sequence record(s) for {species}"
-                       if count else
-                       "not indexed in NCBI — needs Ensembl Plants or Sol Genomics; "
-                       "this is not evidence the ID is wrong"),
+            "state": ("confirmed_in_species" if count or sgn else "not_checkable_here"),
+            "status": (f"confirmed at Sol Genomics: {sgn.get('feature')} — "
+                       f"{sgn.get('annotation') or 'no functional annotation'}" if sgn else
+                       f"appears in {count} NCBI sequence record(s) for {species}" if count else
+                       "not indexed in NCBI or Sol Genomics — needs the crop's own genome "
+                       "database; this is not evidence the ID is wrong"),
         })
     return {
         "checked": True,
@@ -704,6 +742,31 @@ def verify(only: str | None = None) -> dict:
 
         # Locus IDs are listed per entry, not per gene, so check them once.
         locus = check_locus_id(e["claims"].get("gene_id", ""), species)
+        # A confirmed locus now carries the genome annotation's own description of
+        # the gene. Compare it with what the entry claims the gene does: a locus
+        # that resolves to an unrelated protein is a wrong ID, not a confirmation.
+        claim_words = {w for w in re.findall(r"[a-z]{5,}",
+                       ((e["claims"].get("gene_function") or "") + " " +
+                        (e.get("gene_label") or "") + " " +
+                        (e.get("trait") or "")).lower())}
+        for r in locus.get("results", []):
+            ann = ((r.get("solgenomics") or {}).get("annotation")
+                   or (r.get("genbank_identity") or {}).get("product") or "")
+            if not ann:
+                continue
+            ann_words = {w for w in re.findall(r"[a-z]{5,}", ann.lower())}
+            shared = claim_words & ann_words
+            r["annotation_agrees"] = sorted(shared) or False
+            if not shared:
+                # Phrased as something to look at, not as a fault found. Most of these
+                # are naming differences: the annotation says SELF PRUNING 5G where the
+                # entry says SP5G, or bHLH transcription factor where the entry says Bt.
+                # A genuinely wrong ID looks identical from here, which is why it is
+                # surfaced at all — but a flag that is wrong more often than right gets
+                # ignored, so it does not claim to have found an error.
+                notes.append(f"worth a look: locus {r['locus']} is annotated "
+                             f"{ann[:64]!r}, which this entry describes differently. "
+                             f"Usually a naming difference; a wrong ID looks the same")
         loci_exist = [r["locus"] for r in locus.get("results", [])
                       if r["state"] == "confirmed_in_species"]
         unresolved = [r["locus"] for r in locus.get("results", [])
@@ -730,6 +793,11 @@ def verify(only: str | None = None) -> dict:
                 gb_id = locus_genbank(mapped, species)
                 if gb_id:
                     gb_id["locus"] = mapped
+                else:
+                    sg = solgenomics_locus(mapped, species)
+                    if sg:
+                        gb_id = {"accession": sg["feature"], "product": sg.get("annotation", ""),
+                                 "locus": mapped, "source": "Sol Genomics Network"}
             gid = corr.get("gene_ncbi_id", {}).get(sym, "")
             if not ncbi.get("found") and gid:
                 summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=gene&retmode=json"
