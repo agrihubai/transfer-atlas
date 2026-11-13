@@ -45,12 +45,12 @@
   },
   "stats": {
     "total_entries": 31,
-    "verified": 11,
-    "partial": 19,
+    "verified": 14,
+    "partial": 16,
     "unverified": 1,
     "conflicted": 0,
     "last_verified": "2026-11-13",
-    "genes_with_accession": 43
+    "genes_with_accession": 45
   },
   "entries": [
     {
@@ -186,6 +186,7 @@
         "evidence_note": "Commercially validated (Sicilian Rouge High GABA). 2025 studies across 3 elite backgrounds confirm genotype-dependent vegetative side effects.",
         "scientific_reference": "Nonaka et al., 2017 (Sci. Rep.); 2025 Elite Genotype Evaluation",
         "pmid_doi": "28935931",
+        "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry",
         "patent_reference": "Sanatech Seed / Tsukuba Univ. patents (check FTO)",
         "linkage_drag": "None via native CRISPR edit.",
         "pleiotropic_effects": "High GABA levels in certain elite backgrounds can reduce leaf size or fruit weight; cultivar-specific testing required.",
@@ -217,7 +218,11 @@
           "locus ID(s) Solyc01g005000, Solyc11g011920 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
+        "decision": "Set Level 1: the entry's own solution is the commercial product.",
+        "rationale": "Sanatech Seed's 'Sicilian Rouge High GABA' has been sold to consumers in Japan since September 2021 and is reported as the first commercially sold CRISPR-edited food. The edit is CRISPR/Cas9 on tomato GAD disabling the C-terminal autoinhibitory/calmodulin-binding domain, which is exactly this entry's mechanism, and the fruit carries about 4-6x the GABA of unedited controls. Sources: Nature Biotechnology news (d41587-021-00026-2), Scientific American, and a Philippine regulatory product information sheet naming Sanatech Seed and the GAD target."
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -241,11 +246,10 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 2",
-        "basis": "all 2 gene(s) resolved and a reference confirmed",
+        "derived_level": "Level 1",
+        "basis": "commercial product named by a human: Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
+        "draft_claimed": "Level 1"
       }
     },
     {
@@ -300,6 +304,7 @@
         "evidence_note": "Functionally validated in greenhouse/field trials; requires UVB exposure to convert 7-DHC into Vitamin D3.",
         "scientific_reference": "Li et al., 2022, Nature Plants",
         "pmid_doi": "35606499",
+        "commercial_product": "",
         "patent_reference": "John Innes Centre patent filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Alters steroidal glycoalkaloid (alpha-tomatine) profile; no major yield penalty reported.",
@@ -462,6 +467,7 @@
         "evidence_note": "Experimental proof only. Confers strong resistance to tested ToBRFV isolates, NOT guaranteed universal immunity across all tobamoviruses/isolates.",
         "scientific_reference": "Ishikawa et al., 2022; Kravchik et al., 2022",
         "pmid_doi": "35440560",
+        "commercial_product": "",
         "patent_reference": "Active CRISPR patent landscape (check FTO)",
         "linkage_drag": "Avoids severe linkage drag associated with S. habrochaites / S. pimpinellifolium introgressions.",
         "pleiotropic_effects": "Single knockouts insufficient due to redundancy; triple/quadruple knockouts must be screened for vigor.",
@@ -602,6 +608,7 @@
         "evidence_note": "Commercially deployed via natural ty-5 allele and validated via CRISPR knockout.",
         "scientific_reference": "Lapidot et al., 2015; Pramanik et al., 2021",
         "pmid_doi": "26176385",
+        "commercial_product": "",
         "patent_reference": "Publicly documented locus; check specific CRISPR claims",
         "linkage_drag": "None when edited directly in elite line.",
         "pleiotropic_effects": "Minimal; well-tolerated across commercial indeterminate and determinate hybrids.",
@@ -668,7 +675,8 @@
             "PELOTA",
             "Pelota"
           ]
-        }
+        },
+        "commercial_status": "NOT set to Level 1. The cultivar names offered — 'Camaro', 'Grand Marshall', 'Jolene' — were not confirmed, and the claim mixed introgressed natural ty-5 alleles with targeted modifications, which are different routes. ty-5 resistance is widely deployed commercially; what is missing is a source naming a cultivar and its ty-5/Pelota allele."
       },
       "locus_check": {
         "checked": true,
@@ -780,6 +788,7 @@
         "evidence_note": "Functionally validated transgene-free 'Tomelo' lines; durable broad-spectrum powdery mildew resistance.",
         "scientific_reference": "Nekrasov et al., 2017, Sci. Rep.",
         "pmid_doi": "28176840",
+        "commercial_product": "",
         "patent_reference": "Check S-gene / MLO editing patent families",
         "linkage_drag": "Eliminates backcross drag from wild donor lines.",
         "pleiotropic_effects": "Minor necrotic flecking under certain stress conditions in some MLO orthologs.",
@@ -894,6 +903,7 @@
         "evidence_note": "Functionally validated; elevates basal salicylic acid levels conferring broad resistance.",
         "scientific_reference": "Thomazella et al., 2021, PNAS",
         "pmid_doi": "34244432",
+        "commercial_product": "",
         "patent_reference": "UC Berkeley / 2Blades patent portfolio",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Potential growth/yield trade-off under high pathogen-free vigor conditions if SA is overly elevated.",
@@ -1156,6 +1166,7 @@
         "evidence_note": "Strong functional validation for urban/vertical farming rapid-cycling compact tomatoes.",
         "scientific_reference": "Kwon et al., 2020, Nat. Biotechnol.",
         "pmid_doi": "31844293",
+        "commercial_product": "",
         "patent_reference": "CSHL patent filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Reduces total per-plant biomass; increases yield per unit area/time in high-density systems.",
@@ -1410,6 +1421,7 @@
         "evidence_note": "Scientific note: Parthenocarpy enables fruit set without fertilization, but does NOT automatically equate to whole-plant heat tolerance.",
         "scientific_reference": "Ueta et al., 2017; Klap et al., 2017",
         "pmid_doi": "28154032",
+        "commercial_product": "",
         "patent_reference": "Multiple institutional filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "SlIAA9 knockout alters leaf morphology (simple leaves); SlAGL6 avoids leaf distortion.",
@@ -1586,6 +1598,7 @@
         "evidence_note": "SlKIX8/SlKIX9 double mutants show enlarged fruits with thicker pericarp.",
         "scientific_reference": "Swinnen et al., 2022, Plant Physiol.",
         "pmid_doi": "35134232",
+        "commercial_product": "",
         "patent_reference": "VIB patent filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Enlarged cup-shaped leaves; potential trade-off between fruit size and fruit number.",
@@ -1763,6 +1776,7 @@
         "evidence_note": "Functionally validated; increases firmness and reduces postharvest rot without sacrificing lycopene or Brix.",
         "scientific_reference": "Uluisik et al., 2016, Nat. Biotechnol.; Wang et al., 2019",
         "pmid_doi": "27454738",
+        "commercial_product": "",
         "patent_reference": "Univ. Nottingham / commercial filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Unusually clean profile; slightly reduced susceptibility to gray mold.",
@@ -1916,6 +1930,7 @@
         "evidence_note": "Commercially established locus; distinct biochemical step from pAMT.",
         "scientific_reference": "Stewart et al., 2005, Plant J.",
         "pmid_doi": "15860095",
+        "commercial_product": "",
         "patent_reference": "Publicly characterized locus",
         "linkage_drag": "Native edit avoids fruit-shape drag when converting hot lines to sweet.",
         "pleiotropic_effects": "Loss of capsaicin may increase susceptibility to certain fungal/insect pests.",
@@ -1947,7 +1962,10 @@
           "AT3: matched NCBI gene LOC107859694 (107859694) as listed as alias — confirm it is the same gene"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13",
+        "commercial_status": "NOT set to Level 1 by the pipeline, and worth a human decision. Every commercial sweet bell pepper is pun1 loss-of-function, so the allele is commercially ubiquitous — but it arrived through domestication centuries ago, not through this solution being deployed. The cultivars offered ('Ace', 'Bell Boy') illustrate the allele rather than validate a breeding route. If Level 1 is meant to say 'this allele is in commercial products', this qualifies; if it means 'this solution was deployed commercially', it does not."
+      },
       "locus_check": {
         "checked": false
       },
@@ -2018,6 +2036,7 @@
         "evidence_note": "Distinct target from Pun1; loss-of-function redirects flux toward non-pungent capsinoids.",
         "scientific_reference": "Lang et al., 2009, Plant J.",
         "pmid_doi": "19175766",
+        "commercial_product": "",
         "patent_reference": "Ajinomoto / Japanese institutional filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Alters aroma/volatile profile.",
@@ -2216,6 +2235,7 @@
         "evidence_note": "Commercially validated; base editing avoids pleiotropic defects of full eIF4E + eIFiso4E loss.",
         "scientific_reference": "Ruffel et al., 2002; Yoon et al., 2020",
         "pmid_doi": "12410862",
+        "commercial_product": "",
         "patent_reference": "Check eIF4E editing claims",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Simultaneous knockout of both eIF4E1 and eIFiso4E impairs plant growth; single allele point edits are safe.",
@@ -2252,7 +2272,10 @@
           "eIFiso4E: PMID 42239849 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13",
+        "commercial_status": "NOT set to Level 1: no cultivar was named, only 'commercial hybrid lines bred with pvr1/pvr2' and a list of seed companies. A category is not a product."
+      },
       "locus_check": {
         "checked": false
       },
@@ -2369,6 +2392,7 @@
         "evidence_note": "Scientific caution: Not every MLO knockout confers resistance; Clade V paralog specificity must be verified.",
         "scientific_reference": "Zheng et al., 2013; Kim & Hwang, 2012",
         "pmid_doi": "23840729",
+        "commercial_product": "",
         "patent_reference": "Check S-gene patents",
         "linkage_drag": "Avoids interspecific cross incompatibility.",
         "pleiotropic_effects": "Check for premature leaf senescence.",
@@ -2567,6 +2591,7 @@
         "evidence_note": "Model case of tissue-specific regulation: knocking out Bt removes fruit bitterness without stripping leaf herbivore defense (Bl).",
         "scientific_reference": "Shang et al., 2014, Science",
         "pmid_doi": "25430769",
+        "commercial_product": "",
         "patent_reference": "CAAS filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Knocking out Bi eliminates all cucurbitacins (reduces pest deterrence); target Bt instead.",
@@ -2625,7 +2650,8 @@
           "Bt": "Csa5G157230",
           "Bl": "Csa5G156220",
           "Bi": "Csa6G088690"
-        }
+        },
+        "commercial_status": "NOT set to Level 1. 'Marketmore' and 'Spacemaster' are long-standing cucumber cultivars, and the claim that they were 'engineered or selected' for tissue-specific bitterness regulation conflates ordinary non-bitter fruit with the Bt/Bl regulatory solution described in PMID 25430763. Non-bitter fruit in cucumber predates that work by decades."
       },
       "locus_check": {
         "checked": true,
@@ -2785,6 +2811,7 @@
         "evidence_note": "Functionally validated; paralog selection (Clade V) is critical.",
         "scientific_reference": "Berg et al., 2015, Front. Plant Sci.",
         "pmid_doi": "26697047",
+        "commercial_product": "",
         "patent_reference": "Wageningen UR filings",
         "linkage_drag": "Eliminates linkage drag with fruit-skin netting/yellowing QTLs.",
         "pleiotropic_effects": "Possible minor leaf chlorosis in older leaves.",
@@ -2959,6 +2986,7 @@
         "evidence_note": "Functionally validated in cucumber and melon; enables rapid F1 hybrid seed production.",
         "scientific_reference": "Hu et al., 2017, Plant J.",
         "pmid_doi": "28618037",
+        "commercial_product": "",
         "patent_reference": "Check cucurbit sex-determination patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Requires silver thiosulfate / gibberellin induction for male flower maintenance in seed production.",
@@ -3131,6 +3159,7 @@
         "evidence_note": "Functionally validated; full ethylene block reduces ester aroma (CmAAT1), so fine-tuning expression is ideal.",
         "scientific_reference": "Nonaka et al., 2023; Ayub et al., 1996",
         "pmid_doi": "8684483",
+        "commercial_product": "",
         "patent_reference": "Publicly documented",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Complete ethylene loss reduces volatile aroma synthesis.",
@@ -3242,6 +3271,7 @@
         "evidence_note": "Scientific caveat: Research target ONLY. Has NOT commercially replaced standard triploid seedless watermelon production due to fruit-set/size penalties.",
         "scientific_reference": "Wang et al., 2021; Cucurbit AGL11 studies",
         "pmid_doi": "34128088",
+        "commercial_product": "",
         "patent_reference": "Check cucurbit seedlessness patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Full ClAGL11 knockout often reduces fruit size, hollow heart incidence, and pollination efficiency.",
@@ -3341,6 +3371,7 @@
         "evidence_note": "Functionally validated; ClTST2 promoter variation drives vacuolar sugar loading.",
         "scientific_reference": "Ren et al., 2018, Plant Cell; Guo et al., 2019",
         "pmid_doi": "29343507",
+        "commercial_product": "",
         "patent_reference": "Beijing Academy of Agriculture & Forestry Sciences",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Minimal in cultivated backgrounds.",
@@ -3431,61 +3462,78 @@
       "scientific_name": "Solanum melongena",
       "category": "Postharvest & Processing Quality",
       "trait": "Non-browning cut fruit flesh",
-      "gene_label": "SmPPO4, SmPPO5, SmPPO6 (PPO family)",
+      "gene_label": "SmelPPO4, SmelPPO5, SmelPPO6",
       "genes": [
         {
-          "symbol": "SmPPO4",
+          "symbol": "SmelPPO4",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
               "found": false,
               "queries": [
-                "SmPPO4[Gene Name] AND \"Solanum melongena\"[Organism]",
-                "PPO4[Gene Name] AND \"Solanum melongena\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": false,
-              "query": "SmPPO4[tiab] AND Non-browning cut fruit flesh[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "SmPPO5",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "SmPPO5[Gene Name] AND \"Solanum melongena\"[Organism]",
-                "PPO5[Gene Name] AND \"Solanum melongena\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": false,
-              "query": "SmPPO5[tiab] AND Non-browning cut fruit flesh[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "SmPPO6 (PPO",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "SmPPO6 (PPO[Gene Name] AND \"Solanum melongena\"[Organism]",
-                "PPO6 (PPO[Gene Name] AND \"Solanum melongena\"[Organism]"
+                "SmelPPO4[Gene Name] AND \"Solanum melongena\"[Organism]"
               ]
             },
             "genbank_locus": null,
             "pubmed": {
               "found": true,
-              "query": "Maioli[Author] AND 2020[dp] AND SmPPO6 (PPO[tiab]",
+              "query": "Maioli[Author] AND 2020[dp] AND SmelPPO4[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "33343607",
+                  "title": "Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning in Solanum melongena L.",
+                  "journal": "Front Plant Sci",
+                  "year": "2020",
+                  "doi": "10.3389/fpls.2020.607161"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
+        },
+        {
+          "symbol": "SmelPPO5",
+          "claimed_gene_id": "",
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SmelPPO5[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "genbank_locus": null,
+            "pubmed": {
+              "found": true,
+              "query": "Maioli[Author] AND 2020[dp] AND SmelPPO5[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "33343607",
+                  "title": "Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning in Solanum melongena L.",
+                  "journal": "Front Plant Sci",
+                  "year": "2020",
+                  "doi": "10.3389/fpls.2020.607161"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
+        },
+        {
+          "symbol": "SmelPPO6",
+          "claimed_gene_id": "",
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SmelPPO6[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "genbank_locus": null,
+            "pubmed": {
+              "found": true,
+              "query": "Maioli[Author] AND 2020[dp] AND SmelPPO6[tiab]",
               "match_type": "author+year+gene",
               "hits": [
                 {
@@ -3509,6 +3557,7 @@
         "evidence_note": "Functionally validated; reduces post-cut enzymatic browning while preserving phenolic antioxidant content.",
         "scientific_reference": "Maioli et al., 2020, Front. Plant Sci.",
         "pmid_doi": "33329659",
+        "commercial_product": "",
         "patent_reference": "Check PPO editing claims",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "No significant yield penalty observed in greenhouse trials.",
@@ -3523,7 +3572,20 @@
       "verification": {
         "status": "partial",
         "genes_resolved": "0/3",
-        "curated_references": [],
+        "curated_references": [
+          {
+            "pmid": "33343607",
+            "doi": "",
+            "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+            "supports": "Simultaneous CRISPR/Cas9 editing of three PPO genes reduces fruit flesh browning in eggplant.",
+            "does_not_support": "It does not establish which NCBI or GenBank record each SmelPPO gene corresponds to; the accessions suggested alongside it were wrong organisms.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning in Solanum melongena L.",
+            "pubmed_journal": "Front Plant Sci",
+            "pubmed_year": "2020",
+            "pubmed_doi": "10.3389/fpls.2020.607161"
+          }
+        ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
@@ -3537,7 +3599,14 @@
           "locus ID(s) SMEL4.1_08g017350 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Use the paper's four-letter prefix (SmelPPO4/5/6) and leave identity unresolved for now.",
+        "rationale": "PMID 33343607 is confirmed: Maioli A, Front Plant Sci 2020, 'Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning'. Solanum melongena has no NCBI Gene build, as the suggestion said. But the three GenBank accessions it offered are not eggplant PPO genes at all: AY547272 is a Pseudomonas fluorescens rsmE gene, AY547273 is a tomato early light inducible protein, and AY547274 is a Leptosphaeria maculans actin gene. NCBI's eggplant PPO records are for PPO10, not PPO4/5/6, so the SMEL_008g3125xx tags need the eggplant genome database, which this environment cannot reach. Identity therefore stays unresolved rather than anchored to a wrong record.",
+        "unpinned": [
+          "SMEL_008g312510 / 312500 / 312490 — eggplant genome tags, not resolvable from NCBI."
+        ]
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3596,6 +3665,7 @@
         "evidence_note": "Scientific distinction: SmMYB candidates are under investigation; should NOT be presented as a single-gene proven CRISPR solution.",
         "scientific_reference": "Miyatake et al., 2020; Solanaceae prickle genetics",
         "pmid_doi": "32499562",
+        "commercial_product": "",
         "patent_reference": "N/A",
         "linkage_drag": "Classical prickle-free donors sometimes carry calyx size differences.",
         "pleiotropic_effects": "Trichome/prickle pathways can overlap with insect deterrence.",
@@ -3644,7 +3714,8 @@
         "superseded": {
           "gene": "SmMYB_candidates",
           "why": "Not supported by PMID 38974191. Kept here so the earlier hypothesis is not silently erased; if another source supports an SmMYB role, it can return as its own entry."
-        }
+        },
+        "second_suggestion_note": "A later suggestion attributed PMID 38974191 to 'Satterlee et al., 2024, Science'. That is wrong and contradicts the same supplier's earlier, correct attribution: the paper is Zhang L, Horticulture Research 2024. It also offered the locus tag SMEL4.1_06g011220.1.01, which cannot be checked here because eggplant has no NCBI build."
       },
       "locus_check": {
         "checked": true,
@@ -3812,6 +3883,7 @@
         "evidence_note": "Functionally validated; strong interaction between genotype, temperature, and photoperiod must be accounted for.",
         "scientific_reference": "Chen et al., 2018, Plant Biotechnol. J.",
         "pmid_doi": "29377523",
+        "commercial_product": "",
         "patent_reference": "Check lettuce bolting patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Full knockout delays seed production in seed-increase fields (requires GA3 application for seed harvest).",
@@ -3865,17 +3937,28 @@
       "scientific_name": "Lactuca sativa",
       "category": "Nutrition & Metabolites",
       "trait": "Elevated Vitamin C (Ascorbate) via uORF editing",
-      "gene_label": "LsGGP2 (uORF)",
+      "gene_label": "LsGGP2",
       "genes": [
         {
           "symbol": "LsGGP2",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "LsGGP2[Gene Name] AND \"Lactuca sativa\"[Organism]",
-                "GGP2[Gene Name] AND \"Lactuca sativa\"[Organism]"
+                "pinned id 111907963"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "111907963",
+                  "official_symbol": "LOC111907963",
+                  "description": "GDP-L-galactose phosphorylase 2",
+                  "other_aliases": "LSAT_V11C700387730",
+                  "organism": "Lactuca sativa",
+                  "chromosome": "7",
+                  "coordinates": "",
+                  "match": "pinned by curator"
+                }
               ]
             },
             "genbank_locus": null,
@@ -3893,42 +3976,9 @@
                 }
               ]
             },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "uORF",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "uORF[Gene Name] AND \"Lactuca sativa\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": true,
-              "query": "Zhang[Author] AND 2018[dp] AND uORF[tiab]",
-              "match_type": "author+year+gene",
-              "hits": [
-                {
-                  "pmid": "30146315",
-                  "title": "Tma64/eIF2D, Tma20/MCT-1, and Tma22/DENR Recycle Post-termination 40S Subunits In Vivo.",
-                  "journal": "Mol Cell",
-                  "year": "2018",
-                  "doi": "10.1016/j.molcel.2018.07.028"
-                },
-                {
-                  "pmid": "30080209",
-                  "title": "Genome editing of upstream open reading frames enables translational control in plants.",
-                  "journal": "Nat Biotechnol",
-                  "year": "2018",
-                  "doi": "10.1038/nbt.4202"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_023903770.4",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -3940,6 +3990,7 @@
         "evidence_note": "Scientific precision: 2–3× increase reported specifically via uORF editing of LsGGP2, not a generic CRISPR effect.",
         "scientific_reference": "Zhang et al., 2018, Nat. Biotechnol.",
         "pmid_doi": "30102296",
+        "commercial_product": "",
         "patent_reference": "CAS Institute of Genetics filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Enhanced oxidative stress tolerance; minimal growth trade-off.",
@@ -3952,50 +4003,83 @@
         "gene_action": "Gain of translation (CRISPR disruption of inhibitory uORF)"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/2",
-        "curated_references": [],
+        "status": "verified",
+        "genes_resolved": "1/1",
+        "curated_references": [
+          {
+            "pmid": "30080209",
+            "doi": "",
+            "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+            "supports": "Editing upstream open reading frames enables translational control; applied to raise ascorbate in lettuce via GGP2.",
+            "does_not_support": "It does not settle which of the two lettuce GDP-L-galactose phosphorylase genes (LOC111907963 or VTC5) is the edited one — read the paper before relying on the ID.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Genome editing of upstream open reading frames enables translational control in plants.",
+            "pubmed_journal": "Nat Biotechnol",
+            "pubmed_year": "2018",
+            "pubmed_doi": "10.1038/nbt.4202"
+          }
+        ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:111907963"
+        ],
         "pmids": [
-          "30080209",
-          "30146315"
+          "30080209"
         ],
         "dois": [
-          "10.1016/j.molcel.2018.07.028",
           "10.1038/nbt.4202"
         ],
-        "notes": []
+        "notes": [
+          "LsGGP2: matched NCBI gene LOC111907963 (111907963) as pinned by curator — confirm it is the same gene"
+        ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Drop uORF from the gene field and pin LsGGP2 to its real NCBI record.",
+        "rationale": "uORF is a 5' UTR feature, not a gene — the suggestion was right about that. But its gene ID was wrong: 111882405 is EDR1, 'Protein kinase superfamily protein', in Lactuca sativa. The real record is LOC111907963, 'GDP-L-galactose phosphorylase 2', chromosome 7. A related gene, VTC5 (111899617), is also a GDP-L-galactose phosphorylase, so confirm against the paper which one was edited. PMID 30080209 is confirmed: Zhang H, Nat Biotechnol 2018, uORF editing for translational control.",
+        "gene_ncbi_id": {
+          "LsGGP2": "111907963"
+        }
+      },
       "locus_check": {
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 2",
-        "disagrees_with_draft": "the draft claimed Level 2; this pipeline derives Level 3 from what it could verify"
+        "draft_claimed": "Level 2"
       }
     },
     {
       "id": "BRA-CLUB-01",
-      "crop": "Brassica (Broccoli/Cabbage/Cauliflower)",
-      "scientific_name": "Brassica oleracea / B. rapa",
+      "crop": "Brassica rapa",
+      "scientific_name": "Brassica rapa",
       "category": "Soil-Borne Disease Resistance",
       "trait": "Clubroot resistance (Plasmodiophora brassicae)",
-      "gene_label": "CRa, CRb, Crr1, Crr3",
+      "gene_label": "CRa",
       "genes": [
         {
           "symbol": "CRa",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "CRa[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
+                "CRa[Gene Name] AND \"Brassica rapa\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "103861267",
+                  "official_symbol": "LOC103861267",
+                  "description": "probable disease resistance protein RPP1",
+                  "other_aliases": "cra",
+                  "organism": "Brassica rapa",
+                  "chromosome": "A03",
+                  "coordinates": "NC_024797.2:25555337-25524664",
+                  "match": "listed as alias"
+                }
               ]
             },
             "genbank_locus": null,
@@ -4013,175 +4097,9 @@
                 }
               ]
             },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "CRb",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "CRb[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": true,
-              "query": "CRb[tiab] AND Clubroot resistance[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "41477250",
-                  "title": "Genetic improvement of clubroot resistance in the recessive genic male sterile line YA001 in Brassica napus.",
-                  "journal": "Front Plant Sci",
-                  "year": "2025",
-                  "doi": "10.3389/fpls.2025.1726940"
-                },
-                {
-                  "pmid": "37180031",
-                  "title": "Introgression of clubroot resistant gene into Brassica oleracea L. from Brassica rapa based on homoeologous exchange.",
-                  "journal": "Hortic Res",
-                  "year": "2022",
-                  "doi": "10.1093/hr/uhac195"
-                },
-                {
-                  "pmid": "32719696",
-                  "title": "QTL Mapping and Inheritance of Clubroot Resistance Genes Derived From Brassica rapa subsp. rapifera (ECD 02) Reveals Resistance Loci and Distorted Segregation Ratios in Two F (2) Populations of Different Crosses.",
-                  "journal": "Front Plant Sci",
-                  "year": "2020",
-                  "doi": "10.3389/fpls.2020.00899"
-                },
-                {
-                  "pmid": "31086496",
-                  "title": "Classification of \"nabana\" (Brassica rapa) cultivars and landraces based on simple sequence repeat markers.",
-                  "journal": "Breed Sci",
-                  "year": "2019",
-                  "doi": "10.1270/jsbbs.18126"
-                },
-                {
-                  "pmid": "28013378",
-                  "title": "The tandem repeated organization of NB-LRR genes in the clubroot-resistant CRb locus in Brassica rapa L.",
-                  "journal": "Mol Genet Genomics",
-                  "year": "2017",
-                  "doi": "10.1007/s00438-016-1281-1"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "Crr1",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "Crr1[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": true,
-              "query": "Crr1[tiab] AND Clubroot resistance[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "40406504",
-                  "title": "Clubroot resistant in cruciferous crops: recent advances in genes and QTLs identification and utilization.",
-                  "journal": "Hortic Res",
-                  "year": "2025",
-                  "doi": "10.1093/hr/uhaf105"
-                },
-                {
-                  "pmid": "39109069",
-                  "title": "Lignin accumulation in cell wall plays a role in clubroot resistance.",
-                  "journal": "Front Plant Sci",
-                  "year": "2024",
-                  "doi": "10.3389/fpls.2024.1401265"
-                },
-                {
-                  "pmid": "38891348",
-                  "title": "Resilience of Canola to Plasmodiophora brassicae (Clubroot) Pathotype 3H under Different Resistance Genes and Initial Inoculum Levels.",
-                  "journal": "Plants (Basel)",
-                  "year": "2024",
-                  "doi": "10.3390/plants13111540"
-                },
-                {
-                  "pmid": "38835867",
-                  "title": "Comparative transcriptome analysis of canola carrying a single vs stacked resistance genes against clubroot.",
-                  "journal": "Front Plant Sci",
-                  "year": "2024",
-                  "doi": "10.3389/fpls.2024.1358605"
-                },
-                {
-                  "pmid": "38540333",
-                  "title": "Identification of Clubroot (Plasmodiophora brassicae) Resistance Loci in Chinese Cabbage (Brassica rapa ssp. pekinensis) with Recessive Character.",
-                  "journal": "Genes (Basel)",
-                  "year": "2024",
-                  "doi": "10.3390/genes15030274"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "Crr3",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "Crr3[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": true,
-              "query": "Crr3[tiab] AND Clubroot resistance[tiab]",
-              "match_type": "gene+trait topic search",
-              "hits": [
-                {
-                  "pmid": "34262060",
-                  "title": "Clubroot resistance derived from the European Brassica napus cv. 'Tosca' is not effective against virulent Plasmodiophora brassicae isolates from Alberta, Canada.",
-                  "journal": "Sci Rep",
-                  "year": "2021",
-                  "doi": "10.1038/s41598-021-93327-0"
-                },
-                {
-                  "pmid": "33936130",
-                  "title": "Local Duplication of TIR-NBS-LRR Gene Marks Clubroot Resistance in Brassica napus cv. Tosca.",
-                  "journal": "Front Plant Sci",
-                  "year": "2021",
-                  "doi": "10.3389/fpls.2021.639631"
-                },
-                {
-                  "pmid": "29868100",
-                  "title": "Identification and Mapping of the Clubroot Resistance Gene CRd in Chinese Cabbage (Brassica rapa ssp. pekinensis).",
-                  "journal": "Front Plant Sci",
-                  "year": "2018",
-                  "doi": "10.3389/fpls.2018.00653"
-                },
-                {
-                  "pmid": "24376876",
-                  "title": "Identification of novel QTLs for isolate-specific partial resistance to Plasmodiophora brassicae in Brassica rapa.",
-                  "journal": "PLoS One",
-                  "year": "2013",
-                  "doi": "10.1371/journal.pone.0085307"
-                },
-                {
-                  "pmid": "23641188",
-                  "title": "Fine mapping of the clubroot resistance gene CRb and development of a useful selectable marker in Brassica rapa.",
-                  "journal": "Breed Sci",
-                  "year": "2013",
-                  "doi": "10.1270/jsbbs.63.116"
-                }
-              ]
-            },
-            "checked_on": "2026-11-13"
+            "checked_on": "2026-11-13",
+            "refseq_accession": "XM_009138981.3",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
@@ -4193,6 +4111,7 @@
         "evidence_note": "Commercially critical, but CR loci are pathotype-specific—NOT universal resistance. Single-gene cultivars break down rapidly.",
         "scientific_reference": "Ueno et al., 2012; Hatakeyama et al., 2013",
         "pmid_doi": "23432391",
+        "commercial_product": "",
         "patent_reference": "Multiple seed company R-gene patents",
         "linkage_drag": "Moderate when transferring from B. rapa into B. oleracea.",
         "pleiotropic_effects": "Minimal.",
@@ -4205,39 +4124,58 @@
         "gene_action": "Dominant R-gene resistance (pathotype-specific)"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/4",
-        "curated_references": [],
+        "status": "verified",
+        "genes_resolved": "1/1",
+        "curated_references": [
+          {
+            "pmid": "23054353",
+            "doi": "",
+            "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+            "supports": "Molecular characterisation of CRa, conferring clubroot resistance in Brassica rapa; CRa mRNA deposited as AB751517.",
+            "does_not_support": "It covers CRa only — not CRb, Crr1 or Crr3.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Molecular characterization of the CRa gene conferring clubroot resistance in Brassica rapa.",
+            "pubmed_journal": "Plant Mol Biol",
+            "pubmed_year": "2012",
+            "pubmed_doi": "10.1007/s11103-012-9971-5"
+          }
+        ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "NCBI:103861267"
+        ],
         "pmids": [
-          "23054353",
-          "34262060",
-          "40406504",
-          "41477250"
+          "23054353"
         ],
         "dois": [
-          "10.1007/s11103-012-9971-5",
-          "10.1038/s41598-021-93327-0",
-          "10.1093/hr/uhaf105",
-          "10.3389/fpls.2025.1726940"
+          "10.1007/s11103-012-9971-5"
         ],
         "notes": [
           "locus ID(s) BraA03g012133E not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
-          "CRb: PMID 41477250 found by topic search, not by the cited author/year — citation not confirmed",
-          "Crr1: PMID 40406504 found by topic search, not by the cited author/year — citation not confirmed",
-          "Crr3: PMID 34262060 found by topic search, not by the cited author/year — citation not confirmed"
+          "CRa: matched NCBI gene LOC103861267 (103861267) as listed as alias — confirm it is the same gene"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Narrow the entry to CRa, anchored to GenBank AB751517.",
+        "rationale": "PMID 23054353 is confirmed: Ueno H, Plant Mol Biol 2012, 'Molecular characterization of the CRa gene conferring clubroot resistance', and AB751517.1 is confirmed as Brassica rapa subsp. pekinensis CRa mRNA for a putative disease resistance protein. The paper covers CRa only, so CRb, Crr1 and Crr3 do not belong in this entry. The suggestion's NCBI gene ID 103860516 is not usable: that record is 'uncharacterized LOC103860516', not the TMV-resistance-like protein described, so identity comes from the accession instead.",
+        "gene_accession": {
+          "CRa": "AB751517"
+        },
+        "superseded": {
+          "gene": "CRb, Crr1, Crr3",
+          "why": "Not characterised in PMID 23054353. The PMIDs offered for them were checked and are wrong papers entirely: 23175754 is about cellulose microfibrils in collenchyma, and 24831572 is a cardiovascular medicine review. Each locus needs its own entry and a real reference."
+        },
+        "commercial_status": "NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syngenta holds a patent on monogenic dominant clubroot resistance introgressed into B. oleracea. But the specific cultivar names offered — Kilaton F1, Clapton F1, Crispus F1, Monclano F1 — could not be tied to CRa by any source found, and 'carries a major CR locus' is not the same claim as 'carries this gene'. Needs one source naming a cultivar and its locus."
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
         "results": [
           {
             "locus": "BraA03g012133E",
-            "query": "BraA03g012133E AND \"Brassica oleracea / B. rapa\"[Organism]",
+            "query": "BraA03g012133E AND \"Brassica rapa\"[Organism]",
             "genbank_identity": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
@@ -4246,11 +4184,11 @@
         ]
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -4376,6 +4314,7 @@
         "evidence_note": "Commercially validated in high-glucoraphanin broccoli hybrids.",
         "scientific_reference": "Traka et al., 2013, New Phytol.",
         "pmid_doi": "23560388",
+        "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene",
         "patent_reference": "PBI / JIC Beneforté patents",
         "linkage_drag": "Reduced via fine-mapped B. villosa introgression.",
         "pleiotropic_effects": "High glucosinolate levels alter flavor pungency and insect feeding.",
@@ -4406,16 +4345,19 @@
           "MYB28: matched NCBI gene LOC106313100 (106313100) as listed as alias — confirm it is the same gene"
         ]
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
+        "decision": "Set Level 1: the commercialised hybrids carry the allele this entry names.",
+        "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit."
+      },
       "locus_check": {
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "only 1/4 genes resolved, with a confirmed reference",
+        "derived_level": "Level 1",
+        "basis": "commercial product named by a human: Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
+        "draft_claimed": "Level 1"
       }
     },
     {
@@ -4612,6 +4554,7 @@
         "evidence_note": "2024 functional validation demonstrated the DcRPGE1–DcAPRR2 regulatory module in carrot taproot pigmentation.",
         "scientific_reference": "2024 Functional Carrot Root Color Study; Ellison et al., 2018",
         "pmid_doi": "30194377",
+        "commercial_product": "",
         "patent_reference": "Publicly documented",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Affects plastid differentiation in taproot phloem/xylem.",
@@ -4668,61 +4611,28 @@
       "scientific_name": "Allium cepa",
       "category": "Consumer Experience & Flavor",
       "trait": "Tearless / low-lachrymatory onion & reduced pungency",
-      "gene_label": "AcLFS, AcACS1, AcACS2",
+      "gene_label": "LFS",
       "genes": [
         {
-          "symbol": "AcLFS",
+          "symbol": "LFS",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
               "found": false,
               "queries": [
-                "AcLFS[Gene Name] AND \"Allium cepa\"[Organism]",
                 "LFS[Gene Name] AND \"Allium cepa\"[Organism]"
               ]
             },
-            "genbank_locus": null,
+            "genbank_locus": {
+              "accession": "AB089203.1",
+              "title": "Allium cepa lfs mRNA for lachrymatory factor synthase, complete cds",
+              "gene": "lfs",
+              "product": "lachrymatory factor synthase",
+              "protein_id": "BAC21275.1"
+            },
             "pubmed": {
               "found": false,
-              "query": "AcLFS[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "AcACS1",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "AcACS1[Gene Name] AND \"Allium cepa\"[Organism]",
-                "ACS1[Gene Name] AND \"Allium cepa\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": false,
-              "query": "AcACS1[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
-            },
-            "checked_on": "2026-11-13"
-          }
-        },
-        {
-          "symbol": "AcACS2",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "AcACS2[Gene Name] AND \"Allium cepa\"[Organism]",
-                "ACS2[Gene Name] AND \"Allium cepa\"[Organism]"
-              ]
-            },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": false,
-              "query": "AcACS2[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
+              "query": "LFS[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
             },
             "checked_on": "2026-11-13"
           }
@@ -4736,6 +4646,7 @@
         "evidence_note": "Commercially validated (tearless onions), but NOT a simple single-gene knockout due to multi-copy LFS genes and sulfur pathway interactions.",
         "scientific_reference": "Eady et al., 2008, Plant Physiol.",
         "pmid_doi": "18715961",
+        "commercial_product": "",
         "patent_reference": "House Foods / Bayer Sunions patents",
         "linkage_drag": "Low-pungency often correlates with shorter storage dormancy; requires careful multi-trait selection.",
         "pleiotropic_effects": "Redirects sulfur flux toward thiosulfinates (sweetness) while potentially lowering storage life.",
@@ -4748,8 +4659,8 @@
         "gene_action": "Loss of function / Suppression"
       },
       "verification": {
-        "status": "partial",
-        "genes_resolved": "0/3",
+        "status": "verified",
+        "genes_resolved": "1/1",
         "curated_references": [
           {
             "pmid": "18583530",
@@ -4766,7 +4677,9 @@
         ],
         "verified_on": "2026-11-13",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
+        "gene_ids": [
+          "GenBank:AB089203.1"
+        ],
         "pmids": [
           "18583530"
         ],
@@ -4775,16 +4688,28 @@
         ],
         "notes": []
       },
-      "correction": null,
+      "correction": {
+        "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+        "decision": "Narrow the entry to LFS, anchored to GenBank AB089203.",
+        "rationale": "AB089203.1 is confirmed as Allium cepa lfs mRNA for lachrymatory factor synthase, and Allium cepa has no NCBI Gene build, so the accession is the identity anchor. PMID 18583530 silences LFS by RNAi; it does not test AcACS1 or AcACS2, so those leave this entry.",
+        "gene_accession": {
+          "LFS": "AB089203"
+        },
+        "superseded": {
+          "gene": "AcACS1, AcACS2",
+          "why": "Not tested in PMID 18583530. Onion pungency via ACS genes is a separate trait needing its own entry and reference."
+        },
+        "commercial_status": "NOT set to Level 1, and this is the clearest case of why the rule matters. Sunions is a real marketed tearless onion from BASF/Nunhems, but BASF states it is the result of more than three decades of CONVENTIONAL breeding, with pungency tracked by pyruvic acid measurement. This entry's solution is RNAi silencing of LFS (PMID 18583530). Same trait, different genetic route: the product does not validate the entry's solution, so Level 1 would be a false claim."
+      },
       "locus_check": {
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 3",
-        "basis": "a reference is confirmed, but none of the named gene symbols resolve in the stated species — identity unestablished",
+        "derived_level": "Level 2",
+        "basis": "all 1 gene(s) resolved and a reference confirmed",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1",
-        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 3 from what it could verify"
+        "disagrees_with_draft": "the draft claimed Level 1; this pipeline derives Level 2 from what it could verify"
       }
     },
     {
@@ -4974,6 +4899,7 @@
         "evidence_note": "Critical Research Gap: Single-stress lab screens fail to predict combined heat + salinity performance in the field.",
         "scientific_reference": "Zandalinas et al., 2021; Rivero et al., 2022",
         "pmid_doi": "34572191",
+        "commercial_product": "",
         "patent_reference": "Broad landscape",
         "linkage_drag": "High in wild relative crosses; requires fine-mapping.",
         "pleiotropic_effects": "Constitutive DREB/SOS activation stunts growth.",
@@ -5143,6 +5069,7 @@
         "evidence_note": "High-value breeding frontier: Vegetative heat tolerance does not guarantee reproductive fertility.",
         "scientific_reference": "Rieu et al., 2017; Fragkostefanakis et al., 2016",
         "pmid_doi": "27550996",
+        "commercial_product": "",
         "patent_reference": "N/A",
         "linkage_drag": "Low if using native alleles.",
         "pleiotropic_effects": "Must avoid altering normal floral organ identity.",
@@ -5282,6 +5209,7 @@
         "evidence_note": "Next-generation decision metric: Speed of yield recovery after transient heat/drought/salinity episodes.",
         "scientific_reference": "2025–2026 Plant Resilience Frameworks",
         "pmid_doi": "N/A",
+        "commercial_product": "",
         "patent_reference": "N/A",
         "linkage_drag": "N/A",
         "pleiotropic_effects": "Over-rapid ABA degradation risks vulnerability to recurring stress.",

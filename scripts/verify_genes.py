@@ -481,6 +481,7 @@ def migrate() -> dict:
                 "evidence_note": e.get("evidence_note", ""),
                 "scientific_reference": e.get("scientific_reference", ""),
                 "pmid_doi": e.get("pmid_doi", ""),
+                "commercial_product": e.get("commercial_product", ""),
                 "patent_reference": e.get("patent_reference", ""),
                 **{k: e.get(k, "") for k in CURATED_FIELDS},
             },
@@ -558,6 +559,7 @@ def verify(only: str | None = None) -> dict:
         for g in e["genes"]:
             sym = g["symbol"]
             corr = e.get("correction") or {}
+            ncbi_id = official = pmid = doi = mtype = ""
             al = corr.get("search_aliases", {}).get(sym, [])
             ncbi = (ncbi_gene(sym, species, al) if species
                     else {"found": False, "reason": "no species"})
@@ -569,6 +571,24 @@ def verify(only: str | None = None) -> dict:
                 gb_id = locus_genbank(mapped, species)
                 if gb_id:
                     gb_id["locus"] = mapped
+            gid = corr.get("gene_ncbi_id", {}).get(sym, "")
+            if not ncbi.get("found") and gid:
+                summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=gene&retmode=json"
+                                  f"&id={gid}{eutils_key()}")
+                rec = ((summ or {}).get("result", {}) or {}).get(str(gid)) \
+                    if isinstance(summ, dict) else None
+                org = (rec or {}).get("organism", {}).get("scientificname", "")
+                if rec and (not species or org == species):
+                    ncbi = {"found": True, "queries": [f"pinned id {gid}"], "hits": [{
+                        "ncbi_gene_id": str(gid), "official_symbol": rec.get("name", ""),
+                        "description": rec.get("description", ""),
+                        "other_aliases": rec.get("otheraliases", ""), "organism": org,
+                        "chromosome": rec.get("chromosome", ""), "coordinates": "",
+                        "match": "pinned by curator"}]}
+                elif rec:
+                    notes.append(f"{sym}: pinned gene id {gid} is {org}, not {species}")
+                else:
+                    notes.append(f"{sym}: pinned gene id {gid} did not resolve")
             acc = corr.get("gene_accession", {}).get(sym, "")
             if not ncbi.get("found") and not gb_id and acc:
                 got = genbank_accession(acc, species)
@@ -578,7 +598,6 @@ def verify(only: str | None = None) -> dict:
                     gb_id = got
             if gb_id and not gb_id.get("error"):
                 gene_ids.append(f"GenBank:{gb_id.get('accession','')}")
-            ncbi_id = official = pmid = doi = mtype = ""
             if ncbi.get("found"):
                 h = ncbi["hits"][0]
                 ncbi_id, official = h["ncbi_gene_id"], h["official_symbol"]

@@ -259,6 +259,7 @@ function evidence(e){
 function correction(e){
   const c = e.correction;
   if (!c) return '';
+  const cs = c.commercial_status;
   const pin = c.pinned_ids ? Object.entries(c.pinned_ids).map(([k, v]) =>
     `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('') : '';
   const un = (c.unpinned || []).map(x => `<li>${esc(x)}</li>`).join('');
@@ -267,7 +268,8 @@ function correction(e){
     ${c.rationale ? `<p class="note flat" style="font-size:13px">${esc(c.rationale)}</p>` : ''}
     ${pin ? `<dl class="kv">${pin}</dl>` : ''}
     ${un ? `<p class="note warn">Not pinned to a named gene:<ul style="margin:6px 0 0 16px">${un}</ul></p>` : ''}
-    ${c.superseded ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">Superseded: ${esc(c.superseded.gene)} — ${esc(c.superseded.why)}</p>` : ''}`;
+    ${c.superseded ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">Superseded: ${esc(c.superseded.gene)} — ${esc(c.superseded.why)}</p>` : ''}
+    ${cs ? `<h3>Commercial status</h3><p class="note warn">${esc(cs)}</p>` : ''}`;
 }
 
 /* ---------- supplied references ----------
@@ -335,7 +337,8 @@ function sheet(e){
     ['Tissue', c.tissue],
     ['Editing route', c.editing_possibility],
     ['Conventional', c.conventional_breeding],
-    ['Locus IDs', c.gene_id]
+    ['Locus IDs', c.gene_id],
+    ['Commercial', c.commercial_product]
   ].filter(r => r[1]).map(([k, x]) => `<dt>${k}</dt><dd>${esc(x)}</dd>`).join('');
 
   const risk = [

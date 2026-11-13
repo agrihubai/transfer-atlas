@@ -5,7 +5,9 @@
     "pinning_note": "Where a gene family could not be pinned to a named ortholog in the stated crop, it is listed in unpinned[] rather than replaced by a guess.",
     "alias_note": "search_aliases map a literature symbol to the symbol NCBI actually indexes. They widen the search; they never assert the genes are the same — the pipeline still has to find a record, and the corroboration used here is chromosome agreement with the locus ID.",
     "locus_identity_note": "gene_locus ties a literature symbol to its genome locus tag. When NCBI Gene holds no record for the symbol, the pipeline resolves identity from the GenBank record that carries that locus_tag, reading /product and /protein_id off the record itself.",
-    "accession_note": "gene_accession pins a symbol to a specific GenBank record when neither NCBI Gene nor a locus tag resolves it. The pipeline fetches the record and reads its organism, gene name and product, so a wrong accession fails loudly instead of being trusted."
+    "accession_note": "gene_accession pins a symbol to a specific GenBank record when neither NCBI Gene nor a locus tag resolves it. The pipeline fetches the record and reads its organism, gene name and product, so a wrong accession fails loudly instead of being trusted.",
+    "id_note": "gene_ncbi_id pins a symbol to an NCBI Gene record by ID. The pipeline fetches the record and checks the organism, so a wrong ID fails loudly.",
+    "commercial_rule": "Level 1 means THIS entry's genetic solution is in a commercial product — not that a product exists with the same trait by another route. commercial_product is set only when a source ties the named product to the entry's gene or allele."
   },
   "entries": {
     "EGG-PRICKLE-01": {
@@ -22,7 +24,8 @@
       "superseded": {
         "gene": "SmMYB_candidates",
         "why": "Not supported by PMID 38974191. Kept here so the earlier hypothesis is not silently erased; if another source supports an SmMYB role, it can return as its own entry."
-      }
+      },
+      "second_suggestion_note": "A later suggestion attributed PMID 38974191 to 'Satterlee et al., 2024, Science'. That is wrong and contradicts the same supplier's earlier, correct attribution: the paper is Zhang L, Horticulture Research 2024. It also offered the locus tag SMEL4.1_06g011220.1.01, which cannot be checked here because eggplant has no NCBI build."
     },
     "GAP-COMB-01": {
       "decided_by": "maintainer, 2026-11-13",
@@ -121,7 +124,8 @@
         "Bt": "Csa5G157230",
         "Bl": "Csa5G156220",
         "Bi": "Csa6G088690"
-      }
+      },
+      "commercial_status": "NOT set to Level 1. 'Marketmore' and 'Spacemaster' are long-standing cucumber cultivars, and the claim that they were 'engineered or selected' for tissue-specific bitterness regulation conflates ordinary non-bitter fruit with the Bt/Bl regulatory solution described in PMID 25430763. Non-bitter fruit in cucumber predates that work by decades."
     },
     "TOM-TYLCV-01": {
       "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
@@ -132,7 +136,8 @@
           "PELOTA",
           "Pelota"
         ]
-      }
+      },
+      "commercial_status": "NOT set to Level 1. The cultivar names offered — 'Camaro', 'Grand Marshall', 'Jolene' — were not confirmed, and the claim mixed introgressed natural ty-5 alleles with targeted modifications, which are different routes. ty-5 resistance is widely deployed commercially; what is missing is a source naming a cultivar and its ty-5/Pelota allele."
     },
     "PEP-MILDEW-01": {
       "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
@@ -165,6 +170,86 @@
         "gene": "ClSWEET3, ClLCYB",
         "why": "Not characterised in PMID 29118248. ClSWEET3 needs its own entry and its own paper; ClLCYB is flesh colour, a separate trait. Removed here rather than left implying evidence they do not have."
       }
+    },
+    "LET-VITC-01": {
+      "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+      "decision": "Drop uORF from the gene field and pin LsGGP2 to its real NCBI record.",
+      "rationale": "uORF is a 5' UTR feature, not a gene — the suggestion was right about that. But its gene ID was wrong: 111882405 is EDR1, 'Protein kinase superfamily protein', in Lactuca sativa. The real record is LOC111907963, 'GDP-L-galactose phosphorylase 2', chromosome 7. A related gene, VTC5 (111899617), is also a GDP-L-galactose phosphorylase, so confirm against the paper which one was edited. PMID 30080209 is confirmed: Zhang H, Nat Biotechnol 2018, uORF editing for translational control.",
+      "set": {
+        "gene": "LsGGP2"
+      },
+      "gene_ncbi_id": {
+        "LsGGP2": "111907963"
+      }
+    },
+    "BRA-CLUB-01": {
+      "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+      "decision": "Narrow the entry to CRa, anchored to GenBank AB751517.",
+      "rationale": "PMID 23054353 is confirmed: Ueno H, Plant Mol Biol 2012, 'Molecular characterization of the CRa gene conferring clubroot resistance', and AB751517.1 is confirmed as Brassica rapa subsp. pekinensis CRa mRNA for a putative disease resistance protein. The paper covers CRa only, so CRb, Crr1 and Crr3 do not belong in this entry. The suggestion's NCBI gene ID 103860516 is not usable: that record is 'uncharacterized LOC103860516', not the TMV-resistance-like protein described, so identity comes from the accession instead.",
+      "set": {
+        "gene": "CRa",
+        "crop": "Brassica rapa",
+        "scientific_name": "Brassica rapa"
+      },
+      "gene_accession": {
+        "CRa": "AB751517"
+      },
+      "superseded": {
+        "gene": "CRb, Crr1, Crr3",
+        "why": "Not characterised in PMID 23054353. The PMIDs offered for them were checked and are wrong papers entirely: 23175754 is about cellulose microfibrils in collenchyma, and 24831572 is a cardiovascular medicine review. Each locus needs its own entry and a real reference."
+      },
+      "commercial_status": "NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syngenta holds a patent on monogenic dominant clubroot resistance introgressed into B. oleracea. But the specific cultivar names offered — Kilaton F1, Clapton F1, Crispus F1, Monclano F1 — could not be tied to CRa by any source found, and 'carries a major CR locus' is not the same claim as 'carries this gene'. Needs one source naming a cultivar and its locus."
+    },
+    "ONI-TEAR-01": {
+      "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+      "decision": "Narrow the entry to LFS, anchored to GenBank AB089203.",
+      "rationale": "AB089203.1 is confirmed as Allium cepa lfs mRNA for lachrymatory factor synthase, and Allium cepa has no NCBI Gene build, so the accession is the identity anchor. PMID 18583530 silences LFS by RNAi; it does not test AcACS1 or AcACS2, so those leave this entry.",
+      "set": {
+        "gene": "LFS"
+      },
+      "gene_accession": {
+        "LFS": "AB089203"
+      },
+      "superseded": {
+        "gene": "AcACS1, AcACS2",
+        "why": "Not tested in PMID 18583530. Onion pungency via ACS genes is a separate trait needing its own entry and reference."
+      },
+      "commercial_status": "NOT set to Level 1, and this is the clearest case of why the rule matters. Sunions is a real marketed tearless onion from BASF/Nunhems, but BASF states it is the result of more than three decades of CONVENTIONAL breeding, with pungency tracked by pyruvic acid measurement. This entry's solution is RNAi silencing of LFS (PMID 18583530). Same trait, different genetic route: the product does not validate the entry's solution, so Level 1 would be a false claim."
+    },
+    "EGG-BROWN-01": {
+      "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",
+      "decision": "Use the paper's four-letter prefix (SmelPPO4/5/6) and leave identity unresolved for now.",
+      "rationale": "PMID 33343607 is confirmed: Maioli A, Front Plant Sci 2020, 'Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning'. Solanum melongena has no NCBI Gene build, as the suggestion said. But the three GenBank accessions it offered are not eggplant PPO genes at all: AY547272 is a Pseudomonas fluorescens rsmE gene, AY547273 is a tomato early light inducible protein, and AY547274 is a Leptosphaeria maculans actin gene. NCBI's eggplant PPO records are for PPO10, not PPO4/5/6, so the SMEL_008g3125xx tags need the eggplant genome database, which this environment cannot reach. Identity therefore stays unresolved rather than anchored to a wrong record.",
+      "set": {
+        "gene": "SmelPPO4, SmelPPO5, SmelPPO6"
+      },
+      "unpinned": [
+        "SMEL_008g312510 / 312500 / 312490 — eggplant genome tags, not resolvable from NCBI."
+      ]
+    },
+    "TOM-GABA-01": {
+      "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
+      "decision": "Set Level 1: the entry's own solution is the commercial product.",
+      "rationale": "Sanatech Seed's 'Sicilian Rouge High GABA' has been sold to consumers in Japan since September 2021 and is reported as the first commercially sold CRISPR-edited food. The edit is CRISPR/Cas9 on tomato GAD disabling the C-terminal autoinhibitory/calmodulin-binding domain, which is exactly this entry's mechanism, and the fruit carries about 4-6x the GABA of unedited controls. Sources: Nature Biotechnology news (d41587-021-00026-2), Scientific American, and a Philippine regulatory product information sheet naming Sanatech Seed and the GAD target.",
+      "set": {
+        "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry"
+      }
+    },
+    "BRA-GLUC-01": {
+      "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
+      "decision": "Set Level 1: the commercialised hybrids carry the allele this entry names.",
+      "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit.",
+      "set": {
+        "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene"
+      }
+    },
+    "PEP-PUNG-01": {
+      "decided_by": "maintainer, 2026-11-13",
+      "commercial_status": "NOT set to Level 1 by the pipeline, and worth a human decision. Every commercial sweet bell pepper is pun1 loss-of-function, so the allele is commercially ubiquitous — but it arrived through domestication centuries ago, not through this solution being deployed. The cultivars offered ('Ace', 'Bell Boy') illustrate the allele rather than validate a breeding route. If Level 1 is meant to say 'this allele is in commercial products', this qualifies; if it means 'this solution was deployed commercially', it does not."
+    },
+    "PEP-VIRUS-01": {
+      "decided_by": "maintainer, 2026-11-13",
+      "commercial_status": "NOT set to Level 1: no cultivar was named, only 'commercial hybrid lines bred with pvr1/pvr2' and a list of seed companies. A category is not a product."
     }
   }
 }

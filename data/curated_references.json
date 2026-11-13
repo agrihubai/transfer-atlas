@@ -83,6 +83,33 @@
         "supports": "A tonoplast sugar transporter (ClTST2) underlies a sugar-accumulation QTL in watermelon; includes its upstream regulator.",
         "does_not_support": "It does not characterise ClSWEET3 or ClLCYB, which the draft listed in the same entry."
       }
+    ],
+    "EGG-BROWN-01": [
+      {
+        "pmid": "33343607",
+        "doi": "",
+        "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+        "supports": "Simultaneous CRISPR/Cas9 editing of three PPO genes reduces fruit flesh browning in eggplant.",
+        "does_not_support": "It does not establish which NCBI or GenBank record each SmelPPO gene corresponds to; the accessions suggested alongside it were wrong organisms."
+      }
+    ],
+    "LET-VITC-01": [
+      {
+        "pmid": "30080209",
+        "doi": "",
+        "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+        "supports": "Editing upstream open reading frames enables translational control; applied to raise ascorbate in lettuce via GGP2.",
+        "does_not_support": "It does not settle which of the two lettuce GDP-L-galactose phosphorylase genes (LOC111907963 or VTC5) is the edited one — read the paper before relying on the ID."
+      }
+    ],
+    "BRA-CLUB-01": [
+      {
+        "pmid": "23054353",
+        "doi": "",
+        "suggested_by": "external AI suggestion (Gemini), relayed by maintainer 2026-11-13",
+        "supports": "Molecular characterisation of CRa, conferring clubroot resistance in Brassica rapa; CRa mRNA deposited as AB751517.",
+        "does_not_support": "It covers CRa only — not CRb, Crr1 or Crr3."
+      }
     ]
   }
 }
