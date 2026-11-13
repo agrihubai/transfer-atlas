@@ -235,6 +235,7 @@
               "annotation": "Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc01g005000.2 — Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
@@ -254,6 +255,7 @@
               "annotation": "Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc11g011920.1 — Glutamate decarboxylase; contains Interpro domain(s)  IPR010107  Glutamate decarboxylase",
@@ -405,6 +407,7 @@
               "annotation": "Sterol reductase; contains Interpro domain(s)  IPR001171  Ergosterol biosynthesis ERG4/ERG24",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc06g074090.2 — Sterol reductase; contains Interpro domain(s)  IPR001171  Ergosterol biosynthesis ERG4/ERG24",
@@ -583,6 +586,7 @@
               "annotation": "Tobamovirus multiplication protein (Fragment); contains Interpro domain(s)  IPR009457  Protein of unknown function DUF1084",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc02g080370.2 — Tobamovirus multiplication protein (Fragment); contains Interpro domain(s)  IPR009457  Protein of unknown function DUF1084",
@@ -601,6 +605,7 @@
               "annotation": "RNA-binding protein; contains Interpro domain(s)  IPR012677  Nucleotide-binding, alpha-beta plait",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc01g105140.2 — RNA-binding protein; contains Interpro domain(s)  IPR012677  Nucleotide-binding, alpha-beta plait",
@@ -749,6 +754,7 @@
               "annotation": "Pelota homolog; contains Interpro domain(s)  IPR004405  Probable translation factor pelota",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc04g009810.2 — Pelota homolog; contains Interpro domain(s)  IPR004405  Probable translation factor pelota",
@@ -876,6 +882,7 @@
               "annotation": "MLO-like protein 17; contains Interpro domain(s)  IPR004326  Mlo-related protein",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc04g049090.2 — MLO-like protein 17; contains Interpro domain(s)  IPR004326  Mlo-related protein",
@@ -996,6 +1003,7 @@
               "annotation": "Flavanone 3-hydroxylase-like protein; contains Interpro domain(s)  IPR005123  Oxoglutarate and iron-dependent oxygenase",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc03g080190.2 — Flavanone 3-hydroxylase-like protein; contains Interpro domain(s)  IPR005123  Oxoglutarate and iron-dependent oxygenase",
@@ -1275,6 +1283,7 @@
               "annotation": "Receptor like kinase, RLK",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc08g061560.2 — Receptor like kinase, RLK",
@@ -1293,6 +1302,7 @@
               "annotation": "SELF PRUNING 5G",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc05g053850.2 — SELF PRUNING 5G",
@@ -1551,6 +1561,7 @@
               "annotation": "Auxin responsive protein; contains Interpro domain(s)  IPR003311  AUX/IAA protein",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc04g076850.2 — Auxin responsive protein; contains Interpro domain(s)  IPR003311  AUX/IAA protein",
@@ -1568,6 +1579,7 @@
               "annotation": "MADS box transcription factor; contains Interpro domain(s)  IPR002487  Transcription factor, K-box",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc01g093960.2 — MADS box transcription factor; contains Interpro domain(s)  IPR002487  Transcription factor, K-box",
@@ -1737,6 +1749,7 @@
               "annotation": "Cell number regulator 1; contains Interpro domain(s)  IPR006461  Protein of unknown function Cys-rich",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc02g090730.2 — Cell number regulator 1; contains Interpro domain(s)  IPR006461  Protein of unknown function Cys-rich",
@@ -1755,6 +1768,7 @@
               "annotation": "Genomic DNA chromosome 3 P1 clone MUJ8",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc07g008100.2 — Genomic DNA chromosome 3 P1 clone MUJ8",
@@ -1989,6 +2003,7 @@
               "annotation": "Pectate lyase; contains Interpro domain(s)  IPR002022  Pectate lyase/Amb allergen",
               "source": "Sol Genomics Network"
             },
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "confirmed_in_species",
             "status": "confirmed at Sol Genomics: Solyc03g111690.2 — Pectate lyase; contains Interpro domain(s)  IPR002022  Pectate lyase/Amb allergen",
@@ -2800,6 +2815,7 @@
               "protein_id": "AIT72027.1"
             },
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus",
@@ -2814,6 +2830,7 @@
               "protein_id": "AIT72026.1"
             },
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus",
@@ -2828,6 +2845,7 @@
               "protein_id": "AIT72030.1"
             },
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 1,
             "state": "confirmed_in_species",
             "status": "appears in 1 NCBI sequence record(s) for Cucumis sativus",
@@ -2977,7 +2995,7 @@
           "10.1093/plphys/kiae047"
         ],
         "notes": [
-          "locus ID(s) Csa5G623470 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
+          "worth a look: locus Csa5G623470 is annotated 'MLO', which this entry describes differently. Usually a naming difference; a wrong ID looks the same",
           "CsMLO1: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed",
           "CsMLO8: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed"
         ]
@@ -2992,9 +3010,24 @@
             "query": "Csa5G623470 AND \"Cucumis sativus\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "Csa_5G623470",
+              "name": "MLO",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "5",
+              "start": "24827408",
+              "end": "24831456",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+              "species": "Cucumis sativus",
+              "build": "ASM407v2",
+              "checked_on": "2026-11-13",
+              "source": "Ensembl Plants annotation"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants ASM407v2: Csa_5G623470 on chromosome 5, gene name MLO",
+            "annotation_agrees": false
           }
         ]
       },
@@ -3272,7 +3305,6 @@
           "10.3389/fpls.2018.01091"
         ],
         "notes": [
-          "locus ID(s) Csa1G580750, Csa4G290830 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CsACS2: matched NCBI gene LOC101217331 (101217331) as listed as alias — confirm it is the same gene",
           "CsACS2: PMID 41688921 found by topic search, not by the cited author/year — citation not confirmed",
           "CsACS11: matched NCBI gene LOC101213522 (101213522) as listed as alias — confirm it is the same gene",
@@ -3291,18 +3323,46 @@
             "query": "Csa1G580750 AND \"Cucumis sativus\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "Csa_1G580750",
+              "name": "",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "1",
+              "start": "21938379",
+              "end": "21940714",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+              "species": "Cucumis sativus",
+              "build": "ASM407v2",
+              "checked_on": "2026-11-13",
+              "source": "Ensembl Plants annotation"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants ASM407v2: Csa_1G580750 on chromosome 1, no gene name in the annotation"
           },
           {
             "locus": "Csa4G290830",
             "query": "Csa4G290830 AND \"Cucumis sativus\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "Csa_4G290830",
+              "name": "",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "4",
+              "start": "11357326",
+              "end": "11360094",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+              "species": "Cucumis sativus",
+              "build": "ASM407v2",
+              "checked_on": "2026-11-13",
+              "source": "Ensembl Plants annotation"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants ASM407v2: Csa_4G290830 on chromosome 4, no gene name in the annotation"
           }
         ]
       },
@@ -3487,7 +3547,6 @@
           "10.3389/fgeed.2023.1176125"
         ],
         "notes": [
-          "locus ID(s) MELO3C014437 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct",
           "CmACO1: matched NCBI gene LOC103491357 (103491357) as listed as alias — confirm it is the same gene",
           "CmACS7: matched NCBI gene LOC103492295 (103492295) as weak — symbol not in name or aliases — confirm it is the same gene"
         ]
@@ -3509,9 +3568,23 @@
             "query": "MELO3C014437 AND \"Cucumis melo\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "MELO3C014437.2",
+              "name": "",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "contig6",
+              "start": "2410144",
+              "end": "2412125",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_melo/Cucumis_melo.Melonv4.63.gff3.gz",
+              "species": "Cucumis melo",
+              "build": "Melonv4",
+              "checked_on": "2026-11-13",
+              "source": "Ensembl Plants annotation"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants Melonv4: MELO3C014437.2 on chromosome contig6, no gene name in the annotation"
           }
         ]
       },
@@ -3619,9 +3692,10 @@
             "query": "Cla97C07G144940 AND \"Citrullus lanatus\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "status": "not found in NCBI, Sol Genomics or the Ensembl Plants build for this species; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -3726,7 +3800,7 @@
           "10.1104/pp.17.01290"
         ],
         "notes": [
-          "locus ID(s) Cla97C02G036390, Cla97C04G070940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
+          "worth a look: locus Cla97C04G070940 is annotated 'LCYB', which this entry describes differently. Usually a naming difference; a wrong ID looks the same"
         ]
       },
       "correction": {
@@ -3750,18 +3824,47 @@
             "query": "Cla97C02G036390 AND \"Citrullus lanatus\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "Cla97C02G036390",
+              "name": "",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "2",
+              "start": "18781065",
+              "end": "18784264",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+              "species": "Citrullus lanatus",
+              "build": "Cla97_v1",
+              "checked_on": "2026-11-13",
+              "source": "Ensembl Plants annotation"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants Cla97_v1: Cla97C02G036390 on chromosome 2, no gene name in the annotation"
           },
           {
             "locus": "Cla97C04G070940",
             "query": "Cla97C04G070940 AND \"Citrullus lanatus\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "Cla97C04G070940",
+              "name": "LCYB",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "4",
+              "start": "15442312",
+              "end": "15443826",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+              "species": "Citrullus lanatus",
+              "build": "Cla97_v1",
+              "checked_on": "2026-11-13",
+              "source": "Ensembl Plants annotation"
+            },
             "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants Cla97_v1: Cla97C04G070940 on chromosome 4, gene name LCYB",
+            "annotation_agrees": false
           }
         ]
       },
@@ -3932,9 +4035,10 @@
             "query": "SMEL4.1_08g017350 AND \"Solanum melongena\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "status": "not found in NCBI, Sol Genomics or the Ensembl Plants build for this species; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -4047,9 +4151,10 @@
             "query": "SMEL4.1_06g... AND \"Solanum melongena\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "status": "not found in NCBI, Sol Genomics or the Ensembl Plants build for this species; this is not evidence the ID is wrong"
           }
         ]
       },
@@ -4500,9 +4605,10 @@
             "query": "BraA03g012133E AND \"Brassica rapa\"[Organism]",
             "genbank_identity": null,
             "solgenomics": null,
+            "ensembl_plants": null,
             "ncbi_records_in_species": 0,
             "state": "not_checkable_here",
-            "status": "not indexed in NCBI or Sol Genomics — needs the crop's own genome database; this is not evidence the ID is wrong"
+            "status": "not found in NCBI, Sol Genomics or the Ensembl Plants build for this species; this is not evidence the ID is wrong"
           }
         ]
       },

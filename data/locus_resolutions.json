@@ -1,0 +1,89 @@
+{
+  "_about": "Locus tags resolved against Ensembl Plants annotation by scripts/resolve_loci_ensembl.py. Each record carries the build and the file it came from. A tag absent here was not in that build — which is not proof the tag is wrong, only that this build does not carry it.",
+  "loci": {
+    "Cla97C02G036390": {
+      "ensembl_id": "Cla97C02G036390",
+      "name": "",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "2",
+      "start": "18781065",
+      "end": "18784264",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+      "species": "Citrullus lanatus",
+      "build": "Cla97_v1",
+      "checked_on": "2026-11-13",
+      "source": "Ensembl Plants annotation"
+    },
+    "Cla97C04G070940": {
+      "ensembl_id": "Cla97C04G070940",
+      "name": "LCYB",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "4",
+      "start": "15442312",
+      "end": "15443826",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+      "species": "Citrullus lanatus",
+      "build": "Cla97_v1",
+      "checked_on": "2026-11-13",
+      "source": "Ensembl Plants annotation"
+    },
+    "MELO3C014437": {
+      "ensembl_id": "MELO3C014437.2",
+      "name": "",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "contig6",
+      "start": "2410144",
+      "end": "2412125",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_melo/Cucumis_melo.Melonv4.63.gff3.gz",
+      "species": "Cucumis melo",
+      "build": "Melonv4",
+      "checked_on": "2026-11-13",
+      "source": "Ensembl Plants annotation"
+    },
+    "Csa1G580750": {
+      "ensembl_id": "Csa_1G580750",
+      "name": "",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "1",
+      "start": "21938379",
+      "end": "21940714",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "species": "Cucumis sativus",
+      "build": "ASM407v2",
+      "checked_on": "2026-11-13",
+      "source": "Ensembl Plants annotation"
+    },
+    "Csa4G290830": {
+      "ensembl_id": "Csa_4G290830",
+      "name": "",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "4",
+      "start": "11357326",
+      "end": "11360094",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "species": "Cucumis sativus",
+      "build": "ASM407v2",
+      "checked_on": "2026-11-13",
+      "source": "Ensembl Plants annotation"
+    },
+    "Csa5G623470": {
+      "ensembl_id": "Csa_5G623470",
+      "name": "MLO",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "5",
+      "start": "24827408",
+      "end": "24831456",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "species": "Cucumis sativus",
+      "build": "ASM407v2",
+      "checked_on": "2026-11-13",
+      "source": "Ensembl Plants annotation"
+    }
+  }
+}

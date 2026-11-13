@@ -31,19 +31,19 @@ PEP-MILDEW-01	Pepper	CaMlo1	107848305	LOC107848305		23923019	10.1371/journal.pon
 CUC-BITTER-01	Cucumber	Bt			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	verified
 CUC-BITTER-01	Cucumber	Bl			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	verified
 CUC-BITTER-01	Cucumber	Bi			Csa5G157230;Csa5G156220;Csa6G088690	25307789	10.1111/ane.12300	author+year+gene	verified
-CUC-MILDEW-01	Cucumber	CsMLO1				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
-CUC-MILDEW-01	Cucumber	CsMLO8				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
-CUC-MILDEW-01	Cucumber	CsMLO11							unverified
-CUC-SEX-01	Cucumber	CsACS2	101217331	LOC101217331		41688921	10.1186/s12870-026-08338-8	gene+trait topic search	partial
-CUC-SEX-01	Cucumber	CsACS11	101213522	LOC101213522		30154805	10.3389/fpls.2018.01091	gene+trait topic search	partial
-CUC-SEX-01	Cucumber	CsWIP1				42262565	10.1093/plphys/kiag351	gene+trait topic search	partial
-CUC-SEX-01	Cucumber	CsARF8				30604453	10.1111/tpj.14223	gene+trait topic search	partial
-MEL-SHELF-01	Melon	CmACO1	103491357	LOC103491357		37304010	10.3389/fgeed.2023.1176125	author+year+gene	verified
-MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295		9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	verified
-MEL-SHELF-01	Melon	CmNAC-NOR				9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	partial
+CUC-MILDEW-01	Cucumber	CsMLO1			Csa5G623470	38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
+CUC-MILDEW-01	Cucumber	CsMLO8			Csa5G623470	38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
+CUC-MILDEW-01	Cucumber	CsMLO11			Csa5G623470				unverified
+CUC-SEX-01	Cucumber	CsACS2	101217331	LOC101217331	Csa1G580750;Csa4G290830	41688921	10.1186/s12870-026-08338-8	gene+trait topic search	partial
+CUC-SEX-01	Cucumber	CsACS11	101213522	LOC101213522	Csa1G580750;Csa4G290830	30154805	10.3389/fpls.2018.01091	gene+trait topic search	partial
+CUC-SEX-01	Cucumber	CsWIP1			Csa1G580750;Csa4G290830	42262565	10.1093/plphys/kiag351	gene+trait topic search	partial
+CUC-SEX-01	Cucumber	CsARF8			Csa1G580750;Csa4G290830	30604453	10.1111/tpj.14223	gene+trait topic search	partial
+MEL-SHELF-01	Melon	CmACO1	103491357	LOC103491357	MELO3C014437	37304010	10.3389/fgeed.2023.1176125	author+year+gene	verified
+MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295	MELO3C014437	9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	verified
+MEL-SHELF-01	Melon	CmNAC-NOR			MELO3C014437	9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	partial
 WAT-SEED-01	Watermelon	ClAGL11							unverified
 WAT-SEED-01	Watermelon	ClWIP1 for gynoecy							unverified
-WAT-BRIX-01	Watermelon	ClTST2				29118248	10.1104/pp.17.01290	author+year+gene	verified
+WAT-BRIX-01	Watermelon	ClTST2			Cla97C02G036390;Cla97C04G070940	29118248	10.1104/pp.17.01290	author+year+gene	verified
 EGG-BROWN-01	Eggplant	SmelPPO4				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
 EGG-BROWN-01	Eggplant	SmelPPO5				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
 EGG-BROWN-01	Eggplant	SmelPPO6				33343607	10.3389/fpls.2020.607161	author+year+gene	partial

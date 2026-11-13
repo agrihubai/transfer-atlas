@@ -329,6 +329,30 @@ def genbank_accession(acc: str, species: str) -> dict:
 
 
 SGN = "https://solgenomics.net/ajax/search/features"
+LOCI_FILE = DATA / "locus_resolutions.json"
+_loci_cache: dict | None = None
+
+
+def ensembl_plants_locus(locus: str, species: str) -> dict:
+    """Look a locus tag up in data/locus_resolutions.json.
+
+    That file is produced by scripts/resolve_loci_ensembl.py from Ensembl Plants
+    annotation and committed, so this needs no network and the answer is the same
+    on every run. Ensembl's REST service for plants is gone and its website now
+    redirects away, so the annotation file is the only stable route.
+    """
+    global _loci_cache
+    if _loci_cache is None:
+        try:
+            _loci_cache = json.loads(LOCI_FILE.read_text(encoding="utf-8")).get("loci", {})
+        except (OSError, json.JSONDecodeError):
+            _loci_cache = {}
+    rec = _loci_cache.get(locus)
+    if not rec:
+        return {}
+    if species and rec.get("species") and rec["species"].split()[0] != species.split()[0]:
+        return {}
+    return rec
 
 
 def solgenomics_locus(locus: str, species: str) -> dict:
@@ -394,18 +418,25 @@ def check_locus_id(locus_field: str, species: str) -> dict:
         count = int(sr.get("count", "0") or 0)
         gb = locus_genbank(locus, species) if count else {}
         sgn = solgenomics_locus(locus, species)
+        ens = ensembl_plants_locus(locus, species)
         results.append({
             "locus": locus,
             "query": term,
             "genbank_identity": gb or None,
             "solgenomics": sgn or None,
+            "ensembl_plants": ens or None,
             "ncbi_records_in_species": count,
-            "state": ("confirmed_in_species" if count or sgn else "not_checkable_here"),
+            "state": ("confirmed_in_species" if count or sgn or ens
+                      else "not_checkable_here"),
             "status": (f"confirmed at Sol Genomics: {sgn.get('feature')} — "
                        f"{sgn.get('annotation') or 'no functional annotation'}" if sgn else
+                       f"confirmed in Ensembl Plants {ens.get('build')}: {ens.get('ensembl_id')} "
+                       f"on chromosome {ens.get('chromosome')}"
+                       + (f", gene name {ens['name']}" if ens.get("name") else
+                          ", no gene name in the annotation") if ens else
                        f"appears in {count} NCBI sequence record(s) for {species}" if count else
-                       "not indexed in NCBI or Sol Genomics — needs the crop's own genome "
-                       "database; this is not evidence the ID is wrong"),
+                       "not found in NCBI, Sol Genomics or the Ensembl Plants build for this "
+                       "species; this is not evidence the ID is wrong"),
         })
     return {
         "checked": True,
@@ -750,8 +781,11 @@ def verify(only: str | None = None) -> dict:
                         (e.get("gene_label") or "") + " " +
                         (e.get("trait") or "")).lower())}
         for r in locus.get("results", []):
+            ep = r.get("ensembl_plants") or {}
             ann = ((r.get("solgenomics") or {}).get("annotation")
-                   or (r.get("genbank_identity") or {}).get("product") or "")
+                   or (r.get("genbank_identity") or {}).get("product")
+                   or " ".join(x for x in (ep.get("name"), ep.get("description")) if x)
+                   or "")
             if not ann:
                 continue
             ann_words = {w for w in re.findall(r"[a-z]{5,}", ann.lower())}
