@@ -309,7 +309,9 @@ function sheet(e){
     const gv = g.verification || {};
     const hit = ((gv.ncbi_gene || {}).hits || [])[0];
     const pm = ((gv.pubmed || {}).hits || [])[0];
-    const weak = pm && (gv.pubmed || {}).match_type !== 'author+year+gene';
+    const mt = (gv.pubmed || {}).match_type || '';
+    const CONFIRMED = ['author+year+gene', 'author+year+journal'];
+    const weak = pm && !CONFIRMED.some(c => mt.startsWith(c));
     const gl = gv.genbank_locus;
     let meta;
     if (hit){
@@ -324,7 +326,13 @@ function sheet(e){
     } else {
       meta = '<span style="color:var(--mid-fg)">no gene record found for this symbol</span>';
     }
-    if (weak) meta += ` · <span style="color:var(--mid-fg)">citation unconfirmed (topic search)</span>`;
+    // say which kind of match this was, rather than lumping every weaker result
+    // under "topic search": one of them is a candidate a person can confirm at a glance
+    if (weak) meta += mt.startsWith('awaiting')
+      ? ` · <span style="color:var(--mid-fg)">candidate found — author and journal match, needs your confirmation</span>`
+      : ` · <span style="color:var(--mid-fg)">citation unconfirmed (${esc(mt || 'no match')})</span>`;
+    if (mt.startsWith('author+year+journal'))
+      meta += ` · <span style="color:var(--txt3)">cited paper found by author, year and journal</span>`;
     return `<li><div class="gname">${esc(g.symbol)}</div><div class="gmeta">${meta}</div>
       <div class="links">${links(g, e).map(([t,u]) =>
         `<a class="lk" href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></li>`;
