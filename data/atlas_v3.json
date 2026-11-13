@@ -2,7 +2,7 @@
   "_schema": {
     "version": "3.0.0",
     "platform": "Trait Transfer & Genome Editing Intelligence Platform",
-    "principle": "Gene identity and literature references are machine-verified against NCBI Gene, PubMed and Ensembl Plants. Portability, linkage drag, pleiotropy and IP remain indicative research signals curated by a breeder, not database facts.",
+    "principle": "Gene identity and literature references are machine-verified against NCBI Gene and PubMed. Portability, linkage drag, pleiotropy and IP remain indicative research signals curated by a breeder, not database facts.",
     "verification_states": {
       "verified": "Gene ID and at least one reference confirmed in a public database.",
       "partial": "Gene confirmed, reference not resolved (or the reverse).",
@@ -44,9 +44,11 @@
   },
   "stats": {
     "total_entries": 31,
-    "verified": 0,
-    "partial": 0,
-    "unverified": 31
+    "verified": 5,
+    "partial": 17,
+    "unverified": 9,
+    "conflicted": 0,
+    "last_verified": "2026-11-13"
   },
   "entries": [
     {
@@ -60,12 +62,112 @@
         {
           "symbol": "SlGAD3",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlGAD3[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "GAD3[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "100147723",
+                  "official_symbol": "GAD3",
+                  "description": "glutamate decarboxylase isoform3",
+                  "other_aliases": "LeGAD3, SlGAD3",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "1",
+                  "coordinates": "NC_090800.1:371877-373877",
+                  "match": "official symbol"
+                },
+                {
+                  "ncbi_gene_id": "543760",
+                  "official_symbol": "yfe37",
+                  "description": "yfe37 protein",
+                  "other_aliases": "GAD3",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "1",
+                  "coordinates": "NC_090800.1:76957574-76958622",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Nonaka[Author] AND 2017[dp] AND SlGAD3[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "28765632",
+                  "title": "Efficient increase of ɣ-aminobutyric acid (GABA) content in tomato fruits by targeted mutagenesis.",
+                  "journal": "Sci Rep",
+                  "year": "2017",
+                  "doi": "10.1038/s41598-017-06400-y"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlGAD2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlGAD2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "GAD2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "544002",
+                  "official_symbol": "gad2",
+                  "description": "2-oxoglutarate-dependent dioxygenase 2",
+                  "other_aliases": "16DOX, GAME11",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "7",
+                  "coordinates": "NC_090806.1:59279254-59280929",
+                  "match": "official symbol"
+                },
+                {
+                  "ncbi_gene_id": "100147722",
+                  "official_symbol": "GAD2",
+                  "description": "glutamate decarboxylase isoform2",
+                  "other_aliases": "LeGAD2",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "11",
+                  "coordinates": "NC_090810.1:5490269-5483457",
+                  "match": "official symbol"
+                },
+                {
+                  "ncbi_gene_id": "100125897",
+                  "official_symbol": "GAD2",
+                  "description": "2-oxoglutarate-dependent dioxygenase homolog",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "",
+                  "coordinates": "",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Nonaka[Author] AND 2017[dp] AND SlGAD2[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "28765632",
+                  "title": "Efficient increase of ɣ-aminobutyric acid (GABA) content in tomato fruits by targeted mutagenesis.",
+                  "journal": "Sci Rep",
+                  "year": "2017",
+                  "doi": "10.1038/s41598-017-06400-y"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -88,13 +190,41 @@
         "gene_action": "Gain of function (C-terminal truncation)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "verified",
+        "genes_resolved": "2/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:100147723",
+          "NCBI:544002"
+        ],
+        "pmids": [
+          "28765632"
+        ],
+        "dois": [
+          "10.1038/s41598-017-06400-y"
+        ],
+        "notes": [
+          "claimed locus Solyc01g005000: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc01g005000",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          },
+          {
+            "locus": "Solyc11g011920",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          }
+        ]
       }
     },
     {
@@ -108,7 +238,20 @@
         {
           "symbol": "Sl7-DR2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "Sl7-DR2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "7-DR2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "Sl7-DR2[tiab] AND Provitamin D3[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -132,12 +275,27 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/1",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "claimed locus Solyc06g074090: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc06g074090",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -151,12 +309,38 @@
         {
           "symbol": "SlTOM1a",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlTOM1a[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "TOM1a[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlTOM1a[tiab] AND ToBRFV resistance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlTOM3",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlTOM3[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "TOM3[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlTOM3[tiab] AND ToBRFV resistance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -180,12 +364,33 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "claimed locus Solyc01g105140: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc02g080370",
+            "ncbi_nucleotide_records": 3,
+            "exists": true,
+            "status": "identifier present in 3 NCBI sequence record(s); gene assignment not verifiable here"
+          },
+          {
+            "locus": "Solyc01g105140",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -199,7 +404,20 @@
         {
           "symbol": "SlPelo",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlPelo[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "Pelo[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlPelo[tiab] AND TYLCV resistance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -223,12 +441,25 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/1",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
         "notes": []
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc04g009810",
+            "ncbi_nucleotide_records": 5,
+            "exists": true,
+            "status": "identifier present in 5 NCBI sequence record(s); gene assignment not verifiable here"
+          }
+        ]
       }
     },
     {
@@ -242,7 +473,70 @@
         {
           "symbol": "SlMlo1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlMlo1[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "Mlo1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "778228",
+                  "official_symbol": "MLO1",
+                  "description": "powdery mildew resistance protein MLO1",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "4",
+                  "coordinates": "NC_090803.1:40541909-40536768",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "SlMlo1[tiab] AND Powdery mildew resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "35173386",
+                  "title": "Screening of CRISPR/Cas9 gRNA for mimicking Powdery Mildew resistant MLO ol-2 mutant.",
+                  "journal": "Bioinformation",
+                  "year": "2021",
+                  "doi": "10.6026/97320630017637"
+                },
+                {
+                  "pmid": "34064921",
+                  "title": "Discovery and Characterization of a Novel Tomato mlo Mutant from an EMS Mutagenized Micro-Tom Population.",
+                  "journal": "Genes (Basel)",
+                  "year": "2021",
+                  "doi": "10.3390/genes12050719"
+                },
+                {
+                  "pmid": "30667341",
+                  "title": "Identification and Characterization of a Potential Candidate Mlo Gene Conferring Susceptibility to Powdery Mildew in Rubber Tree.",
+                  "journal": "Phytopathology",
+                  "year": "2019",
+                  "doi": "10.1094/PHYTO-05-18-0171-R"
+                },
+                {
+                  "pmid": "30134125",
+                  "title": "Development of DNA markers for Slmlo1.1, a new mutant allele of the powdery mildew resistance gene SlMlo1 in tomato (Solanum lycopersicum).",
+                  "journal": "Genome",
+                  "year": "2018",
+                  "doi": "10.1139/gen-2018-0114"
+                },
+                {
+                  "pmid": "27579028",
+                  "title": "Genome-Wide Study of the Tomato SlMLO Gene Family and Its Functional Characterization in Response to the Powdery Mildew Fungus Oidium neolycopersici.",
+                  "journal": "Front Plant Sci",
+                  "year": "2016",
+                  "doi": "10.3389/fpls.2016.00380"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -265,13 +559,34 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "1/1",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:778228"
+        ],
+        "pmids": [
+          "35173386"
+        ],
+        "dois": [
+          "10.6026/97320630017637"
+        ],
+        "notes": [
+          "SlMlo1: PMID 35173386 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc04g049090",
+            "ncbi_nucleotide_records": 2,
+            "exists": true,
+            "status": "identifier present in 2 NCBI sequence record(s); gene assignment not verifiable here"
+          }
+        ]
       }
     },
     {
@@ -285,7 +600,42 @@
         {
           "symbol": "SlDMR6-1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlDMR6-1[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "DMR6-1[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "100736526",
+                  "official_symbol": "DMR6-1",
+                  "description": "protein DMR6-like oxygenase",
+                  "other_aliases": "SlDMR6-1",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "3",
+                  "coordinates": "NC_090802.1:48818271-48813220",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Thomazella[Author] AND 2021[dp] AND SlDMR6-1[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "34215692",
+                  "title": "Loss of function of a DMR6 ortholog in tomato confers broad-spectrum disease resistance.",
+                  "journal": "Proc Natl Acad Sci U S A",
+                  "year": "2021",
+                  "doi": "10.1073/pnas.2026152118"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -308,13 +658,34 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "verified",
+        "genes_resolved": "1/1",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:100736526"
+        ],
+        "pmids": [
+          "34215692"
+        ],
+        "dois": [
+          "10.1073/pnas.2026152118"
+        ],
+        "notes": [
+          "claimed locus Solyc03g080190: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc03g080190",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -328,27 +699,184 @@
         {
           "symbol": "SlER",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlER[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "ER[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Kwon[Author] AND 2020[dp] AND SlER[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "31873217",
+                  "title": "Rapid customization of Solanaceae fruit crops for urban agriculture.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2020",
+                  "doi": "10.1038/s41587-019-0361-2"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SP5G",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SP5G[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101254900",
+                  "official_symbol": "SP5G",
+                  "description": "protein SELF PRUNING 5G",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "5",
+                  "coordinates": "NC_090804.1:67142755-67144724",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Kwon[Author] AND 2020[dp] AND SP5G[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "31873217",
+                  "title": "Rapid customization of Solanaceae fruit crops for urban agriculture.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2020",
+                  "doi": "10.1038/s41587-019-0361-2"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SP",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SP[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "544038",
+                  "official_symbol": "SP",
+                  "description": "protein SELF-PRUNING",
+                  "other_aliases": "",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "6",
+                  "coordinates": "NC_090805.1:48459062-48461329",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Kwon[Author] AND 2020[dp] AND SP[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "33756848",
+                  "title": "A new Gammarus species (Crustacea, Amphipoda, Gammaridae) from Northwestern Islands, South Korea.",
+                  "journal": "Zootaxa",
+                  "year": "2020",
+                  "doi": "10.11646/zootaxa.4896.4.5"
+                },
+                {
+                  "pmid": "33374750",
+                  "title": "Bioactive Bis(indole) Alkaloids from a Spongosorites sp. Sponge.",
+                  "journal": "Mar Drugs",
+                  "year": "2020",
+                  "doi": "10.3390/md19010003"
+                },
+                {
+                  "pmid": "33332255",
+                  "title": "Nonlabens ponticola sp. nov., isolated from seawater and reclassification of Nonlabens sediminis as a later heterotypic synonym of Nonlabens tegetincola.",
+                  "journal": "Int J Syst Evol Microbiol",
+                  "year": "2021",
+                  "doi": "10.1099/ijsem.0.004603"
+                },
+                {
+                  "pmid": "33312333",
+                  "title": "The role of allergen-specific IgE in predicting allergic symptoms on dog and cat exposure among Korean pet exhibition participants.",
+                  "journal": "World Allergy Organ J",
+                  "year": "2020",
+                  "doi": "10.1016/j.waojou.2020.100488"
+                },
+                {
+                  "pmid": "33263513",
+                  "title": "Oricola thermophila sp. nov., a marine bacterium isolated from tidal flat sediment and emended description of the genus Oricola Hameed et al. 2015.",
+                  "journal": "Int J Syst Evol Microbiol",
+                  "year": "2021",
+                  "doi": "10.1099/ijsem.0.004574"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlYABBY2b",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlYABBY2b[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "YABBY2b[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "100191118",
+                  "official_symbol": "YABBY2",
+                  "description": "YABBY transcription factor",
+                  "other_aliases": "SlYABBY2b",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "11",
+                  "coordinates": "NC_090810.1:60623237-60617015",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlYABBY2b[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlYTH2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlYTH2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "YTH2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlYTH2[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -371,13 +899,45 @@
         "gene_action": "Loss of function (multiplex stacking)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "3/5",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:100191118",
+          "NCBI:101254900",
+          "NCBI:544038"
+        ],
+        "pmids": [
+          "31873217",
+          "33756848"
+        ],
+        "dois": [
+          "10.1038/s41587-019-0361-2",
+          "10.11646/zootaxa.4896.4.5"
+        ],
+        "notes": [
+          "claimed locus Solyc05g053850: no NCBI sequence record contains this identifier — check the ID",
+          "SlYABBY2b: matched NCBI gene YABBY2 (100191118) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc08g061560",
+            "ncbi_nucleotide_records": 2,
+            "exists": true,
+            "status": "identifier present in 2 NCBI sequence record(s); gene assignment not verifiable here"
+          },
+          {
+            "locus": "Solyc05g053850",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -391,17 +951,164 @@
         {
           "symbol": "SlIAA9",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlIAA9[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "IAA9[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "543750",
+                  "official_symbol": "IAA9",
+                  "description": "auxin-responsive protein IAA9",
+                  "other_aliases": "ENTIRE, SlIAA9, ctd1",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "4",
+                  "coordinates": "NC_090803.1:63583356-63588768",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Ueta[Author] AND 2017[dp] AND SlIAA9[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "28360425",
+                  "title": "Rapid breeding of parthenocarpic tomato plants using CRISPR/Cas9.",
+                  "journal": "Sci Rep",
+                  "year": "2017",
+                  "doi": "10.1038/s41598-017-00501-4"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlAGL6",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlAGL6[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "AGL6[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101268317",
+                  "official_symbol": "AGL6",
+                  "description": "AGAMOUS-like MADS-box protein AGL6",
+                  "other_aliases": "SlAGL6, SlMADS6",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "1",
+                  "coordinates": "NC_090800.1:81334645-81329393",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "SlAGL6[tiab] AND Parthenocarpy[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "40839424",
+                  "title": "MADS-BOX PROTEIN3 acts cooperatively with AGAMOUS-like6 and MADS-BOX PROTEIN22 to suppress parthenocarpy in tomato.",
+                  "journal": "Plant Physiol",
+                  "year": "2025",
+                  "doi": "10.1093/plphys/kiaf363"
+                },
+                {
+                  "pmid": "33793903",
+                  "title": "Tomato agamous-like6 parthenocarpy is facilitated by ovule integument reprogramming involving the growth regulator KLUH.",
+                  "journal": "Plant Physiol",
+                  "year": "2021",
+                  "doi": "10.1093/plphys/kiaa078"
+                },
+                {
+                  "pmid": "29699487",
+                  "title": "The parthenocarpic gene Pat-k is generated by a natural mutation of SlAGL6 affecting fruit development in tomato (Solanum lycopersicum L.).",
+                  "journal": "BMC Plant Biol",
+                  "year": "2018",
+                  "doi": "10.1186/s12870-018-1285-6"
+                },
+                {
+                  "pmid": "27862876",
+                  "title": "Tomato facultative parthenocarpy results from SlAGAMOUS-LIKE 6 loss of function.",
+                  "journal": "Plant Biotechnol J",
+                  "year": "2017",
+                  "doi": "10.1111/pbi.12662"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlARF8",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlARF8[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "ARF8[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "100301945",
+                  "official_symbol": "ARF8b",
+                  "description": "auxin response factor 8b",
+                  "other_aliases": "ARF8, Sl-ARF8b",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "2",
+                  "coordinates": "NC_090801.1:47510720-47522023",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "SlARF8[tiab] AND Parthenocarpy[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42576618",
+                  "title": "The miR167-ARF8 module coordinates stamen-pistil development and fruit set in tomato.",
+                  "journal": "New Phytol",
+                  "year": "2026",
+                  "doi": "10.1111/nph.71503"
+                },
+                {
+                  "pmid": "38492890",
+                  "title": "Abolishing ARF8A activity promotes disease resistance in tomato.",
+                  "journal": "Plant Sci",
+                  "year": "2024",
+                  "doi": "10.1016/j.plantsci.2024.112064"
+                },
+                {
+                  "pmid": "37032117",
+                  "title": "Modulating auxin response stabilizes tomato fruit set.",
+                  "journal": "Plant Physiol",
+                  "year": "2023",
+                  "doi": "10.1093/plphys/kiad205"
+                },
+                {
+                  "pmid": "17766399",
+                  "title": "Expression of aberrant forms of AUXIN RESPONSE FACTOR8 stimulates parthenocarpy in Arabidopsis and tomato.",
+                  "journal": "Plant Physiol",
+                  "year": "2007",
+                  "doi": "10.1104/pp.107.104174"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -424,13 +1131,48 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "verified",
+        "genes_resolved": "3/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:100301945",
+          "NCBI:101268317",
+          "NCBI:543750"
+        ],
+        "pmids": [
+          "28360425",
+          "40839424",
+          "42576618"
+        ],
+        "dois": [
+          "10.1038/s41598-017-00501-4",
+          "10.1093/plphys/kiaf363",
+          "10.1111/nph.71503"
+        ],
+        "notes": [
+          "SlAGL6: PMID 40839424 found by topic search, not by the cited author/year — citation not confirmed",
+          "SlARF8: matched NCBI gene ARF8b (100301945) as listed as alias — confirm it is the same gene",
+          "SlARF8: PMID 42576618 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc04g076850",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          },
+          {
+            "locus": "Solyc01g093960",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          }
+        ]
       }
     },
     {
@@ -444,17 +1186,87 @@
         {
           "symbol": "FW2.2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "FW2.2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101245309",
+                  "official_symbol": "fw2.2",
+                  "description": "protein fruit weight 2.2",
+                  "other_aliases": "ORFX",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "2",
+                  "coordinates": "NC_090801.1:68571093-68571913",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "FW2.2[tiab] AND Fruit size & pericarp thickness[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlKIX8",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlKIX8[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "KIX8[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Swinnen[Author] AND 2022[dp] AND SlKIX8[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "34601614",
+                  "title": "SlKIX8 and SlKIX9 are negative regulators of leaf and fruit growth in tomato.",
+                  "journal": "Plant Physiol",
+                  "year": "2022",
+                  "doi": "10.1093/plphys/kiab464"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlKIX9",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SlKIX9[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "KIX9[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Swinnen[Author] AND 2022[dp] AND SlKIX9[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "34601614",
+                  "title": "SlKIX8 and SlKIX9 are negative regulators of leaf and fruit growth in tomato.",
+                  "journal": "Plant Physiol",
+                  "year": "2022",
+                  "doi": "10.1093/plphys/kiab464"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -477,13 +1289,40 @@
         "gene_action": "Loss of function / Cis-regulatory editing"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "1/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:101245309"
+        ],
+        "pmids": [
+          "34601614"
+        ],
+        "dois": [
+          "10.1093/plphys/kiab464"
+        ],
+        "notes": [
+          "claimed locus Solyc07g008100: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc02g090730",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          },
+          {
+            "locus": "Solyc07g008100",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -497,17 +1336,92 @@
         {
           "symbol": "SlPL",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlPL[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "PL[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101254471",
+                  "official_symbol": "PL",
+                  "description": "pectate lyase",
+                  "other_aliases": "SlPL",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "3",
+                  "coordinates": "NC_090802.1:59133772-59135898",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlPL[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlPG2a",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlPG2a[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "PG2a[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "544051",
+                  "official_symbol": "PG2",
+                  "description": "polygalacturonase-2a",
+                  "other_aliases": "PG, PG-2B, PG-2a, PG2A, PG2B",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "10",
+                  "coordinates": "NC_090809.1:60719051-60713208",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlPG2a[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SlCEL2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "SlCEL2[Gene Name] AND \"Solanum lycopersicum\"[Organism]",
+                "CEL2[Gene Name] AND \"Solanum lycopersicum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "543996",
+                  "official_symbol": "Cel2",
+                  "description": "endo-1,4-beta-glucanase precursor",
+                  "other_aliases": "cel, cellulase",
+                  "organism": "Solanum lycopersicum",
+                  "chromosome": "9",
+                  "coordinates": "NC_090808.1:4098544-4103842",
+                  "match": "official symbol"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SlCEL2[tiab] AND Fruit firmness & extended shelf life without ripening block[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -530,13 +1444,33 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
+        "status": "partial",
+        "genes_resolved": "3/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:101254471",
+          "NCBI:543996",
+          "NCBI:544051"
+        ],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "claimed locus Solyc03g111690: no NCBI sequence record contains this identifier — check the ID",
+          "SlPG2a: matched NCBI gene PG2 (544051) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Solyc03g111690",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -550,12 +1484,80 @@
         {
           "symbol": "Pun1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "Pun1[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107859694",
+                  "official_symbol": "LOC107859694",
+                  "description": "acylsugar acyltransferase 3-like",
+                  "other_aliases": "AT3, AT3-1, Pun1, catf1",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "2",
+                  "coordinates": "NC_061112.1:135885745-135884568",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Stewart[Author] AND 2005[dp] AND Pun1[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "15918882",
+                  "title": "The Pun1 gene for pungency in pepper encodes a putative acyltransferase.",
+                  "journal": "Plant J",
+                  "year": "2005",
+                  "doi": "10.1111/j.1365-313X.2005.02410.x"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "AT3",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "AT3[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107859694",
+                  "official_symbol": "LOC107859694",
+                  "description": "acylsugar acyltransferase 3-like",
+                  "other_aliases": "AT3, AT3-1, Pun1, catf1",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "2",
+                  "coordinates": "NC_061112.1:135885745-135884568",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Stewart[Author] AND 2005[dp] AND AT3[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "15918882",
+                  "title": "The Pun1 gene for pungency in pepper encodes a putative acyltransferase.",
+                  "journal": "Plant J",
+                  "year": "2005",
+                  "doi": "10.1111/j.1365-313X.2005.02410.x"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -578,13 +1580,26 @@
         "gene_action": "Loss of function (non-pungent) / Functional allele (pungent)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "verified",
+        "genes_resolved": "2/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:107859694"
+        ],
+        "pmids": [
+          "15918882"
+        ],
+        "dois": [
+          "10.1111/j.1365-313X.2005.02410.x"
+        ],
+        "notes": [
+          "Pun1: matched NCBI gene LOC107859694 (107859694) as listed as alias — confirm it is the same gene",
+          "AT3: matched NCBI gene LOC107859694 (107859694) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -598,7 +1613,41 @@
         {
           "symbol": "pAMT",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "pAMT[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107854420",
+                  "official_symbol": "LOC107854420",
+                  "description": "gamma aminobutyrate transaminase 2",
+                  "other_aliases": "VAMT, pAMT",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "3",
+                  "coordinates": "NC_061113.1:30345930-30356997",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Lang[Author] AND 2009[dp] AND pAMT[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "19473323",
+                  "title": "Functional loss of pAMT results in biosynthesis of capsinoids, capsaicinoid analogs, in Capsicum annuum cv. CH-19 Sweet.",
+                  "journal": "Plant J",
+                  "year": "2009",
+                  "doi": "10.1111/j.1365-313X.2009.03921.x"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -621,13 +1670,25 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "verified",
+        "genes_resolved": "1/1",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:107854420"
+        ],
+        "pmids": [
+          "19473323"
+        ],
+        "dois": [
+          "10.1111/j.1365-313X.2009.03921.x"
+        ],
+        "notes": [
+          "pAMT: matched NCBI gene LOC107854420 (107854420) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -641,12 +1702,136 @@
         {
           "symbol": "eIF4E1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "eIF4E1[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107868427",
+                  "official_symbol": "LOC107868427",
+                  "description": "eukaryotic translation initiation factor 4E-1-like",
+                  "other_aliases": "PVR2, Pvr1, T459_11130, eIF4E, eIF4E-1",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "4",
+                  "coordinates": "NC_061114.1:1866190-1871777",
+                  "match": "weak — symbol not in name or aliases"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "eIF4E1[tiab] AND Potyvirus resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42374852",
+                  "title": "Imprecise Cas12a/ssODN-Mediated Editing of eIF4E1 Confers Dominant-Negative Resistance to Potato Virus Y in Solanum tuberosum.",
+                  "journal": "Mol Plant Pathol",
+                  "year": "2026",
+                  "doi": "10.1111/mpp.70305"
+                },
+                {
+                  "pmid": "39715933",
+                  "title": "Interaction Between Translation Initiation Factor eIF4E in Banana and the VPg Protein of Banana Bract Mosaic Virus Reveals Potential Targets for Genome Editing.",
+                  "journal": "Mol Biotechnol",
+                  "year": "2025",
+                  "doi": "10.1007/s12033-024-01337-w"
+                },
+                {
+                  "pmid": "37983287",
+                  "title": "Arabidopsis eIF4E1 protects the translational machinery during TuMV infection and restricts virus accumulation.",
+                  "journal": "PLoS Pathog",
+                  "year": "2023",
+                  "doi": "10.1371/journal.ppat.1011417"
+                },
+                {
+                  "pmid": "36592244",
+                  "title": "Virus Evolution Faced to Multiple Host Targets: The Potyvirus-Pepper Case Study.",
+                  "journal": "Curr Top Microbiol Immunol",
+                  "year": "2023",
+                  "doi": "10.1007/978-3-031-15640-3_3"
+                },
+                {
+                  "pmid": "35722301",
+                  "title": "CRISPR-Cas9 Targeting of the eIF4E1 Gene Extends the Potato Virus Y Resistance Spectrum of the Solanum tuberosum L. cv. Desirée.",
+                  "journal": "Front Microbiol",
+                  "year": "2022",
+                  "doi": "10.3389/fmicb.2022.873930"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "eIFiso4E",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "eIFiso4E[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "107853558",
+                  "official_symbol": "LOC107853558",
+                  "description": "eukaryotic translation initiation factor",
+                  "other_aliases": "eIF(iso)4E, eIFiso4E",
+                  "organism": "Capsicum annuum",
+                  "chromosome": "3",
+                  "coordinates": "NC_061113.1:11212407-11208788",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "eIFiso4E[tiab] AND Potyvirus resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42239849",
+                  "title": "Enhancing papaya resistance to ringspot virus through CRISPR/Cas9-mediated gene editing of eIF4E.",
+                  "journal": "Front Plant Sci",
+                  "year": "2026",
+                  "doi": "10.3389/fpls.2026.1799408"
+                },
+                {
+                  "pmid": "35722301",
+                  "title": "CRISPR-Cas9 Targeting of the eIF4E1 Gene Extends the Potato Virus Y Resistance Spectrum of the Solanum tuberosum L. cv. Desirée.",
+                  "journal": "Front Microbiol",
+                  "year": "2022",
+                  "doi": "10.3389/fmicb.2022.873930"
+                },
+                {
+                  "pmid": "33899980",
+                  "title": "High overexpression of CERES, a plant regulator of translation, induces different phenotypical defence responses during TuMV infection.",
+                  "journal": "Plant J",
+                  "year": "2021",
+                  "doi": "10.1111/tpj.15290"
+                },
+                {
+                  "pmid": "29633509",
+                  "title": "Mutation of a Nicotiana tabacum L. eukaryotic translation-initiation factor gene reduces susceptibility to a resistance-breaking strain of Potato virus Y.",
+                  "journal": "Mol Plant Pathol",
+                  "year": "2018",
+                  "doi": "10.1111/mpp.12686"
+                },
+                {
+                  "pmid": "27103354",
+                  "title": "Engineering of CRISPR/Cas9-mediated potyvirus resistance in transgene-free Arabidopsis plants.",
+                  "journal": "Mol Plant Pathol",
+                  "year": "2016",
+                  "doi": "10.1111/mpp.12417"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -669,13 +1854,31 @@
         "gene_action": "Loss of function or specific amino acid substitution (Base Editing)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "2/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:107853558",
+          "NCBI:107868427"
+        ],
+        "pmids": [
+          "42239849",
+          "42374852"
+        ],
+        "dois": [
+          "10.1111/mpp.70305",
+          "10.3389/fpls.2026.1799408"
+        ],
+        "notes": [
+          "eIF4E1: matched NCBI gene LOC107868427 (107868427) as weak — symbol not in name or aliases — confirm it is the same gene",
+          "eIF4E1: PMID 42374852 found by topic search, not by the cited author/year — citation not confirmed",
+          "eIFiso4E: matched NCBI gene LOC107853558 (107853558) as listed as alias — confirm it is the same gene",
+          "eIFiso4E: PMID 42239849 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -689,12 +1892,20 @@
         {
           "symbol": "CaMLO2 (CaMLO",
           "claimed_gene_id": "",
-          "verification": null
-        },
-        {
-          "symbol": ")",
-          "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CaMLO2 (CaMLO[Gene Name] AND \"Capsicum annuum\"[Organism]",
+                "MLO2 (CaMLO[Gene Name] AND \"Capsicum annuum\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CaMLO2 (CaMLO[tiab] AND Powdery mildew resistance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -718,12 +1929,16 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/1",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
         "notes": []
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -737,32 +1952,151 @@
         {
           "symbol": "Bt",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "Bt[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Shang[Author] AND 2014[dp] AND Bt[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "25430763",
+                  "title": "Plant science. Biosynthesis, regulation, and domestication of bitterness in cucumber.",
+                  "journal": "Science",
+                  "year": "2014",
+                  "doi": "10.1126/science.1259215"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsBt",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsBt[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "Bt[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsBt[tiab] AND Non-bitter fruit while retaining bitter-leaf defense[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "Bl",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "Bl[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Shang[Author] AND 2014[dp] AND Bl[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "25430763",
+                  "title": "Plant science. Biosynthesis, regulation, and domestication of bitterness in cucumber.",
+                  "journal": "Science",
+                  "year": "2014",
+                  "doi": "10.1126/science.1259215"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsBl",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsBl[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "Bl[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsBl[tiab] AND Non-bitter fruit while retaining bitter-leaf defense[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "Bi",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "Bi[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Shang[Author] AND 2014[dp] AND Bi[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "25307789",
+                  "title": "Correlation of post-stroke fatigue with glucose, homocysteine and functional disability.",
+                  "journal": "Acta Neurol Scand",
+                  "year": "2015",
+                  "doi": "10.1111/ane.12300"
+                },
+                {
+                  "pmid": "25208357",
+                  "title": "Gingival health benefits of essential-oil and cetylpyridinium chloride mouthrinses: a 6-month randomized clinical study.",
+                  "journal": "Am J Dent",
+                  "year": "2014",
+                  "doi": ""
+                },
+                {
+                  "pmid": "24711020",
+                  "title": "[Early prenatal diagnosis for a family affected with X-linked spondyloepiphyseal dysplasia tarda family].",
+                  "journal": "Zhonghua Yi Xue Yi Chuan Xue Za Zhi",
+                  "year": "2014",
+                  "doi": "10.3760/cma.j.issn.1003-9406.2014.02.004"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsBi",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsBi[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "Bi[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsBi[tiab] AND Non-bitter fruit while retaining bitter-leaf defense[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -785,13 +2119,44 @@
         "gene_action": "Loss of function of Bt specifically"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/6",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
+        "pmids": [
+          "25307789",
+          "25430763"
+        ],
+        "dois": [
+          "10.1111/ane.12300",
+          "10.1126/science.1259215"
+        ],
         "notes": []
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Csa5G157230",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          },
+          {
+            "locus": "Csa5G156220",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          },
+          {
+            "locus": "Csa6G088690",
+            "ncbi_nucleotide_records": 1,
+            "exists": true,
+            "status": "identifier present in 1 NCBI sequence record(s); gene assignment not verifiable here"
+          }
+        ]
       }
     },
     {
@@ -805,17 +2170,90 @@
         {
           "symbol": "CsMLO1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsMLO1[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "MLO1[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "CsMLO1[tiab] AND Powdery mildew resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "38330431",
+                  "title": "Multiplex gene editing reveals cucumber MILDEW RESISTANCE LOCUS O family roles in powdery mildew resistance.",
+                  "journal": "Plant Physiol",
+                  "year": "2024",
+                  "doi": "10.1093/plphys/kiae047"
+                },
+                {
+                  "pmid": "38048475",
+                  "title": "CsPM5.2, a phosphate transporter protein-like gene, promotes powdery mildew resistance in cucumber.",
+                  "journal": "Plant J",
+                  "year": "2024",
+                  "doi": "10.1111/tpj.16576"
+                },
+                {
+                  "pmid": "26734050",
+                  "title": "Loss-of-Function Mutations in CsMLO1 Confer Durable Powdery Mildew Resistance in Cucumber (Cucumis sativus L.).",
+                  "journal": "Front Plant Sci",
+                  "year": "2015",
+                  "doi": "10.3389/fpls.2015.01155"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsMLO8",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsMLO8[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "MLO8[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "CsMLO8[tiab] AND Powdery mildew resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "38330431",
+                  "title": "Multiplex gene editing reveals cucumber MILDEW RESISTANCE LOCUS O family roles in powdery mildew resistance.",
+                  "journal": "Plant Physiol",
+                  "year": "2024",
+                  "doi": "10.1093/plphys/kiae047"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsMLO11",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsMLO11[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "MLO11[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsMLO11[tiab] AND Powdery mildew resistance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -838,13 +2276,34 @@
         "gene_action": "Loss of function"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "pmids": [
+          "38330431"
+        ],
+        "dois": [
+          "10.1093/plphys/kiae047"
+        ],
+        "notes": [
+          "claimed locus Csa5G623470: no NCBI sequence record contains this identifier — check the ID",
+          "CsMLO1: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed",
+          "CsMLO8: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Csa5G623470",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -858,22 +2317,98 @@
         {
           "symbol": "CsACS2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "CsACS2[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "ACS2[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101217331",
+                  "official_symbol": "LOC101217331",
+                  "description": "1-aminocyclopropane-1-carboxylate synthase 7",
+                  "other_aliases": "Csa_004490, ACS2",
+                  "organism": "Cucumis sativus",
+                  "chromosome": "Un",
+                  "coordinates": "NW_022279564.1:74522-76843",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsACS2[tiab] AND Gynoecy & parthenocarpy[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsACS11",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "CsACS11[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "ACS11[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "101213522",
+                  "official_symbol": "LOC101213522",
+                  "description": "1-aminocyclopropane-1-carboxylate synthase 3",
+                  "other_aliases": "Csa_018705, ACS11",
+                  "organism": "Cucumis sativus",
+                  "chromosome": "2",
+                  "coordinates": "NC_026656.2:17751684-17753914",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsACS11[tiab] AND Gynoecy & parthenocarpy[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsWIP1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsWIP1[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "WIP1[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsWIP1[tiab] AND Gynoecy & parthenocarpy[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CsARF8",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CsARF8[Gene Name] AND \"Cucumis sativus\"[Organism]",
+                "ARF8[Gene Name] AND \"Cucumis sativus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CsARF8[tiab] AND Gynoecy & parthenocarpy[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -896,13 +2431,40 @@
         "gene_action": "Loss of function of CsWIP1 -> gynoecious phenotype"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
+        "status": "partial",
+        "genes_resolved": "2/4",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:101213522",
+          "NCBI:101217331"
+        ],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "claimed locus Csa1G580750: no NCBI sequence record contains this identifier — check the ID",
+          "claimed locus Csa4G290830: no NCBI sequence record contains this identifier — check the ID",
+          "CsACS2: matched NCBI gene LOC101217331 (101217331) as listed as alias — confirm it is the same gene",
+          "CsACS11: matched NCBI gene LOC101213522 (101213522) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Csa1G580750",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          },
+          {
+            "locus": "Csa4G290830",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -916,17 +2478,90 @@
         {
           "symbol": "CmACO1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "CmACO1[Gene Name] AND \"Cucumis melo\"[Organism]",
+                "ACO1[Gene Name] AND \"Cucumis melo\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "103491357",
+                  "official_symbol": "LOC103491357",
+                  "description": "1-aminocyclopropane-1-carboxylate oxidase 1",
+                  "other_aliases": "ACO1, CM-ACO1, EFE, PMEL1",
+                  "organism": "Cucumis melo",
+                  "chromosome": "5",
+                  "coordinates": "NC_066861.1:2397218-2395848",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Nonaka[Author] AND 2023[dp] AND CmACO1[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "37304010",
+                  "title": "Targeted modification of CmACO1 by CRISPR/Cas9 extends the shelf-life of Cucumis melo var. reticulatus melon.",
+                  "journal": "Front Genome Ed",
+                  "year": "2023",
+                  "doi": "10.3389/fgeed.2023.1176125"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CmACS7",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "CmACS7[Gene Name] AND \"Cucumis melo\"[Organism]",
+                "ACS7[Gene Name] AND \"Cucumis melo\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "103492295",
+                  "official_symbol": "LOC103492295",
+                  "description": "1-aminocyclopropane-1-carboxylate synthase 7",
+                  "other_aliases": "ACS-7",
+                  "organism": "Cucumis melo",
+                  "chromosome": "2",
+                  "coordinates": "NC_066858.1:1772279-1774287",
+                  "match": "weak — symbol not in name or aliases"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CmACS7[tiab] AND Extended shelf life & climacteric ripening control[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CmNAC-NOR",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CmNAC-NOR[Gene Name] AND \"Cucumis melo\"[Organism]",
+                "NAC-NOR[Gene Name] AND \"Cucumis melo\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "CmNAC-NOR[tiab] AND Extended shelf life & climacteric ripening control[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -949,13 +2584,37 @@
         "gene_action": "Loss of function / Hypomorphic allele"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "2/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:103491357",
+          "NCBI:103492295"
+        ],
+        "pmids": [
+          "37304010"
+        ],
+        "dois": [
+          "10.3389/fgeed.2023.1176125"
+        ],
+        "notes": [
+          "claimed locus MELO3C014437: no NCBI sequence record contains this identifier — check the ID",
+          "CmACO1: matched NCBI gene LOC103491357 (103491357) as listed as alias — confirm it is the same gene",
+          "CmACS7: matched NCBI gene LOC103492295 (103492295) as weak — symbol not in name or aliases — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "MELO3C014437",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -967,14 +2626,40 @@
       "gene_label": "ClAGL11 (plus ClWIP1 for gynoecy)",
       "genes": [
         {
-          "symbol": "ClAGL11 (",
+          "symbol": "ClAGL11",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ClAGL11[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "AGL11[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "ClAGL11[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
-          "symbol": "ClWIP1 for gynoecy)",
+          "symbol": "ClWIP1 for gynoecy",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ClWIP1 for gynoecy[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "WIP1 for gynoecy[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "ClWIP1 for gynoecy[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -998,12 +2683,27 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "claimed locus Cla97C07G144940: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Cla97C07G144940",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -1017,17 +2717,76 @@
         {
           "symbol": "ClTST2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ClTST2[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "TST2[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Ren[Author] AND 2018[dp] AND ClTST2[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "29118248",
+                  "title": "A Tonoplast Sugar Transporter Underlies a Sugar Accumulation QTL in Watermelon.",
+                  "journal": "Plant Physiol",
+                  "year": "2018",
+                  "doi": "10.1104/pp.17.01290"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "ClSWEET3",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ClSWEET3[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "SWEET3[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "ClSWEET3[tiab] AND Sugar accumulation[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "33570606",
+                  "title": "Evolutionary gain of oligosaccharide hydrolysis and sugar transport enhanced carbohydrate partitioning in sweet watermelon fruits.",
+                  "journal": "Plant Cell",
+                  "year": "2021",
+                  "doi": "10.1093/plcell/koab055"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "ClLCYB",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ClLCYB[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "LCYB[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "ClLCYB[tiab] AND Sugar accumulation[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1050,13 +2809,42 @@
         "gene_action": "Gain of function (ClTST2) / Loss of function (ClLCYB for red flesh)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "pmids": [
+          "29118248",
+          "33570606"
+        ],
+        "dois": [
+          "10.1093/plcell/koab055",
+          "10.1104/pp.17.01290"
+        ],
+        "notes": [
+          "claimed locus Cla97C02G036390: no NCBI sequence record contains this identifier — check the ID",
+          "claimed locus Cla97C04G070940: no NCBI sequence record contains this identifier — check the ID",
+          "ClSWEET3: PMID 33570606 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "Cla97C02G036390",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          },
+          {
+            "locus": "Cla97C04G070940",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -1070,22 +2858,66 @@
         {
           "symbol": "SmPPO4",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SmPPO4[Gene Name] AND \"Solanum melongena\"[Organism]",
+                "PPO4[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SmPPO4[tiab] AND Non-browning cut fruit flesh[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SmPPO5",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SmPPO5[Gene Name] AND \"Solanum melongena\"[Organism]",
+                "PPO5[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SmPPO5[tiab] AND Non-browning cut fruit flesh[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "SmPPO6 (PPO",
           "claimed_gene_id": "",
-          "verification": null
-        },
-        {
-          "symbol": ")",
-          "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SmPPO6 (PPO[Gene Name] AND \"Solanum melongena\"[Organism]",
+                "PPO6 (PPO[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Maioli[Author] AND 2020[dp] AND SmPPO6 (PPO[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "33343607",
+                  "title": "Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning in Solanum melongena L.",
+                  "journal": "Front Plant Sci",
+                  "year": "2020",
+                  "doi": "10.3389/fpls.2020.607161"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1108,13 +2940,32 @@
         "gene_action": "Loss of function (multiplex family knockout)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "pmids": [
+          "33343607"
+        ],
+        "dois": [
+          "10.3389/fpls.2020.607161"
+        ],
+        "notes": [
+          "claimed locus SMEL4.1_08g017350: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "SMEL4.1_08g017350",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -1128,12 +2979,37 @@
         {
           "symbol": "SmMYB",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SmMYB[Gene Name] AND \"Solanum melongena\"[Organism]",
+                "MYB[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SmMYB[tiab] AND Prickle-free calyx & stem[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "LOG-related prickle loci",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "LOG-related prickle loci[Gene Name] AND \"Solanum melongena\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "LOG-related prickle loci[tiab] AND Prickle-free calyx & stem[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1157,12 +3033,27 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
-        "notes": []
+        "notes": [
+          "claimed locus SMEL4.1_06g...: no NCBI sequence record contains this identifier — check the ID"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "SMEL4.1_06g...",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -1176,22 +3067,123 @@
         {
           "symbol": "LsFT",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "LsFT[Gene Name] AND \"Lactuca sativa\"[Organism]",
+                "FT[Gene Name] AND \"Lactuca sativa\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "111907824",
+                  "official_symbol": "LOC111907824",
+                  "description": "protein HEADING DATE 3A",
+                  "other_aliases": "LSAT_V11C200057260, FT, LsFT",
+                  "organism": "Lactuca sativa",
+                  "chromosome": "2",
+                  "coordinates": "NC_056624.3:42195810-42193420",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Chen[Author] AND 2018[dp] AND LsFT[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "29403510",
+                  "title": "Inflorescence Development and the Role of LsFT in Regulating Bolting in Lettuce (Lactuca sativa L.).",
+                  "journal": "Front Plant Sci",
+                  "year": "2017",
+                  "doi": "10.3389/fpls.2017.02248"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "LsCO",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "LsCO[Gene Name] AND \"Lactuca sativa\"[Organism]",
+                "CO[Gene Name] AND \"Lactuca sativa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "LsCO[tiab] AND Delayed bolting[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "41793314",
+                  "title": "LsMAPK6 Phosphorylates the LsCO Protein to Enhance Its Stability and Transcriptional Activity, Promoting Floral Transition Upon High Temperatures in Lettuce.",
+                  "journal": "Plant Biotechnol J",
+                  "year": "2026",
+                  "doi": "10.1111/pbi.70630"
+                },
+                {
+                  "pmid": "36160965",
+                  "title": "LsARF3 mediates thermally induced bolting through promoting the expression of LsCO in lettuce (Lactuca sativa L.).",
+                  "journal": "Front Plant Sci",
+                  "year": "2022",
+                  "doi": "10.3389/fpls.2022.958833"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "LsRGL1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "LsRGL1[Gene Name] AND \"Lactuca sativa\"[Organism]",
+                "RGL1[Gene Name] AND \"Lactuca sativa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "LsRGL1[tiab] AND Delayed bolting[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "LsSOC1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "LsSOC1[Gene Name] AND \"Lactuca sativa\"[Organism]",
+                "SOC1[Gene Name] AND \"Lactuca sativa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Chen[Author] AND 2018[dp] AND LsSOC1[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "29772090",
+                  "title": "LCM-seq reveals the crucial role of LsSOC1 in heat-promoted bolting of lettuce (Lactuca sativa L.).",
+                  "journal": "Plant J",
+                  "year": "2018",
+                  "doi": "10.1111/tpj.13968"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1214,13 +3206,30 @@
         "gene_action": "Loss of function / Hypomorphic promoter edit"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "1/4",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:111907824"
+        ],
+        "pmids": [
+          "29403510",
+          "29772090",
+          "41793314"
+        ],
+        "dois": [
+          "10.1111/pbi.70630",
+          "10.1111/tpj.13968",
+          "10.3389/fpls.2017.02248"
+        ],
+        "notes": [
+          "LsFT: matched NCBI gene LOC111907824 (111907824) as listed as alias — confirm it is the same gene",
+          "LsCO: PMID 41793314 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1234,12 +3243,64 @@
         {
           "symbol": "LsGGP2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "LsGGP2[Gene Name] AND \"Lactuca sativa\"[Organism]",
+                "GGP2[Gene Name] AND \"Lactuca sativa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Zhang[Author] AND 2018[dp] AND LsGGP2[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "30080209",
+                  "title": "Genome editing of upstream open reading frames enables translational control in plants.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2018",
+                  "doi": "10.1038/nbt.4202"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "uORF",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "uORF[Gene Name] AND \"Lactuca sativa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Zhang[Author] AND 2018[dp] AND uORF[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "30146315",
+                  "title": "Tma64/eIF2D, Tma20/MCT-1, and Tma22/DENR Recycle Post-termination 40S Subunits In Vivo.",
+                  "journal": "Mol Cell",
+                  "year": "2018",
+                  "doi": "10.1016/j.molcel.2018.07.028"
+                },
+                {
+                  "pmid": "30080209",
+                  "title": "Genome editing of upstream open reading frames enables translational control in plants.",
+                  "journal": "Nat Biotechnol",
+                  "year": "2018",
+                  "doi": "10.1038/nbt.4202"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1262,13 +3323,23 @@
         "gene_action": "Gain of translation (CRISPR disruption of inhibitory uORF)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/2",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
+        "pmids": [
+          "30080209",
+          "30146315"
+        ],
+        "dois": [
+          "10.1016/j.molcel.2018.07.028",
+          "10.1038/nbt.4202"
+        ],
         "notes": []
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1282,22 +3353,194 @@
         {
           "symbol": "CRa",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CRa[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Ueno[Author] AND 2012[dp] AND CRa[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "23054353",
+                  "title": "Molecular characterization of the CRa gene conferring clubroot resistance in Brassica rapa.",
+                  "journal": "Plant Mol Biol",
+                  "year": "2012",
+                  "doi": "10.1007/s11103-012-9971-5"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CRb",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CRb[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "CRb[tiab] AND Clubroot resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "41477250",
+                  "title": "Genetic improvement of clubroot resistance in the recessive genic male sterile line YA001 in Brassica napus.",
+                  "journal": "Front Plant Sci",
+                  "year": "2025",
+                  "doi": "10.3389/fpls.2025.1726940"
+                },
+                {
+                  "pmid": "37180031",
+                  "title": "Introgression of clubroot resistant gene into Brassica oleracea L. from Brassica rapa based on homoeologous exchange.",
+                  "journal": "Hortic Res",
+                  "year": "2022",
+                  "doi": "10.1093/hr/uhac195"
+                },
+                {
+                  "pmid": "32719696",
+                  "title": "QTL Mapping and Inheritance of Clubroot Resistance Genes Derived From Brassica rapa subsp. rapifera (ECD 02) Reveals Resistance Loci and Distorted Segregation Ratios in Two F (2) Populations of Different Crosses.",
+                  "journal": "Front Plant Sci",
+                  "year": "2020",
+                  "doi": "10.3389/fpls.2020.00899"
+                },
+                {
+                  "pmid": "31086496",
+                  "title": "Classification of \"nabana\" (Brassica rapa) cultivars and landraces based on simple sequence repeat markers.",
+                  "journal": "Breed Sci",
+                  "year": "2019",
+                  "doi": "10.1270/jsbbs.18126"
+                },
+                {
+                  "pmid": "28013378",
+                  "title": "The tandem repeated organization of NB-LRR genes in the clubroot-resistant CRb locus in Brassica rapa L.",
+                  "journal": "Mol Genet Genomics",
+                  "year": "2017",
+                  "doi": "10.1007/s00438-016-1281-1"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "Crr1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "Crr1[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Crr1[tiab] AND Clubroot resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "40406504",
+                  "title": "Clubroot resistant in cruciferous crops: recent advances in genes and QTLs identification and utilization.",
+                  "journal": "Hortic Res",
+                  "year": "2025",
+                  "doi": "10.1093/hr/uhaf105"
+                },
+                {
+                  "pmid": "39109069",
+                  "title": "Lignin accumulation in cell wall plays a role in clubroot resistance.",
+                  "journal": "Front Plant Sci",
+                  "year": "2024",
+                  "doi": "10.3389/fpls.2024.1401265"
+                },
+                {
+                  "pmid": "38891348",
+                  "title": "Resilience of Canola to Plasmodiophora brassicae (Clubroot) Pathotype 3H under Different Resistance Genes and Initial Inoculum Levels.",
+                  "journal": "Plants (Basel)",
+                  "year": "2024",
+                  "doi": "10.3390/plants13111540"
+                },
+                {
+                  "pmid": "38835867",
+                  "title": "Comparative transcriptome analysis of canola carrying a single vs stacked resistance genes against clubroot.",
+                  "journal": "Front Plant Sci",
+                  "year": "2024",
+                  "doi": "10.3389/fpls.2024.1358605"
+                },
+                {
+                  "pmid": "38540333",
+                  "title": "Identification of Clubroot (Plasmodiophora brassicae) Resistance Loci in Chinese Cabbage (Brassica rapa ssp. pekinensis) with Recessive Character.",
+                  "journal": "Genes (Basel)",
+                  "year": "2024",
+                  "doi": "10.3390/genes15030274"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "Crr3",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "Crr3[Gene Name] AND \"Brassica oleracea / B. rapa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Crr3[tiab] AND Clubroot resistance[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "34262060",
+                  "title": "Clubroot resistance derived from the European Brassica napus cv. 'Tosca' is not effective against virulent Plasmodiophora brassicae isolates from Alberta, Canada.",
+                  "journal": "Sci Rep",
+                  "year": "2021",
+                  "doi": "10.1038/s41598-021-93327-0"
+                },
+                {
+                  "pmid": "33936130",
+                  "title": "Local Duplication of TIR-NBS-LRR Gene Marks Clubroot Resistance in Brassica napus cv. Tosca.",
+                  "journal": "Front Plant Sci",
+                  "year": "2021",
+                  "doi": "10.3389/fpls.2021.639631"
+                },
+                {
+                  "pmid": "29868100",
+                  "title": "Identification and Mapping of the Clubroot Resistance Gene CRd in Chinese Cabbage (Brassica rapa ssp. pekinensis).",
+                  "journal": "Front Plant Sci",
+                  "year": "2018",
+                  "doi": "10.3389/fpls.2018.00653"
+                },
+                {
+                  "pmid": "24376876",
+                  "title": "Identification of novel QTLs for isolate-specific partial resistance to Plasmodiophora brassicae in Brassica rapa.",
+                  "journal": "PLoS One",
+                  "year": "2013",
+                  "doi": "10.1371/journal.pone.0085307"
+                },
+                {
+                  "pmid": "23641188",
+                  "title": "Fine mapping of the clubroot resistance gene CRb and development of a useful selectable marker in Brassica rapa.",
+                  "journal": "Breed Sci",
+                  "year": "2013",
+                  "doi": "10.1270/jsbbs.63.116"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t2",
@@ -1320,13 +3563,41 @@
         "gene_action": "Dominant R-gene resistance (pathotype-specific)"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/4",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "pmids": [
+          "23054353",
+          "34262060",
+          "40406504",
+          "41477250"
+        ],
+        "dois": [
+          "10.1007/s11103-012-9971-5",
+          "10.1038/s41598-021-93327-0",
+          "10.1093/hr/uhaf105",
+          "10.3389/fpls.2025.1726940"
+        ],
+        "notes": [
+          "claimed locus BraA03g012133E: no NCBI sequence record contains this identifier — check the ID",
+          "CRb: PMID 41477250 found by topic search, not by the cited author/year — citation not confirmed",
+          "Crr1: PMID 40406504 found by topic search, not by the cited author/year — citation not confirmed",
+          "Crr3: PMID 34262060 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "existence only, not gene assignment",
+        "results": [
+          {
+            "locus": "BraA03g012133E",
+            "ncbi_nucleotide_records": 0,
+            "exists": false,
+            "status": "no NCBI record contains this identifier"
+          }
+        ]
       }
     },
     {
@@ -1340,22 +3611,102 @@
         {
           "symbol": "MYB28",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "MYB28[Gene Name] AND \"Brassica oleracea\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "106313100",
+                  "official_symbol": "LOC106313100",
+                  "description": "transcription factor MYB28-like",
+                  "other_aliases": "MYB28, Myb, myb28-2",
+                  "organism": "Brassica oleracea",
+                  "chromosome": "C9",
+                  "coordinates": "NC_027756.1:4437428-4435485",
+                  "match": "listed as alias"
+                },
+                {
+                  "ncbi_gene_id": "106301630",
+                  "official_symbol": "LOC106301630",
+                  "description": "transcription factor MYB28-like",
+                  "other_aliases": "myb28",
+                  "organism": "Brassica oleracea",
+                  "chromosome": "C7",
+                  "coordinates": "NC_027754.1:38582959-38580958",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "Traka[Author] AND 2013[dp] AND MYB28[tiab]",
+              "match_type": "author+year+gene",
+              "hits": [
+                {
+                  "pmid": "23560984",
+                  "title": "Genetic regulation of glucoraphanin accumulation in Beneforté broccoli.",
+                  "journal": "New Phytol",
+                  "year": "2013",
+                  "doi": "10.1111/nph.12232"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "HAG1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "HAG1[Gene Name] AND \"Brassica oleracea\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "HAG1[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "MYB29",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "MYB29[Gene Name] AND \"Brassica oleracea\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "MYB29[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "MYB34",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "MYB34[Gene Name] AND \"Brassica oleracea\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "MYB34[tiab] AND Glucoraphanin / Sulforaphane biofortification[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t2",
@@ -1378,13 +3729,25 @@
         "gene_action": "Gain of function / Wild B. villosa allele introgression"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "1/4",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:106313100"
+        ],
+        "pmids": [
+          "23560984"
+        ],
+        "dois": [
+          "10.1111/nph.12232"
+        ],
+        "notes": [
+          "MYB28: matched NCBI gene LOC106313100 (106313100) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1398,27 +3761,168 @@
         {
           "symbol": "DcRPGE1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "DcRPGE1[Gene Name] AND \"Daucus carota\"[Organism]",
+                "RPGE1[Gene Name] AND \"Daucus carota\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2024[dp] AND DcRPGE1[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "38593056",
+                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
+                  "journal": "Plant Cell",
+                  "year": "2024",
+                  "doi": "10.1093/plcell/koae111"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "DcAPRR2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "DcAPRR2[Gene Name] AND \"Daucus carota\"[Organism]",
+                "APRR2[Gene Name] AND \"Daucus carota\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2024[dp] AND DcAPRR2[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "38593056",
+                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
+                  "journal": "Plant Cell",
+                  "year": "2024",
+                  "doi": "10.1093/plcell/koae111"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "DcPSY1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "DcPSY1[Gene Name] AND \"Daucus carota\"[Organism]",
+                "PSY1[Gene Name] AND \"Daucus carota\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "108227339",
+                  "official_symbol": "LOC108227339",
+                  "description": "phytoene synthase, chloroplastic",
+                  "other_aliases": "DCAR_023043, PSY-1, PSY1",
+                  "organism": "Daucus carota subsp. sativus",
+                  "chromosome": "6",
+                  "coordinates": "NC_030386.2:5184582-5186712",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2024[dp] AND DcPSY1[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "38593056",
+                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
+                  "journal": "Plant Cell",
+                  "year": "2024",
+                  "doi": "10.1093/plcell/koae111"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "DcPSY2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "DcPSY2[Gene Name] AND \"Daucus carota\"[Organism]",
+                "PSY2[Gene Name] AND \"Daucus carota\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "108214656",
+                  "official_symbol": "LOC108214656",
+                  "description": "phytoene synthase 2, chloroplastic",
+                  "other_aliases": "DCAR_010057, PSY-2, PSY2",
+                  "organism": "Daucus carota subsp. sativus",
+                  "chromosome": "3",
+                  "coordinates": "NC_030383.2:13989135-13984375",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2024[dp] AND DcPSY2[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "38593056",
+                  "title": "The Y locus encodes a REPRESSOR OF PHOTOSYNTHETIC GENES protein that represses carotenoid biosynthesis via interaction with APRR2 in carrot.",
+                  "journal": "Plant Cell",
+                  "year": "2024",
+                  "doi": "10.1093/plcell/koae111"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "DcLCYB1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": true,
+              "queries": [
+                "DcLCYB1[Gene Name] AND \"Daucus carota\"[Organism]",
+                "LCYB1[Gene Name] AND \"Daucus carota\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "108193045",
+                  "official_symbol": "LOC108193045",
+                  "description": "lycopene beta cyclase, chloroplastic",
+                  "other_aliases": "DCAR_020544, LCYB, LCYB1",
+                  "organism": "Daucus carota subsp. sativus",
+                  "chromosome": "6",
+                  "coordinates": "NC_030386.2:34275095-34273076",
+                  "match": "listed as alias"
+                }
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "DcLCYB1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1441,13 +3945,33 @@
         "gene_action": "Functional allele / Loss-of-function repressor modulation"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "status": "partial",
+        "genes_resolved": "3/5",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "NCBI:108193045",
+          "NCBI:108214656",
+          "NCBI:108227339"
+        ],
+        "pmids": [
+          "38593056"
+        ],
+        "dois": [
+          "10.1093/plcell/koae111"
+        ],
+        "notes": [
+          "DcRPGE1: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
+          "DcAPRR2: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
+          "DcPSY1: matched NCBI gene LOC108227339 (108227339) as listed as alias — confirm it is the same gene",
+          "DcPSY1: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
+          "DcPSY2: matched NCBI gene LOC108214656 (108214656) as listed as alias — confirm it is the same gene",
+          "DcPSY2: PMID 38593056 found by topic search, not by the cited author/year — citation not confirmed",
+          "DcLCYB1: matched NCBI gene LOC108193045 (108193045) as listed as alias — confirm it is the same gene"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1461,17 +3985,56 @@
         {
           "symbol": "AcLFS",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "AcLFS[Gene Name] AND \"Allium cepa\"[Organism]",
+                "LFS[Gene Name] AND \"Allium cepa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "AcLFS[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "AcACS1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "AcACS1[Gene Name] AND \"Allium cepa\"[Organism]",
+                "ACS1[Gene Name] AND \"Allium cepa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "AcACS1[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "AcACS2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "AcACS2[Gene Name] AND \"Allium cepa\"[Organism]",
+                "ACS2[Gene Name] AND \"Allium cepa\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "AcACS2[tiab] AND Tearless / low-lachrymatory onion & reduced pungency[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1495,12 +4058,16 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/3",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
         "notes": []
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1514,37 +4081,87 @@
         {
           "symbol": "SOS1",
           "claimed_gene_id": "",
-          "verification": null
-        },
-        {
-          "symbol": "2",
-          "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "SOS1[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "SOS1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "NHX",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "NHX[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "NHX[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "HKT1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "HKT1[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "HKT1[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "DREB2A",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "DREB2A[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "DREB2A[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
-          "symbol": "HsfA2 (",
+          "symbol": "HsfA2",
           "claimed_gene_id": "",
-          "verification": null
-        },
-        {
-          "symbol": ")",
-          "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "HsfA2[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "HsfA2[tiab] AND Combined Heat + Salinity + Drought Tolerance[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1568,12 +4185,16 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/5",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
         "notes": []
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1587,27 +4208,87 @@
         {
           "symbol": "HsfA2",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "HsfA2[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "HsfA2[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "HSP70",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "HSP70[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "HSP70[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "ROS scavengers",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ROS scavengers[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "ROS scavengers[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "APX",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "APX[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "APX[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "MADS-box regulators",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "MADS-box regulators[Gene Name] AND \"Solanaceae & Cucurbitaceae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": false,
+              "query": "MADS-box regulators[tiab] AND Pollen & ovule thermotolerance + stigma receptivity under heat waves[tiab]"
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1631,12 +4312,16 @@
       },
       "verification": {
         "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "genes_resolved": "0/5",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
         "dois": [],
         "notes": []
+      },
+      "locus_check": {
+        "checked": false
       }
     },
     {
@@ -1650,37 +4335,366 @@
         {
           "symbol": "WOX",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "WOX[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND WOX[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "41695523",
+                  "title": "Transcriptome-wide identification of the WUSCHEL-related homeobox transcription factors and their expression patterns underlying drought and salt stress in Populus euphratica.",
+                  "journal": "Front Plant Sci",
+                  "year": "2025",
+                  "doi": "10.3389/fpls.2025.1747710"
+                },
+                {
+                  "pmid": "41463419",
+                  "title": "Research Advances in the Regulation of Fruit Size: An Integrated Perspective of Genetic, Hormonal, Epigenetic, and Environmental Control.",
+                  "journal": "Biology (Basel)",
+                  "year": "2025",
+                  "doi": "10.3390/biology14121643"
+                },
+                {
+                  "pmid": "41422566",
+                  "title": "Actin represses stem cell maintenance in Arabidopsis under drought stress.",
+                  "journal": "Plant Physiol Biochem",
+                  "year": "2026",
+                  "doi": "10.1016/j.plaphy.2025.110966"
+                },
+                {
+                  "pmid": "41404934",
+                  "title": "Intrinsically Bifunctional and Tunable Tungsten Carbide Catalysts Enable Efficient PVC-Compatible Polyolefin Hydrocracking.",
+                  "journal": "J Am Chem Soc",
+                  "year": "2025",
+                  "doi": "10.1021/jacs.5c11845"
+                },
+                {
+                  "pmid": "41343720",
+                  "title": "Phylogeny, chromosomal mapping and expression analyses of wheat CLAVATA pathway components suggest differential selection on receptor-like kinases, CLEs and T3 WOXes.",
+                  "journal": "Plant J",
+                  "year": "2025",
+                  "doi": "10.1111/tpj.70580"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "PLT",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "PLT[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND PLT[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42540664",
+                  "title": "Predicting hypertension in preeclampsia patients within five years postpartum: analysis of influencing factors and nomogram development.",
+                  "journal": "Arch Med Sci",
+                  "year": "2026",
+                  "doi": "10.5114/aoms/208999"
+                },
+                {
+                  "pmid": "42344632",
+                  "title": "The role of platelet transfusion in modulating platelet indices and leukocyte dynamics in dengue fever patients.",
+                  "journal": "Asian J Transfus Sci",
+                  "year": "2026",
+                  "doi": "10.4103/ajts.ajts_190_24"
+                },
+                {
+                  "pmid": "42333208",
+                  "title": "Influencing Factor Analysis and Predictive Model Development for Platelet Transfusion Refractoriness in Pediatric Oncology Patients.",
+                  "journal": "Indian J Hematol Blood Transfus",
+                  "year": "2026",
+                  "doi": "10.1007/s12288-025-02191-9"
+                },
+                {
+                  "pmid": "42178956",
+                  "title": "Prognostic value of novel serological markers in predicting postoperative complications of ileocecal resection in Crohn&apos;s disease patients.",
+                  "journal": "Pol Przegl Chir",
+                  "year": "2025",
+                  "doi": "10.5604/01.3001.0055.5120"
+                },
+                {
+                  "pmid": "42146835",
+                  "title": "Association Between Liver Function Grade and Post-Hepatectomy Liver Failure in Patients With Hepatocellular Carcinoma: A Latent Class Analysis.",
+                  "journal": "Ann Gastroenterol Surg",
+                  "year": "2026",
+                  "doi": "10.1002/ags3.70138"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "PLETHORA",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "PLETHORA[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND PLETHORA[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42266637",
+                  "title": "The Evolution of Colorectal Surgery Training.",
+                  "journal": "Clin Colon Rectal Surg",
+                  "year": "2026",
+                  "doi": "10.1055/s-0045-1813660"
+                },
+                {
+                  "pmid": "42110564",
+                  "title": "A Historical Review of Cryogenic Mechanical Testing on Type 304 Stainless Steels - State of the Art and Current Outlooks.",
+                  "journal": "Cryogenics (Guildf)",
+                  "year": "2025",
+                  "doi": "10.1016/j.cryogenics.2025.104105"
+                },
+                {
+                  "pmid": "42078678",
+                  "title": "Factors Influencing Physical Therapists' Rehabilitation Prescription in the ICU: Semi-Structured Interviews with Qualitative Analysis.",
+                  "journal": "Physiother Can",
+                  "year": "2025",
+                  "doi": "10.3138/ptc-2023-0017"
+                },
+                {
+                  "pmid": "41868648",
+                  "title": "The Role of Attachment Insecurity in the Intergenerational Transmission of Violence.",
+                  "journal": "J Child Adolesc Trauma",
+                  "year": "2026",
+                  "doi": "10.1007/s40653-025-00766-2"
+                },
+                {
+                  "pmid": "41744054",
+                  "title": "Usage of a split CH2 domain as building block for new antibody formats.",
+                  "journal": "Protein Eng Des Sel",
+                  "year": "2025",
+                  "doi": "10.1093/protein/gzag005"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "LBD",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "LBD[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND LBD[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "41788840",
+                  "title": "Sensitivity of Paucilactobacillus wasatchensis strains to nisin.",
+                  "journal": "JDS Commun",
+                  "year": "2026",
+                  "doi": "10.3168/jdsc.2025-0887"
+                },
+                {
+                  "pmid": "41728190",
+                  "title": "Transcriptomic and hormonal dynamics in relation to adventitious rooting of two parental Petunia species highlight a coordinated activation of the jasmonate and auxin pathways and an important role of upper-shoot-derived auxin influx.",
+                  "journal": "Front Plant Sci",
+                  "year": "2025",
+                  "doi": "10.3389/fpls.2025.1707238"
+                },
+                {
+                  "pmid": "41649650",
+                  "title": "Cellular plasticity and transcriptional reprogramming in plant-nematode interactions: insights into feeding site formation and plant defense.",
+                  "journal": "Crop Health",
+                  "year": "2025",
+                  "doi": "10.1007/s44297-025-00056-1"
+                },
+                {
+                  "pmid": "41594559",
+                  "title": "Transcriptome and Metabolome Analyses Reveal the Accumulation Mechanism of Carbohydrates During Paeonia ostii Seed Development.",
+                  "journal": "Biomolecules",
+                  "year": "2025",
+                  "doi": "10.3390/biom16010017"
+                },
+                {
+                  "pmid": "41573935",
+                  "title": "Root growth promotion by Penicillium melinii: mechanistic insights and agricultural applications.",
+                  "journal": "bioRxiv",
+                  "year": "2025",
+                  "doi": "10.64898/2025.12.05.692050"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "DRO1",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "DRO1[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND DRO1[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "40851219",
+                  "title": "Phenome-to-genome insights for evaluating root system architecture in field studies of maize.",
+                  "journal": "Plant Genome",
+                  "year": "2025",
+                  "doi": "10.1002/tpg2.70100"
+                },
+                {
+                  "pmid": "40659747",
+                  "title": "Transfer of deeper rooting and phosphorus uptake QTL into the popular rice variety 'maudamani' via marker-assisted backcross breeding.",
+                  "journal": "Sci Rep",
+                  "year": "2025",
+                  "doi": "10.1038/s41598-025-10951-w"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "ABA catabolism",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ABA catabolism[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND ABA catabolism[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "41624417",
+                  "title": "FveDAD2 negatively regulates branch crowns by affecting abscisic acid metabolism through FveHB7 in woodland strawberry.",
+                  "journal": "Hortic Res",
+                  "year": "2026",
+                  "doi": "10.1093/hr/uhaf250"
+                },
+                {
+                  "pmid": "41096694",
+                  "title": "Involvement of Ethylene in Adventitious Root Formation of Red-Stalked Rhubarb In Vitro.",
+                  "journal": "Int J Mol Sci",
+                  "year": "2025",
+                  "doi": "10.3390/ijms26199429"
+                },
+                {
+                  "pmid": "40982645",
+                  "title": "Auxin Response Factor 4 Regulates the ABA Catabolism Gene CYP707A2 to Reduce the Accumulation of ABA and Inhibit Anthocyanin Synthesis in Malus \"Pinkspire\" Fruits.",
+                  "journal": "J Agric Food Chem",
+                  "year": "2025",
+                  "doi": "10.1021/acs.jafc.5c05701"
+                },
+                {
+                  "pmid": "40976169",
+                  "title": "ABA orchestrates molecular networks linking antioxidant defense, sugar metabolism and circadian clock for combined stress tolerance in Quinoa (Chenopodium quinoa Willd.).",
+                  "journal": "Plant Physiol Biochem",
+                  "year": "2025",
+                  "doi": "10.1016/j.plaphy.2025.110536"
+                },
+                {
+                  "pmid": "40882725",
+                  "title": "Identification of JmjC-domain-containing histone demethylases in sweet cherry reveals PavJMJ12 is required for bud dormancy release.",
+                  "journal": "Int J Biol Macromol",
+                  "year": "2025",
+                  "doi": "10.1016/j.ijbiomac.2025.146910"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         },
         {
           "symbol": "CYP707A",
           "claimed_gene_id": "",
-          "verification": null
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "CYP707A[Gene Name] AND \"Dicotyledonae\"[Organism]"
+              ]
+            },
+            "pubmed": {
+              "found": true,
+              "query": "2025[dp] AND CYP707A[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "42152181",
+                  "title": "ABA-centric signaling networks for drought resilience in cereals: from transcriptional reprogramming to epigenetic memory.",
+                  "journal": "Funct Plant Biol",
+                  "year": "2025",
+                  "doi": "10.1071/FP25173"
+                },
+                {
+                  "pmid": "41344249",
+                  "title": "Pulsed light treatment mediated ethylene and abscisic acid synthesis effectively inhibited bell pepper turning red and softening.",
+                  "journal": "Food Chem",
+                  "year": "2026",
+                  "doi": "10.1016/j.foodchem.2025.147303"
+                },
+                {
+                  "pmid": "40976169",
+                  "title": "ABA orchestrates molecular networks linking antioxidant defense, sugar metabolism and circadian clock for combined stress tolerance in Quinoa (Chenopodium quinoa Willd.).",
+                  "journal": "Plant Physiol Biochem",
+                  "year": "2025",
+                  "doi": "10.1016/j.plaphy.2025.110536"
+                },
+                {
+                  "pmid": "40836595",
+                  "title": "Comprehensive analysis of DNA methylome and transcriptome reveals the epigenetic regulation of nitric oxide treatment in delaying apricot fruit senescence.",
+                  "journal": "Plant J",
+                  "year": "2025",
+                  "doi": "10.1111/tpj.70387"
+                },
+                {
+                  "pmid": "40573837",
+                  "title": "Effects of Different Modified Biochars on Growth of Kosteletzkya virginica and Corresponding Transcriptome Analysis.",
+                  "journal": "Plants (Basel)",
+                  "year": "2025",
+                  "doi": "10.3390/plants14121849"
+                }
+              ]
+            },
+            "checked_on": "2026-11-13"
+          }
         }
       ],
       "portability": "t1",
@@ -1703,13 +4717,41 @@
         "gene_action": "Dynamic regulatory tuning"
       },
       "verification": {
-        "status": "unverified",
-        "verified_on": null,
-        "verified_by": null,
+        "status": "partial",
+        "genes_resolved": "0/7",
+        "verified_on": "2026-11-13",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
-        "pmids": [],
-        "dois": [],
-        "notes": []
+        "pmids": [
+          "40851219",
+          "41624417",
+          "41695523",
+          "41788840",
+          "42152181",
+          "42266637",
+          "42540664"
+        ],
+        "dois": [
+          "10.1002/tpg2.70100",
+          "10.1055/s-0045-1813660",
+          "10.1071/FP25173",
+          "10.1093/hr/uhaf250",
+          "10.3168/jdsc.2025-0887",
+          "10.3389/fpls.2025.1747710",
+          "10.5114/aoms/208999"
+        ],
+        "notes": [
+          "WOX: PMID 41695523 found by topic search, not by the cited author/year — citation not confirmed",
+          "PLT: PMID 42540664 found by topic search, not by the cited author/year — citation not confirmed",
+          "PLETHORA: PMID 42266637 found by topic search, not by the cited author/year — citation not confirmed",
+          "LBD: PMID 41788840 found by topic search, not by the cited author/year — citation not confirmed",
+          "DRO1: PMID 40851219 found by topic search, not by the cited author/year — citation not confirmed",
+          "ABA catabolism: PMID 41624417 found by topic search, not by the cited author/year — citation not confirmed",
+          "CYP707A: PMID 42152181 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "locus_check": {
+        "checked": false
       }
     }
   ]

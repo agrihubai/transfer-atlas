@@ -11,9 +11,14 @@ and the entry is marked `unverified`.
 
 Sources queried
 ---------------
-  NCBI Gene      (E-utilities esearch/esummary)  -> gene ID, official symbol, description
+  NCBI Gene      (E-utilities esearch/esummary)  -> gene ID, official symbol, description,
+                                                    genomic coordinates, and cross-check of the
+                                                    existence check of claimed locus IDs
   NCBI PubMed    (E-utilities esearch/esummary)  -> PMID + title + DOI for the cited reference
-  Ensembl Plants (REST lookup/id, lookup/symbol) -> stable gene ID, biotype, coordinates
+
+Ensembl Plants is not queried: its REST service lives on rest.ensemblgenomes.org, which this
+environment cannot reach. rest.ensembl.org serves vertebrates only and rejects plant species.
+Locus IDs are therefore confirmed against NCBI Gene instead.
 
 Usage
 -----
@@ -51,7 +56,6 @@ V3 = DATA / "atlas_v3.json"
 REPORT = DATA / "verification_report.tsv"
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-ENSEMBL = "https://rest.ensembl.org"
 UA = "TransferAtlas/3.0 (https://agrihubai.github.io/transfer-atlas; verification pipeline)"
 
 # Scientific name per crop label, used to constrain NCBI Gene searches.
@@ -68,15 +72,9 @@ SPECIES = {
     "Onion": "Allium cepa",
 }
 
-# Ensembl Plants species keys for symbol lookup.
-ENSEMBL_SPECIES = {
-    "Solanum lycopersicum": "solanum_lycopersicum",
-    "Cucumis sativus": "cucumis_sativus",
-    "Cucumis melo": "cucumis_melo",
-    "Brassica oleracea": "brassica_oleracea",
-    "Daucus carota": "daucus_carota",
-    "Lactuca sativa": "lactuca_sativa",
-}
+# Species prefixes used in the literature but not in NCBI gene names (SlGAD3 -> GAD3).
+PREFIXES = ("Sl", "Ca", "Cs", "Cm", "Cl", "Sm", "Ls", "Bo", "Br", "Dc", "Ac", "Le",
+            "At", "Os", "Ta", "Hv", "Zm", "Gm", "Vv")
 
 RATE = float(os.environ.get("ATLAS_RATE_DELAY", "0.4"))
 _last_call = [0.0]
@@ -152,6 +150,14 @@ def split_genes(field: str) -> list[str]:
             out.append(p)
     seen, uniq = set(), []
     for g in out:
+        g = g.strip(" ()[].")
+        # a gene symbol starts with a letter and is more than one character;
+        # this drops fragments left by splitting ('SOS1/2' -> '2', 'family)' -> ')')
+        if len(g) < 2 or not re.match(r"^[A-Za-z]", g) or not re.search(r"[A-Za-z]{2}", g):
+            continue
+        if g.lower() in {"plus", "and", "family", "network", "candidate", "candidates",
+                         "scavengers", "regulators", "catabolism", "related", "loci"}:
+            continue
         if g.lower() not in seen:
             seen.add(g.lower())
             uniq.append(g)
@@ -177,32 +183,111 @@ def parse_reference(ref: str) -> tuple[str, str]:
 # Database queries
 # --------------------------------------------------------------------------
 
-def ncbi_gene(symbol: str, species: str) -> dict:
-    """Look a gene symbol up in NCBI Gene, constrained to one organism."""
-    term = f'{symbol}[Gene Name] AND "{species}"[Organism]'
-    url = (f"{EUTILS}/esearch.fcgi?db=gene&retmode=json&retmax=5"
+def strip_prefix(symbol: str) -> str:
+    """SlGAD3 -> GAD3. Returns '' when the symbol carries no species prefix."""
+    m = re.match(r"^([A-Z][a-z])([A-Z0-9].*)$", symbol)
+    if m and m.group(1) in PREFIXES and len(m.group(2)) >= 2:
+        return m.group(2)
+    return ""
+
+
+def _gene_search(term: str) -> list[str]:
+    url = (f"{EUTILS}/esearch.fcgi?db=gene&retmode=json&retmax=10"
            f"&term={urllib.parse.quote(term)}{eutils_key()}")
     res = fetch_json(url)
-    ids = (res or {}).get("esearchresult", {}).get("idlist", []) if isinstance(res, dict) else []
+    if not isinstance(res, dict):
+        return []
+    return res.get("esearchresult", {}).get("idlist", []) or []
+
+
+def ncbi_gene(symbol: str, species: str) -> dict:
+    """Look a gene symbol up in NCBI Gene, constrained to one organism.
+
+    Literature symbols carry a species prefix that NCBI does not use, so the
+    prefix-stripped form is tried as well. Hits are ranked: a gene whose official
+    symbol equals the query outranks one that merely lists it as an alias, which
+    filters out unrelated genes that happen to share an alias.
+    """
+    queries, ids = [], []
+    for sym in [symbol, strip_prefix(symbol)]:
+        if not sym:
+            continue
+        term = f'{sym}[Gene Name] AND "{species}"[Organism]'
+        queries.append(term)
+        for i in _gene_search(term):
+            if i not in ids:
+                ids.append(i)
     if not ids:
-        return {"found": False, "query": term}
-    url = f"{EUTILS}/esummary.fcgi?db=gene&retmode=json&id={','.join(ids)}{eutils_key()}"
+        return {"found": False, "queries": queries}
+
+    url = f"{EUTILS}/esummary.fcgi?db=gene&retmode=json&id={','.join(ids[:10])}{eutils_key()}"
     summ = fetch_json(url)
     hits = []
+    wanted = {symbol.lower(), strip_prefix(symbol).lower()} - {""}
     if isinstance(summ, dict):
-        for gid in ids:
+        for gid in ids[:10]:
             rec = summ.get("result", {}).get(gid)
             if not isinstance(rec, dict):
                 continue
+            name = rec.get("name", "") or ""
+            aliases = [a.strip().lower() for a in (rec.get("otheraliases") or "").split(",")]
+            gi = (rec.get("genomicinfo") or [{}])[0]
+            if name.lower() in wanted:
+                rank, how = 0, "official symbol"
+            elif wanted & set(aliases):
+                rank, how = 1, "listed as alias"
+            else:
+                rank, how = 2, "weak — symbol not in name or aliases"
             hits.append({
                 "ncbi_gene_id": gid,
-                "official_symbol": rec.get("name", ""),
+                "official_symbol": name,
                 "description": rec.get("description", ""),
                 "other_aliases": rec.get("otheraliases", ""),
                 "organism": (rec.get("organism") or {}).get("scientificname", ""),
-                "genomic_context": (rec.get("genomicinfo") or [{}])[0].get("chrloc", ""),
+                "chromosome": gi.get("chrloc", "") or rec.get("chromosome", ""),
+                "coordinates": (f"{gi.get('chraccver','')}:{gi.get('chrstart','')}-{gi.get('chrstop','')}"
+                                if gi.get("chraccver") else ""),
+                "match": how,
+                "_rank": rank,
             })
-    return {"found": bool(hits), "query": term, "hits": hits}
+    hits.sort(key=lambda h: h["_rank"])
+    # drop weak hits when a strong one exists, so the first hit is never a coincidence
+    if hits and hits[0]["_rank"] <= 1:
+        hits = [h for h in hits if h["_rank"] <= 1]
+    for h in hits:
+        h.pop("_rank", None)
+    return {"found": bool(hits), "queries": queries, "hits": hits}
+
+
+def check_locus_id(locus_field: str) -> dict:
+    """Does a claimed locus ID (Solyc01g005000, …) exist as a real identifier?
+
+    LIMITATION, stated rather than hidden: ITAG/Solyc-style locus tags are not
+    indexed in NCBI Gene, and nucleotide->gene elinks do not resolve them, so this
+    check can confirm only that the identifier appears in NCBI sequence records —
+    NOT that it belongs to the gene the entry names. Confirming the locus-to-gene
+    mapping needs Sol Genomics Network or Ensembl Plants, neither of which this
+    environment can reach. Until then the mapping stays a curated claim.
+    """
+    loci = re.findall(r"[A-Za-z]{3,}\d[A-Za-z0-9._\-]{4,}", locus_field or "")[:6]
+    if not loci:
+        return {"checked": False}
+    results = []
+    for locus in loci:
+        url = (f"{EUTILS}/esearch.fcgi?db=nuccore&retmode=json&retmax=3"
+               f"&term={urllib.parse.quote(locus)}{eutils_key()}")
+        res = fetch_json(url)
+        sr = (res or {}).get("esearchresult", {}) if isinstance(res, dict) else {}
+        count = int(sr.get("count", "0") or 0)
+        results.append({
+            "locus": locus,
+            "ncbi_nucleotide_records": count,
+            "exists": count > 0,
+            "status": (f"identifier present in {count} NCBI sequence record(s); "
+                       f"gene assignment not verifiable here" if count
+                       else "no NCBI record contains this identifier"),
+        })
+    return {"checked": True, "scope": "existence only, not gene assignment", "results": results}
 
 
 def pubmed_reference(gene: str, author: str, year: str, trait: str) -> dict:
@@ -265,33 +350,6 @@ def _pubmed_summaries(ids: list[str], term: str, *, exact: bool) -> dict:
     }
 
 
-def ensembl_gene(gene_id: str, symbol: str, species: str) -> dict:
-    """Confirm a stable gene ID, or look the symbol up in Ensembl Plants."""
-    if gene_id:
-        cand = re.findall(r"[A-Za-z]{2,}[0-9][A-Za-z0-9._\-]+", gene_id)
-        for c in cand:
-            res = fetch_json(f"{ENSEMBL}/lookup/id/{urllib.parse.quote(c)}?content-type=application/json")
-            if isinstance(res, dict) and res.get("id"):
-                return {
-                    "found": True, "source": "lookup/id", "ensembl_id": res.get("id"),
-                    "biotype": res.get("biotype", ""), "species": res.get("species", ""),
-                    "seq_region": res.get("seq_region_name", ""),
-                    "start": res.get("start"), "end": res.get("end"),
-                }
-    key = ENSEMBL_SPECIES.get(species)
-    if key and symbol:
-        res = fetch_json(f"{ENSEMBL}/lookup/symbol/{key}/{urllib.parse.quote(symbol)}"
-                         f"?content-type=application/json")
-        if isinstance(res, dict) and res.get("id"):
-            return {
-                "found": True, "source": "lookup/symbol", "ensembl_id": res.get("id"),
-                "biotype": res.get("biotype", ""), "species": res.get("species", ""),
-                "seq_region": res.get("seq_region_name", ""),
-                "start": res.get("start"), "end": res.get("end"),
-            }
-    return {"found": False}
-
-
 # --------------------------------------------------------------------------
 # Migration: v2 -> v3 skeleton (offline)
 # --------------------------------------------------------------------------
@@ -343,8 +401,8 @@ def migrate() -> dict:
             "version": "3.0.0",
             "platform": "Trait Transfer & Genome Editing Intelligence Platform",
             "principle": (
-                "Gene identity and literature references are machine-verified against NCBI Gene, "
-                "PubMed and Ensembl Plants. Portability, linkage drag, pleiotropy and IP remain "
+                "Gene identity and literature references are machine-verified against NCBI Gene "
+                "and PubMed. Portability, linkage drag, pleiotropy and IP remain "
                 "indicative research signals curated by a breeder, not database facts."
             ),
             "verification_states": {
@@ -372,7 +430,7 @@ def verify(only: str | None = None) -> dict:
     atlas = json.loads(V3.read_text(encoding="utf-8")) if V3.exists() else migrate()
     today = time.strftime("%Y-%m-%d")
     rows = [("entry_id", "crop", "gene", "ncbi_gene_id", "official_symbol",
-             "ensembl_id", "pmid", "doi", "match_type", "status")]
+             "locus_ids_exist", "pmid", "doi", "match_type", "status")]
 
     for e in atlas["entries"]:
         if only and only.lower() not in (e.get("crop") or "").lower():
@@ -383,23 +441,28 @@ def verify(only: str | None = None) -> dict:
         print(f"  {e['id']}  {e.get('crop')}  [{len(e['genes'])} gene(s)]")
 
         gene_ids, pmids, dois, notes = [], [], [], []
+
+        # Locus IDs are listed per entry, not per gene, so check them once.
+        locus = check_locus_id(e["claims"].get("gene_id", ""))
+        loci_exist = [r["locus"] for r in locus.get("results", []) if r["exists"]]
+        for r in locus.get("results", []):
+            if not r["exists"]:
+                notes.append(f"claimed locus {r['locus']}: no NCBI sequence record contains "
+                             f"this identifier — check the ID")
+        e["locus_check"] = locus
+
         for g in e["genes"]:
             sym = g["symbol"]
             ncbi = ncbi_gene(sym, species) if species else {"found": False, "reason": "no species"}
-            ens = ensembl_gene(e["claims"].get("gene_id", ""), sym, species)
-            ref = pubmed_reference(sym, author, year, trait)
-
-            g["verification"] = {"ncbi_gene": ncbi, "ensembl": ens, "pubmed": ref,
-                                 "checked_on": today}
-
-            ncbi_id = official = ens_id = pmid = doi = mtype = ""
+            ncbi_id = official = pmid = doi = mtype = ""
             if ncbi.get("found"):
                 h = ncbi["hits"][0]
                 ncbi_id, official = h["ncbi_gene_id"], h["official_symbol"]
                 gene_ids.append(f"NCBI:{ncbi_id}")
-            if ens.get("found"):
-                ens_id = ens["ensembl_id"]
-                gene_ids.append(f"Ensembl:{ens_id}")
+            ref = pubmed_reference(sym, author, year, trait)
+
+            g["verification"] = {"ncbi_gene": ncbi, "pubmed": ref, "checked_on": today}
+
             if ref.get("found"):
                 h = ref["hits"][0]
                 pmid, doi, mtype = h["pmid"], h["doi"], ref.get("match_type", "")
@@ -407,29 +470,36 @@ def verify(only: str | None = None) -> dict:
                 if doi:
                     dois.append(doi)
 
-            gene_ok = bool(ncbi_id or ens_id)
+            gene_ok = bool(ncbi_id)
             ref_ok = bool(pmid) and mtype == "author+year+gene"
             status = ("verified" if gene_ok and ref_ok else
                       "partial" if gene_ok or pmid else "unverified")
-            if ncbi_id and official and official.lower() != sym.lower():
-                notes.append(f"{sym}: NCBI official symbol is '{official}' — check synonym")
+            if ncbi_id and ncbi["hits"][0]["match"] != "official symbol":
+                notes.append(f"{sym}: matched NCBI gene {official} ({ncbi_id}) "
+                             f"as {ncbi['hits'][0]['match']} — confirm it is the same gene")
             if pmid and mtype != "author+year+gene":
                 notes.append(f"{sym}: PMID {pmid} found by topic search, not by the cited "
                              f"author/year — citation not confirmed")
             rows.append((e["id"], e.get("crop", ""), sym, ncbi_id, official,
-                         ens_id, pmid, doi, mtype, status))
+                         ";".join(loci_exist), pmid, doi, mtype, status))
 
         gene_ids = sorted(set(gene_ids))
         pmids = sorted(set(pmids))
         any_strong = any(
             (g.get("verification") or {}).get("pubmed", {}).get("match_type") == "author+year+gene"
             for g in e["genes"])
-        status = ("verified" if gene_ids and pmids and any_strong else
+        n_genes = len(e["genes"])
+        n_gene_ok = sum(1 for g in e["genes"]
+                        if (g.get("verification") or {}).get("ncbi_gene", {}).get("found"))
+        # "verified" requires every named gene to resolve, not just one of them —
+        # otherwise an entry listing five genes passes on the strength of one.
+        status = ("verified" if n_genes and n_gene_ok == n_genes and pmids and any_strong else
                   "partial" if gene_ids or pmids else "unverified")
         e["verification"] = {
             "status": status,
+            "genes_resolved": f"{n_gene_ok}/{n_genes}",
             "verified_on": today,
-            "verified_by": "verify_genes.py (NCBI Gene + PubMed + Ensembl Plants)",
+            "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
             "gene_ids": gene_ids,
             "pmids": pmids,
             "dois": sorted(set(dois)),

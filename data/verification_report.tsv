@@ -1,0 +1,94 @@
+entry_id	crop	gene	ncbi_gene_id	official_symbol	locus_ids_exist	pmid	doi	match_type	status
+TOM-GABA-01	Tomato	SlGAD3	100147723	GAD3	Solyc11g011920	28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
+TOM-GABA-01	Tomato	SlGAD2	544002	gad2	Solyc11g011920	28765632	10.1038/s41598-017-06400-y	author+year+gene	verified
+TOM-VITD-01	Tomato	Sl7-DR2							unverified
+TOM-TOBRFV-01	Tomato	SlTOM1a			Solyc02g080370				unverified
+TOM-TOBRFV-01	Tomato	SlTOM3			Solyc02g080370				unverified
+TOM-TYLCV-01	Tomato	SlPelo			Solyc04g009810				unverified
+TOM-MILDEW-01	Tomato	SlMlo1	778228	MLO1	Solyc04g049090	35173386	10.6026/97320630017637	gene+trait topic search	partial
+TOM-BROAD-01	Tomato	SlDMR6-1	100736526	DMR6-1		34215692	10.1073/pnas.2026152118	author+year+gene	verified
+TOM-DWARF-01	Tomato	SlER			Solyc08g061560	31873217	10.1038/s41587-019-0361-2	author+year+gene	partial
+TOM-DWARF-01	Tomato	SP5G	101254900	SP5G	Solyc08g061560	31873217	10.1038/s41587-019-0361-2	author+year+gene	verified
+TOM-DWARF-01	Tomato	SP	544038	SP	Solyc08g061560	33756848	10.11646/zootaxa.4896.4.5	author+year+gene	verified
+TOM-DWARF-01	Tomato	SlYABBY2b	100191118	YABBY2	Solyc08g061560				partial
+TOM-DWARF-01	Tomato	SlYTH2			Solyc08g061560				unverified
+TOM-PARTH-01	Tomato	SlIAA9	543750	IAA9	Solyc04g076850;Solyc01g093960	28360425	10.1038/s41598-017-00501-4	author+year+gene	verified
+TOM-PARTH-01	Tomato	SlAGL6	101268317	AGL6	Solyc04g076850;Solyc01g093960	40839424	10.1093/plphys/kiaf363	gene+trait topic search	partial
+TOM-PARTH-01	Tomato	SlARF8	100301945	ARF8b	Solyc04g076850;Solyc01g093960	42576618	10.1111/nph.71503	gene+trait topic search	partial
+TOM-SIZE-01	Tomato	FW2.2	101245309	fw2.2	Solyc02g090730				partial
+TOM-SIZE-01	Tomato	SlKIX8			Solyc02g090730	34601614	10.1093/plphys/kiab464	author+year+gene	partial
+TOM-SIZE-01	Tomato	SlKIX9			Solyc02g090730	34601614	10.1093/plphys/kiab464	author+year+gene	partial
+TOM-FIRM-01	Tomato	SlPL	101254471	PL					partial
+TOM-FIRM-01	Tomato	SlPG2a	544051	PG2					partial
+TOM-FIRM-01	Tomato	SlCEL2	543996	Cel2					partial
+PEP-PUNG-01	Pepper	Pun1	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
+PEP-PUNG-01	Pepper	AT3	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
+PEP-PAMT-01	Pepper	pAMT	107854420	LOC107854420		19473323	10.1111/j.1365-313X.2009.03921.x	author+year+gene	verified
+PEP-VIRUS-01	Pepper	eIF4E1	107868427	LOC107868427		42374852	10.1111/mpp.70305	gene+trait topic search	partial
+PEP-VIRUS-01	Pepper	eIFiso4E	107853558	LOC107853558		42239849	10.3389/fpls.2026.1799408	gene+trait topic search	partial
+PEP-MILDEW-01	Pepper	CaMLO2 (CaMLO							unverified
+CUC-BITTER-01	Cucumber	Bt			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	partial
+CUC-BITTER-01	Cucumber	CsBt			Csa5G157230;Csa5G156220;Csa6G088690				unverified
+CUC-BITTER-01	Cucumber	Bl			Csa5G157230;Csa5G156220;Csa6G088690	25430763	10.1126/science.1259215	author+year+gene	partial
+CUC-BITTER-01	Cucumber	CsBl			Csa5G157230;Csa5G156220;Csa6G088690				unverified
+CUC-BITTER-01	Cucumber	Bi			Csa5G157230;Csa5G156220;Csa6G088690	25307789	10.1111/ane.12300	author+year+gene	partial
+CUC-BITTER-01	Cucumber	CsBi			Csa5G157230;Csa5G156220;Csa6G088690				unverified
+CUC-MILDEW-01	Cucumber	CsMLO1				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
+CUC-MILDEW-01	Cucumber	CsMLO8				38330431	10.1093/plphys/kiae047	gene+trait topic search	partial
+CUC-MILDEW-01	Cucumber	CsMLO11							unverified
+CUC-SEX-01	Cucumber	CsACS2	101217331	LOC101217331					partial
+CUC-SEX-01	Cucumber	CsACS11	101213522	LOC101213522					partial
+CUC-SEX-01	Cucumber	CsWIP1							unverified
+CUC-SEX-01	Cucumber	CsARF8							unverified
+MEL-SHELF-01	Melon	CmACO1	103491357	LOC103491357		37304010	10.3389/fgeed.2023.1176125	author+year+gene	verified
+MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295					partial
+MEL-SHELF-01	Melon	CmNAC-NOR							unverified
+WAT-SEED-01	Watermelon	ClAGL11							unverified
+WAT-SEED-01	Watermelon	ClWIP1 for gynoecy							unverified
+WAT-BRIX-01	Watermelon	ClTST2				29118248	10.1104/pp.17.01290	author+year+gene	partial
+WAT-BRIX-01	Watermelon	ClSWEET3				33570606	10.1093/plcell/koab055	gene+trait topic search	partial
+WAT-BRIX-01	Watermelon	ClLCYB							unverified
+EGG-BROWN-01	Eggplant	SmPPO4							unverified
+EGG-BROWN-01	Eggplant	SmPPO5							unverified
+EGG-BROWN-01	Eggplant	SmPPO6 (PPO				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
+EGG-PRICKLE-01	Eggplant	SmMYB							unverified
+EGG-PRICKLE-01	Eggplant	LOG-related prickle loci							unverified
+LET-BOLT-01	Lettuce	LsFT	111907824	LOC111907824		29403510	10.3389/fpls.2017.02248	author+year+gene	verified
+LET-BOLT-01	Lettuce	LsCO				41793314	10.1111/pbi.70630	gene+trait topic search	partial
+LET-BOLT-01	Lettuce	LsRGL1							unverified
+LET-BOLT-01	Lettuce	LsSOC1				29772090	10.1111/tpj.13968	author+year+gene	partial
+LET-VITC-01	Lettuce	LsGGP2				30080209	10.1038/nbt.4202	author+year+gene	partial
+LET-VITC-01	Lettuce	uORF				30146315	10.1016/j.molcel.2018.07.028	author+year+gene	partial
+BRA-CLUB-01	Brassica (Broccoli/Cabbage/Cauliflower)	CRa				23054353	10.1007/s11103-012-9971-5	author+year+gene	partial
+BRA-CLUB-01	Brassica (Broccoli/Cabbage/Cauliflower)	CRb				41477250	10.3389/fpls.2025.1726940	gene+trait topic search	partial
+BRA-CLUB-01	Brassica (Broccoli/Cabbage/Cauliflower)	Crr1				40406504	10.1093/hr/uhaf105	gene+trait topic search	partial
+BRA-CLUB-01	Brassica (Broccoli/Cabbage/Cauliflower)	Crr3				34262060	10.1038/s41598-021-93327-0	gene+trait topic search	partial
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB28	106313100	LOC106313100		23560984	10.1111/nph.12232	author+year+gene	verified
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	HAG1							unverified
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB29							unverified
+BRA-GLUC-01	Brassica (Broccoli/Cabbage/Cauliflower)	MYB34							unverified
+CAR-COLOR-01	Carrot	DcRPGE1				38593056	10.1093/plcell/koae111	gene+trait topic search	partial
+CAR-COLOR-01	Carrot	DcAPRR2				38593056	10.1093/plcell/koae111	gene+trait topic search	partial
+CAR-COLOR-01	Carrot	DcPSY1	108227339	LOC108227339		38593056	10.1093/plcell/koae111	gene+trait topic search	partial
+CAR-COLOR-01	Carrot	DcPSY2	108214656	LOC108214656		38593056	10.1093/plcell/koae111	gene+trait topic search	partial
+CAR-COLOR-01	Carrot	DcLCYB1	108193045	LOC108193045					partial
+ONI-TEAR-01	Onion	AcLFS							unverified
+ONI-TEAR-01	Onion	AcACS1							unverified
+ONI-TEAR-01	Onion	AcACS2							unverified
+GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	SOS1							unverified
+GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	NHX							unverified
+GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	HKT1							unverified
+GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	DREB2A							unverified
+GAP-COMB-01	Multi-Crop (Tomato, Pepper, Cucurbits)	HsfA2							unverified
+GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	HsfA2							unverified
+GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	HSP70							unverified
+GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	ROS scavengers							unverified
+GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	APX							unverified
+GAP-REPRO-01	Multi-Crop (Tomato, Pepper, Cucumber)	MADS-box regulators							unverified
+GAP-RECOV-01	Multi-Crop (All Vegetables)	WOX				41695523	10.3389/fpls.2025.1747710	gene+trait topic search	partial
+GAP-RECOV-01	Multi-Crop (All Vegetables)	PLT				42540664	10.5114/aoms/208999	gene+trait topic search	partial
+GAP-RECOV-01	Multi-Crop (All Vegetables)	PLETHORA				42266637	10.1055/s-0045-1813660	gene+trait topic search	partial
+GAP-RECOV-01	Multi-Crop (All Vegetables)	LBD				41788840	10.3168/jdsc.2025-0887	gene+trait topic search	partial
+GAP-RECOV-01	Multi-Crop (All Vegetables)	DRO1				40851219	10.1002/tpg2.70100	gene+trait topic search	partial
+GAP-RECOV-01	Multi-Crop (All Vegetables)	ABA catabolism				41624417	10.1093/hr/uhaf250	gene+trait topic search	partial
+GAP-RECOV-01	Multi-Crop (All Vegetables)	CYP707A				42152181	10.1071/FP25173	gene+trait topic search	partial
