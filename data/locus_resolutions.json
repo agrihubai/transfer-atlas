@@ -1,5 +1,5 @@
 {
-  "_about": "Locus tags resolved against Ensembl Plants annotation by scripts/resolve_loci_ensembl.py. Each record carries the build and the file it came from. A tag absent here was not in that build — which is not proof the tag is wrong, only that this build does not carry it.",
+  "_about": "Locus tags resolved against public genome annotation files by scripts/resolve_loci.py. Each record carries the build and the file it came from. A tag absent here was not in that build — which is not proof the tag is wrong, only that this build does not carry it.",
   "loci": {
     "Cla97C02G036390": {
       "ensembl_id": "Cla97C02G036390",
@@ -11,8 +11,8 @@
       "end": "18784264",
       "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
       "species": "Citrullus lanatus",
-      "build": "Cla97_v1",
-      "checked_on": "2026-11-13",
+      "build": "Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
     },
     "Cla97C04G070940": {
@@ -25,8 +25,8 @@
       "end": "15443826",
       "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
       "species": "Citrullus lanatus",
-      "build": "Cla97_v1",
-      "checked_on": "2026-11-13",
+      "build": "Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
     },
     "MELO3C014437": {
@@ -39,8 +39,8 @@
       "end": "2412125",
       "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_melo/Cucumis_melo.Melonv4.63.gff3.gz",
       "species": "Cucumis melo",
-      "build": "Melonv4",
-      "checked_on": "2026-11-13",
+      "build": "Cucumis_melo.Melonv4.63.gff3.gz",
+      "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
     },
     "Csa1G580750": {
@@ -53,8 +53,8 @@
       "end": "21940714",
       "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
       "species": "Cucumis sativus",
-      "build": "ASM407v2",
-      "checked_on": "2026-11-13",
+      "build": "Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
     },
     "Csa4G290830": {
@@ -67,8 +67,36 @@
       "end": "11360094",
       "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
       "species": "Cucumis sativus",
-      "build": "ASM407v2",
-      "checked_on": "2026-11-13",
+      "build": "Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "Csa5G156220": {
+      "ensembl_id": "Csa_5G156220",
+      "name": "",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "5",
+      "start": "5489366",
+      "end": "5492238",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "species": "Cucumis sativus",
+      "build": "Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "Csa5G157230": {
+      "ensembl_id": "Csa_5G157230",
+      "name": "",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "5",
+      "start": "5513390",
+      "end": "5514390",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "species": "Cucumis sativus",
+      "build": "Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
     },
     "Csa5G623470": {
@@ -81,8 +109,78 @@
       "end": "24831456",
       "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/cucumis_sativus/Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
       "species": "Cucumis sativus",
-      "build": "ASM407v2",
-      "checked_on": "2026-11-13",
+      "build": "Cucumis_sativus.ASM407v2.63.chr.gff3.gz",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "SMEL4_06g011220": {
+      "ensembl_id": "SMEL4_06g011220.1",
+      "name": "",
+      "description": "Protein of unknown function",
+      "biotype": "",
+      "chromosome": "6",
+      "start": "68906837",
+      "end": "68908124",
+      "source_url": "https://solgenomics.net/ftp/genomes/Solanum_melongena_V4_Pangenome/Annotation_V4/SMEL_V4_function_IPR.gff3",
+      "species": "Solanum melongena",
+      "build": "SMEL_V4_function_IPR.gff3",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "SMEL4_08g009050": {
+      "ensembl_id": "SMEL4_08g009050.1",
+      "name": "",
+      "description": "Similar to Polyphenol oxidase B, chloroplastic (Solanum lycopersicum OX=4081)",
+      "biotype": "",
+      "chromosome": "8",
+      "start": "12139154",
+      "end": "12140947",
+      "source_url": "https://solgenomics.net/ftp/genomes/Solanum_melongena_V4_Pangenome/Annotation_V4/SMEL_V4_function_IPR.gff3",
+      "species": "Solanum melongena",
+      "build": "SMEL_V4_function_IPR.gff3",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "SMEL4_08g009060": {
+      "ensembl_id": "SMEL4_08g009060.1",
+      "name": "",
+      "description": "Similar to Polyphenol oxidase B, chloroplastic (Solanum lycopersicum OX=4081)",
+      "biotype": "",
+      "chromosome": "8",
+      "start": "12143059",
+      "end": "12144846",
+      "source_url": "https://solgenomics.net/ftp/genomes/Solanum_melongena_V4_Pangenome/Annotation_V4/SMEL_V4_function_IPR.gff3",
+      "species": "Solanum melongena",
+      "build": "SMEL_V4_function_IPR.gff3",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "SMEL4_08g009070": {
+      "ensembl_id": "SMEL4_08g009070.1",
+      "name": "",
+      "description": "Similar to Polyphenol oxidase B, chloroplastic (Solanum lycopersicum OX=4081)",
+      "biotype": "",
+      "chromosome": "8",
+      "start": "12154288",
+      "end": "12156087",
+      "source_url": "https://solgenomics.net/ftp/genomes/Solanum_melongena_V4_Pangenome/Annotation_V4/SMEL_V4_function_IPR.gff3",
+      "species": "Solanum melongena",
+      "build": "SMEL_V4_function_IPR.gff3",
+      "checked_on": "2026-11-14",
+      "source": "Ensembl Plants annotation"
+    },
+    "SMEL4.1_08g017350": {
+      "ensembl_id": "SMEL4_08g017350.1",
+      "name": "",
+      "description": "Similar to SNRNP25: U11/U12 small nuclear ribonucleoprotein 25 kDa protein (Arabidopsis thaliana OX=3702)",
+      "biotype": "",
+      "chromosome": "8",
+      "start": "54369632",
+      "end": "54380991",
+      "source_url": "https://solgenomics.net/ftp/genomes/Solanum_melongena_V4_Pangenome/Annotation_V4/SMEL_V4_function_IPR.gff3",
+      "species": "Solanum melongena",
+      "build": "SMEL_V4_function_IPR.gff3",
+      "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
     }
   }

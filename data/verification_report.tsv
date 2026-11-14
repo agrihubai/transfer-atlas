@@ -44,10 +44,10 @@ MEL-SHELF-01	Melon	CmNAC-NOR			MELO3C014437	9631011	10.1038/nbt0796-862	author+y
 WAT-SEED-01	Watermelon	ClAGL11							unverified
 WAT-SEED-01	Watermelon	ClWIP1 for gynoecy							unverified
 WAT-BRIX-01	Watermelon	ClTST2			Cla97C02G036390;Cla97C04G070940	29118248	10.1104/pp.17.01290	author+year+gene	verified
-EGG-BROWN-01	Eggplant	SmelPPO4				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
-EGG-BROWN-01	Eggplant	SmelPPO5				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
-EGG-BROWN-01	Eggplant	SmelPPO6				33343607	10.3389/fpls.2020.607161	author+year+gene	partial
-EGG-PRICKLE-01	Eggplant	SmLOG1							unverified
+EGG-BROWN-01	Eggplant	SmelPPO4			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified
+EGG-BROWN-01	Eggplant	SmelPPO5			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified
+EGG-BROWN-01	Eggplant	SmelPPO6			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified
+EGG-PRICKLE-01	Eggplant	SmLOG1							partial
 LET-BOLT-01	Lettuce	LsFT	111907824	LOC111907824		29403510	10.3389/fpls.2017.02248	author+year+gene	verified
 LET-BOLT-01	Lettuce	LsCO				41793314	10.1111/pbi.70630	gene+trait topic search	partial
 LET-BOLT-01	Lettuce	LsRGL1							unverified

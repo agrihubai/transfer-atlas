@@ -1,8 +1,8 @@
 # What is still open, and what would close it
 
-Generated from `data/atlas_v3.json` on 13 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
+Generated from `data/atlas_v3.json` on 14 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
 
-State: **18 verified, 12 partial, 1 unverified** of 31 entries.
+State: **20 verified, 10 partial, 1 unverified** of 31 entries.
 
 ## What counts, so nobody wastes effort
 
@@ -24,19 +24,6 @@ The author and journal match the citation, but the title does not carry the trai
   - cited: Zandalinas et al., 2021; Rivero et al., 2022
   - candidate: PMID 33496342 (New Phytol) The impact of multifactorial stress combination on plant growth and survival.
   - question: is this the intended paper? yes or no
-
-## A confirmed paper exists, but no gene symbol resolves (2)
-
-The cheapest wins: the evidence is confirmed, only the identifier is missing. The paper's own data-availability section usually has it.
-
-- **EGG-BROWN-01** — Eggplant (Solanum melongena), Non-browning cut fruit flesh
-  - unresolved: `SmelPPO4`, `SmelPPO5`, `SmelPPO6`
-  - confirmed paper: PMID 33343607 — Simultaneous CRISPR/Cas9 Editing of Three PPO Genes Reduces Fruit Flesh Browning in Sola
-  - needed: an accession or gene ID for those symbols, read off a record
-- **EGG-PRICKLE-01** — Eggplant (Solanum melongena), Prickle-free calyx & stem
-  - unresolved: `SmLOG1`
-  - confirmed paper: PMID 38974191 — PE (Prickly Eggplant) encoding a cytokinin-activating enzyme responsible for the formati
-  - needed: an accession or gene ID for those symbols, read off a record
 
 ## Genes resolve, no reference is confirmed (4)
 
@@ -70,12 +57,11 @@ These should be filled with a real source or retired from the atlas.
 - **BRA-GLUC-01** — Brassica (Broccoli/Cabbage/Cauliflower) (1/4 resolved): `HAG1`, `MYB29`, `MYB34`
 - **CAR-COLOR-01** — Carrot (3/5 resolved): `DcRPGE1`, `DcAPRR2`
 
-## Locus tags that no reachable database carries (4)
+## Locus tags that no reachable database carries (3)
 
 Not evidence that a tag is wrong — the database that holds it is unreachable, or the tag comes from a different genome build than the one available.
 
 - `Cla97C07G144940` — WAT-SEED-01, Citrullus lanatus
-- `SMEL4.1_08g017350` — EGG-BROWN-01, Solanum melongena
 - `SMEL4.1_06g...` — EGG-PRICKLE-01, Solanum melongena
 - `BraA03g012133E` — BRA-CLUB-01, Brassica rapa
 

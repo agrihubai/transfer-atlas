@@ -832,6 +832,13 @@ def verify(only: str | None = None) -> dict:
                     if sg:
                         gb_id = {"accession": sg["feature"], "product": sg.get("annotation", ""),
                                  "locus": mapped, "source": "Sol Genomics Network"}
+                    else:
+                        ep = ensembl_plants_locus(mapped, species)
+                        if ep:
+                            gb_id = {"accession": ep["ensembl_id"],
+                                     "product": ep.get("name") or ep.get("description", ""),
+                                     "locus": mapped,
+                                     "source": f"genome annotation ({ep.get('build','')})"}
             gid = corr.get("gene_ncbi_id", {}).get(sym, "")
             if not ncbi.get("found") and gid:
                 summ = fetch_json(f"{EUTILS}/esummary.fcgi?db=gene&retmode=json"
