@@ -49,8 +49,7 @@
     "partial": 10,
     "unverified": 0,
     "conflicted": 0,
-    "last_verified": "2026-11-16",
-    "genes_with_accession": 46
+    "last_verified": "2026-11-16"
   },
   "entries": [
     {
@@ -109,9 +108,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001246898.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -172,9 +169,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001246846.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -328,9 +323,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001366114.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -470,9 +463,7 @@
               "found": false,
               "query": "SlTOM1a[tiab] AND ToBRFV resistance[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_010317583.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -505,9 +496,7 @@
               "found": false,
               "query": "SlTOM3[tiab] AND ToBRFV resistance[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247167.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -668,9 +657,7 @@
               "found": false,
               "query": "SlPelo[tiab] AND TYLCV resistance[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001279230.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -836,9 +823,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247885.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -959,9 +944,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001246911.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -1112,9 +1095,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001321052.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1182,9 +1163,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247045.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1215,9 +1194,7 @@
               "found": false,
               "query": "SlYABBY2b[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247461.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1286,7 +1263,14 @@
           "SlYABBY2b: matched NCBI gene YABBY2 (100191118) as listed as alias — confirm it is the same gene"
         ]
       },
-      "correction": null,
+      "correction": {
+        "ortholog_candidate": {
+          "status": "no candidate — the method could not be run honestly here",
+          "reason": "The query proteins were wrong or unusable. A gene-name search for Arabidopsis 'ER' returned enhancer of rudimentary protein (109 aa), not the ~976 aa ERECTA receptor kinase; ERECTA itself is not in NCBI RefSeq under that name, so only ERL1 and ERL2 are retrievable. KIX8 resolves only to an uncharacterised 343 aa protein.",
+          "what_the_run_did_show": "Solyc08g061560, already in this entry and already annotated as a receptor-like kinase, scores 2942 against AtERL1 — it is a genuine ERECTA-family kinase. Which family member corresponds to Arabidopsis ER is not resolvable this way.",
+          "to_confirm": "a tree of the ERECTA/ERL receptor-kinase family; for KIX8, a reference protein that is actually characterised"
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -1382,9 +1366,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001278959.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1446,9 +1428,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_010327794.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1510,9 +1490,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_019212166.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -1649,9 +1627,7 @@
               "found": false,
               "query": "FW2.2[tiab] AND Fruit size & pericarp thickness[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001321132.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1755,7 +1731,13 @@
         ]
       },
       "correction": {
-        "open_question": "Locus Solyc07g008100 resolves at Sol Genomics only to a clone name, 'Genomic DNA chromosome 3 P1 clone MUJ8' — no gene function, and it names chromosome 3 while the tag says chromosome 7. Either the annotation is empty for this locus or the ID is wrong. SlKIX8 and SlKIX9 also fail to resolve in NCBI, so this entry currently rests on FW2.2 (Solyc02g090730, confirmed as a cell number regulator) alone."
+        "open_question": "Locus Solyc07g008100 resolves at Sol Genomics only to a clone name, 'Genomic DNA chromosome 3 P1 clone MUJ8' — no gene function, and it names chromosome 3 while the tag says chromosome 7. Either the annotation is empty for this locus or the ID is wrong. SlKIX8 and SlKIX9 also fail to resolve in NCBI, so this entry currently rests on FW2.2 (Solyc02g090730, confirmed as a cell number regulator) alone.",
+        "ortholog_candidate": {
+          "status": "no candidate — the method could not be run honestly here",
+          "reason": "The query proteins were wrong or unusable. A gene-name search for Arabidopsis 'ER' returned enhancer of rudimentary protein (109 aa), not the ~976 aa ERECTA receptor kinase; ERECTA itself is not in NCBI RefSeq under that name, so only ERL1 and ERL2 are retrievable. KIX8 resolves only to an uncharacterised 343 aa protein.",
+          "what_the_run_did_show": "Solyc08g061560, already in this entry and already annotated as a receptor-like kinase, scores 2942 against AtERL1 — it is a genuine ERECTA-family kinase. Which family member corresponds to Arabidopsis ER is not resolvable this way.",
+          "to_confirm": "a tree of the ERECTA/ERL receptor-kinase family; for KIX8, a reference protein that is actually characterised"
+        }
       },
       "locus_check": {
         "checked": true,
@@ -1855,9 +1837,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001365026.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1901,9 +1881,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247092.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1947,9 +1925,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247938.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -2082,9 +2058,7 @@
               "match_type": "author+year+gene",
               "hits": []
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001324769.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2124,9 +2098,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001324769.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -2232,9 +2204,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_016699433.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -2339,9 +2309,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001324970.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2385,9 +2353,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001324702.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -2501,9 +2467,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_047412053.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2545,9 +2509,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_047398670.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -3060,7 +3022,17 @@
           "CsMLO8: PMID 38330431 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
-      "correction": null,
+      "correction": {
+        "ortholog_candidate": {
+          "symbol": "CsMLO (clade V)",
+          "gene": "Csa_5G623470",
+          "method": "protein similarity against the Cucumis sativus proteome",
+          "score_profile": "1607 to AtMLO2, the clade-V mildew susceptibility gene; MLO6 was included as a paralogue query",
+          "status": "family-level candidate only",
+          "reading": "This is a clade-V MLO, which is the clade that matters for mildew susceptibility. But which cucumber MLO number it is (the literature uses CsMLO1 and CsMLO8) cannot be decided by similarity, because the clade members are too close to each other.",
+          "to_confirm": "an MLO-family tree with the published CsMLO numbering, then the symbol can be assigned"
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3173,9 +3145,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001305700.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -3230,9 +3200,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_004142861.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -3375,7 +3343,18 @@
           "CsARF8: PMID 30604453 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
-      "correction": null,
+      "correction": {
+        "ortholog_candidate": {
+          "symbol": "CsWIP1",
+          "gene": "Csa_4G290830",
+          "method": "protein similarity against the Cucumis sativus proteome",
+          "score_profile": "1834 to CmWIP1, the characterised melon WIP1; closest to WIP1 rather than to any ARF query",
+          "status": "candidate, not established orthology",
+          "reading": "Reasonable candidate for the cucumber WIP1 counterpart.",
+          "to_confirm": "a WIP/C2H2 tree and expression in the floral bud",
+          "limit": "ARF8 could not be separated from ARF6: every cucumber ARF hit scored closest to AtARF6, so similarity cannot tell which cucumber gene is the ARF8 counterpart. Top ARF hits for the record: Csa_6G524670 (3311), Csa_1G536820 (3233), Csa_5G315370 (2337)."
+        }
+      },
       "locus_check": {
         "checked": true,
         "scope": "identifier presence within the stated species; never gene assignment",
@@ -3482,9 +3461,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001297463.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -3530,9 +3507,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001328455.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -3621,7 +3596,17 @@
           "Nature Biotechnology"
         ],
         "decided_by": "maintainer, 2026-11-13",
-        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
+        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands",
+        "ortholog_candidate": {
+          "symbol": "CmNAC-NOR",
+          "gene": "MELO3C016540.2",
+          "method": "protein similarity against the Cucumis melo proteome, with a NAC paralogue (SlNAC1) as a discriminating query",
+          "score_profile": "951 to SlNOR; prefers NOR over the NAC1 paralogue, and the proteins closest to NAC1 are different melon genes",
+          "status": "candidate, not established orthology",
+          "reading": "Usable: the hit is not merely 'some NAC' — it chooses NOR over a NAC paralogue.",
+          "to_confirm": "a NAC-family tree and ripening-stage expression",
+          "note": "An earlier run used SlNOR as the only query, which made 'closest to the gene of interest' vacuous. Re-run with a paralogue."
+        }
       },
       "locus_check": {
         "checked": true,
@@ -3713,9 +3698,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_010666995.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4465,9 +4448,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_023903632.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4658,9 +4639,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_023903770.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4784,9 +4763,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_009138981.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4942,9 +4919,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_013750838.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5090,6 +5065,22 @@
         "decision": "Set Level 1: the commercialised hybrids carry the allele this entry names.",
         "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit. Recorded as commercial_basis 'allele', unlike the tomato entry: this is an introgression, which moves the actual B. villosa Myb28 allele into the hybrid rather than creating a new variant, so the product does carry the allele this entry names.",
         "commercial_basis": "allele",
+        "ortholog_candidate": {
+          "symbols": [
+            "BoMYB29",
+            "BoMYB34"
+          ],
+          "genes": {
+            "MYB29": "Bo9g175680",
+            "MYB34": "Bo7g098110"
+          },
+          "method": "protein similarity against the Brassica oleracea proteome, with MYB28/29/34 all as queries",
+          "score_profile": "Bo9g175680 1357 to AtMYB29; Bo7g098110 1193 to AtMYB34; no top hit was closest to AtMYB28",
+          "status": "family-level candidates only",
+          "reading": "R2R3-MYB proteins in this clade are too similar for this method to separate reliably, and the absence of any MYB28-closest hit is itself the warning sign. Treat these as 'a MYB of this clade', not as the named gene.",
+          "to_confirm": "a MYB-family tree over the R2R3 domain plus the published Brassica MYB28/29 nomenclature",
+          "note": "HAG1 was removed from the wanted list: it is a synonym of MYB28, which this entry already resolves in NCBI Gene. The draft wrote 'MYB28 (HAG1)' and the symbol parser made two genes of one."
+        },
         "set": {
           "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene"
         }
@@ -5178,9 +5169,7 @@
               "found": false,
               "query": "DcPSY1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001329177.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5211,9 +5200,7 @@
               "found": false,
               "query": "DcPSY2[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_017386783.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5244,9 +5231,7 @@
               "found": false,
               "query": "DcLCYB1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001329160.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -5291,7 +5276,17 @@
           "DcLCYB1: matched NCBI gene LOC108193045 (108193045) as listed as alias — confirm it is the same gene"
         ]
       },
-      "correction": null,
+      "correction": {
+        "ortholog_candidate": {
+          "symbol": "DcAPRR2",
+          "gene": "DCAR_008297",
+          "method": "protein similarity (BLOSUM62 local) against the Daucus carota proteome",
+          "score_profile": "937 to AtAPRR2; the next carrot protein scores 338 to the same query",
+          "status": "candidate, not established orthology",
+          "reading": "A clean margin. The gap to the runner-up is large enough that this is the carrot protein most similar to Arabidopsis APRR2.",
+          "to_confirm": "a phylogenetic tree of the APRR/PRR family and expression in root tissue"
+        }
+      },
       "locus_check": {
         "checked": false
       },
@@ -5475,9 +5470,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247769.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5518,9 +5511,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_069291846.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5561,9 +5552,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XM_026031303.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5614,9 +5603,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247830.1",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5657,9 +5644,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XR_742804.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -5817,9 +5802,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "XR_742804.4",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5863,9 +5846,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001246851.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -5909,9 +5890,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247853.2",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -6070,9 +6049,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-16",
-            "refseq_accession": "NM_001247588.3",
-            "refseq_link_type": "gene_nuccore_refseqrna"
+            "checked_on": "2026-11-16"
           }
         }
       ],

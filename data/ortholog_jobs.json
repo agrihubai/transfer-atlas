@@ -1,0 +1,94 @@
+{
+  "_about": "Jobs for scripts/find_ortholog.py --all. Each names the target crop's proteome and the query proteins: the gene of interest in a species where it is characterised, plus the paralogues it could be confused with, because a best match means little if a paralogue scores almost as well. 'wanted' records which atlas symbols the job is trying to place.",
+  "jobs": {
+    "CUC-SEX-01+CUC-MILDEW-01": {
+      "label": "Cucumis sativus",
+      "wanted": [
+        "CsARF8",
+        "CsWIP1",
+        "CsMLO1",
+        "CsMLO8",
+        "CsMLO11"
+      ],
+      "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/cucumis_sativus/pep/Cucumis_sativus.ASM407v2.pep.all.fa.gz",
+      "queries": {
+        "1063734699": "AtARF8 (Arabidopsis, the gene of interest)",
+        "1063687391": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "261597693": "CmWIP1 (melon, the characterised WIP1)",
+        "1063682536": "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)",
+        "1063696915": "AtMLO6 (Arabidopsis, clade-V paralogue)"
+      },
+      "of_interest": [
+        "AtARF8",
+        "CmWIP1",
+        "AtMLO2"
+      ]
+    },
+    "CAR-COLOR-01": {
+      "label": "Daucus carota",
+      "wanted": [
+        "DcAPRR2"
+      ],
+      "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/daucus_carota/pep/Daucus_carota.ASM162521v1.pep.all.fa.gz",
+      "queries": {
+        "1063723374": "AtAPRR2 (Arabidopsis, the gene of interest)",
+        "15240235": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)"
+      },
+      "of_interest": [
+        "AtAPRR2"
+      ]
+    },
+    "BRA-GLUC-01": {
+      "label": "Brassica oleracea",
+      "wanted": [
+        "MYB29",
+        "MYB34"
+      ],
+      "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/brassica_oleracea/pep/Brassica_oleracea.BOL.pep.all.fa.gz",
+      "queries": {
+        "30697529": "AtMYB28/HAG1 (Arabidopsis)",
+        "15240838": "AtMYB29 (Arabidopsis, paralogue)",
+        "15239466": "AtMYB34 (Arabidopsis, paralogue)"
+      },
+      "of_interest": [
+        "AtMYB28",
+        "AtMYB29",
+        "AtMYB34"
+      ],
+      "note": "HAG1 was dropped from wanted: it is a synonym of MYB28, which the entry already resolves in NCBI Gene. The draft wrote \"MYB28 (HAG1)\" and the parser made two symbols of one gene."
+    },
+    "MEL-SHELF-01": {
+      "label": "Cucumis melo",
+      "wanted": [
+        "CmNAC-NOR"
+      ],
+      "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/cucumis_melo/pep/Cucumis_melo.Melonv4.pep.all.fa.gz",
+      "queries": {
+        "350534426": "SlNOR (tomato, the characterised NAC-NOR)",
+        "350536035": "SlNAC1 (tomato, NAC paralogue for discrimination)"
+      },
+      "of_interest": [
+        "SlNOR"
+      ]
+    },
+    "TOM-DWARF-01+TOM-SIZE-01": {
+      "label": "Solanum lycopersicum",
+      "wanted": [
+        "SlER",
+        "SlKIX8",
+        "SlKIX9"
+      ],
+      "proteome": "https://solgenomics.net/ftp/tomato_genome/annotation/ITAG4.1_release/ITAG4.1_proteins.fasta",
+      "queries": {
+        "18416384": "AtER/ERECTA (Arabidopsis, the gene of interest)",
+        "334188570": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "3178767882": "AtKIX8 (Arabidopsis)"
+      },
+      "of_interest": [
+        "AtER",
+        "AtKIX8"
+      ],
+      "note": "Queries here are weak and the result should not be trusted for symbol assignment. The gene-name search for Arabidopsis \"ER\" returned enhancer of rudimentary protein, 109 aa, not the 976 aa ERECTA receptor kinase; ERECTA itself is not in NCBI RefSeq under that name, so only ERL1 and ERL2 are available. KIX8 resolves only to an uncharacterised 343 aa protein. Kept for the record, with the outcome stated in the atlas."
+    }
+  }
+}

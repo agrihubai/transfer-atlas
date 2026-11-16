@@ -47,6 +47,7 @@ DATA = ROOT / "data"
 CACHE = ROOT / ".cache"
 OUT = DATA / "ortholog_candidates.json"
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+QUERY_TITLES: dict[str, str] = {}
 PEP = "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta"
 UA = "TransferAtlas/3.0 (https://agrihubai.github.io/transfer-atlas)"
 
@@ -69,15 +70,34 @@ PRESETS = {
 }
 
 
+_last = [0.0]
+
+
 def fetch(url: str, binary: bool = False):
+    """Cached GET. NCBI allows 3 requests a second and answers 429 when pushed
+    harder, which is how an earlier version lost a whole job mid-run."""
     CACHE.mkdir(exist_ok=True)
     key = urllib.parse.quote(url, safe="")[-120:]
     path = CACHE / f"seq_{abs(hash(key)) % (10 ** 12)}{'.bin' if binary else '.txt'}"
     if path.exists():
         return path.read_bytes() if binary else path.read_text(encoding="utf-8")
+    if "ncbi.nlm.nih.gov" in url:
+        wait = 0.4 - (time.time() - _last[0])
+        if wait > 0:
+            time.sleep(wait)
+        _last[0] = time.time()
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=300) as r:
-        raw = r.read()
+    last_err = None
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                raw = r.read()
+            break
+        except Exception as exc:   # 429 and reset connections are worth retrying
+            last_err = exc
+            time.sleep(2 + 4 * attempt)
+    else:
+        raise RuntimeError(f"giving up on {url[:70]}: {last_err}")
     if binary:
         path.write_bytes(raw)
         return raw
@@ -87,33 +107,44 @@ def fetch(url: str, binary: bool = False):
 
 
 def query_sequences(accs: dict[str, str]) -> dict[str, tuple[str, str]]:
-    ids = ",".join(accs)
-    fa = fetch(f"{EUTILS}/efetch.fcgi?db=protein&id={urllib.parse.quote(ids)}"
-               f"&rettype=fasta&retmode=text")
-    out, name, buf = {}, None, []
-    for line in fa.splitlines():
-        if line.startswith(">"):
-            if name:
-                out[name] = "".join(buf)
-            name = line[1:].split()[0]
-            buf = []
-        elif name:
-            buf.append(line.strip())
-    if name:
-        out[name] = "".join(buf)
-    got = {}
-    for acc, label in accs.items():
-        seq = out.get(acc) or next((s for k, s in out.items() if k.startswith(acc.split(".")[0])), "")
+    """Fetch one query protein per id, keeping the real accession from the header.
+
+    Fetched one at a time on purpose: ids may be numeric UIDs while the returned
+    FASTA header carries an accession, so a batch fetch cannot be mapped back
+    reliably — an earlier version matched id against header, silently got nothing,
+    and reported an empty result as if the search had run.
+    """
+    got: dict[str, tuple[str, str]] = {}
+    for ident, label in accs.items():
+        fa = fetch(f"{EUTILS}/efetch.fcgi?db=protein&id={urllib.parse.quote(str(ident))}"
+                   f"&rettype=fasta&retmode=text")
+        lines = [l for l in (fa or "").splitlines() if l.strip()]
+        if not lines or not lines[0].startswith(">"):
+            print(f"  ! no sequence for {ident} ({label})", file=sys.stderr)
+            continue
+        acc = lines[0][1:].split()[0]
+        title = " ".join(lines[0][1:].split()[1:])[:70]
+        seq = "".join(l.strip() for l in lines[1:] if not l.startswith(">"))
         if not seq:
-            print(f"  ! no sequence for {acc} ({label})", file=sys.stderr)
+            print(f"  ! empty sequence for {ident} ({label})", file=sys.stderr)
             continue
         got[label] = (acc, seq)
+        QUERY_TITLES[label] = f"{acc} · {len(seq)} aa · {title}"
+        print(f"   {acc:<16}{len(seq):>5} aa  {label}")
+        print(f"                    {title}")
+    if not got:
+        print("  ! no query sequences at all; refusing to report an empty search",
+              file=sys.stderr)
     return got
 
 
 def proteome(url: str) -> dict[str, str]:
     raw = fetch(url, binary=True)
-    text = gzip.GzipFile(fileobj=io.BytesIO(raw)).read().decode("utf-8", "replace")
+    # Ensembl ships gzip; Sol Genomics ships plain FASTA.
+    if url.endswith(".gz"):
+        text = gzip.GzipFile(fileobj=io.BytesIO(raw)).read().decode("utf-8", "replace")
+    else:
+        text = raw.decode("utf-8", "replace")
     seqs, name, buf = {}, None, []
     for line in text.splitlines():
         if line.startswith(">"):
@@ -121,8 +152,12 @@ def proteome(url: str) -> dict[str, str]:
                 seqs[name] = "".join(buf)
             # >ID pep ... gene:GENEID ...
             head = line[1:]
+            first = head.split()[0]
             gid = next((p.split(":", 1)[1] for p in head.split() if p.startswith("gene:")), "")
-            name = f"{head.split()[0]}|{gid}"
+            if not gid:
+                # ITAG-style: Solyc01g005000.3.1 -> gene Solyc01g005000
+                gid = first.split(".")[0]
+            name = f"{first}|{gid}"
             buf = []
         elif name:
             buf.append(line.strip().replace("*", ""))
@@ -138,7 +173,24 @@ def main() -> int:
     ap.add_argument("--proteome", help="URL of a gzipped protein FASTA")
     ap.add_argument("--label", default="target", help="target species name")
     ap.add_argument("--top", type=int, default=8)
+    ap.add_argument("--all", action="store_true",
+                    help="run every job in data/ortholog_jobs.json")
+    ap.add_argument("--job", help="run one job from data/ortholog_jobs.json by name")
     a = ap.parse_args()
+
+    if a.all or a.job:
+        book = json.loads((DATA / "ortholog_jobs.json").read_text(encoding="utf-8"))["jobs"]
+        names = [a.job] if a.job else list(book)
+        rc = 0
+        for name in names:
+            job = book.get(name)
+            if not job:
+                print(f"no such job: {name}", file=sys.stderr)
+                rc = 1
+                continue
+            print(f"\n########## {name}  ({', '.join(job.get('wanted', []))})")
+            rc |= run_job({**job, "entry": name}, a.top)
+        return rc
 
     if a.preset:
         cfg = PRESETS[a.preset]
@@ -150,6 +202,10 @@ def main() -> int:
         ap.print_help()
         return 1
 
+    return run_job(cfg, a.top)
+
+
+def run_job(cfg: dict, top: int) -> int:
     try:
         from Bio.Align import PairwiseAligner, substitution_matrices
     except ImportError:
@@ -158,8 +214,8 @@ def main() -> int:
 
     print(f"-- queries: {len(cfg['queries'])}")
     qs = query_sequences(cfg["queries"])
-    for label, (acc, seq) in qs.items():
-        print(f"   {acc:<16}{len(seq):>5} aa  {label}")
+    if not qs:
+        return 1
 
     print(f"-- {cfg['label']} proteome: downloading")
     targets = proteome(cfg["proteome"])
@@ -177,12 +233,17 @@ def main() -> int:
         for label, (_acc, qseq) in qs.items():
             try:
                 score = al.score(qseq, tseq)
-            except Exception:
-                continue
+            except Exception as exc:
+                print(f"  ! alignment failed for {label}: {type(exc).__name__}: {exc}",
+                      file=sys.stderr)
+                return 1
             best.setdefault(tname, {})[label] = float(score)
         if i % 4000 == 0:
             print(f"   {i}/{len(targets)} … {time.time() - t0:.0f}s")
 
+    if not best:
+        print("  ! nothing scored — no queries or no target proteins", file=sys.stderr)
+        return 1
     rows = []
     for tname, scores in best.items():
         top_label = max(scores, key=scores.get)
@@ -196,13 +257,13 @@ def main() -> int:
     rows.sort(key=lambda r: -r["top_score"])
 
     interest = cfg.get("of_interest") or ()
-    print(f"\n   {'gene':<22}{'closest query':<46}{'score':>7}")
+    print(f"\n   {'gene':<24}{'closest query':<46}{'score':>7}")
     shown = 0
     for r in rows:
-        if shown >= a.top:
+        if shown >= top:
             break
         mark = "*" if any(r["closest_query"].startswith(x) for x in interest) else " "
-        print(f" {mark} {r['gene']:<22}{r['closest_query'][:44]:<46}{r['top_score']:>7}")
+        print(f" {mark} {r['gene']:<24}{r['closest_query'][:44]:<46}{r['top_score']:>7}")
         shown += 1
     print("\n   * = closest to the gene of interest rather than to a paralogue")
 
@@ -221,9 +282,9 @@ def main() -> int:
     payload[cfg.get("entry") or cfg["label"]] = {
         "target_species": cfg["label"],
         "proteome": cfg["proteome"],
-        "queries": {label: acc for label, (acc, _s) in qs.items()},
+        "queries": {label: QUERY_TITLES.get(label, acc) for label, (acc, _s) in qs.items()},
         "checked_on": time.strftime("%Y-%m-%d"),
-        "candidates": rows[:a.top],
+        "candidates": rows[:top],
     }
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"\nwrote {OUT.relative_to(ROOT)} in {time.time() - t0:.0f}s")

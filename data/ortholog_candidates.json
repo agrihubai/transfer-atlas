@@ -117,5 +117,431 @@
         "top_score": 414.0
       }
     ]
+  },
+  "CAR-COLOR-01": {
+    "target_species": "Daucus carota",
+    "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/daucus_carota/pep/Daucus_carota.ASM162521v1.pep.all.fa.gz",
+    "queries": {
+      "AtAPRR2 (Arabidopsis, the gene of interest)": "NP_001329343.1",
+      "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": "NP_200946.1"
+    },
+    "checked_on": "2026-11-16",
+    "candidates": [
+      {
+        "protein": "KZM93331",
+        "gene": "DCAR_016576",
+        "closest_query": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)",
+        "scores": {
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 1249.0,
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 129.0
+        },
+        "top_score": 1249.0
+      },
+      {
+        "protein": "KZN07460",
+        "gene": "DCAR_008297",
+        "closest_query": "AtAPRR2 (Arabidopsis, the gene of interest)",
+        "scores": {
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 937.0,
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 123.0
+        },
+        "top_score": 937.0
+      },
+      {
+        "protein": "KZM80508",
+        "gene": "DCAR_032204",
+        "closest_query": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)",
+        "scores": {
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 384.0,
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 141.0
+        },
+        "top_score": 384.0
+      },
+      {
+        "protein": "KZN01820",
+        "gene": "DCAR_010574",
+        "closest_query": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)",
+        "scores": {
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 384.0,
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 153.0
+        },
+        "top_score": 384.0
+      },
+      {
+        "protein": "KZM97383",
+        "gene": "DCAR_015255",
+        "closest_query": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)",
+        "scores": {
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 384.0,
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 163.0
+        },
+        "top_score": 384.0
+      },
+      {
+        "protein": "KZM98074",
+        "gene": "DCAR_014564",
+        "closest_query": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)",
+        "scores": {
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 377.0,
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 163.0
+        },
+        "top_score": 377.0
+      },
+      {
+        "protein": "KZM92261",
+        "gene": "DCAR_020374",
+        "closest_query": "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)",
+        "scores": {
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 359.0,
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 171.0
+        },
+        "top_score": 359.0
+      },
+      {
+        "protein": "KZM99605",
+        "gene": "DCAR_013033",
+        "closest_query": "AtAPRR2 (Arabidopsis, the gene of interest)",
+        "scores": {
+          "AtAPRR2 (Arabidopsis, the gene of interest)": 338.0,
+          "AtTOC1/APRR1 (Arabidopsis, pseudo-response regulator paralogue)": 57.0
+        },
+        "top_score": 338.0
+      }
+    ]
+  },
+  "MEL-SHELF-01": {
+    "target_species": "Cucumis melo",
+    "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/cucumis_melo/pep/Cucumis_melo.Melonv4.pep.all.fa.gz",
+    "queries": {
+      "SlNOR (tomato, the characterised NAC-NOR)": "NP_001234652.1 · 355 aa · NAC transcription factor NOR [Solanum lycopersicum]",
+      "SlNAC1 (tomato, NAC paralogue for discrimination)": "NP_001234482.1 · 301 aa · NAC domain protein [Solanum lycopersicum]"
+    },
+    "checked_on": "2026-11-16",
+    "candidates": [
+      {
+        "protein": "MELO3C016540.2.1",
+        "gene": "MELO3C016540.2",
+        "closest_query": "SlNOR (tomato, the characterised NAC-NOR)",
+        "scores": {
+          "SlNOR (tomato, the characterised NAC-NOR)": 951.0,
+          "SlNAC1 (tomato, NAC paralogue for discrimination)": 605.0
+        },
+        "top_score": 951.0
+      },
+      {
+        "protein": "MELO3C023195.2.1",
+        "gene": "MELO3C023195.2",
+        "closest_query": "SlNAC1 (tomato, NAC paralogue for discrimination)",
+        "scores": {
+          "SlNAC1 (tomato, NAC paralogue for discrimination)": 926.0,
+          "SlNOR (tomato, the characterised NAC-NOR)": 595.0
+        },
+        "top_score": 926.0
+      },
+      {
+        "protein": "MELO3C010632.2.1",
+        "gene": "MELO3C010632.2",
+        "closest_query": "SlNAC1 (tomato, NAC paralogue for discrimination)",
+        "scores": {
+          "SlNAC1 (tomato, NAC paralogue for discrimination)": 877.0,
+          "SlNOR (tomato, the characterised NAC-NOR)": 569.0
+        },
+        "top_score": 877.0
+      },
+      {
+        "protein": "MELO3C010500.2.1",
+        "gene": "MELO3C010500.2",
+        "closest_query": "SlNAC1 (tomato, NAC paralogue for discrimination)",
+        "scores": {
+          "SlNAC1 (tomato, NAC paralogue for discrimination)": 855.0,
+          "SlNOR (tomato, the characterised NAC-NOR)": 540.0
+        },
+        "top_score": 855.0
+      },
+      {
+        "protein": "MELO3C018237.2.1",
+        "gene": "MELO3C018237.2",
+        "closest_query": "SlNOR (tomato, the characterised NAC-NOR)",
+        "scores": {
+          "SlNOR (tomato, the characterised NAC-NOR)": 781.0,
+          "SlNAC1 (tomato, NAC paralogue for discrimination)": 613.0
+        },
+        "top_score": 781.0
+      }
+    ]
+  },
+  "BRA-GLUC-01": {
+    "target_species": "Brassica oleracea",
+    "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/brassica_oleracea/pep/Brassica_oleracea.BOL.pep.all.fa.gz",
+    "queries": {
+      "AtMYB28/HAG1 (Arabidopsis)": "NP_851241.1",
+      "AtMYB29 (Arabidopsis, paralogue)": "NP_196386.1",
+      "AtMYB34 (Arabidopsis, paralogue)": "NP_200897.1"
+    },
+    "checked_on": "2026-11-16",
+    "candidates": [
+      {
+        "protein": "Bo9g175680.1",
+        "gene": "Bo9g175680",
+        "closest_query": "AtMYB29 (Arabidopsis, paralogue)",
+        "scores": {
+          "AtMYB29 (Arabidopsis, paralogue)": 1357.0,
+          "AtMYB28/HAG1 (Arabidopsis)": 629.0,
+          "AtMYB34 (Arabidopsis, paralogue)": 555.0
+        },
+        "top_score": 1357.0
+      },
+      {
+        "protein": "Bo7g098110.1",
+        "gene": "Bo7g098110",
+        "closest_query": "AtMYB34 (Arabidopsis, paralogue)",
+        "scores": {
+          "AtMYB34 (Arabidopsis, paralogue)": 1193.0,
+          "AtMYB29 (Arabidopsis, paralogue)": 561.0,
+          "AtMYB28/HAG1 (Arabidopsis)": 261.0
+        },
+        "top_score": 1193.0
+      },
+      {
+        "protein": "Bo3g004500.1",
+        "gene": "Bo3g004500",
+        "closest_query": "AtMYB29 (Arabidopsis, paralogue)",
+        "scores": {
+          "AtMYB29 (Arabidopsis, paralogue)": 1179.0,
+          "AtMYB34 (Arabidopsis, paralogue)": 567.0,
+          "AtMYB28/HAG1 (Arabidopsis)": 515.0
+        },
+        "top_score": 1179.0
+      },
+      {
+        "protein": "Bo9g014380.1",
+        "gene": "Bo9g014380",
+        "closest_query": "AtMYB34 (Arabidopsis, paralogue)",
+        "scores": {
+          "AtMYB34 (Arabidopsis, paralogue)": 1102.0,
+          "AtMYB29 (Arabidopsis, paralogue)": 556.0,
+          "AtMYB28/HAG1 (Arabidopsis)": 229.0
+        },
+        "top_score": 1102.0
+      },
+      {
+        "protein": "Bo2g161180.1",
+        "gene": "Bo2g161180",
+        "closest_query": "AtMYB34 (Arabidopsis, paralogue)",
+        "scores": {
+          "AtMYB34 (Arabidopsis, paralogue)": 1098.0,
+          "AtMYB29 (Arabidopsis, paralogue)": 542.0,
+          "AtMYB28/HAG1 (Arabidopsis)": 207.0
+        },
+        "top_score": 1098.0
+      },
+      {
+        "protein": "Bo2g161170.1",
+        "gene": "Bo2g161170",
+        "closest_query": "AtMYB34 (Arabidopsis, paralogue)",
+        "scores": {
+          "AtMYB34 (Arabidopsis, paralogue)": 1090.0,
+          "AtMYB29 (Arabidopsis, paralogue)": 546.0,
+          "AtMYB28/HAG1 (Arabidopsis)": 238.0
+        },
+        "top_score": 1090.0
+      }
+    ]
+  },
+  "TOM-DWARF-01+TOM-SIZE-01": {
+    "target_species": "Solanum lycopersicum",
+    "proteome": "https://solgenomics.net/ftp/tomato_genome/annotation/ITAG4.1_release/ITAG4.1_proteins.fasta",
+    "queries": {
+      "AtER/ERECTA (Arabidopsis, the gene of interest)": "NP_568240.1",
+      "AtERL1 (Arabidopsis, ERECTA-like paralogue)": "NP_001190595.1",
+      "AtKIX8 (Arabidopsis)": "CAO7042171.1"
+    },
+    "checked_on": "2026-11-16",
+    "candidates": [
+      {
+        "protein": "Solyc03g007050.3.1",
+        "gene": "Solyc03g007050",
+        "closest_query": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "scores": {
+          "AtERL1 (Arabidopsis, ERECTA-like paralogue)": 3537.0,
+          "AtER/ERECTA (Arabidopsis, the gene of interest)": 39.0,
+          "AtKIX8 (Arabidopsis)": 38.0
+        },
+        "top_score": 3537.0
+      },
+      {
+        "protein": "Solyc08g061560.3.1",
+        "gene": "Solyc08g061560",
+        "closest_query": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "scores": {
+          "AtERL1 (Arabidopsis, ERECTA-like paralogue)": 2942.0,
+          "AtKIX8 (Arabidopsis)": 41.0,
+          "AtER/ERECTA (Arabidopsis, the gene of interest)": 31.0
+        },
+        "top_score": 2942.0
+      },
+      {
+        "protein": "Solyc09g091260.3.1",
+        "gene": "Solyc09g091260",
+        "closest_query": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "scores": {
+          "AtERL1 (Arabidopsis, ERECTA-like paralogue)": 1376.0,
+          "AtER/ERECTA (Arabidopsis, the gene of interest)": 39.0,
+          "AtKIX8 (Arabidopsis)": 36.0
+        },
+        "top_score": 1376.0
+      },
+      {
+        "protein": "Solyc02g091840.3.1",
+        "gene": "Solyc02g091840",
+        "closest_query": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "scores": {
+          "AtERL1 (Arabidopsis, ERECTA-like paralogue)": 1294.0,
+          "AtKIX8 (Arabidopsis)": 35.0,
+          "AtER/ERECTA (Arabidopsis, the gene of interest)": 32.0
+        },
+        "top_score": 1294.0
+      },
+      {
+        "protein": "Solyc07g056410.3.1",
+        "gene": "Solyc07g056410",
+        "closest_query": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "scores": {
+          "AtERL1 (Arabidopsis, ERECTA-like paralogue)": 1292.0,
+          "AtKIX8 (Arabidopsis)": 35.0,
+          "AtER/ERECTA (Arabidopsis, the gene of interest)": 32.0
+        },
+        "top_score": 1292.0
+      },
+      {
+        "protein": "Solyc04g072037.1.1",
+        "gene": "Solyc04g072037",
+        "closest_query": "AtERL1 (Arabidopsis, ERECTA-like paralogue)",
+        "scores": {
+          "AtERL1 (Arabidopsis, ERECTA-like paralogue)": 1267.0,
+          "AtKIX8 (Arabidopsis)": 39.0,
+          "AtER/ERECTA (Arabidopsis, the gene of interest)": 33.0
+        },
+        "top_score": 1267.0
+      }
+    ]
+  },
+  "CUC-SEX-01+CUC-MILDEW-01": {
+    "target_species": "Cucumis sativus",
+    "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/cucumis_sativus/pep/Cucumis_sativus.ASM407v2.pep.all.fa.gz",
+    "queries": {
+      "AtARF8 (Arabidopsis, the gene of interest)": "NP_001331077.1 · 716 aa · auxin response factor 8 [Arabidopsis thaliana]",
+      "AtARF6 (Arabidopsis, closest ARF paralogue)": "NP_001320924.1 · 935 aa · auxin response factor 6 [Arabidopsis thaliana]",
+      "CmWIP1 (melon, the characterised WIP1)": "ACX85639.1 · 353 aa · WIP1 [Cucumis melo]",
+      "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": "NP_001320358.1 · 511 aa · Seven transmembrane MLO family protein [Arabidopsis thaliana]",
+      "AtMLO6 (Arabidopsis, clade-V paralogue)": "NP_001322619.1 · 454 aa · Seven transmembrane MLO family protein [Arabidopsis thaliana]"
+    },
+    "checked_on": "2026-11-16",
+    "candidates": [
+      {
+        "protein": "KGN49430",
+        "gene": "Csa_6G524670",
+        "closest_query": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "scores": {
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 3311.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 1938.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 44.0,
+          "CmWIP1 (melon, the characterised WIP1)": 39.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 31.0
+        },
+        "top_score": 3311.0
+      },
+      {
+        "protein": "KGN65880",
+        "gene": "Csa_1G536820",
+        "closest_query": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "scores": {
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 3233.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 1846.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 39.0,
+          "CmWIP1 (melon, the characterised WIP1)": 36.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 33.0
+        },
+        "top_score": 3233.0
+      },
+      {
+        "protein": "KGN50892",
+        "gene": "Csa_5G315370",
+        "closest_query": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "scores": {
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 2337.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 2159.0,
+          "CmWIP1 (melon, the characterised WIP1)": 38.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 37.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 29.0
+        },
+        "top_score": 2337.0
+      },
+      {
+        "protein": "KGN54168",
+        "gene": "Csa_4G290830",
+        "closest_query": "CmWIP1 (melon, the characterised WIP1)",
+        "scores": {
+          "CmWIP1 (melon, the characterised WIP1)": 1834.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 67.0,
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 52.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 44.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 35.0
+        },
+        "top_score": 1834.0
+      },
+      {
+        "protein": "KGN60494",
+        "gene": "Csa_2G000030",
+        "closest_query": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "scores": {
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 1796.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 1234.0,
+          "CmWIP1 (melon, the characterised WIP1)": 45.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 37.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 35.0
+        },
+        "top_score": 1796.0
+      },
+      {
+        "protein": "KGN61195",
+        "gene": "Csa_2G068680",
+        "closest_query": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "scores": {
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 1726.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 1205.0,
+          "CmWIP1 (melon, the characterised WIP1)": 40.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 32.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 29.0
+        },
+        "top_score": 1726.0
+      },
+      {
+        "protein": "KGN60018",
+        "gene": "Csa_3G866510",
+        "closest_query": "AtARF6 (Arabidopsis, closest ARF paralogue)",
+        "scores": {
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 1650.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 1178.0,
+          "CmWIP1 (melon, the characterised WIP1)": 50.0,
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 36.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 31.0
+        },
+        "top_score": 1650.0
+      },
+      {
+        "protein": "KGN52283",
+        "gene": "Csa_5G623470",
+        "closest_query": "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)",
+        "scores": {
+          "AtMLO2 (Arabidopsis, clade-V mildew susceptibility)": 1607.0,
+          "AtMLO6 (Arabidopsis, clade-V paralogue)": 1523.0,
+          "CmWIP1 (melon, the characterised WIP1)": 53.0,
+          "AtARF6 (Arabidopsis, closest ARF paralogue)": 42.0,
+          "AtARF8 (Arabidopsis, the gene of interest)": 34.0
+        },
+        "top_score": 1607.0
+      }
+    ]
   }
 }
