@@ -44,13 +44,13 @@
     }
   },
   "stats": {
-    "total_entries": 31,
-    "verified": 21,
-    "partial": 9,
-    "unverified": 1,
+    "total_entries": 32,
+    "verified": 22,
+    "partial": 10,
+    "unverified": 0,
     "conflicted": 0,
     "last_verified": "2026-11-16",
-    "genes_with_accession": 45
+    "genes_with_accession": 46
   },
   "entries": [
     {
@@ -187,6 +187,8 @@
         "scientific_reference": "Nonaka et al., 2017 (Sci. Rep.); 2025 Elite Genotype Evaluation",
         "pmid_doi": "28935931",
         "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Sanatech Seed / Tsukuba Univ. patents (check FTO)",
         "linkage_drag": "None via native CRISPR edit.",
         "pleiotropic_effects": "High GABA levels in certain elite backgrounds can reduce leaf size or fruit weight; cultivar-specific testing required.",
@@ -219,7 +221,10 @@
       "correction": {
         "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
         "decision": "Set Level 1: the entry's own solution is the commercial product.",
-        "rationale": "Sanatech Seed's 'Sicilian Rouge High GABA' has been sold to consumers in Japan since September 2021 and is reported as the first commercially sold CRISPR-edited food. The edit is CRISPR/Cas9 on tomato GAD disabling the C-terminal autoinhibitory/calmodulin-binding domain, which is exactly this entry's mechanism, and the fruit carries about 4-6x the GABA of unedited controls. Sources: Nature Biotechnology news (d41587-021-00026-2), Scientific American, and a Philippine regulatory product information sheet naming Sanatech Seed and the GAD target."
+        "rationale": "Sanatech Seed's 'Sicilian Rouge High GABA' has been sold to consumers in Japan since September 2021 and is reported as the first commercially sold CRISPR-edited food. The edit is CRISPR/Cas9 on tomato GAD disabling the C-terminal autoinhibitory/calmodulin-binding domain, which is exactly this entry's mechanism, and the fruit carries about 4-6x the GABA of unedited controls. Sources: Nature Biotechnology news (d41587-021-00026-2), Scientific American, and a Philippine regulatory product information sheet naming Sanatech Seed and the GAD target.",
+        "set": {
+          "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry"
+        }
       },
       "locus_check": {
         "checked": true,
@@ -337,6 +342,8 @@
         "scientific_reference": "Li et al., 2022, Nature Plants",
         "pmid_doi": "35606499",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "John Innes Centre patent filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Alters steroidal glycoalkaloid (alpha-tomatine) profile; no major yield penalty reported.",
@@ -512,6 +519,8 @@
         "scientific_reference": "Ishikawa et al., 2022; Kravchik et al., 2022",
         "pmid_doi": "35440560",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Active CRISPR patent landscape (check FTO)",
         "linkage_drag": "Avoids severe linkage drag associated with S. habrochaites / S. pimpinellifolium introgressions.",
         "pleiotropic_effects": "Single knockouts insufficient due to redundancy; triple/quadruple knockouts must be screened for vigor.",
@@ -673,6 +682,8 @@
         "scientific_reference": "Lapidot et al., 2015; Pramanik et al., 2021",
         "pmid_doi": "26176385",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Publicly documented locus; check specific CRISPR claims",
         "linkage_drag": "None when edited directly in elite line.",
         "pleiotropic_effects": "Minimal; well-tolerated across commercial indeterminate and determinate hybrids.",
@@ -839,6 +850,8 @@
         "scientific_reference": "Nekrasov et al., 2017, Sci. Rep.",
         "pmid_doi": "28176840",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Check S-gene / MLO editing patent families",
         "linkage_drag": "Eliminates backcross drag from wild donor lines.",
         "pleiotropic_effects": "Minor necrotic flecking under certain stress conditions in some MLO orthologs.",
@@ -960,6 +973,8 @@
         "scientific_reference": "Thomazella et al., 2021, PNAS",
         "pmid_doi": "34244432",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "UC Berkeley / 2Blades patent portfolio",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Potential growth/yield trade-off under high pathogen-free vigor conditions if SA is overly elevated.",
@@ -1233,6 +1248,8 @@
         "scientific_reference": "Kwon et al., 2020, Nat. Biotechnol.",
         "pmid_doi": "31844293",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "CSHL patent filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Reduces total per-plant biomass; increases yield per unit area/time in high-density systems.",
@@ -1507,6 +1524,8 @@
         "scientific_reference": "Ueta et al., 2017; Klap et al., 2017",
         "pmid_doi": "28154032",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Multiple institutional filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "SlIAA9 knockout alters leaf morphology (simple leaves); SlAGL6 avoids leaf distortion.",
@@ -1702,6 +1721,8 @@
         "scientific_reference": "Swinnen et al., 2022, Plant Physiol.",
         "pmid_doi": "35134232",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "VIB patent filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Enlarged cup-shaped leaves; potential trade-off between fruit size and fruit number.",
@@ -1940,6 +1961,8 @@
         "scientific_reference": "Uluisik et al., 2016, Nat. Biotechnol.; Wang et al., 2019",
         "pmid_doi": "27454738",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Univ. Nottingham / commercial filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Unusually clean profile; slightly reduced susceptibility to gray mold.",
@@ -2123,6 +2146,8 @@
         "scientific_reference": "Stewart et al., 2005, Plant J.",
         "pmid_doi": "15860095",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Publicly characterized locus",
         "linkage_drag": "Native edit avoids fruit-shape drag when converting hot lines to sweet.",
         "pleiotropic_effects": "Loss of capsaicin may increase susceptibility to certain fungal/insect pests.",
@@ -2229,6 +2254,8 @@
         "scientific_reference": "Lang et al., 2009, Plant J.",
         "pmid_doi": "19175766",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Ajinomoto / Japanese institutional filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Alters aroma/volatile profile.",
@@ -2380,6 +2407,8 @@
         "scientific_reference": "Ruffel et al., 2002; Yoon et al., 2020",
         "pmid_doi": "12410862",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Check eIF4E editing claims",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Simultaneous knockout of both eIF4E1 and eIFiso4E impairs plant growth; single allele point edits are safe.",
@@ -2538,6 +2567,8 @@
         "scientific_reference": "Zheng et al., 2013; Kim & Hwang, 2012",
         "pmid_doi": "23840729",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Check S-gene patents",
         "linkage_drag": "Avoids interspecific cross incompatibility.",
         "pleiotropic_effects": "Check for premature leaf senescence.",
@@ -2594,6 +2625,9 @@
           "CaMlo1": [
             "MLO1"
           ]
+        },
+        "set": {
+          "gene": "CaMlo2, CaMlo1"
         }
       },
       "locus_check": {
@@ -2737,6 +2771,8 @@
         "scientific_reference": "Shang et al., 2014, Science",
         "pmid_doi": "25430769",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "CAAS filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Knocking out Bi eliminates all cucurbitacins (reduces pest deterrence); target Bt instead.",
@@ -2800,7 +2836,10 @@
           "Bl": "Csa5G156220",
           "Bi": "Csa6G088690"
         },
-        "commercial_status": "NOT set to Level 1. 'Marketmore' and 'Spacemaster' are long-standing cucumber cultivars, and the claim that they were 'engineered or selected' for tissue-specific bitterness regulation conflates ordinary non-bitter fruit with the Bt/Bl regulatory solution described in PMID 25430763. Non-bitter fruit in cucumber predates that work by decades."
+        "commercial_status": "NOT set to Level 1. 'Marketmore' and 'Spacemaster' are long-standing cucumber cultivars, and the claim that they were 'engineered or selected' for tissue-specific bitterness regulation conflates ordinary non-bitter fruit with the Bt/Bl regulatory solution described in PMID 25430763. Non-bitter fruit in cucumber predates that work by decades.",
+        "set": {
+          "gene": "Bt, Bl, Bi"
+        }
       },
       "locus_check": {
         "checked": true,
@@ -2996,6 +3035,8 @@
         "scientific_reference": "Berg et al., 2015, Front. Plant Sci.",
         "pmid_doi": "26697047",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Wageningen UR filings",
         "linkage_drag": "Eliminates linkage drag with fruit-skin netting/yellowing QTLs.",
         "pleiotropic_effects": "Possible minor leaf chlorosis in older leaves.",
@@ -3297,6 +3338,8 @@
         "scientific_reference": "Hu et al., 2017, Plant J.",
         "pmid_doi": "28618037",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Check cucurbit sex-determination patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Requires silver thiosulfate / gibberellin induction for male flower maintenance in seed production.",
@@ -3543,6 +3586,8 @@
         "scientific_reference": "Nonaka et al., 2023; Ayub et al., 1996",
         "pmid_doi": "8684483",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Publicly documented",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Complete ethylene loss reduces volatile aroma synthesis.",
@@ -3627,110 +3672,165 @@
       "crop": "Watermelon",
       "scientific_name": "Citrullus lanatus",
       "category": "Seedlessness (Research Frontier)",
-      "trait": "Diploid seedless / stenospermocarpic fruit development",
-      "gene_label": "ClAGL11 (plus ClWIP1 for gynoecy)",
+      "trait": "Seedlessness (stenospermocarpy) — documented in grape, untested in watermelon",
+      "gene_label": "AGL11",
       "genes": [
         {
-          "symbol": "ClAGL11",
+          "symbol": "AGL11",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
-              "found": false,
+              "found": true,
               "queries": [
-                "ClAGL11[Gene Name] AND \"Citrullus lanatus\"[Organism]",
-                "AGL11[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+                "AGL11[Gene Name] AND \"Vitis vinifera\"[Organism]",
+                "MADS5[Gene Name] AND \"Vitis vinifera\"[Organism]"
+              ],
+              "hits": [
+                {
+                  "ncbi_gene_id": "100232870",
+                  "official_symbol": "MADS5",
+                  "description": "MADS-box protein 5",
+                  "other_aliases": "VIT_00025945001, AGL11, SDI, VvAG3, VvAGL11, VvMADS5, VviAG3",
+                  "organism": "Vitis vinifera",
+                  "chromosome": "18",
+                  "coordinates": "NC_081822.1:32263028-32254959",
+                  "match": "official symbol"
+                }
               ]
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": false,
-              "query": "ClAGL11[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
-            },
-            "checked_on": "2026-11-16"
-          }
-        },
-        {
-          "symbol": "ClWIP1",
-          "claimed_gene_id": "",
-          "verification": {
-            "ncbi_gene": {
-              "found": false,
-              "queries": [
-                "ClWIP1[Gene Name] AND \"Citrullus lanatus\"[Organism]",
-                "WIP1[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              "found": true,
+              "query": "AGL11[tiab] AND Seedlessness[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "33562620",
+                  "title": "Molecular Characterization and Phylogenetic Analysis of MADS-Box Gene VroAGL11 Associated with Stenospermocarpic Seedlessness in Muscadine Grapes.",
+                  "journal": "Genes (Basel)",
+                  "year": "2021",
+                  "doi": "10.3390/genes12020232"
+                },
+                {
+                  "pmid": "26563346",
+                  "title": "Suppression of the D-class MADS-box AGL11 gene triggers seedlessness in fleshy fruits.",
+                  "journal": "Plant Cell Rep",
+                  "year": "2016",
+                  "doi": "10.1007/s00299-015-1882-x"
+                }
               ]
             },
-            "genbank_locus": null,
-            "pubmed": {
-              "found": false,
-              "query": "ClWIP1[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
-            },
-            "checked_on": "2026-11-16"
+            "checked_on": "2026-11-16",
+            "refseq_accession": "XM_010666995.3",
+            "refseq_link_type": "gene_nuccore_refseqrna"
           }
         }
       ],
       "portability": "t1",
       "claims": {
         "gene_function": "D-class MADS-box transcription factor governing ovule integument and seed coat development.",
-        "gene_id": "Cla97C07G144940",
+        "gene_id": "",
         "evidence_level": "Level 3",
         "evidence_note": "Scientific caveat: Research target ONLY. Has NOT commercially replaced standard triploid seedless watermelon production due to fruit-set/size penalties.",
         "scientific_reference": "Wang et al., 2021; Cucurbit AGL11 studies",
         "pmid_doi": "34128088",
         "commercial_product": "",
+        "documented_in": "Vitis vinifera (grape)",
+        "target_note": "No AGL11 ortholog is identified for Citrullus lanatus in any reachable genome build or in NCBI Gene. Identifying the watermelon ortholog is the first step before this can be edited.",
         "patent_reference": "Check cucurbit seedlessness patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Full ClAGL11 knockout often reduces fruit size, hollow heart incidence, and pollination efficiency.",
         "tissue": "Ovule / Developing seed",
         "environmental_interaction": "Requires pollenizer or hormone trigger",
         "conventional_breeding": "Triploid (3x = 2x × 4x) hybrid system remains the commercial standard",
-        "recommended_strategy": "Triploid Breeding (Commercial) / CRISPR Research (Experimental)",
-        "editing_possibility": "CRISPR-Cas9 (experimental)",
+        "recommended_strategy": "Genome editing, after the target ortholog is identified",
+        "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. The grape evidence is for suppression of the gene, not for a transgene.",
         "trait_inheritance": "Recessive",
         "gene_action": "Loss of function / Tissue-specific promoter edit"
       },
       "verification": {
-        "status": "unverified",
-        "genes_resolved": "0/2",
-        "curated_references": [],
+        "status": "verified",
+        "genes_resolved": "1/1",
+        "gene_species": "Vitis vinifera",
+        "curated_references": [
+          {
+            "pmid": "26563346",
+            "doi": "",
+            "suggested_by": "found by Claude 2026-11-16 while checking an external review's claim",
+            "supports": "Suppression of the D-class MADS-box AGL11 gene triggers seedlessness in fleshy fruits — the functional basis for treating AGL11 as a seedlessness target.",
+            "does_not_support": "It is not watermelon work. Nothing here shows the effect transfers to Citrullus lanatus, and the watermelon ortholog is not even identified yet.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Suppression of the D-class MADS-box AGL11 gene triggers seedlessness in fleshy fruits.",
+            "pubmed_journal": "Plant Cell Rep",
+            "pubmed_year": "2016",
+            "pubmed_doi": "10.1007/s00299-015-1882-x"
+          },
+          {
+            "pmid": "39094571",
+            "doi": "",
+            "suggested_by": "found by Claude 2026-11-16",
+            "supports": "Integrative genomics of the polygenic basis of seedlessness in grapevine.",
+            "does_not_support": "Polygenic in grape is a warning for the target: a single edit in watermelon may not reproduce a trait that grape achieves through several loci.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Integrative genomics reveals the polygenic basis of seedlessness in grapevine.",
+            "pubmed_journal": "Curr Biol",
+            "pubmed_year": "2024",
+            "pubmed_doi": "10.1016/j.cub.2024.07.022"
+          }
+        ],
         "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
-        "gene_ids": [],
-        "pmids": [],
-        "dois": [],
+        "gene_ids": [
+          "NCBI:100232870"
+        ],
+        "pmids": [
+          "33562620",
+          "26563346",
+          "39094571"
+        ],
+        "dois": [
+          "10.1007/s00299-015-1882-x",
+          "10.1016/j.cub.2024.07.022",
+          "10.3390/genes12020232"
+        ],
         "notes": [
-          "locus ID(s) Cla97C07G144940 not checkable against NCBI (genome-project tags are not indexed there) — needs Ensembl Plants or Sol Genomics; the IDs may well be correct"
+          "AGL11: PMID 33562620 found by topic search, not by the cited author/year — citation not confirmed"
         ]
       },
       "correction": {
-        "citation_journals": [
-          "Horticulture Research"
-        ],
-        "decided_by": "maintainer, 2026-11-13",
-        "journals_from": "external AI suggestion (Gemini), 2026-11-13; unverified until a match lands"
+        "decided_by": "maintainer, 2026-11-16",
+        "decision": "Restate this as what it actually is: a transfer entry. The solution is documented in grape; watermelon is the target, where it has not been tested.",
+        "rationale": "The entry claimed ClAGL11 drives diploid seedlessness in watermelon. Nothing supports that: no gene record in Citrullus lanatus, no confirmable citation, and a locus tag from an unreachable build. What is real is the grape work — PMID 26563346 (Ocarez, Plant Cell Rep 2016) reports that suppressing the D-class MADS-box AGL11 gene triggers seedlessness in fleshy fruits — and grape AGL11 resolves in NCBI Gene as MADS5 (100232870). Retiring the entry would throw that away; an external review recommended retiring it because it read the question as whether watermelon itself was validated. A documented solution with an untested target is not a defect here, it is the point. The claim shrinks and becomes true: AGL11 suppression causes seedlessness in fleshy fruits, and nobody has tried it in watermelon.",
+        "search_aliases": {
+          "AGL11": [
+            "MADS5"
+          ]
+        },
+        "superseded": {
+          "gene": "ClAGL11, ClWIP1 (locus Cla97C07G144940)",
+          "why": "ClAGL11 as a watermelon gene is unsupported and is replaced by the grape source gene. The locus tag belongs to the 97103 v2 build, which is unreachable, and is dropped. ClWIP1 is a different trait and moved to its own entry, WAT-SEX-01."
+        },
+        "open_question": "Patent position unchecked. Seedlessness via AGL11 is a crowded area commercially, so a freedom-to-operate check belongs on this entry before anyone acts on it.",
+        "set": {
+          "gene": "AGL11",
+          "trait": "Seedlessness (stenospermocarpy) — documented in grape, untested in watermelon",
+          "documented_in": "Vitis vinifera (grape)",
+          "gene_species": "Vitis vinifera",
+          "target_note": "No AGL11 ortholog is identified for Citrullus lanatus in any reachable genome build or in NCBI Gene. Identifying the watermelon ortholog is the first step before this can be edited.",
+          "gene_id": "",
+          "portability": "t1",
+          "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. The grape evidence is for suppression of the gene, not for a transgene.",
+          "recommended_strategy": "Genome editing, after the target ortholog is identified"
+        }
       },
       "locus_check": {
-        "checked": true,
-        "scope": "identifier presence within the stated species; never gene assignment",
-        "results": [
-          {
-            "locus": "Cla97C07G144940",
-            "query": "Cla97C07G144940 AND \"Citrullus lanatus\"[Organism]",
-            "genbank_identity": null,
-            "solgenomics": null,
-            "ensembl_plants": null,
-            "ncbi_records_in_species": 0,
-            "state": "not_checkable_here",
-            "status": "not found in NCBI, Sol Genomics or the Ensembl Plants build for this species; this is not evidence the ID is wrong"
-          }
-        ]
+        "checked": false
       },
       "evidence": {
-        "derived_level": "Level 5",
-        "basis": "no gene record and no confirmed reference resolved",
+        "derived_level": "Level 3",
+        "basis": "solution documented in Vitis vinifera (grape), not in Citrullus lanatus; the gene resolves in the source species and the target ortholog is not identified",
         "rule": "see _schema.level_derivation",
-        "draft_claimed": "Level 3",
-        "disagrees_with_draft": "the draft claimed Level 3; this pipeline derives Level 5 from what it could verify"
+        "draft_claimed": "Level 3"
       }
     },
     {
@@ -3786,6 +3886,8 @@
         "scientific_reference": "Ren et al., 2018, Plant Cell; Guo et al., 2019",
         "pmid_doi": "29343507",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Beijing Academy of Agriculture & Forestry Sciences",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Minimal in cultivated backgrounds.",
@@ -3839,6 +3941,10 @@
         "superseded": {
           "gene": "ClSWEET3, ClLCYB",
           "why": "Not characterised in PMID 29118248. ClSWEET3 needs its own entry and its own paper; ClLCYB is flesh colour, a separate trait. Removed here rather than left implying evidence they do not have."
+        },
+        "set": {
+          "gene": "ClTST2",
+          "trait": "Sugar accumulation (Brix)"
         }
       },
       "locus_check": {
@@ -4018,6 +4124,8 @@
         "scientific_reference": "Maioli et al., 2020, Front. Plant Sci.",
         "pmid_doi": "33329659",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Check PPO editing claims",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "No significant yield penalty observed in greenhouse trials.",
@@ -4072,7 +4180,10 @@
           "SmelPPO5": "SMEL4_08g009060",
           "SmelPPO6": "SMEL4_08g009070"
         },
-        "open_question": "Which of the three adjacent PPO genes is PPO4, PPO5 and PPO6 is NOT established here. The cluster is confirmed and all three members are polyphenol oxidases, but the symbol-to-locus assignment within it comes from the supplied V3 list, not from the paper. Read PMID 33343607 before relying on a specific one. Separately, the draft's own locus SMEL4.1_08g017350 is wrong for this entry: SMEL4_08g017350 is annotated as a U11/U12 small nuclear ribonucleoprotein, on chromosome 8 at 54.4 Mb, far from the PPO cluster."
+        "open_question": "Which of the three adjacent PPO genes is PPO4, PPO5 and PPO6 is NOT established here. The cluster is confirmed and all three members are polyphenol oxidases, but the symbol-to-locus assignment within it comes from the supplied V3 list, not from the paper. Read PMID 33343607 before relying on a specific one. Separately, the draft's own locus SMEL4.1_08g017350 is wrong for this entry: SMEL4_08g017350 is annotated as a U11/U12 small nuclear ribonucleoprotein, on chromosome 8 at 54.4 Mb, far from the PPO cluster.",
+        "set": {
+          "gene": "SmelPPO4, SmelPPO5, SmelPPO6"
+        }
       },
       "locus_check": {
         "checked": true,
@@ -4153,6 +4264,8 @@
         "scientific_reference": "Miyatake et al., 2020; Solanaceae prickle genetics",
         "pmid_doi": "32499562",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "N/A",
         "linkage_drag": "Classical prickle-free donors sometimes carry calyx size differences.",
         "pleiotropic_effects": "Trichome/prickle pathways can overlap with insect deterrence.",
@@ -4216,6 +4329,13 @@
         "max_level": {
           "level": "Level 3",
           "why": "Identity here is positional only. The locus exists on chromosome 6, where the paper mapped the PE locus, but the V4 annotation calls it 'Protein of unknown function', so nothing independent confirms it is a LONELY GUY cytokinin enzyme — and the symbol-to-locus assignment came from an external suggestion, not from the paper. Level 2 would claim functional validation of a gene whose identity rests on agreement of chromosome number."
+        },
+        "set": {
+          "gene": "SmLOG1",
+          "gene_function": "LONELY GUY (LOG) family cytokinin biosynthetic enzyme; expressed mainly in immature prickles.",
+          "editing_possibility": "Promoter editing, or marker-assisted selection on the CAPS marker at -735 bp: the causal variation reported is non-coding, so a coding knockout is not the route the natural prickleless allele uses.",
+          "trait_inheritance": "Single dominant nuclear gene (PE locus, chromosome 6)",
+          "recommended_strategy": "Promoter editing or marker-assisted selection"
         }
       },
       "locus_check": {
@@ -4387,6 +4507,8 @@
         "scientific_reference": "Chen et al., 2018, Plant Biotechnol. J.",
         "pmid_doi": "29377523",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Check lettuce bolting patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Full knockout delays seed production in seed-increase fields (requires GA3 application for seed harvest).",
@@ -4494,6 +4616,8 @@
         "scientific_reference": "Zhang et al., 2018, Nat. Biotechnol.",
         "pmid_doi": "30102296",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "CAS Institute of Genetics filings",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Enhanced oxidative stress tolerance; minimal growth trade-off.",
@@ -4543,6 +4667,9 @@
         "rationale": "uORF is a 5' UTR feature, not a gene — the suggestion was right about that. But its gene ID was wrong: 111882405 is EDR1, 'Protein kinase superfamily protein', in Lactuca sativa. The real record is LOC111907963, 'GDP-L-galactose phosphorylase 2', chromosome 7. A related gene, VTC5 (111899617), is also a GDP-L-galactose phosphorylase, so confirm against the paper which one was edited. PMID 30080209 is confirmed: Zhang H, Nat Biotechnol 2018, uORF editing for translational control.",
         "gene_ncbi_id": {
           "LsGGP2": "111907963"
+        },
+        "set": {
+          "gene": "LsGGP2"
         }
       },
       "locus_check": {
@@ -4615,6 +4742,8 @@
         "scientific_reference": "Ueno et al., 2012; Hatakeyama et al., 2013",
         "pmid_doi": "23432391",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Multiple seed company R-gene patents",
         "linkage_drag": "Moderate when transferring from B. rapa into B. oleracea.",
         "pleiotropic_effects": "Minimal.",
@@ -4670,7 +4799,12 @@
           "gene": "CRb, Crr1, Crr3",
           "why": "Not characterised in PMID 23054353. The PMIDs offered for them were checked and are wrong papers entirely: 23175754 is about cellulose microfibrils in collenchyma, and 24831572 is a cardiovascular medicine review. Each locus needs its own entry and a real reference."
         },
-        "commercial_status": "NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syngenta holds a patent on monogenic dominant clubroot resistance introgressed into B. oleracea. But the specific cultivar names offered — Kilaton F1, Clapton F1, Crispus F1, Monclano F1 — could not be tied to CRa by any source found, and 'carries a major CR locus' is not the same claim as 'carries this gene'. Needs one source naming a cultivar and its locus."
+        "commercial_status": "NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syngenta holds a patent on monogenic dominant clubroot resistance introgressed into B. oleracea. But the specific cultivar names offered — Kilaton F1, Clapton F1, Crispus F1, Monclano F1 — could not be tied to CRa by any source found, and 'carries a major CR locus' is not the same claim as 'carries this gene'. Needs one source naming a cultivar and its locus.",
+        "set": {
+          "gene": "CRa",
+          "crop": "Brassica rapa",
+          "scientific_name": "Brassica rapa"
+        }
       },
       "locus_check": {
         "checked": true,
@@ -4862,6 +4996,8 @@
         "scientific_reference": "Traka et al., 2013, New Phytol.",
         "pmid_doi": "23560388",
         "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "PBI / JIC Beneforté patents",
         "linkage_drag": "Reduced via fine-mapped B. villosa introgression.",
         "pleiotropic_effects": "High glucosinolate levels alter flavor pungency and insect feeding.",
@@ -4895,7 +5031,10 @@
       "correction": {
         "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
         "decision": "Set Level 1: the commercialised hybrids carry the allele this entry names.",
-        "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit."
+        "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit.",
+        "set": {
+          "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene"
+        }
       },
       "locus_check": {
         "checked": false
@@ -5062,6 +5201,8 @@
         "scientific_reference": "2024 Functional Carrot Root Color Study; Ellison et al., 2018",
         "pmid_doi": "30194377",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Publicly documented",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Affects plastid differentiation in taproot phloem/xylem.",
@@ -5160,6 +5301,8 @@
         "scientific_reference": "Eady et al., 2008, Plant Physiol.",
         "pmid_doi": "18715961",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "House Foods / Bayer Sunions patents",
         "linkage_drag": "Low-pungency often correlates with shorter storage dormancy; requires careful multi-trait selection.",
         "pleiotropic_effects": "Redirects sulfur flux toward thiosulfinates (sweetness) while potentially lowering storage life.",
@@ -5212,7 +5355,10 @@
           "gene": "AcACS1, AcACS2",
           "why": "Not tested in PMID 18583530. Onion pungency via ACS genes is a separate trait needing its own entry and reference."
         },
-        "commercial_status": "NOT set to Level 1, and this is the clearest case of why the rule matters. Sunions is a real marketed tearless onion from BASF/Nunhems, but BASF states it is the result of more than three decades of CONVENTIONAL breeding, with pungency tracked by pyruvic acid measurement. This entry's solution is RNAi silencing of LFS (PMID 18583530). Same trait, different genetic route: the product does not validate the entry's solution, so Level 1 would be a false claim."
+        "commercial_status": "NOT set to Level 1, and this is the clearest case of why the rule matters. Sunions is a real marketed tearless onion from BASF/Nunhems, but BASF states it is the result of more than three decades of CONVENTIONAL breeding, with pungency tracked by pyruvic acid measurement. This entry's solution is RNAi silencing of LFS (PMID 18583530). Same trait, different genetic route: the product does not validate the entry's solution, so Level 1 would be a false claim.",
+        "set": {
+          "gene": "LFS"
+        }
       },
       "locus_check": {
         "checked": false
@@ -5468,6 +5614,8 @@
         "scientific_reference": "Zandalinas et al., 2021; Rivero et al., 2022",
         "pmid_doi": "34572191",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "Broad landscape",
         "linkage_drag": "High in wild relative crosses; requires fine-mapping.",
         "pleiotropic_effects": "Constitutive DREB/SOS activation stunts growth.",
@@ -5543,6 +5691,11 @@
         "max_level": {
           "level": "Level 3",
           "why": "Network entry: the genes were pinned to tomato orthologs, but a confirmed paper about combined drought, heat and salinity stress does not functionally validate SOS1, SOS2, NHX1, DREB2 and HsfA2 individually. Capped at Level 3 until a paper tests a named gene in a named crop."
+        },
+        "set": {
+          "gene": "SOS1, SOS2, NHX1, DREB2, HsfA2",
+          "crop": "Tomato",
+          "scientific_name": "Solanum lycopersicum"
         }
       },
       "locus_check": {
@@ -5713,6 +5866,8 @@
         "scientific_reference": "Rieu et al., 2017; Fragkostefanakis et al., 2016",
         "pmid_doi": "27550996",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "N/A",
         "linkage_drag": "Low if using native alleles.",
         "pleiotropic_effects": "Must avoid altering normal floral organ identity.",
@@ -5766,6 +5921,11 @@
         "max_level": {
           "level": "Level 3",
           "why": "Network entry: same reason. A paper on pollen thermotolerance is not functional validation of HsfA2, HSP70 and APX1 one by one."
+        },
+        "set": {
+          "gene": "HsfA2, HSP70, APX1",
+          "crop": "Tomato",
+          "scientific_name": "Solanum lycopersicum"
         }
       },
       "locus_check": {
@@ -5867,6 +6027,8 @@
         "scientific_reference": "2025–2026 Plant Resilience Frameworks",
         "pmid_doi": "N/A",
         "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
         "patent_reference": "N/A",
         "linkage_drag": "N/A",
         "pleiotropic_effects": "Over-rapid ABA degradation risks vulnerability to recurring stress.",
@@ -5910,6 +6072,11 @@
         "max_level": {
           "level": "Level 3",
           "why": "Network entry: same reason. Post-stress recovery frameworks do not validate CYP707A1 as a recovery target."
+        },
+        "set": {
+          "gene": "CYP707A1",
+          "crop": "Tomato",
+          "scientific_name": "Solanum lycopersicum"
         }
       },
       "locus_check": {
@@ -5921,6 +6088,136 @@
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 5",
         "disagrees_with_draft": "the draft claimed Level 5; this pipeline derives Level 4 from what it could verify"
+      }
+    },
+    {
+      "id": "WAT-SEX-01",
+      "crop": "Watermelon",
+      "scientific_name": "Citrullus lanatus",
+      "category": "Flowering & Reproduction",
+      "trait": "Gynoecy / sex expression",
+      "gene_label": "ClWIP1",
+      "genes": [
+        {
+          "symbol": "ClWIP1",
+          "claimed_gene_id": "",
+          "verification": {
+            "ncbi_gene": {
+              "found": false,
+              "queries": [
+                "ClWIP1[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "WIP1[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+              ]
+            },
+            "genbank_locus": {
+              "accession": "Cla97C02G049440",
+              "product": "WIP1",
+              "locus": "Cla97C02G049440",
+              "source": "genome annotation (Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz)"
+            },
+            "pubmed": {
+              "found": true,
+              "query": "ClWIP1[tiab]",
+              "match_type": "gene+trait topic search",
+              "hits": [
+                {
+                  "pmid": "31529543",
+                  "title": "A unique chromosome translocation disrupting ClWIP1 leads to gynoecy in watermelon.",
+                  "journal": "Plant J",
+                  "year": "2020",
+                  "doi": "10.1111/tpj.14537"
+                }
+              ]
+            },
+            "checked_on": "2026-11-16"
+          }
+        }
+      ],
+      "portability": "t1",
+      "claims": {
+        "gene_function": "WIP-type zinc finger transcription factor; carpel suppression.",
+        "gene_id": "Cla97C02G049440",
+        "evidence_level": "",
+        "evidence_note": "",
+        "scientific_reference": "",
+        "pmid_doi": "",
+        "commercial_product": "",
+        "documented_in": "",
+        "target_note": "",
+        "patent_reference": "",
+        "linkage_drag": "None expected via a native edit.",
+        "pleiotropic_effects": "Sex expression changes flowering habit and therefore pollination management; a fully gynoecious line needs a pollenizer.",
+        "tissue": "Floral meristem",
+        "environmental_interaction": "Sex expression in cucurbits responds to temperature and photoperiod.",
+        "conventional_breeding": "Gynoecious lines exist in cucurbit breeding programmes.",
+        "recommended_strategy": "Genome editing or marker-assisted selection",
+        "editing_possibility": "Native edit candidate; the cucurbit WIP1/ACS pathway is the established route to gynoecious lines.",
+        "trait_inheritance": "",
+        "gene_action": ""
+      },
+      "verification": {
+        "status": "partial",
+        "genes_resolved": "1/1",
+        "curated_references": [],
+        "verified_on": "2026-11-16",
+        "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
+        "gene_ids": [
+          "GenBank:Cla97C02G049440"
+        ],
+        "pmids": [
+          "31529543"
+        ],
+        "dois": [
+          "10.1111/tpj.14537"
+        ],
+        "notes": [
+          "worth a look: locus Cla97C02G049440 is annotated 'WIP1', which this entry describes differently. Usually a naming difference; a wrong ID looks the same",
+          "ClWIP1: PMID 31529543 found by topic search, not by the cited author/year — citation not confirmed"
+        ]
+      },
+      "correction": {
+        "added_by": "maintainer, 2026-11-16",
+        "why": "Split out of WAT-SEED-01, which had bundled it with seedlessness. Gynoecy and sex expression are a separate breeding trait, and this gene does resolve.",
+        "gene_locus": {
+          "ClWIP1": "Cla97C02G049440"
+        },
+        "open_question": "No functional reference yet for ClWIP1 in watermelon specifically. The gene identity is solid — Cla97C02G049440, chromosome 2, annotated Name=WIP1 in the Cla97_v1 build — but the WIP1 work this rests on was done in cucumber and melon. A watermelon paper, or an explicit note that the evidence is from a relative, is needed."
+      },
+      "locus_check": {
+        "checked": true,
+        "scope": "identifier presence within the stated species; never gene assignment",
+        "results": [
+          {
+            "locus": "Cla97C02G049440",
+            "query": "Cla97C02G049440 AND \"Citrullus lanatus\"[Organism]",
+            "genbank_identity": null,
+            "solgenomics": null,
+            "ensembl_plants": {
+              "ensembl_id": "Cla97C02G049440",
+              "name": "WIP1",
+              "description": "",
+              "biotype": "protein_coding",
+              "chromosome": "2",
+              "start": "36851787",
+              "end": "36854621",
+              "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+              "species": "Citrullus lanatus",
+              "build": "Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+              "checked_on": "2026-11-16",
+              "source": "Ensembl Plants annotation"
+            },
+            "ncbi_records_in_species": 0,
+            "state": "confirmed_in_species",
+            "status": "confirmed in Ensembl Plants Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz: Cla97C02G049440 on chromosome 2, gene name WIP1",
+            "annotation_agrees": false
+          }
+        ]
+      },
+      "evidence": {
+        "derived_level": "Level 4",
+        "basis": "1/1 genes resolved, no confirmed reference",
+        "rule": "see _schema.level_derivation",
+        "draft_claimed": ""
       }
     }
   ]

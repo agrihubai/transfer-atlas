@@ -128,6 +128,22 @@
         "supports": "Zandalinas et al., New Phytologist 2021, on the impact of multifactorial stress combination on plant growth and survival — the framework this entry rests on.",
         "does_not_support": "It does not functionally test SOS1, SOS2, NHX1, DREB2 or HsfA2 individually, which is why this entry stays capped at Level 3 whatever else is added."
       }
+    ],
+    "WAT-SEED-01": [
+      {
+        "pmid": "26563346",
+        "doi": "",
+        "suggested_by": "found by Claude 2026-11-16 while checking an external review's claim",
+        "supports": "Suppression of the D-class MADS-box AGL11 gene triggers seedlessness in fleshy fruits — the functional basis for treating AGL11 as a seedlessness target.",
+        "does_not_support": "It is not watermelon work. Nothing here shows the effect transfers to Citrullus lanatus, and the watermelon ortholog is not even identified yet."
+      },
+      {
+        "pmid": "39094571",
+        "doi": "",
+        "suggested_by": "found by Claude 2026-11-16",
+        "supports": "Integrative genomics of the polygenic basis of seedlessness in grapevine.",
+        "does_not_support": "Polygenic in grape is a warning for the target: a single edit in watermelon may not reproduce a trait that grape achieves through several loci."
+      }
     ]
   }
 }

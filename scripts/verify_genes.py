@@ -673,12 +673,23 @@ CORRECTIONS = DATA / "corrections.json"
 
 
 def load_corrections() -> dict:
+    """Curated decisions per entry id.
+
+    Entries added after the draft keep their corrections inside their own
+    new_entries block, so those are merged in here — otherwise every consumer
+    (the locus resolver included) would miss them.
+    """
     if not CORRECTIONS.exists():
         return {}
     try:
-        return json.loads(CORRECTIONS.read_text(encoding="utf-8")).get("entries", {}) or {}
+        book = json.loads(CORRECTIONS.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
         return {}
+    out = dict(book.get("entries", {}) or {})
+    for eid, rec in (book.get("new_entries", {}) or {}).items():
+        extra = {k: val for k, val in rec.items() if k != "entry"}
+        out.setdefault(eid, {}).update(extra)
+    return out
 
 
 def migrate() -> dict:
@@ -690,11 +701,23 @@ def migrate() -> dict:
     """
     v2 = json.loads(V2.read_text(encoding="utf-8"))
     fixes = load_corrections()
+    try:
+        added = json.loads(CORRECTIONS.read_text(encoding="utf-8")).get("new_entries", {}) or {}
+    except (OSError, json.JSONDecodeError):
+        added = {}
+    source = list(v2.get("entries", []))
+    for eid, rec in added.items():
+        if rec.get("entry") and not any(x.get("id") == eid for x in source):
+            source.append(rec["entry"])
+            # the same block also carries corrections for the new entry
+            fixes.setdefault(eid, {}).update(
+                {k: val for k, val in rec.items() if k not in ("entry",)})
     entries = []
-    for e in v2.get("entries", []):
+    for e in source:
         fix = fixes.get(e.get("id")) or {}
         if fix.get("set"):
             e = {**e, **fix["set"]}
+            e["correction_set"] = fix["set"]
         genes = split_genes(e.get("gene", ""))
         entries.append({
             "id": e.get("id"),
@@ -714,6 +737,10 @@ def migrate() -> dict:
                 "scientific_reference": e.get("scientific_reference", ""),
                 "pmid_doi": e.get("pmid_doi", ""),
                 "commercial_product": e.get("commercial_product", ""),
+                # a transfer entry documents its solution in one species and
+                # targets another; without these it reads as a failed lookup
+                "documented_in": e.get("documented_in", ""),
+                "target_note": e.get("target_note", ""),
                 "patent_reference": e.get("patent_reference", ""),
                 **{k: e.get(k, "") for k in CURATED_FIELDS},
             },
@@ -726,7 +753,8 @@ def migrate() -> dict:
                 "dois": [],
                 "notes": [],
             },
-            "correction": {k: v for k, v in fix.items() if k != "set"} or None,
+            "correction": ({k: v for k, v in fix.items() if k != "set"}
+                           | ({"set": fix["set"]} if fix.get("set") else {})) or None,
         })
     out = {
         "_schema": {
@@ -769,6 +797,13 @@ def verify(only: str | None = None) -> dict:
         if only and only.lower() not in (e.get("crop") or "").lower():
             continue
         species = e.get("scientific_name") or ""
+        # For a transfer entry the gene lives in the source species; looking it up
+        # in the target crop would report a real gene as missing.
+        gene_species = ((e.get("correction") or {}).get("set") or {}).get("gene_species") \
+            or (e["claims"].get("documented_in") or "").split("(")[0].strip() \
+            or species
+        if gene_species != species:
+            e["verification"]["gene_species"] = gene_species
         author, year = parse_reference(e["claims"].get("scientific_reference", ""))
         trait = (e.get("trait") or "").split("(")[0].strip()
         print(f"  {e['id']}  {e.get('crop')}  [{len(e['genes'])} gene(s)]")
@@ -821,7 +856,7 @@ def verify(only: str | None = None) -> dict:
             corr = e.get("correction") or {}
             ncbi_id = official = pmid = doi = mtype = ""
             al = corr.get("search_aliases", {}).get(sym, [])
-            ncbi = (ncbi_gene(sym, species, al) if species
+            ncbi = (ncbi_gene(sym, gene_species, al) if gene_species
                     else {"found": False, "reason": "no species"})
             # Identity can also come from a GenBank record carrying the locus tag,
             # which is how plant genes absent from NCBI Gene are pinned down.
@@ -934,6 +969,7 @@ def verify(only: str | None = None) -> dict:
         e["verification"] = {
             "status": status,
             "genes_resolved": f"{n_gene_ok}/{n_genes}",
+            **({"gene_species": gene_species} if gene_species != species else {}),
             "curated_references": curated,
             "verified_on": today,
             "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
@@ -1104,6 +1140,14 @@ def derive_level(entry: dict) -> dict:
         lvl, why = "Level 4", f"{ok}/{n} genes resolved, no confirmed reference"
     else:
         lvl, why = "Level 5", "no gene record and no confirmed reference resolved"
+
+    documented_in = (entry.get("claims") or {}).get("documented_in", "")
+    source_species = (entry.get("verification") or {}).get("gene_species", "")
+    if documented_in and source_species and lvl < "Level 3":
+        lvl = "Level 3"
+        why = (f"solution documented in {documented_in}, not in "
+               f"{entry.get('scientific_name') or 'the target crop'}; the gene resolves in the "
+               f"source species and the target ortholog is not identified")
 
     cap = ((entry.get("correction") or {}).get("max_level") or {})
     if cap.get("level") and lvl < cap["level"]:

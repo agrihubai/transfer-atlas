@@ -2,7 +2,7 @@
 
 Generated from `data/atlas_v3.json` on 16 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
 
-State: **21 verified, 9 partial, 1 unverified** of 31 entries.
+State: **22 verified, 10 partial, 0 unverified** of 32 entries.
 
 ## What counts, so nobody wastes effort
 
@@ -45,7 +45,7 @@ The author and journal match the citation, but the title does not carry the trai
   - candidate: PMID 33496342 (New Phytol) The impact of multifactorial stress combination on plant growth and survival.
   - question: is this the intended paper? yes or no
 
-## Genes resolve, no reference is confirmed (3)
+## Genes resolve, no reference is confirmed (4)
 
 Identity is settled; the functional evidence is not. A DOI or PMID for a knockout, overexpression, allele-swap or field study closes these.
 
@@ -55,15 +55,15 @@ Identity is settled; the functional evidence is not. A DOI or PMID for a knockou
   - cited: "2024 Functional Carrot Root Color Study; Ellison et al., 2018" — not matched
 - **GAP-RECOV-01** — Tomato, Post-stress growth & yield recovery kinetics (`CYP707A1`)
   - cited: "2025–2026 Plant Resilience Frameworks" — not matched
+- **WAT-SEX-01** — Watermelon, Gynoecy / sex expression (`ClWIP1`)
+  - cited: "" — not matched
 
-## Nothing resolves: neither gene nor reference (2)
+## Nothing resolves: neither gene nor reference (1)
 
 These should be filled with a real source or retired from the atlas.
 
 - **CUC-MILDEW-01** — Cucumber, Powdery mildew resistance (`CsMLO1, CsMLO8, CsMLO11`)
   - cited: "Berg et al., 2015, Front. Plant Sci."
-- **WAT-SEED-01** — Watermelon, Diploid seedless / stenospermocarpic fruit development (`ClAGL11 (plus ClWIP1 for gynoecy)`)
-  - cited: "Wang et al., 2021; Cucurbit AGL11 studies"
 
 ## Some genes of an entry resolve, others do not (7)
 
@@ -75,7 +75,7 @@ These should be filled with a real source or retired from the atlas.
 - **BRA-GLUC-01** — Brassica (Broccoli/Cabbage/Cauliflower) (1/4 resolved): `HAG1`, `MYB29`, `MYB34`
 - **CAR-COLOR-01** — Carrot (3/5 resolved): `DcRPGE1`, `DcAPRR2`
 
-## Every gene symbol with no identifier, by species (20)
+## Every gene symbol with no identifier, by species (18)
 
 For each: the entry, the symbol as the atlas writes it, and the name that was searched after stripping the species prefix. An accession, a gene ID, or `unknown`.
 
@@ -84,11 +84,6 @@ For each: the entry, the symbol as the atlas writes it, and the name that was se
 - `HAG1` (BRA-GLUC-01) — searched as `HAG1`
 - `MYB29` (BRA-GLUC-01) — searched as `MYB29`
 - `MYB34` (BRA-GLUC-01) — searched as `MYB34`
-
-**Citrullus lanatus**
-
-- `ClAGL11` (WAT-SEED-01) — searched as `AGL11`
-- `ClWIP1` (WAT-SEED-01) — searched as `WIP1`
 
 **Cucumis melo**
 
@@ -120,11 +115,10 @@ For each: the entry, the symbol as the atlas writes it, and the name that was se
 - `SlKIX8` (TOM-SIZE-01) — searched as `KIX8`
 - `SlKIX9` (TOM-SIZE-01) — searched as `KIX9`
 
-## Locus tags that no reachable database carries (3)
+## Locus tags that no reachable database carries (2)
 
 Not evidence that a tag is wrong — the database that holds it is unreachable, or the tag comes from a different genome build than the one available. **The useful answer here is which genome build each tag belongs to**, so it can be converted.
 
-- `Cla97C07G144940` — WAT-SEED-01, Citrullus lanatus
 - `SMEL4.1_06g...` — EGG-PRICKLE-01, Solanum melongena
 - `BraA03g012133E` — BRA-CLUB-01, Brassica rapa
 

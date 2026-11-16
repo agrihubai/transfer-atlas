@@ -236,8 +236,13 @@ function card(e, i){
     <div class="gene">${esc(e.gene_label)}</div>
     <div class="chips">
       <span class="chip" style="background:${p.bg};color:${p.fg}"><i class="dot" style="background:${p.dot}"></i>${p.label}</span>
-      <span class="chip" style="background:${v.bg};color:${v.fg}"><i class="dot" style="background:${v.dot}"></i>${v.label} ${esc((e.verification||{}).genes_resolved||'')}</span>
+      <span class="chip" style="background:${v.bg};color:${v.fg}"><i class="dot" style="background:${v.dot}"></i>${
+        // a transfer entry is verified in the species the evidence comes from,
+        // not in the crop it targets — say which, or the chip overstates it
+        (e.verification||{}).gene_species && v.label === 'Verified' ? 'Verified in source' : v.label
+      } ${esc((e.verification||{}).genes_resolved||'')}</span>
       ${lvl ? `<span class="chip" style="background:var(--fill);color:var(--txt2)">${esc(lvl)}</span>` : ''}
+      ${e.claims.documented_in ? `<span class="chip" style="background:var(--cis-bg);color:var(--cis-fg)">from ${esc(e.claims.documented_in.split('(')[0].trim())}</span>` : ''}
     </div></div>`;
 }
 
@@ -340,6 +345,8 @@ function sheet(e){
   }).join('');
 
   const kv = [
+    ['Documented in', c.documented_in],
+    ['Status in target', c.target_note],
     ['Gene function', c.gene_function],
     ['Gene action', c.gene_action],
     ['Inheritance', c.trait_inheritance],

@@ -182,6 +182,20 @@
       "build": "SMEL_V4_function_IPR.gff3",
       "checked_on": "2026-11-14",
       "source": "Ensembl Plants annotation"
+    },
+    "Cla97C02G049440": {
+      "ensembl_id": "Cla97C02G049440",
+      "name": "WIP1",
+      "description": "",
+      "biotype": "protein_coding",
+      "chromosome": "2",
+      "start": "36851787",
+      "end": "36854621",
+      "source_url": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/gff3/citrullus_lanatus/Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+      "species": "Citrullus lanatus",
+      "build": "Citrullus_lanatus.Cla97_v1.63.chr.gff3.gz",
+      "checked_on": "2026-11-16",
+      "source": "Ensembl Plants annotation"
     }
   }
 }

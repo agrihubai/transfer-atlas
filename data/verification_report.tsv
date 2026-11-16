@@ -41,8 +41,7 @@ CUC-SEX-01	Cucumber	CsARF8			Csa1G580750;Csa4G290830	30604453	10.1111/tpj.14223	
 MEL-SHELF-01	Melon	CmACO1	103491357	LOC103491357	MELO3C014437	37304010	10.3389/fgeed.2023.1176125	author+year+gene	verified
 MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295	MELO3C014437	9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	verified
 MEL-SHELF-01	Melon	CmNAC-NOR			MELO3C014437	9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	partial
-WAT-SEED-01	Watermelon	ClAGL11							unverified
-WAT-SEED-01	Watermelon	ClWIP1							unverified
+WAT-SEED-01	Watermelon	AGL11	100232870	MADS5		33562620	10.3390/genes12020232	gene+trait topic search	partial
 WAT-BRIX-01	Watermelon	ClTST2			Cla97C02G036390;Cla97C04G070940	29118248	10.1104/pp.17.01290	author+year+gene	verified
 EGG-BROWN-01	Eggplant	SmelPPO4			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified
 EGG-BROWN-01	Eggplant	SmelPPO5			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified
@@ -73,3 +72,4 @@ GAP-REPRO-01	Tomato	HsfA2	101255223	LOC101255223		26917685	10.1104/pp.15.01913	a
 GAP-REPRO-01	Tomato	HSP70	100134914	HSP70		26917685	10.1104/pp.15.01913	author+year+journal, trait matched in title	verified
 GAP-REPRO-01	Tomato	APX1	778223	APX1		26917685	10.1104/pp.15.01913	author+year+journal, trait matched in title	verified
 GAP-RECOV-01	Tomato	CYP707A1	100136887	CYP707A1		42956402	10.1071/FP26189	gene+trait topic search	partial
+WAT-SEX-01	Watermelon	ClWIP1			Cla97C02G049440	31529543	10.1111/tpj.14537	gene+trait topic search	partial
