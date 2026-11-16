@@ -36,7 +36,7 @@
         "desc": "Exploratory polygenic or multi-stress target requiring functional validation."
       }
     },
-    "level_derivation": "A reference counts as confirmed only when PubMed matched the cited author, year and gene, or when a supplied reference resolved by its PMID. A PMID found by topic search alone does NOT count: it may be a different paper about the same gene. Level 1 is never derived — it requires a human to name a commercial cultivar or released product in corrections.json (commercial_product). Level 2 — every gene named in the entry resolves in the stated species AND a reference is confirmed. Level 3 — a reference is confirmed but gene identity is incomplete: either only some of the named genes resolve, or none of them do. Level 4 — genes resolve but no reference is confirmed: a candidate by identity only. Level 5 — neither a gene record nor a confirmed reference.",
+    "level_derivation": "A reference counts as confirmed only when PubMed matched the cited author, year and gene, or when a supplied reference resolved by its PMID. A PMID found by topic search alone does NOT count: it may be a different paper about the same gene. Level 1 means this entry's own solution — its mechanism — was commercially applied, not that the trait is on sale by another route. It is never derived: it requires a human to name the product in corrections.json (commercial_product), and the entry records whether the basis is the mechanism being reproduced or the very allele being carried, since the same method on the same gene can yield a different allele. Level 2 — every gene named in the entry resolves in the stated species AND a reference is confirmed. Level 3 — a reference is confirmed but gene identity is incomplete: either only some of the named genes resolve, or none of them do. Level 4 — genes resolve but no reference is confirmed: a candidate by identity only. Level 5 — neither a gene record nor a confirmed reference.",
     "portability_tiers": {
       "t1": "Native Edit (NGT Cat-1 candidate — crop's own gene/promoter)",
       "t2": "Cisgenic / Introgression (Crossable wild relative — check linkage drag)",
@@ -186,7 +186,7 @@
         "evidence_note": "Commercially validated (Sicilian Rouge High GABA). 2025 studies across 3 elite backgrounds confirm genotype-dependent vegetative side effects.",
         "scientific_reference": "Nonaka et al., 2017 (Sci. Rep.); 2025 Elite Genotype Evaluation",
         "pmid_doi": "28935931",
-        "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry",
+        "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — the same mechanism as this entry: CRISPR/Cas9 disabling the C-terminal autoinhibitory domain of GAD. The product's own indel is not assumed to be this entry's allele.",
         "documented_in": "",
         "target_note": "",
         "patent_reference": "Sanatech Seed / Tsukuba Univ. patents (check FTO)",
@@ -221,9 +221,10 @@
       "correction": {
         "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
         "decision": "Set Level 1: the entry's own solution is the commercial product.",
-        "rationale": "Sanatech Seed's 'Sicilian Rouge High GABA' has been sold to consumers in Japan since September 2021 and is reported as the first commercially sold CRISPR-edited food. The edit is CRISPR/Cas9 on tomato GAD disabling the C-terminal autoinhibitory/calmodulin-binding domain, which is exactly this entry's mechanism, and the fruit carries about 4-6x the GABA of unedited controls. Sources: Nature Biotechnology news (d41587-021-00026-2), Scientific American, and a Philippine regulatory product information sheet naming Sanatech Seed and the GAD target.",
+        "rationale": "Sanatech Seed's 'Sicilian Rouge High GABA' has been sold to consumers in Japan since September 2021 and is reported as the first commercially sold CRISPR-edited food. The edit is CRISPR/Cas9 on tomato GAD disabling the C-terminal autoinhibitory/calmodulin-binding domain, which is exactly this entry's mechanism, and the fruit carries about 4-6x the GABA of unedited controls. Sources: Nature Biotechnology news (d41587-021-00026-2), Scientific American, and a Philippine regulatory product information sheet naming Sanatech Seed and the GAD target. Recorded as commercial_basis 'mechanism' rather than 'allele': the product was made by the same route on the same gene, but CRISPR repair gives a different indel each time, so claiming the entry's allele is in the fruit would overstate it.",
+        "commercial_basis": "mechanism",
         "set": {
-          "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry"
+          "commercial_product": "Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — the same mechanism as this entry: CRISPR/Cas9 disabling the C-terminal autoinhibitory domain of GAD. The product's own indel is not assumed to be this entry's allele."
         }
       },
       "locus_check": {
@@ -274,7 +275,7 @@
       },
       "evidence": {
         "derived_level": "Level 1",
-        "basis": "commercial product named by a human: Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — CRISPR/Cas9 edit of GAD, the same mechanism as this entry",
+        "basis": "commercial product named by a human — the mechanism was reproduced commercially: Sicilian Rouge High GABA (Sanatech Seed, Japan, retail since Sept 2021) — the same mechanism as this entry: CRISPR/Cas9 disabling the C-terminal autoinhibitory domain of GAD. The product's own indel is not assumed to be this entry's allele.",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1"
       }
@@ -2173,7 +2174,7 @@
       },
       "correction": {
         "decided_by": "maintainer, 2026-11-13",
-        "commercial_status": "NOT set to Level 1 by the pipeline, and worth a human decision. Every commercial sweet bell pepper is pun1 loss-of-function, so the allele is commercially ubiquitous — but it arrived through domestication centuries ago, not through this solution being deployed. The cultivars offered ('Ace', 'Bell Boy') illustrate the allele rather than validate a breeding route. If Level 1 is meant to say 'this allele is in commercial products', this qualifies; if it means 'this solution was deployed commercially', it does not."
+        "commercial_status": "NOT Level 1 under the rule settled on 2026-11-16 (see _about.level1_rule). Every commercial sweet bell pepper is pun1 loss-of-function, so the allele is commercially ubiquitous — but it arrived through domestication centuries ago, not by anyone deploying this solution. The cultivars once offered as evidence ('Ace', 'Bell Boy') illustrate the allele rather than a breeding route that was taken. The entry stays at the level its functional evidence supports."
       },
       "locus_check": {
         "checked": false
@@ -3731,12 +3732,12 @@
         "target_note": "No AGL11 ortholog is identified for Citrullus lanatus in any reachable genome build or in NCBI Gene. Identifying the watermelon ortholog is the first step before this can be edited.",
         "patent_reference": "Check cucurbit seedlessness patents",
         "linkage_drag": "None via native edit.",
-        "pleiotropic_effects": "Full ClAGL11 knockout often reduces fruit size, hollow heart incidence, and pollination efficiency.",
+        "pleiotropic_effects": "Loss of AGL11 function prevents seed set, which removes the way the line itself is propagated: a seedless diploid cannot be maintained from seed. This is the practical reason commercial watermelon seedlessness runs through triploid hybrids. Any editing route here has to answer how the line is maintained — vegetative or in vitro propagation, a maintainer line, or a conditional allele — before it is a breeding plan rather than a result.",
         "tissue": "Ovule / Developing seed",
         "environmental_interaction": "Requires pollenizer or hormone trigger",
         "conventional_breeding": "Triploid (3x = 2x × 4x) hybrid system remains the commercial standard",
         "recommended_strategy": "Genome editing, after the target ortholog is identified",
-        "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. The grape evidence is for suppression of the gene, not for a transgene.",
+        "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. No specific mutation is defined in this entry, because the ortholog is not identified — so a sequence-based patent search is not yet possible either. The grape evidence is for suppression of the gene, not for a transgene.",
         "trait_inheritance": "Recessive",
         "gene_action": "Loss of function / Tissue-specific promoter edit"
       },
@@ -3768,6 +3769,30 @@
             "pubmed_journal": "Curr Biol",
             "pubmed_year": "2024",
             "pubmed_doi": "10.1016/j.cub.2024.07.022"
+          },
+          {
+            "pmid": "36061618",
+            "doi": "",
+            "suggested_by": "cited in an external IP analysis (Gemini), relayed 2026-11-16; identified here as PMC9433981 = PMID 36061618",
+            "supports": "VviAGL11 self-regulates and targets hormone- and secondary-metabolism genes during seed development — depth on how the grape gene acts, which matters if the route is transferred.",
+            "does_not_support": "It says nothing about patents or freedom to operate, although it was cited in support of a patent-density claim.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "VviAGL11 self-regulates and targets hormone- and secondary metabolism-related genes during seed development.",
+            "pubmed_journal": "Hortic Res",
+            "pubmed_year": "2022",
+            "pubmed_doi": "10.1093/hr/uhac133"
+          },
+          {
+            "pmid": "36982733",
+            "doi": "",
+            "suggested_by": "cited in an external IP analysis (Gemini), relayed 2026-11-16",
+            "supports": "'Seedlessness Trait and Genome Editing — A Review' (Int J Mol Sci 2023): a review of the editing routes to seedlessness across crops, useful background for this entry.",
+            "does_not_support": "A review is not evidence for watermelon, and it is not a patent analysis either.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "Seedlessness Trait and Genome Editing-A Review.",
+            "pubmed_journal": "Int J Mol Sci",
+            "pubmed_year": "2023",
+            "pubmed_doi": "10.3390/ijms24065660"
           }
         ],
         "verified_on": "2026-11-16",
@@ -3778,12 +3803,16 @@
         "pmids": [
           "33562620",
           "26563346",
-          "39094571"
+          "39094571",
+          "36061618",
+          "36982733"
         ],
         "dois": [
           "10.1007/s00299-015-1882-x",
           "10.1016/j.cub.2024.07.022",
-          "10.3390/genes12020232"
+          "10.1093/hr/uhac133",
+          "10.3390/genes12020232",
+          "10.3390/ijms24065660"
         ],
         "notes": [
           "AGL11: PMID 33562620 found by topic search, not by the cited author/year — citation not confirmed"
@@ -3802,7 +3831,25 @@
           "gene": "ClAGL11, ClWIP1 (locus Cla97C07G144940)",
           "why": "ClAGL11 as a watermelon gene is unsupported and is replaced by the grape source gene. The locus tag belongs to the 97103 v2 build, which is unreachable, and is dropped. ClWIP1 is a different trait and moved to its own entry, WAT-SEX-01."
         },
-        "open_question": "Patent position unchecked. Seedlessness via AGL11 is a crowded area commercially, so a freedom-to-operate check belongs on this entry before anyone acts on it.",
+        "open_question": "Patent position is an unverified lead, not a signal — see ip_signal. The useful next input is one or more patent publication numbers, which a person can get from Google Patents or Lens; the pipeline cannot reach them.",
+        "ip_signal": {
+          "status": "unverified lead, no patent number",
+          "reported": "An external analysis (Gemini, relayed by the maintainer 2026-11-16) reports that seedlessness via AGL11 / SEEDSTICK is a crowded patent area, that major vegetable seed houses hold portfolios over suppressing or editing the gene to obtain seedless fruit, that active CRISPR applications exist for diploid seedless watermelon naming ClAGL11, ClWIP1, ClARF and ClGA20ox, and that some claims reach the loss-of-function phenotype rather than one DNA sequence. It also notes EPC Rule 28(2) excludes conventionally bred plants while technical mutations remain patentable, and that this reaches Turkey through the EPC. A second round of the same analysis named a candidate locus, Cla97C07G140950, and raised a propagation point: AGL11 loss of function prevents seed set, so a seedless diploid line cannot be maintained by seed, and patents in this area may also cover the in vitro propagation and pollenizer arrangements that keep such a line alive.",
+          "what_was_checked": "Nothing in that report could be verified here: patents.google.com, Lens and the patent offices are unreachable from the build environment, and no patent publication number was supplied. The two literature citations attached to it were checked and are real papers — PMC9433981 (Hortic Res 2022, VviAGL11 seed development) and PMID 36982733 (Int J Mol Sci 2023, 'Seedlessness Trait and Genome Editing — A Review') — but neither is a patent or FTO analysis, so neither supports the patent-density claim. The claim stands unsourced. The candidate locus does exist: Cla97C07G140950 is in the Cla97_v1 build, chromosome 7, 28,715,503-28,716,225. But the annotation gives it no name and no function, so nothing confirms it is AGL11, and its span of 722 bp is short for a MADS-box gene with the usual multi-exon structure — the neighbouring Cla97C07G140940 spans 1.9 kb. Treat it as a lead to check against the paper that proposed it, not as the watermelon ortholog. Still no patent number was supplied in either round.",
+          "note_on_the_query": "The report also searched the patent databases for 'WAT-SEED-01' and found nothing. That is expected: WAT-SEED-01 is this atlas's own entry id, invented here, not a patent code. The absence carries no information.",
+          "before_acting": [
+            "Pin down the exact target: which AGL11 homolog in Citrullus lanatus, and what kind of mutation — the watermelon ortholog is not even identified yet, so this comes first.",
+            "Search by sequence, not only keywords: run the edited region's DNA or protein through the sequence-search tools at Google Patents or Lens, since claims are written around sequences.",
+            "Check national phase in the markets that matter (Turkey, EU, US): a patent family that never entered a jurisdiction does not block it."
+          ],
+          "candidate_locus": {
+            "locus": "Cla97C07G140950",
+            "build": "Citrullus lanatus Cla97_v1",
+            "coordinates": "chr7:28,715,503-28,716,225",
+            "status": "exists, unannotated, identity unconfirmed",
+            "doubt": "722 bp is short for a MADS-box gene; confirm against a primary source before use"
+          }
+        },
         "set": {
           "gene": "AGL11",
           "trait": "Seedlessness (stenospermocarpy) — documented in grape, untested in watermelon",
@@ -3811,8 +3858,9 @@
           "target_note": "No AGL11 ortholog is identified for Citrullus lanatus in any reachable genome build or in NCBI Gene. Identifying the watermelon ortholog is the first step before this can be edited.",
           "gene_id": "",
           "portability": "t1",
-          "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. The grape evidence is for suppression of the gene, not for a transgene.",
-          "recommended_strategy": "Genome editing, after the target ortholog is identified"
+          "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. No specific mutation is defined in this entry, because the ortholog is not identified — so a sequence-based patent search is not yet possible either. The grape evidence is for suppression of the gene, not for a transgene.",
+          "recommended_strategy": "Genome editing, after the target ortholog is identified",
+          "pleiotropic_effects": "Loss of AGL11 function prevents seed set, which removes the way the line itself is propagated: a seedless diploid cannot be maintained from seed. This is the practical reason commercial watermelon seedlessness runs through triploid hybrids. Any editing route here has to answer how the line is maintained — vegetative or in vitro propagation, a maintainer line, or a conditional allele — before it is a breeding plan rather than a result."
         }
       },
       "locus_check": {
@@ -5023,7 +5071,8 @@
       "correction": {
         "decided_by": "maintainer, 2026-11-13; product claim relayed from Gemini and checked on the web",
         "decision": "Set Level 1: the commercialised hybrids carry the allele this entry names.",
-        "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit.",
+        "rationale": "Traka et al., New Phytologist 2013 (doi 10.1111/nph.12232) reports that two high-glucoraphanin F1 hybrids were commercialised as Beneforte broccoli and that all of them carry an introgressed Brassica villosa segment containing a B. villosa Myb28 allele, with 2.5-3x the glucoraphanin of standard hybrids. The product and the entry's gene are the same thing. Note this is an introgression from a crossable wild relative, so the route is cisgenic, not a native edit. Recorded as commercial_basis 'allele', unlike the tomato entry: this is an introgression, which moves the actual B. villosa Myb28 allele into the hybrid rather than creating a new variant, so the product does carry the allele this entry names.",
+        "commercial_basis": "allele",
         "set": {
           "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene"
         }
@@ -5033,7 +5082,7 @@
       },
       "evidence": {
         "derived_level": "Level 1",
-        "basis": "commercial product named by a human: Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene",
+        "basis": "commercial product named by a human — the product carries this entry's allele: Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 1"
       }

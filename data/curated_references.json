@@ -143,6 +143,20 @@
         "suggested_by": "found by Claude 2026-11-16",
         "supports": "Integrative genomics of the polygenic basis of seedlessness in grapevine.",
         "does_not_support": "Polygenic in grape is a warning for the target: a single edit in watermelon may not reproduce a trait that grape achieves through several loci."
+      },
+      {
+        "pmid": "36061618",
+        "doi": "",
+        "suggested_by": "cited in an external IP analysis (Gemini), relayed 2026-11-16; identified here as PMC9433981 = PMID 36061618",
+        "supports": "VviAGL11 self-regulates and targets hormone- and secondary-metabolism genes during seed development — depth on how the grape gene acts, which matters if the route is transferred.",
+        "does_not_support": "It says nothing about patents or freedom to operate, although it was cited in support of a patent-density claim."
+      },
+      {
+        "pmid": "36982733",
+        "doi": "",
+        "suggested_by": "cited in an external IP analysis (Gemini), relayed 2026-11-16",
+        "supports": "'Seedlessness Trait and Genome Editing — A Review' (Int J Mol Sci 2023): a review of the editing routes to seedlessness across crops, useful background for this entry.",
+        "does_not_support": "A review is not evidence for watermelon, and it is not a patent analysis either."
       }
     ]
   }

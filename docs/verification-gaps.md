@@ -129,7 +129,7 @@ Level 1 requires a named cultivar or product whose trait comes from **this entry
 - **TOM-TYLCV-01** — Tomato, TYLCV resistance (ty-5 locus)
   - NOT set to Level 1. The cultivar names offered — 'Camaro', 'Grand Marshall', 'Jolene' — were not confirmed, and the claim mixed introgressed natural ty-5 alleles with targeted modifications, which are different routes. ty-5 resistance is wi
 - **PEP-PUNG-01** — Pepper, Pungency control (Capsaicinoid presence vs. non-pungent)
-  - NOT set to Level 1 by the pipeline, and worth a human decision. Every commercial sweet bell pepper is pun1 loss-of-function, so the allele is commercially ubiquitous — but it arrived through domestication centuries ago, not through this sol
+  - NOT Level 1 under the rule settled on 2026-11-16 (see _about.level1_rule). Every commercial sweet bell pepper is pun1 loss-of-function, so the allele is commercially ubiquitous — but it arrived through domestication centuries ago, not by an
 - **PEP-VIRUS-01** — Pepper, Potyvirus resistance (PVY, TEV, PepMoV — pvr1 / pvr2)
   - NOT set to Level 1: no cultivar was named, only 'commercial hybrid lines bred with pvr1/pvr2' and a list of seed companies. A category is not a product.
 - **CUC-BITTER-01** — Cucumber, Non-bitter fruit while retaining bitter-leaf defense

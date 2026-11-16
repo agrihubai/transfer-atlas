@@ -1093,8 +1093,11 @@ DERIVATION_RULE = (
     "A reference counts as confirmed only when PubMed matched the cited author, year and gene, "
     "or when a supplied reference resolved by its PMID. A PMID found by topic search alone does "
     "NOT count: it may be a different paper about the same gene. "
-    "Level 1 is never derived — it requires a human to name a commercial cultivar or released "
-    "product in corrections.json (commercial_product). "
+    "Level 1 means this entry's own solution — its mechanism — was commercially applied, not that "
+    "the trait is on sale by another route. It is never derived: it requires a human to name the "
+    "product in corrections.json (commercial_product), and the entry records whether the basis is "
+    "the mechanism being reproduced or the very allele being carried, since the same method on the "
+    "same gene can yield a different allele. "
     "Level 2 — every gene named in the entry resolves in the stated species AND a reference is "
     "confirmed. "
     "Level 3 — a reference is confirmed but gene identity is incomplete: either only some of the "
@@ -1123,7 +1126,12 @@ def derive_level(entry: dict) -> dict:
     product = (entry.get("claims") or {}).get("commercial_product", "")
 
     if product and ok:
-        lvl, why = "Level 1", f"commercial product named by a human: {product}"
+        basis = ((entry.get("correction") or {}).get("commercial_basis") or "").strip()
+        lvl = "Level 1"
+        phrase = {"mechanism": "the mechanism was reproduced commercially",
+                  "allele": "the product carries this entry's allele"}.get(basis, "")
+        why = (f"commercial product named by a human — {phrase}: {product}"
+               if phrase else f"commercial product named by a human: {product}")
     elif product:
         # a named product cannot carry an entry whose gene resolves nowhere:
         # without identity there is nothing tying the product to this gene

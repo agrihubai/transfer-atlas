@@ -354,7 +354,12 @@ function sheet(e){
     ['Editing route', c.editing_possibility],
     ['Conventional', c.conventional_breeding],
     ['Locus IDs', c.gene_id],
-    ['Commercial', c.commercial_product]
+    ['Commercial', c.commercial_product],
+    ['Commercial basis', (e.correction || {}).commercial_basis
+      ? ((e.correction || {}).commercial_basis === 'allele'
+          ? 'the product carries the allele this entry names'
+          : 'the mechanism was reproduced; the product may carry a different allele')
+      : '']
   ].filter(r => r[1]).map(([k, x]) => `<dt>${k}</dt><dd>${esc(x)}</dd>`).join('');
 
   const risk = [
@@ -399,6 +404,12 @@ function sheet(e){
     <div class="matrix">${matrix}</div>
     ${c.evidence_note ? `<p class="note">Draft note, not verified: ${esc(c.evidence_note)}</p>` : ''}
 
+    ${(e.correction || {}).ip_signal ? `<h3>IP signal — ${esc(e.correction.ip_signal.status)}</h3>
+      <p class="note warn">${esc(e.correction.ip_signal.reported)}</p>
+      <p class="note">What was actually checked: ${esc(e.correction.ip_signal.what_was_checked)}</p>
+      ${e.correction.ip_signal.note_on_the_query ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(e.correction.ip_signal.note_on_the_query)}</p>` : ''}
+      ${(e.correction.ip_signal.before_acting || []).length ? `<p class="note">Before acting:<ul style="margin:6px 0 0 16px">${
+        e.correction.ip_signal.before_acting.map(x => `<li>${esc(x)}</li>`).join('')}</ul></p>` : ''}` : ''}
     ${c.patent_reference ? `<h3>IP signal</h3><p class="note warn">${esc(c.patent_reference)}
       <br>Research signal only — not legal advice, not a freedom-to-operate opinion.</p>` : ''}`;
 
