@@ -1,0 +1,156 @@
+name: Verify atlas
+
+# Re-runs the verification pipeline against the public databases and commits
+# whatever changed. The point of the pipeline is that its answers are
+# reproducible; a pipeline nobody runs proves nothing, so this runs it weekly
+# and on demand.
+#
+# Databases step out from under us — Ensembl releases new builds and changes
+# filenames, NCBI renames symbols, Sol Genomics retires endpoints. When that
+# happens this job is where it surfaces, as a diff or a failure, instead of
+# silently rotting in the published site.
+
+on:
+  schedule:
+    # Mondays, 06:17 UTC. Off the hour on purpose: scheduled jobs pile up at :00.
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      fresh:
+        description: "Ignore the cached database answers and ask everything again"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-atlas
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The pipeline caches every database answer, so a re-run is cheap and
+      # polite to NCBI. Keyed by week so stale answers cannot live forever.
+      - name: Restore cached database answers
+        if: ${{ inputs.fresh != true }}
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: atlas-cache-${{ github.run_id }}
+          restore-keys: atlas-cache-
+
+      - name: Build the working atlas from the draft plus curated corrections
+        run: python3 scripts/verify_genes.py --migrate
+
+      - name: Resolve locus tags against genome annotations
+        run: python3 scripts/resolve_loci.py
+
+      - name: Verify genes and references
+        env:
+          # Optional. Without it NCBI allows 3 requests/second, which the
+          # pipeline respects; with it, 10.
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          ATLAS_RATE_DELAY: "0.4"
+        run: python3 scripts/verify_genes.py --verify
+
+      - name: Attach RefSeq accessions for the BLAST links
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          ATLAS_RATE_DELAY: "0.4"
+        run: python3 scripts/verify_genes.py --accessions
+
+      - name: Write the gap list
+        run: python3 scripts/write_gaps.py
+
+      - name: Check the result is usable before publishing it
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          a = json.load(open("data/atlas_v3.json"))
+          s, n = a.get("stats", {}), len(a.get("entries", []))
+          print(f"entries={n} verified={s.get('verified')} "
+                f"partial={s.get('partial')} unverified={s.get('unverified')}")
+          problems = []
+          # A run cut short by a network failure looks like a sudden collapse in
+          # entries or in verified count. Refuse to publish that over good data.
+          if n < 30:
+              problems.append(f"only {n} entries; expected at least 30")
+          if (s.get("verified") or 0) < 10:
+              problems.append(f"only {s.get('verified')} verified; expected at least 10")
+          for e in a["entries"]:
+              if not e.get("id") or e.get("genes") is None:
+                  problems.append(f"malformed entry: {e.get('id')!r}")
+          if problems:
+              print("REFUSING TO COMMIT:", *problems, sep="\n  - ")
+              sys.exit(1)
+          PY
+
+      - name: Summarise the run
+        run: |
+          python3 - >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json, collections
+          a = json.load(open("data/atlas_v3.json"))
+          s = a["stats"]
+          lv = collections.Counter(e["evidence"]["derived_level"] for e in a["entries"])
+          loci = [r for e in a["entries"]
+                  for r in (e.get("locus_check") or {}).get("results", [])]
+          ok = sum(1 for r in loci if r.get("state") == "confirmed_in_species")
+          print("## Transfer Atlas verification\n")
+          print(f"**{len(a['entries'])} entries** — {s.get('verified')} verified, "
+                f"{s.get('partial')} partial, {s.get('unverified')} unverified\n")
+          print("| level | entries |\n|---|---|")
+          for k in sorted(lv):
+              print(f"| {k} | {lv[k]} |")
+          print(f"\nLocus identifiers confirmed: **{ok} of {len(loci)}**\n")
+          notes = [(e["id"], n) for e in a["entries"]
+                   for n in (e.get("verification") or {}).get("notes", [])]
+          if notes:
+              print(f"<details><summary>{len(notes)} notes needing human review</summary>\n")
+              for eid, n in notes[:40]:
+                  print(f"- **{eid}**: {n}")
+              print("\n</details>")
+          PY
+
+      - name: Commit what changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data docs
+          if git diff --cached --quiet; then
+            echo "Databases said the same thing as last time; nothing to commit."
+            exit 0
+          fi
+          git diff --cached --stat
+          git commit -m "Re-verify atlas against the public databases
+
+          Automated run of scripts/verify_genes.py, resolve_loci.py and
+          write_gaps.py. Any change here came from a database answering
+          differently than it did last week, not from an edit.
+
+          [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((RANDOM % 10 + 5))
+          done
+          echo "push failed after retries"; exit 1
+
+      - name: Keep the report even when nothing was committed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-report
+          path: |
+            data/verification_report.tsv
+            data/atlas_v3.json
+            docs/verification-gaps.md
+          if-no-files-found: warn
