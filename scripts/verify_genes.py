@@ -151,6 +151,10 @@ def split_genes(field: str) -> list[str]:
     seen, uniq = set(), []
     for g in out:
         g = g.strip(" ()[].")
+        # A gene symbol carries no spaces. The draft wrote prose inside the gene
+        # field ("ClWIP1 for gynoecy"), which otherwise became a symbol nobody
+        # could search for.
+        g = g.split()[0] if g.split() else ""
         # a gene symbol starts with a letter and is more than one character;
         # this drops fragments left by splitting ('SOS1/2' -> '2', 'family)' -> ')')
         if len(g) < 2 or not re.match(r"^[A-Za-z]", g) or not re.search(r"[A-Za-z]{2}", g):

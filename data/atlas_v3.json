@@ -49,7 +49,7 @@
     "partial": 10,
     "unverified": 1,
     "conflicted": 0,
-    "last_verified": "2026-11-14",
+    "last_verified": "2026-11-16",
     "genes_with_accession": 45
   },
   "entries": [
@@ -109,7 +109,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001246898.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -172,7 +172,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001246846.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -202,7 +202,7 @@
         "status": "verified",
         "genes_resolved": "2/2",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:100147723",
@@ -322,7 +322,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001366114.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -365,7 +365,7 @@
             "pubmed_doi": "10.1038/s41477-022-01154-6"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:101256596"
@@ -462,7 +462,7 @@
               "found": false,
               "query": "SlTOM1a[tiab] AND ToBRFV resistance[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_010317583.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -497,7 +497,7 @@
               "found": false,
               "query": "SlTOM3[tiab] AND ToBRFV resistance[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247167.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -540,7 +540,7 @@
             "pubmed_doi": "10.1111/mpp.13227"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:778313",
@@ -658,7 +658,7 @@
               "found": false,
               "query": "SlPelo[tiab] AND TYLCV resistance[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001279230.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -713,7 +713,7 @@
             "pubmed_doi": "10.3390/ijms22041878"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:101251671"
@@ -824,7 +824,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247885.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -854,7 +854,7 @@
         "status": "verified",
         "genes_resolved": "1/1",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:778228"
@@ -945,7 +945,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001246911.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -975,7 +975,7 @@
         "status": "verified",
         "genes_resolved": "1/1",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:100736526"
@@ -1056,7 +1056,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1096,7 +1096,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001321052.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1166,7 +1166,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247045.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1199,7 +1199,7 @@
               "found": false,
               "query": "SlYABBY2b[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247461.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1220,7 +1220,7 @@
               "found": false,
               "query": "SlYTH2[tiab] AND Compact / dwarf architecture for vertical farming & early harvest[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -1248,7 +1248,7 @@
         "status": "partial",
         "genes_resolved": "3/5",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:100191118",
@@ -1364,7 +1364,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001278959.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1428,7 +1428,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_010327794.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1492,7 +1492,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_019212166.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1522,7 +1522,7 @@
         "status": "verified",
         "genes_resolved": "3/3",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:100301945",
@@ -1629,7 +1629,7 @@
               "found": false,
               "query": "FW2.2[tiab] AND Fruit size & pericarp thickness[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001321132.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1660,7 +1660,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -1689,7 +1689,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -1717,7 +1717,7 @@
         "status": "partial",
         "genes_resolved": "1/3",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:101245309"
@@ -1833,7 +1833,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001365026.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1879,7 +1879,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247092.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1925,7 +1925,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247938.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -1968,7 +1968,7 @@
             "pubmed_doi": "10.1038/nbt.3602"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:101254471",
@@ -2066,7 +2066,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001324769.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2108,7 +2108,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001324769.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2138,7 +2138,7 @@
         "status": "verified",
         "genes_resolved": "2/2",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:107859694"
@@ -2214,7 +2214,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_016699433.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2244,7 +2244,7 @@
         "status": "verified",
         "genes_resolved": "1/1",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:107854420"
@@ -2319,7 +2319,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001324970.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2365,7 +2365,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001324702.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2395,7 +2395,7 @@
         "status": "verified",
         "genes_resolved": "2/2",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:107853558",
@@ -2479,7 +2479,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_047412053.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2523,7 +2523,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_047398670.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -2566,7 +2566,7 @@
             "pubmed_doi": "10.1371/journal.pone.0070723"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:107848305",
@@ -2644,7 +2644,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2677,7 +2677,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2724,7 +2724,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -2765,7 +2765,7 @@
             "pubmed_doi": "10.1126/science.1259215"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "GenBank:KM655851",
@@ -2935,7 +2935,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2964,7 +2964,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -2983,7 +2983,7 @@
               "found": false,
               "query": "CsMLO11[tiab] AND Powdery mildew resistance[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -3011,7 +3011,7 @@
         "status": "partial",
         "genes_resolved": "0/3",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [
@@ -3139,7 +3139,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001305700.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -3196,7 +3196,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_004142861.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -3248,7 +3248,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -3284,7 +3284,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -3312,7 +3312,7 @@
         "status": "partial",
         "genes_resolved": "2/4",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:101213522",
@@ -3446,7 +3446,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001297463.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -3494,7 +3494,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001328455.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -3530,7 +3530,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -3558,7 +3558,7 @@
         "status": "partial",
         "genes_resolved": "2/3",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:103491357",
@@ -3646,26 +3646,26 @@
               "found": false,
               "query": "ClAGL11[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
-          "symbol": "ClWIP1 for gynoecy",
+          "symbol": "ClWIP1",
           "claimed_gene_id": "",
           "verification": {
             "ncbi_gene": {
               "found": false,
               "queries": [
-                "ClWIP1 for gynoecy[Gene Name] AND \"Citrullus lanatus\"[Organism]",
-                "WIP1 for gynoecy[Gene Name] AND \"Citrullus lanatus\"[Organism]"
+                "ClWIP1[Gene Name] AND \"Citrullus lanatus\"[Organism]",
+                "WIP1[Gene Name] AND \"Citrullus lanatus\"[Organism]"
               ]
             },
             "genbank_locus": null,
             "pubmed": {
               "found": false,
-              "query": "ClWIP1 for gynoecy[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
+              "query": "ClWIP1[tiab] AND Diploid seedless / stenospermocarpic fruit development[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -3693,7 +3693,7 @@
         "status": "unverified",
         "genes_resolved": "0/2",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [],
         "pmids": [],
@@ -3773,7 +3773,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -3814,7 +3814,7 @@
             "pubmed_doi": "10.1104/pp.17.01290"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "GenBank:KY367352.1"
@@ -3939,7 +3939,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -3972,7 +3972,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4005,7 +4005,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4046,7 +4046,7 @@
             "pubmed_doi": "10.3389/fpls.2020.607161"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "GenBank:SMEL4_08g009050.1",
@@ -4140,7 +4140,7 @@
               "found": false,
               "query": "SmLOG1[tiab] AND Prickle-free calyx & stem[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4181,7 +4181,7 @@
             "pubmed_doi": "10.1093/hr/uhae134"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "GenBank:SMEL4_06g011220.1"
@@ -4288,7 +4288,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_023903632.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -4326,7 +4326,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4345,7 +4345,7 @@
               "found": false,
               "query": "LsRGL1[tiab] AND Delayed bolting[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4374,7 +4374,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4402,7 +4402,7 @@
         "status": "partial",
         "genes_resolved": "1/4",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:111907824"
@@ -4479,7 +4479,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_023903770.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -4522,7 +4522,7 @@
             "pubmed_doi": "10.1038/nbt.4202"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:111907963"
@@ -4600,7 +4600,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_009138981.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -4643,7 +4643,7 @@
             "pubmed_doi": "10.1007/s11103-012-9971-5"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:103861267"
@@ -4751,7 +4751,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_013750838.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -4785,7 +4785,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4817,7 +4817,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4849,7 +4849,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -4877,7 +4877,7 @@
         "status": "partial",
         "genes_resolved": "1/4",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:106313100"
@@ -4931,7 +4931,7 @@
               "found": false,
               "query": "DcRPGE1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4950,7 +4950,7 @@
               "found": false,
               "query": "DcAPRR2[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         },
         {
@@ -4981,7 +4981,7 @@
               "found": false,
               "query": "DcPSY1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001329177.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5014,7 +5014,7 @@
               "found": false,
               "query": "DcPSY2[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_017386783.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5047,7 +5047,7 @@
               "found": false,
               "query": "DcLCYB1[tiab] AND Taproot carotenoid & beta-carotene accumulation[tiab]"
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001329160.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5077,7 +5077,7 @@
         "status": "partial",
         "genes_resolved": "3/5",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:108193045",
@@ -5147,7 +5147,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14"
+            "checked_on": "2026-11-16"
           }
         }
       ],
@@ -5188,7 +5188,7 @@
             "pubmed_doi": "10.1104/pp.108.123273"
           }
         ],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "GenBank:AB089203.1"
@@ -5271,7 +5271,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247769.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5314,7 +5314,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_069291846.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5357,7 +5357,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XM_026031303.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5410,7 +5410,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247830.1",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5453,7 +5453,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XR_742804.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5483,7 +5483,7 @@
         "status": "partial",
         "genes_resolved": "5/5",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:101255223",
@@ -5593,7 +5593,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "XR_742804.4",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5639,7 +5639,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001246851.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5685,7 +5685,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247853.2",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5715,7 +5715,7 @@
         "status": "verified",
         "genes_resolved": "3/3",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:100134914",
@@ -5839,7 +5839,7 @@
                 }
               ]
             },
-            "checked_on": "2026-11-14",
+            "checked_on": "2026-11-16",
             "refseq_accession": "NM_001247588.3",
             "refseq_link_type": "gene_nuccore_refseqrna"
           }
@@ -5869,7 +5869,7 @@
         "status": "partial",
         "genes_resolved": "1/1",
         "curated_references": [],
-        "verified_on": "2026-11-14",
+        "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
           "NCBI:100136887"

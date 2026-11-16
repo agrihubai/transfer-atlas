@@ -42,7 +42,7 @@ MEL-SHELF-01	Melon	CmACO1	103491357	LOC103491357	MELO3C014437	37304010	10.3389/f
 MEL-SHELF-01	Melon	CmACS7	103492295	LOC103492295	MELO3C014437	9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	verified
 MEL-SHELF-01	Melon	CmNAC-NOR			MELO3C014437	9631011	10.1038/nbt0796-862	author+year+journal, trait matched in title	partial
 WAT-SEED-01	Watermelon	ClAGL11							unverified
-WAT-SEED-01	Watermelon	ClWIP1 for gynoecy							unverified
+WAT-SEED-01	Watermelon	ClWIP1							unverified
 WAT-BRIX-01	Watermelon	ClTST2			Cla97C02G036390;Cla97C04G070940	29118248	10.1104/pp.17.01290	author+year+gene	verified
 EGG-BROWN-01	Eggplant	SmelPPO4			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified
 EGG-BROWN-01	Eggplant	SmelPPO5			SMEL4.1_08g017350	33343607	10.3389/fpls.2020.607161	author+year+gene	verified

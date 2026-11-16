@@ -76,6 +76,38 @@ def main() -> int:
       "`ABA catabolism`, `prickle loci`. These were descriptive phrases in the draft's gene "
       "field that the parser read as symbols.\n\n")
 
+    A("## Already searched — please do not repeat these\n\n")
+    A("Every unresolved symbol below has been looked for, by script, in all of these:\n\n")
+    A("- **NCBI Gene**, as written and with the species prefix stripped (`SlGAD3` and `GAD3`), "
+      "constrained to the stated organism, with hits ranked by whether the symbol is the "
+      "official name or only an alias.\n")
+    A("- **NCBI nuccore and protein**, by locus tag, constrained by organism.\n")
+    A("- **Sol Genomics Network** feature search, for Solanaceae symbols and locus tags.\n")
+    A("- **Ensembl Plants annotation files** (ftp.ebi.ac.uk), streamed per species and searched "
+      "both by locus tag and by gene name — cucumber, melon, watermelon, both Brassicas, pepper "
+      "and carrot. Cucumber tags also tried in Ensembl's underscore form (`Csa_5G623470`).\n")
+    A("- **Eggplant V4 annotation** (hosted by Sol Genomics), including the V3-to-V4 conversion "
+      "table.\n\n")
+    A("These annotations mostly carry no gene names, which is why a name search found almost "
+      "nothing: of 21 unresolved symbols it resolved none. So the useful answer is **an "
+      "accession or gene ID read off a record or a paper's data-availability section** — not "
+      "another database name, and not a guess.\n\n")
+    A("**What is unreachable from the build environment**, so do not suggest it: Ensembl's REST "
+      "service for plants (rest.ensemblgenomes.org serves a certificate for another host), "
+      "plants.ensembl.org (redirects to an unreachable host), cucurbitgenomics.org (no working "
+      "HTTPS), and the watermelon 97103 v2 build (nowhere reachable).\n\n")
+    A("**Three rules, from what went wrong last time.** Identifiers supplied earlier included a "
+      "fungal ITS sequence given as a watermelon gene, a bacterial gene and a tomato protein "
+      "given as eggplant polyphenol oxidases, an NCBI id for a protein kinase given as a lettuce "
+      "GGP2, and two PMIDs that were a cellulose-microfibril paper and a cardiovascular review. "
+      "The PMIDs supplied were otherwise reliable. So:\n\n")
+    A("1. Never give an identifier not read off a record. Write **unknown** instead — an honest "
+      "gap is useful, a wrong accession costs more than it saves.\n")
+    A("2. Always name the **journal** with author and year. The matcher requires it, because "
+      "author and year alone cannot separate two papers.\n")
+    A("3. Say what a paper does **not** cover. That is what saved several entries from false "
+      "claims.\n\n")
+
     # 1. awaiting a human glance
     aw = [(e, awaiting(e)) for e in entries if awaiting(e)]
     if aw:
@@ -134,6 +166,33 @@ def main() -> int:
             A(f"- **{e['id']}** — {e['crop']} ({e['verification']['genes_resolved']} resolved): "
               f"{', '.join('`' + m + '`' for m in miss)}\n")
 
+    # 5b. the unresolved symbols themselves, grouped by species
+    import re as _re
+    PRE = ("Smel", "Sl", "Ca", "Cs", "Cm", "Cl", "Sm", "Ls", "Bo", "Br", "Dc", "Ac", "Le")
+
+    def _strip(sym: str) -> str:
+        for pre in sorted(PRE, key=len, reverse=True):
+            m = _re.match(r"^" + pre + r"([A-Z0-9].*)$", sym)
+            if m and len(m.group(1)) >= 2:
+                return m.group(1)
+        return sym
+
+    by_sp: dict[str, list[tuple[str, str, str]]] = {}
+    for e in entries:
+        for g in e["genes"]:
+            if gene_unresolved(g):
+                by_sp.setdefault(e.get("scientific_name") or "unknown species", []).append(
+                    (e["id"], g["symbol"], _strip(g["symbol"])))
+    if by_sp:
+        total = sum(len(v) for v in by_sp.values())
+        A(f"\n## Every gene symbol with no identifier, by species ({total})\n\n")
+        A("For each: the entry, the symbol as the atlas writes it, and the name that was "
+          "searched after stripping the species prefix. An accession, a gene ID, or `unknown`.\n")
+        for sp in sorted(by_sp):
+            A(f"\n**{sp}**\n\n")
+            for eid, sym, base in by_sp[sp]:
+                A(f"- `{sym}` ({eid}) — searched as `{base}`\n")
+
     # 6. locus tags
     bad = [(e, r) for e in entries
            for r in (e.get("locus_check") or {}).get("results", [])
@@ -141,7 +200,8 @@ def main() -> int:
     if bad:
         A(f"\n## Locus tags that no reachable database carries ({len(bad)})\n\n")
         A("Not evidence that a tag is wrong — the database that holds it is unreachable, or the "
-          "tag comes from a different genome build than the one available.\n\n")
+          "tag comes from a different genome build than the one available. **The useful answer "
+          "here is which genome build each tag belongs to**, so it can be converted.\n\n")
         for e, r in bad:
             A(f"- `{r['locus']}` — {e['id']}, {e['scientific_name']}\n")
 

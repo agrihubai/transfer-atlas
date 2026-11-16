@@ -1,6 +1,6 @@
 # What is still open, and what would close it
 
-Generated from `data/atlas_v3.json` on 14 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
+Generated from `data/atlas_v3.json` on 16 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
 
 State: **20 verified, 10 partial, 1 unverified** of 31 entries.
 
@@ -11,6 +11,26 @@ A reference counts only when PubMed matches the cited **author, year and journal
 **The most useful thing anyone can send** is a gene symbol, its crop species, and a DOI or PMID for a paper that functionally tests that gene in that crop. The pipeline resolves the rest. Reconstructed citations do not help — an author and year with no findable journal is what the original draft had, and it is what produced most of these gaps.
 
 **Not genes, so do not look for them:** `uORF` (a 5' UTR feature), `ROS scavengers`, `ABA catabolism`, `prickle loci`. These were descriptive phrases in the draft's gene field that the parser read as symbols.
+
+## Already searched — please do not repeat these
+
+Every unresolved symbol below has been looked for, by script, in all of these:
+
+- **NCBI Gene**, as written and with the species prefix stripped (`SlGAD3` and `GAD3`), constrained to the stated organism, with hits ranked by whether the symbol is the official name or only an alias.
+- **NCBI nuccore and protein**, by locus tag, constrained by organism.
+- **Sol Genomics Network** feature search, for Solanaceae symbols and locus tags.
+- **Ensembl Plants annotation files** (ftp.ebi.ac.uk), streamed per species and searched both by locus tag and by gene name — cucumber, melon, watermelon, both Brassicas, pepper and carrot. Cucumber tags also tried in Ensembl's underscore form (`Csa_5G623470`).
+- **Eggplant V4 annotation** (hosted by Sol Genomics), including the V3-to-V4 conversion table.
+
+These annotations mostly carry no gene names, which is why a name search found almost nothing: of 21 unresolved symbols it resolved none. So the useful answer is **an accession or gene ID read off a record or a paper's data-availability section** — not another database name, and not a guess.
+
+**What is unreachable from the build environment**, so do not suggest it: Ensembl's REST service for plants (rest.ensemblgenomes.org serves a certificate for another host), plants.ensembl.org (redirects to an unreachable host), cucurbitgenomics.org (no working HTTPS), and the watermelon 97103 v2 build (nowhere reachable).
+
+**Three rules, from what went wrong last time.** Identifiers supplied earlier included a fungal ITS sequence given as a watermelon gene, a bacterial gene and a tomato protein given as eggplant polyphenol oxidases, an NCBI id for a protein kinase given as a lettuce GGP2, and two PMIDs that were a cellulose-microfibril paper and a cardiovascular review. The PMIDs supplied were otherwise reliable. So:
+
+1. Never give an identifier not read off a record. Write **unknown** instead — an honest gap is useful, a wrong accession costs more than it saves.
+2. Always name the **journal** with author and year. The matcher requires it, because author and year alone cannot separate two papers.
+3. Say what a paper does **not** cover. That is what saved several entries from false claims.
 
 ## Needs one look, nothing more (2)
 
@@ -57,9 +77,54 @@ These should be filled with a real source or retired from the atlas.
 - **BRA-GLUC-01** — Brassica (Broccoli/Cabbage/Cauliflower) (1/4 resolved): `HAG1`, `MYB29`, `MYB34`
 - **CAR-COLOR-01** — Carrot (3/5 resolved): `DcRPGE1`, `DcAPRR2`
 
+## Every gene symbol with no identifier, by species (20)
+
+For each: the entry, the symbol as the atlas writes it, and the name that was searched after stripping the species prefix. An accession, a gene ID, or `unknown`.
+
+**Brassica oleracea**
+
+- `HAG1` (BRA-GLUC-01) — searched as `HAG1`
+- `MYB29` (BRA-GLUC-01) — searched as `MYB29`
+- `MYB34` (BRA-GLUC-01) — searched as `MYB34`
+
+**Citrullus lanatus**
+
+- `ClAGL11` (WAT-SEED-01) — searched as `AGL11`
+- `ClWIP1` (WAT-SEED-01) — searched as `WIP1`
+
+**Cucumis melo**
+
+- `CmNAC-NOR` (MEL-SHELF-01) — searched as `NAC-NOR`
+
+**Cucumis sativus**
+
+- `CsMLO1` (CUC-MILDEW-01) — searched as `MLO1`
+- `CsMLO8` (CUC-MILDEW-01) — searched as `MLO8`
+- `CsMLO11` (CUC-MILDEW-01) — searched as `MLO11`
+- `CsWIP1` (CUC-SEX-01) — searched as `WIP1`
+- `CsARF8` (CUC-SEX-01) — searched as `ARF8`
+
+**Daucus carota**
+
+- `DcRPGE1` (CAR-COLOR-01) — searched as `RPGE1`
+- `DcAPRR2` (CAR-COLOR-01) — searched as `APRR2`
+
+**Lactuca sativa**
+
+- `LsCO` (LET-BOLT-01) — searched as `CO`
+- `LsRGL1` (LET-BOLT-01) — searched as `RGL1`
+- `LsSOC1` (LET-BOLT-01) — searched as `SOC1`
+
+**Solanum lycopersicum**
+
+- `SlER` (TOM-DWARF-01) — searched as `ER`
+- `SlYTH2` (TOM-DWARF-01) — searched as `YTH2`
+- `SlKIX8` (TOM-SIZE-01) — searched as `KIX8`
+- `SlKIX9` (TOM-SIZE-01) — searched as `KIX9`
+
 ## Locus tags that no reachable database carries (3)
 
-Not evidence that a tag is wrong — the database that holds it is unreachable, or the tag comes from a different genome build than the one available.
+Not evidence that a tag is wrong — the database that holds it is unreachable, or the tag comes from a different genome build than the one available. **The useful answer here is which genome build each tag belongs to**, so it can be converted.
 
 - `Cla97C07G144940` — WAT-SEED-01, Citrullus lanatus
 - `SMEL4.1_06g...` — EGG-PRICKLE-01, Solanum melongena
@@ -81,3 +146,24 @@ Level 1 requires a named cultivar or product whose trait comes from **this entry
   - NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syng
 - **ONI-TEAR-01** — Onion, Tearless / low-lachrymatory onion & reduced pungency
   - NOT set to Level 1, and this is the clearest case of why the rule matters. Sunions is a real marketed tearless onion from BASF/Nunhems, but BASF states it is the result of more than three decades of CONVENTIONAL breeding, with pungency trac
+
+## Three questions that are not about identifiers
+
+**1. `WAT-SEED-01` — is there a real source for ClAGL11 in watermelon?**
+The entry claims diploid seedlessness via `ClAGL11`. Nothing stands behind it: no gene record, no
+confirmable citation (the draft cites "Wang et al., 2021; Cucurbit AGL11 studies" — the second half
+is not a citation), and its locus tag `Cla97C07G144940` belongs to the 97103 v2 build, which is not
+reachable. The other gene in the entry, `ClWIP1`, DOES resolve: `Cla97C02G049440`, chromosome 2,
+annotated `Name=WIP1` in the Cla97_v1 build — but that gene is about gynoecy, a different trait.
+Needed: a paper that functionally tests AGL11 in *Citrullus lanatus*, with journal named, or a
+statement that no such paper exists. The entry is otherwise retired.
+
+**2. Is PMID 27454737 the intended paper for tomato fruit firmness?**
+Uluisik et al., *Nature Biotechnology* 2016, "Genetic improvement of tomato by targeted control of
+fruit softening", for `SlPL` / `SlPG2a` / `SlCEL2`. Yes or no. The title says softening where the
+entry says firmness, which is why the matcher will not confirm it by itself.
+
+**3. Is PMID 33496342 the intended paper for combined stress?**
+Zandalinas et al., *New Phytologist* 2021, "The impact of multifactorial stress combination on
+plant growth and survival", for `GAP-COMB-01`. Yes or no. Note it would not raise the entry past
+Level 3 either way, because it does not test SOS1, SOS2, NHX1, DREB2 and HsfA2 individually.
