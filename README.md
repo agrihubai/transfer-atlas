@@ -39,9 +39,17 @@ Gene, source and evidence are sourced. Portability, linkage, side-effects and IP
 Run it yourself:
 
 ```bash
-python3 scripts/verify_genes.py --migrate --verify --accessions
-python3 scripts/resolve_loci_ensembl.py
+python3 scripts/verify_genes.py --migrate
+python3 scripts/resolve_loci.py
+python3 scripts/verify_genes.py --verify --accessions
+python3 scripts/write_gaps.py
 ```
+
+Or let it run itself: `.github/workflows/verify.yml` does the same every Monday
+and on demand, and commits whatever the databases answered differently. A change
+committed by that job came from a database, not from an edit. It refuses to
+commit a run that collapsed — too few entries, or too few verified — so a
+network failure cannot quietly overwrite good data with a thin one.
 
 ## Status
 
