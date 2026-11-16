@@ -21,7 +21,7 @@ TOM-SIZE-01	Tomato	SlKIX9			Solyc02g090730;Solyc07g008100	34601614	10.1093/plphy
 TOM-FIRM-01	Tomato	SlPL	101254471	PL	Solyc03g111690	27454737	10.1038/nbt.3602	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
 TOM-FIRM-01	Tomato	SlPG2a	544051	PG2	Solyc03g111690	27454737	10.1038/nbt.3602	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
 TOM-FIRM-01	Tomato	SlCEL2	543996	Cel2	Solyc03g111690	27454737	10.1038/nbt.3602	awaiting human confirmation: journal and author match, title does not confirm the trait	partial
-PEP-PUNG-01	Pepper	Pun1	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
+PEP-PUNG-01	Pepper	Pun1	107859694	LOC107859694					partial
 PEP-PUNG-01	Pepper	AT3	107859694	LOC107859694		15918882	10.1111/j.1365-313X.2005.02410.x	author+year+gene	verified
 PEP-PAMT-01	Pepper	pAMT	107854420	LOC107854420		19473323	10.1111/j.1365-313X.2009.03921.x	author+year+gene	verified
 PEP-VIRUS-01	Pepper	eIF4E1	107868427	LOC107868427		12492847	10.1046/j.1365-313x.2002.01499.x	author+year+journal, trait matched in title	verified

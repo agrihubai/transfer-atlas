@@ -2076,18 +2076,10 @@
             },
             "genbank_locus": null,
             "pubmed": {
-              "found": true,
+              "found": false,
               "query": "Stewart[Author] AND 2005[dp] AND Pun1[tiab]",
               "match_type": "author+year+gene",
-              "hits": [
-                {
-                  "pmid": "15918882",
-                  "title": "The Pun1 gene for pungency in pepper encodes a putative acyltransferase.",
-                  "journal": "Plant J",
-                  "year": "2005",
-                  "doi": "10.1111/j.1365-313X.2005.02410.x"
-                }
-              ]
+              "hits": []
             },
             "checked_on": "2026-11-16",
             "refseq_accession": "NM_001324769.1",
