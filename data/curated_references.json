@@ -119,6 +119,15 @@
         "supports": "Targeted control of fruit softening in tomato; the intended reference for SlPL, SlPG2a and SlCEL2 per the supplier's explicit confirmation.",
         "does_not_support": "Read the paper before attributing the firmness effect to all three genes equally — it is the pectate lyase work, and the other two were listed alongside it in the draft."
       }
+    ],
+    "GAP-COMB-01": [
+      {
+        "pmid": "33496342",
+        "doi": "",
+        "suggested_by": "external AI suggestion (Gemini), confirmed on request by maintainer 2026-11-16",
+        "supports": "Zandalinas et al., New Phytologist 2021, on the impact of multifactorial stress combination on plant growth and survival — the framework this entry rests on.",
+        "does_not_support": "It does not functionally test SOS1, SOS2, NHX1, DREB2 or HsfA2 individually, which is why this entry stays capped at Level 3 whatever else is added."
+      }
     ]
   }
 }

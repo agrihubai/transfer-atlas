@@ -45,8 +45,8 @@
   },
   "stats": {
     "total_entries": 31,
-    "verified": 20,
-    "partial": 10,
+    "verified": 21,
+    "partial": 9,
     "unverified": 1,
     "conflicted": 0,
     "last_verified": "2026-11-16",
@@ -5480,9 +5480,22 @@
         "gene_action": "Inducible promoter tuning + Polygenic allele stacking"
       },
       "verification": {
-        "status": "partial",
+        "status": "verified",
         "genes_resolved": "5/5",
-        "curated_references": [],
+        "curated_references": [
+          {
+            "pmid": "33496342",
+            "doi": "",
+            "suggested_by": "external AI suggestion (Gemini), confirmed on request by maintainer 2026-11-16",
+            "supports": "Zandalinas et al., New Phytologist 2021, on the impact of multifactorial stress combination on plant growth and survival — the framework this entry rests on.",
+            "does_not_support": "It does not functionally test SOS1, SOS2, NHX1, DREB2 or HsfA2 individually, which is why this entry stays capped at Level 3 whatever else is added.",
+            "pipeline_check": "confirmed in PubMed",
+            "pubmed_title": "The impact of multifactorial stress combination on plant growth and survival.",
+            "pubmed_journal": "New Phytol",
+            "pubmed_year": "2021",
+            "pubmed_doi": "10.1111/nph.17232"
+          }
+        ],
         "verified_on": "2026-11-16",
         "verified_by": "verify_genes.py (NCBI Gene + PubMed)",
         "gene_ids": [
@@ -5536,11 +5549,11 @@
         "checked": false
       },
       "evidence": {
-        "derived_level": "Level 4",
-        "basis": "5/5 genes resolved, no confirmed reference",
+        "derived_level": "Level 3",
+        "basis": "capped by curator: Network entry: the genes were pinned to tomato orthologs, but a confirmed paper about combined drought, heat and salinity stress does not functionally validate SOS1, SOS2, NHX1, DREB2 and HsfA2 individually. Capped at Level 3 until a paper tests a named gene in a named crop.",
         "rule": "see _schema.level_derivation",
         "draft_claimed": "Level 5",
-        "disagrees_with_draft": "the draft claimed Level 5; this pipeline derives Level 4 from what it could verify"
+        "disagrees_with_draft": "the draft claimed Level 5; this pipeline derives Level 3 from what it could verify"
       }
     },
     {

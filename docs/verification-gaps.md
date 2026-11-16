@@ -2,7 +2,7 @@
 
 Generated from `data/atlas_v3.json` on 16 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
 
-State: **20 verified, 10 partial, 1 unverified** of 31 entries.
+State: **21 verified, 9 partial, 1 unverified** of 31 entries.
 
 ## What counts, so nobody wastes effort
 
@@ -45,7 +45,7 @@ The author and journal match the citation, but the title does not carry the trai
   - candidate: PMID 33496342 (New Phytol) The impact of multifactorial stress combination on plant growth and survival.
   - question: is this the intended paper? yes or no
 
-## Genes resolve, no reference is confirmed (4)
+## Genes resolve, no reference is confirmed (3)
 
 Identity is settled; the functional evidence is not. A DOI or PMID for a knockout, overexpression, allele-swap or field study closes these.
 
@@ -53,8 +53,6 @@ Identity is settled; the functional evidence is not. A DOI or PMID for a knockou
   - cited: "Hu et al., 2017, Plant J." — not matched
 - **CAR-COLOR-01** — Carrot, Taproot carotenoid & beta-carotene accumulation (`DcRPGE1, DcAPRR2, DcPSY1, DcPSY2, DcLCYB1`)
   - cited: "2024 Functional Carrot Root Color Study; Ellison et al., 2018" — not matched
-- **GAP-COMB-01** — Tomato, Combined Heat + Salinity + Drought Tolerance (Mediterranean field conditions) (`SOS1, SOS2, NHX1, DREB2, HsfA2`)
-  - cited: "Zandalinas et al., 2021; Rivero et al., 2022" — not matched
 - **GAP-RECOV-01** — Tomato, Post-stress growth & yield recovery kinetics (`CYP707A1`)
   - cited: "2025–2026 Plant Resilience Frameworks" — not matched
 
@@ -146,24 +144,3 @@ Level 1 requires a named cultivar or product whose trait comes from **this entry
   - NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syng
 - **ONI-TEAR-01** — Onion, Tearless / low-lachrymatory onion & reduced pungency
   - NOT set to Level 1, and this is the clearest case of why the rule matters. Sunions is a real marketed tearless onion from BASF/Nunhems, but BASF states it is the result of more than three decades of CONVENTIONAL breeding, with pungency trac
-
-## Three questions that are not about identifiers
-
-**1. `WAT-SEED-01` — is there a real source for ClAGL11 in watermelon?**
-The entry claims diploid seedlessness via `ClAGL11`. Nothing stands behind it: no gene record, no
-confirmable citation (the draft cites "Wang et al., 2021; Cucurbit AGL11 studies" — the second half
-is not a citation), and its locus tag `Cla97C07G144940` belongs to the 97103 v2 build, which is not
-reachable. The other gene in the entry, `ClWIP1`, DOES resolve: `Cla97C02G049440`, chromosome 2,
-annotated `Name=WIP1` in the Cla97_v1 build — but that gene is about gynoecy, a different trait.
-Needed: a paper that functionally tests AGL11 in *Citrullus lanatus*, with journal named, or a
-statement that no such paper exists. The entry is otherwise retired.
-
-**2. Is PMID 27454737 the intended paper for tomato fruit firmness?**
-Uluisik et al., *Nature Biotechnology* 2016, "Genetic improvement of tomato by targeted control of
-fruit softening", for `SlPL` / `SlPG2a` / `SlCEL2`. Yes or no. The title says softening where the
-entry says firmness, which is why the matcher will not confirm it by itself.
-
-**3. Is PMID 33496342 the intended paper for combined stress?**
-Zandalinas et al., *New Phytologist* 2021, "The impact of multifactorial stress combination on
-plant growth and survival", for `GAP-COMB-01`. Yes or no. Note it would not raise the entry past
-Level 3 either way, because it does not test SOS1, SOS2, NHX1, DREB2 and HsfA2 individually.
