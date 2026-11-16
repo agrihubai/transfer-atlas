@@ -1,0 +1,121 @@
+{
+  "_about": "Candidate counterparts found by protein similarity with scripts/find_ortholog.py. Queries include the gene's close paralogues on purpose, so a hit nearer a paralogue is visible as such. These are ranked candidates, NOT established orthologs: that needs a phylogenetic tree over the conserved domains and, ideally, expression in the right tissue.",
+  "WAT-SEED-01": {
+    "target_species": "Citrullus lanatus",
+    "proteome": "https://ftp.ebi.ac.uk/ensemblgenomes/pub/current/plants/fasta/citrullus_lanatus/pep/Citrullus_lanatus.Cla97_v1.pep.all.fa.gz",
+    "queries": {
+      "VviAGL11 (grape, D-class, the entry's gene)": "NP_001268118.1",
+      "AtSTK/AGL11 (Arabidopsis, D-class)": "NP_001329612.1",
+      "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": "NP_001325709.1",
+      "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": "NP_850377.1",
+      "AtAG (Arabidopsis, C-class)": "NP_001328877.1"
+    },
+    "checked_on": "2026-11-16",
+    "candidates": [
+      {
+        "protein": "Cla97C08G144840.1",
+        "gene": "Cla97C08G144840",
+        "closest_query": "VviAGL11 (grape, D-class, the entry's gene)",
+        "scores": {
+          "VviAGL11 (grape, D-class, the entry's gene)": 936.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 847.0,
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 682.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 644.0,
+          "AtAG (Arabidopsis, C-class)": 377.0
+        },
+        "top_score": 936.0
+      },
+      {
+        "protein": "Cla97C02G044160.1",
+        "gene": "Cla97C02G044160",
+        "closest_query": "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)",
+        "scores": {
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 763.0,
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 686.0,
+          "VviAGL11 (grape, D-class, the entry's gene)": 624.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 612.0,
+          "AtAG (Arabidopsis, C-class)": 328.0
+        },
+        "top_score": 763.0
+      },
+      {
+        "protein": "Cla97C01G024020.1",
+        "gene": "Cla97C01G024020",
+        "closest_query": "VviAGL11 (grape, D-class, the entry's gene)",
+        "scores": {
+          "VviAGL11 (grape, D-class, the entry's gene)": 718.0,
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 696.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 683.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 668.0,
+          "AtAG (Arabidopsis, C-class)": 488.0
+        },
+        "top_score": 718.0
+      },
+      {
+        "protein": "Cla97C03G058570.1",
+        "gene": "Cla97C03G058570",
+        "closest_query": "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)",
+        "scores": {
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 700.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 694.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 674.0,
+          "VviAGL11 (grape, D-class, the entry's gene)": 660.0,
+          "AtAG (Arabidopsis, C-class)": 407.0
+        },
+        "top_score": 700.0
+      },
+      {
+        "protein": "Cla97C11G220740.1",
+        "gene": "Cla97C11G220740",
+        "closest_query": "AtSTK/AGL11 (Arabidopsis, D-class)",
+        "scores": {
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 418.0,
+          "VviAGL11 (grape, D-class, the entry's gene)": 405.0,
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 384.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 351.0,
+          "AtAG (Arabidopsis, C-class)": 204.0
+        },
+        "top_score": 418.0
+      },
+      {
+        "protein": "Cla97C06G109500.1",
+        "gene": "Cla97C06G109500",
+        "closest_query": "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)",
+        "scores": {
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 417.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 405.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 405.0,
+          "VviAGL11 (grape, D-class, the entry's gene)": 385.0,
+          "AtAG (Arabidopsis, C-class)": 155.0
+        },
+        "top_score": 417.0
+      },
+      {
+        "protein": "Cla97C07G143010.1",
+        "gene": "Cla97C07G143010",
+        "closest_query": "AtSTK/AGL11 (Arabidopsis, D-class)",
+        "scores": {
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 415.0,
+          "VviAGL11 (grape, D-class, the entry's gene)": 395.0,
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 385.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 369.0,
+          "AtAG (Arabidopsis, C-class)": 179.0
+        },
+        "top_score": 415.0
+      },
+      {
+        "protein": "Cla97C01G003350.1",
+        "gene": "Cla97C01G003350",
+        "closest_query": "VviAGL11 (grape, D-class, the entry's gene)",
+        "scores": {
+          "VviAGL11 (grape, D-class, the entry's gene)": 414.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 406.0,
+          "AtSHP2/AGL5 (Arabidopsis, C-class paralogue)": 378.0,
+          "AtSHP1/AGL1 (Arabidopsis, C-class paralogue)": 338.0,
+          "AtAG (Arabidopsis, C-class)": 166.0
+        },
+        "top_score": 414.0
+      }
+    ]
+  }
+}

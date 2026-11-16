@@ -321,7 +321,7 @@
         "trait": "Seedlessness (stenospermocarpy) — documented in grape, untested in watermelon",
         "documented_in": "Vitis vinifera (grape)",
         "gene_species": "Vitis vinifera",
-        "target_note": "No AGL11 ortholog is identified for Citrullus lanatus in any reachable genome build or in NCBI Gene. Identifying the watermelon ortholog is the first step before this can be edited.",
+        "target_note": "Candidate ortholog identified by protein similarity: Cla97C08G144840 on chromosome 8 of the Cla97_v1 build, closest to grape AGL11 and to Arabidopsis STK and clearly separated from the C-class paralogues (see ortholog_candidate for the score profile). This is the gene to test first; orthology itself is not established, and nothing has been edited or expressed.",
         "gene_id": "",
         "portability": "t1",
         "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. No specific mutation is defined in this entry, because the ortholog is not identified — so a sequence-based patent search is not yet possible either. The grape evidence is for suppression of the gene, not for a transgene.",
@@ -337,7 +337,7 @@
         "gene": "ClAGL11, ClWIP1 (locus Cla97C07G144940)",
         "why": "ClAGL11 as a watermelon gene is unsupported and is replaced by the grape source gene. The locus tag belongs to the 97103 v2 build, which is unreachable, and is dropped. ClWIP1 is a different trait and moved to its own entry, WAT-SEX-01."
       },
-      "open_question": "Patent position is an unverified lead, not a signal — see ip_signal. The useful next input is one or more patent publication numbers, which a person can get from Google Patents or Lens; the pipeline cannot reach them.",
+      "open_question": "Next steps are now concrete, in this order: confirm Cla97C08G144840 is the AGL11 ortholog with a phylogenetic tree over the conserved domains and ovule expression; then, with a real sequence in hand, a sequence-based patent search becomes possible for the first time. The IP position remains an unverified lead until someone supplies patent publication numbers — see ip_signal.",
       "ip_signal": {
         "status": "unverified lead, no patent number",
         "reported": "An external analysis (Gemini, relayed by the maintainer 2026-11-16) reports that seedlessness via AGL11 / SEEDSTICK is a crowded patent area, that major vegetable seed houses hold portfolios over suppressing or editing the gene to obtain seedless fruit, that active CRISPR applications exist for diploid seedless watermelon naming ClAGL11, ClWIP1, ClARF and ClGA20ox, and that some claims reach the loss-of-function phenotype rather than one DNA sequence. It also notes EPC Rule 28(2) excludes conventionally bred plants while technical mutations remain patentable, and that this reaches Turkey through the EPC. A second round of the same analysis named a candidate locus, Cla97C07G140950, and raised a propagation point: AGL11 loss of function prevents seed set, so a seedless diploid line cannot be maintained by seed, and patents in this area may also cover the in vitro propagation and pollenizer arrangements that keep such a line alive.",
@@ -353,8 +353,25 @@
           "build": "Citrullus lanatus Cla97_v1",
           "coordinates": "chr7:28,715,503-28,716,225",
           "status": "exists, unannotated, identity unconfirmed",
-          "doubt": "722 bp is short for a MADS-box gene; confirm against a primary source before use"
+          "doubt": "722 bp is short for a MADS-box gene; confirm against a primary source before use",
+          "superseded_by": "Cla97C08G144840, found by similarity search on 2026-11-16; see ortholog_candidate."
         }
+      },
+      "ortholog_candidate": {
+        "gene": "Cla97C08G144840",
+        "protein": "Cla97C08G144840.1",
+        "location": "Cla97_v1 chromosome 8: 1,133,029-1,141,287 (minus strand), spanning 8.2 kb",
+        "how_it_was_found": "scripts/find_ortholog.py aligned the grape gene and its close relatives against the whole Citrullus lanatus Cla97_v1 proteome (22,541 proteins). The paralogues were included as queries on purpose, because a best match means little if a paralogue scores almost as well.",
+        "score_profile": {
+          "VviAGL11 (grape, D-class, the entry's gene)": 936.0,
+          "AtSTK/AGL11 (Arabidopsis, D-class)": 847.0,
+          "AtSHP2/AGL5 (C-class paralogue)": 682.0,
+          "AtSHP1/AGL1 (C-class paralogue)": 644.0,
+          "AtAG (C-class)": 377.0
+        },
+        "why_this_one": "It is closest to both D-class queries and about 165 points clear of the nearest C-class paralogue, which is the discrimination that matters here. The runner-up on the D-class side, Cla97C01G024020, scores 718 against VviAGL11 but 696 against AtSHP2 — effectively tied, so it cannot be assigned. An 8.2 kb multi-exon span also fits a MADS-box gene.",
+        "what_this_is_not": "Not an established ortholog. Protein similarity with paralogue discrimination gives a ranked candidate; orthology needs a phylogenetic tree over the MADS and K-box domains, and expression in the ovule would be the biological confirmation. Until then this is the gene to test first, not the answer.",
+        "contradicts": "Both chromosome-7 identifiers previously attached to this entry. The draft's own tag Cla97C07G144940 exists in no reachable build. The locus suggested by an external analysis, Cla97C07G140950, does exist but carries no annotation, spans only 722 bp, and does not appear among the top candidates here. The best candidate is on chromosome 8."
       }
     },
     "TOM-SIZE-01": {

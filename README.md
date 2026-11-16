@@ -34,7 +34,11 @@ Gene, source and evidence are sourced. Portability, linkage, side-effects and IP
 3. **Resolve locus tags** with `scripts/resolve_loci_ensembl.py`, which streams Ensembl Plants
    GFF3 files and writes `data/locus_resolutions.json`, so locus checks need no network and give
    the same answer every run.
-4. **Publish** the site from `data/atlas_v3.json`.
+4. **Find the target gene** when an entry documents its solution in another species:
+   `scripts/find_ortholog.py` aligns the gene and its close paralogues against the target crop's
+   whole proteome, so a hit that is really a paralogue shows up as one. It returns ranked
+   candidates, not established orthologs.
+5. **Publish** the site from `data/atlas_v3.json`.
 
 Run it yourself:
 
