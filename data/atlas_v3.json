@@ -1288,10 +1288,21 @@
       },
       "correction": {
         "ortholog_candidate": {
-          "status": "no candidate — the method could not be run honestly here",
-          "reason": "The query proteins were wrong or unusable. A gene-name search for Arabidopsis 'ER' returned enhancer of rudimentary protein (109 aa), not the ~976 aa ERECTA receptor kinase; ERECTA itself is not in NCBI RefSeq under that name, so only ERL1 and ERL2 are retrievable. KIX8 resolves only to an uncharacterised 343 aa protein.",
-          "what_the_run_did_show": "Solyc08g061560, already in this entry and already annotated as a receptor-like kinase, scores 2942 against AtERL1 — it is a genuine ERECTA-family kinase. Which family member corresponds to Arabidopsis ER is not resolvable this way.",
-          "to_confirm": "a tree of the ERECTA/ERL receptor-kinase family; for KIX8, a reference protein that is actually characterised"
+          "status": "SlER assigned",
+          "to_confirm": "none for identity",
+          "gene": "Solyc08g061560",
+          "phylogeny_check": {
+            "checked": "2026-11-17",
+            "verdict": "Solyc08g061560 is tomato ERECTA, not an ERL",
+            "summary": "Ensembl Compara calls Solyc08g061560 a one-to-one orthologue of Arabidopsis ERECTA (AT2G26330), and Solyc03g007050 a co-orthologue of ERL1 and ERL2. Our tree puts ERL1, ERL2 and Solyc03g007050 together in every replicate and Solyc08g061560 never in that group. Published work calls Solyc08g061560 ERECTA and edits it with CRISPR (PMID 38473859 review; PMID 42395599 lists 'ERECTA: Solyc08g061560').",
+            "support": {
+              "AtERL1 + AtERL2 + Solyc03g007050": "200/200",
+              "Solyc08g061560 with the ERL group": "0/200",
+              "Solyc08g061560 + AtER as a pair": "8/200"
+            },
+            "limits": "With six proteins the tree excludes Solyc08g061560 from the ERL clade but does not join it to AtER as a pair (8/200): the two sit as separate branches outside the ERL clade. The assignment rests on Compara plus that exclusion plus published usage. The earlier note that it scores 2942 against AtERL1 is consistent: ER and ERL are close paralogues.",
+            "files": "data/phylogeny/ER/"
+          }
         }
       },
       "locus_check": {
@@ -1764,10 +1775,18 @@
       "correction": {
         "open_question": "Locus Solyc07g008100 resolves at Sol Genomics only to a clone name, 'Genomic DNA chromosome 3 P1 clone MUJ8' — no gene function, and it names chromosome 3 while the tag says chromosome 7. Either the annotation is empty for this locus or the ID is wrong. SlKIX8 and SlKIX9 also fail to resolve in NCBI, so this entry currently rests on FW2.2 (Solyc02g090730, confirmed as a cell number regulator) alone.",
         "ortholog_candidate": {
-          "status": "no candidate — the method could not be run honestly here",
-          "reason": "The query proteins were wrong or unusable. A gene-name search for Arabidopsis 'ER' returned enhancer of rudimentary protein (109 aa), not the ~976 aa ERECTA receptor kinase; ERECTA itself is not in NCBI RefSeq under that name, so only ERL1 and ERL2 are retrievable. KIX8 resolves only to an uncharacterised 343 aa protein.",
-          "what_the_run_did_show": "Solyc08g061560, already in this entry and already annotated as a receptor-like kinase, scores 2942 against AtERL1 — it is a genuine ERECTA-family kinase. Which family member corresponds to Arabidopsis ER is not resolvable this way.",
-          "to_confirm": "a tree of the ERECTA/ERL receptor-kinase family; for KIX8, a reference protein that is actually characterised"
+          "status": "SlKIX8 and SlKIX9 assigned by Ensembl Compara only",
+          "to_confirm": "the Solyc IDs in PMID 34601614's methods or supplement",
+          "genes": {
+            "SlKIX8": "Solyc07g008100",
+            "SlKIX9": "Solyc08g059700"
+          },
+          "compara_check": {
+            "checked": "2026-11-17",
+            "result": "Ensembl Compara: Solyc07g008100 one-to-one orthologue of AtKIX8 (AT3G24150); Solyc08g059700 one-to-one orthologue of AtKIX9 (AT4G32295).",
+            "limits": "No tree of our own: KIX proteins are short and poorly conserved outside the KIX-binding motif, so a tree would add little over Compara. The characterising paper exists (PMID 34601614, 'SlKIX8 and SlKIX9 are negative regulators of leaf and fruit growth in tomato') but its main text does not print the Solyc IDs, so the ID-to-symbol link is Compara's, not the paper's.",
+            "files": "data/phylogeny/compara_kix.json"
+          }
         }
       },
       "locus_check": {
@@ -3087,9 +3106,26 @@
           "gene": "Csa_5G623470",
           "method": "protein similarity against the Cucumis sativus proteome",
           "score_profile": "1607 to AtMLO2, the clade-V mildew susceptibility gene; MLO6 was included as a paralogue query",
-          "status": "family-level candidate only",
+          "status": "genes assigned; the symbols depend on which published numbering is followed",
           "reading": "This is a clade-V MLO, which is the clade that matters for mildew susceptibility. But which cucumber MLO number it is (the literature uses CsMLO1 and CsMLO8) cannot be decided by similarity, because the clade members are too close to each other.",
-          "to_confirm": "an MLO-family tree with the published CsMLO numbering, then the symbol can be assigned"
+          "to_confirm": "an MLO-family tree with the published CsMLO numbering, then the symbol can be assigned",
+          "genes": {
+            "CsMLO1 (CsaMLO1)": "Csa_1G085890",
+            "CsMLO8 (CsaMLO8)": "Csa_5G623470",
+            "CsMLO11 (CsaMLO11)": "Csa_6G292430"
+          },
+          "phylogeny_check": {
+            "checked": "2026-11-17",
+            "verdict": "the three cucumber clade-V MLOs identified; Csa_5G623470 is the AtMLO2/6/12 counterpart",
+            "summary": "The problem was naming, not phylogeny. PMID 40151055 (Mol Plant Pathol 2025) states cucumber has three clade-V MLOs and gives them as CsaMLO1 = Csa1G085890, CsaMLO8 = Csa5G623470, CsaMLO11 = Csa6G292430 (Chinese Long v2, the build Ensembl serves). Our tree agrees on the structure: Csa_5G623470 groups with AtMLO2/6/12 and never with the other two cucumber genes, which group with each other. Ensembl Compara calls Csa_5G623470 a co-orthologue of AtMLO2, AtMLO6 and AtMLO12.",
+            "support": {
+              "Csa_5G623470 with AtMLO2/6/12": "189/200",
+              "Csa_1G085890 with Csa_6G292430": "161/200",
+              "Csa_5G623470 with either other cucumber MLO": "0/200"
+            },
+            "limits": "Naming conflict in the literature: PMID 39358737 (Genome Biol 2024) calls Csa5G623470 'CsMLO1' (also CsaV3_5G036400), and PMID 40151055 cites a work calling it 'CsMLO2'. This entry's symbols (CsMLO1, CsMLO8, CsMLO11 side by side) only make sense in the CsaMLO numbering, so that is what is recorded. Anyone reading 'CsMLO1' elsewhere must check which gene is meant. The stem-resistance work (PMID 38404593, Hortic Res 2024) is on CsMLO8/11.",
+            "files": "data/phylogeny/MLO/"
+          }
         }
       },
       "locus_check": {
@@ -3415,7 +3451,23 @@
           "status": "candidate, not established orthology",
           "reading": "Reasonable candidate for the cucumber WIP1 counterpart.",
           "to_confirm": "a WIP/C2H2 tree and expression in the floral bud",
-          "limit": "ARF8 could not be separated from ARF6: every cucumber ARF hit scored closest to AtARF6, so similarity cannot tell which cucumber gene is the ARF8 counterpart. Top ARF hits for the record: Csa_6G524670 (3311), Csa_1G536820 (3233), Csa_5G315370 (2337)."
+          "limit": "Resolved on 2026-11-17 — see arf8. Raw similarity scores had all three ARF hits closest to AtARF6 (Csa_6G524670 3311, Csa_1G536820 3233, Csa_5G315370 2337); a tree and Ensembl Compara both place Csa_5G315370 with ARF8.",
+          "arf8": {
+            "gene": "Csa_5G315370",
+            "status": "assigned by two independent lines",
+            "phylogeny_check": {
+              "checked": "2026-11-17",
+              "verdict": "Csa_5G315370 is the ARF8 counterpart; Csa_6G524670 and Csa_1G536820 are ARF6 co-orthologues",
+              "summary": "Ensembl Compara calls Csa_5G315370 a one-to-one orthologue of AtARF8, and Csa_6G524670 and Csa_1G536820 co-orthologues of AtARF6. Our tree agrees in every bootstrap replicate. The earlier similarity scan, where all three scored closest to AtARF6, was misleading: raw alignment scores grow with length, and ARF6 is the longer protein.",
+              "support": {
+                "Csa_5G315370 with AtARF8": "200/200",
+                "Csa_6G524670 + Csa_1G536820 with AtARF6": "200/200",
+                "Csa_5G315370 with AtARF6": "0/200"
+              },
+              "limits": "No published cucumber paper using the ID Csa5G315370 was found in PMC, so the symbol CsARF8 for it rests on orthology, not on a paper naming it.",
+              "files": "data/phylogeny/ARF/"
+            }
+          }
         }
       },
       "locus_check": {
@@ -5257,15 +5309,45 @@
             "BoMYB34"
           ],
           "genes": {
-            "MYB29": "Bo9g175680",
-            "MYB34": "Bo7g098110"
+            "MYB28": [
+              "Bo2g161590",
+              "Bo9g014610",
+              "Bo7g098590"
+            ],
+            "MYB29": [
+              "Bo9g175680",
+              "Bo3g004500"
+            ],
+            "MYB34": [
+              "Bo7g098110",
+              "Bo2g161170",
+              "Bo2g161180",
+              "Bo9g014380"
+            ]
           },
           "method": "protein similarity against the Brassica oleracea proteome, with MYB28/29/34 all as queries",
           "score_profile": "Bo9g175680 1357 to AtMYB29; Bo7g098110 1193 to AtMYB34; no top hit was closest to AtMYB28",
-          "status": "family-level candidates only",
-          "reading": "R2R3-MYB proteins in this clade are too similar for this method to separate reliably, and the absence of any MYB28-closest hit is itself the warning sign. Treat these as 'a MYB of this clade', not as the named gene.",
+          "status": "genes assigned by tree, Ensembl Compara and published usage",
+          "reading": "Superseded 2026-11-17. The earlier warning — no MYB28-closest hit — was a limit of the similarity scan, not of the genome: B. oleracea has three MYB28 copies.",
           "to_confirm": "a MYB-family tree over the R2R3 domain plus the published Brassica MYB28/29 nomenclature",
-          "note": "HAG1 was removed from the wanted list: it is a synonym of MYB28, which this entry already resolves in NCBI Gene. The draft wrote 'MYB28 (HAG1)' and the symbol parser made two genes of one."
+          "note": "HAG1 was removed from the wanted list: it is a synonym of MYB28, which this entry already resolves in NCBI Gene. The draft wrote 'MYB28 (HAG1)' and the symbol parser made two genes of one.",
+          "phylogeny_check": {
+            "checked": "2026-11-17",
+            "verdict": "MYB28, MYB29 and MYB34 copies separated cleanly",
+            "summary": "Our tree over the full proteins places Bo2g161590, Bo9g014610 and Bo7g098590 with AtMYB28 in every replicate; Bo9g175680 and Bo3g004500 with AtMYB29; Bo7g098110 and Bo2g161170 with AtMYB34. Ensembl Compara gives the same three MYB28 copies, the same two MYB29 copies, and four MYB34 copies (also Bo2g161180, Bo9g014380). Published usage agrees: PMID 29922320 names them BoMYB28-1 Bo7g098590, BoMYB28-2 Bo2g161590, BoMYB28-3 Bo9g014610; PMID 29265559 places the MYB28 orthologue Bo2g161590 on chromosome C2; a myb28 cabbage line knocked out Bo2g161590 and Bo9g014610 together (Neequaye et al. 2021, as cited in PMID 35717563).",
+            "support": {
+              "three Bo copies with AtMYB28": "200/200",
+              "Bo9g175680 + Bo3g004500 with AtMYB29": "196/200",
+              "Bo7g098110 + Bo2g161170 with AtMYB34": "199/200"
+            },
+            "limits": "Which MYB28 copy is the one in Beneforté: PMID 35432397 (Neequaye 2022) says the introgression is the B. villosa MYB28 C2 allele but gives no gene ID. Bo2g161590 is the only MYB28 copy on C2 (the Bo2g prefix is chromosome C2), so the Beneforté gene is very probably Bo2g161590 — an inference from chromosome, not a stated identity. The order of copies within the MYB28 clade is not resolved (Bo2g161590 + Bo9g014610: 9/200).",
+            "files": "data/phylogeny/MYB/"
+          },
+          "beneforte_copy": {
+            "gene": "Bo2g161590",
+            "basis": "inferred: B. villosa MYB28 C2 allele (PMID 35432397) + Bo2g161590 is the C2 MYB28 copy (PMID 29265559)",
+            "status": "inference"
+          }
         },
         "set": {
           "commercial_product": "Beneforte broccoli (two commercialised F1 hybrids) — carry an introgressed B. villosa Myb28 allele, this entry's gene"

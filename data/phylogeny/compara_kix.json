@@ -1,0 +1,22 @@
+{
+ "AtKIX8": [
+  {
+   "type": "ortholog_one2one",
+   "protein_id": "CDS-Solyc07g008100.4.1",
+   "id": "gene-Solyc07g008100.4",
+   "method_link_type": "ENSEMBL_ORTHOLOGUES",
+   "taxonomy_level": "Pentapetalae",
+   "species": "solanum_lycopersicum_gca000188115v5cm"
+  }
+ ],
+ "AtKIX9": [
+  {
+   "taxonomy_level": "Pentapetalae",
+   "species": "solanum_lycopersicum_gca000188115v5cm",
+   "id": "gene-Solyc08g059700.2",
+   "protein_id": "CDS-Solyc08g059700.2.1",
+   "method_link_type": "ENSEMBL_ORTHOLOGUES",
+   "type": "ortholog_one2one"
+  }
+ ]
+}

@@ -1,0 +1,2 @@
+AtKIX8 AT3G24150 [('gene-Solyc07g008100.4', 'ortholog_one2one')]
+AtKIX9 AT4G32295 [('gene-Solyc08g059700.2', 'ortholog_one2one')]

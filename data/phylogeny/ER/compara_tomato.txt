@@ -1,0 +1,4 @@
+AtER AT2G26330 -> solanum_lycopersicum: Solyc08g061560 ortholog_one2one
+AtERL1 AT5G62230 -> Solyc03g007050 ortholog_one2many
+AtERL2 AT5G07180 -> Solyc03g007050 ortholog_one2many
+(Ensembl REST homology endpoint, 2026-11-17)

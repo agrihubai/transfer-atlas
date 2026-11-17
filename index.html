@@ -407,20 +407,31 @@ function sheet(e){
     <div class="matrix">${matrix}</div>
     ${c.evidence_note ? `<p class="note">Draft note, not verified: ${esc(c.evidence_note)}</p>` : ''}
 
-    ${(e.correction || {}).ortholog_candidate ? (oc => `<h3>Candidate in the target crop</h3>
-      <dl class="kv"><dt>Gene</dt><dd><b>${esc(oc.gene)}</b></dd>
-      <dt>Location</dt><dd>${esc(oc.location)}</dd></dl>
-      <p class="note">${esc(oc.why_this_one)}</p>
-      <p class="note flat" style="font-size:13px">${esc(oc.how_it_was_found)}</p>
-      <dl class="kv">${Object.entries(oc.score_profile || {}).map(([k, v]) =>
-        `<dt>${esc(v)}</dt><dd>${esc(k)}</dd>`).join('')}</dl>
-      ${oc.phylogeny_check ? `<h3>Phylogenetic check — ${esc(oc.phylogeny_check.verdict)}</h3>
-      <p class="note">${esc(oc.phylogeny_check.summary)}</p>
-      <dl class="kv">${Object.entries(oc.phylogeny_check.support || {}).map(([k, v]) =>
-        `<dt>${esc(v)}</dt><dd>${esc(k)}</dd>`).join('')}</dl>
-      <p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.phylogeny_check.limits)}</p>` : ''}
-      <p class="note warn">${esc(oc.what_this_is_not)}</p>
-      ${oc.contradicts ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.contradicts)}</p>` : ''}`)(e.correction.ortholog_candidate) : ''}
+    ${(e.correction || {}).ortholog_candidate ? (oc => {
+      const kv = o => o && typeof o === 'object' ? `<dl class="kv">${Object.entries(o).map(([k, v]) =>
+        `<dt>${esc(Array.isArray(v) ? v.join(', ') : v)}</dt><dd>${esc(k)}</dd>`).join('')}</dl>` : (o ? `<p class="note flat" style="font-size:13px">${esc(o)}</p>` : '');
+      const genes = o => o ? `<dl class="kv">${Object.entries(o).map(([k, v]) =>
+        `<dt>${esc(k)}</dt><dd><b>${esc(Array.isArray(v) ? v.join(', ') : v)}</b></dd>`).join('')}</dl>` : '';
+      const phy = (p, title) => p ? `<h3>${esc(title || 'Phylogenetic check')} — ${esc(p.verdict || p.result || '')}</h3>
+        ${p.summary ? `<p class="note">${esc(p.summary)}</p>` : ''}${kv(p.support)}
+        ${p.limits ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(p.limits)}</p>` : ''}` : '';
+      return `<h3>Candidate in the target crop${oc.status ? ' — ' + esc(oc.status) : ''}</h3>
+      ${oc.gene ? `<dl class="kv"><dt>Gene</dt><dd><b>${esc(oc.gene)}</b></dd>${oc.location ? `<dt>Location</dt><dd>${esc(oc.location)}</dd>` : ''}</dl>` : ''}
+      ${genes(oc.genes)}
+      ${oc.why_this_one ? `<p class="note">${esc(oc.why_this_one)}</p>` : ''}
+      ${oc.reading ? `<p class="note">${esc(oc.reading)}</p>` : ''}
+      ${oc.how_it_was_found ? `<p class="note flat" style="font-size:13px">${esc(oc.how_it_was_found)}</p>` : ''}
+      ${kv(oc.score_profile)}
+      ${phy(oc.phylogeny_check)}
+      ${oc.arf8 ? `${genes({'CsARF8': oc.arf8.gene})}${phy(oc.arf8.phylogeny_check, 'ARF8 check')}` : ''}
+      ${oc.beneforte_copy ? `<p class="note">Beneforté copy: <b>${esc(oc.beneforte_copy.gene)}</b> (${esc(oc.beneforte_copy.status)}) — ${esc(oc.beneforte_copy.basis)}</p>` : ''}
+      ${oc.compara_check ? `<h3>Ensembl Compara check</h3><p class="note">${esc(oc.compara_check.result)}</p>
+        <p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.compara_check.limits)}</p>` : ''}
+      ${oc.limit ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.limit)}</p>` : ''}
+      ${oc.what_this_is_not ? `<p class="note warn">${esc(oc.what_this_is_not)}</p>` : ''}
+      ${oc.to_confirm && oc.to_confirm !== 'none for identity' ? `<p class="note flat" style="font-size:13px">Still to confirm: ${esc(oc.to_confirm)}</p>` : ''}
+      ${oc.contradicts ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.contradicts)}</p>` : ''}`;
+    })(e.correction.ortholog_candidate) : ''}
     ${(e.correction || {}).ip_signal ? `<h3>IP signal — ${esc(e.correction.ip_signal.status)}</h3>
       <p class="note warn">${esc(e.correction.ip_signal.reported)}</p>
       <p class="note">What was actually checked: ${esc(e.correction.ip_signal.what_was_checked)}</p>
