@@ -411,6 +411,11 @@ function sheet(e){
       <p class="note flat" style="font-size:13px">${esc(oc.how_it_was_found)}</p>
       <dl class="kv">${Object.entries(oc.score_profile || {}).map(([k, v]) =>
         `<dt>${esc(v)}</dt><dd>${esc(k)}</dd>`).join('')}</dl>
+      ${oc.phylogeny_check ? `<h3>Phylogenetic check — ${esc(oc.phylogeny_check.verdict)}</h3>
+      <p class="note">${esc(oc.phylogeny_check.summary)}</p>
+      <dl class="kv">${Object.entries(oc.phylogeny_check.support || {}).map(([k, v]) =>
+        `<dt>${esc(v)}</dt><dd>${esc(k)}</dd>`).join('')}</dl>
+      <p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.phylogeny_check.limits)}</p>` : ''}
       <p class="note warn">${esc(oc.what_this_is_not)}</p>
       ${oc.contradicts ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(oc.contradicts)}</p>` : ''}`)(e.correction.ortholog_candidate) : ''}
     ${(e.correction || {}).ip_signal ? `<h3>IP signal — ${esc(e.correction.ip_signal.status)}</h3>

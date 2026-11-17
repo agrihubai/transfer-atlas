@@ -1181,7 +1181,7 @@
         "pmid_doi": "34128088",
         "commercial_product": "",
         "documented_in": "Vitis vinifera (grape)",
-        "target_note": "Candidate ortholog identified by protein similarity: Cla97C08G144840 on chromosome 8 of the Cla97_v1 build, closest to grape AGL11 and to Arabidopsis STK and clearly separated from the C-class paralogues (see ortholog_candidate for the score profile). This is the gene to test first; orthology itself is not established, and nothing has been edited or expressed.",
+        "target_note": "Candidate ortholog identified by protein similarity: Cla97C08G144840 on chromosome 8 of the Cla97_v1 build, closest to grape AGL11 and to Arabidopsis STK and clearly separated from the C-class paralogues (see ortholog_candidate for the score profile). On 2026-11-17 a phylogenetic check placed it with the D-class (STK/AGL11) rather than SHP, agreeing with Ensembl Compara's one-to-one call against AtSTK (moderate tree support, 63%). Nothing has been edited or expressed.",
         "patent_reference": "Check cucurbit seedlessness patents",
         "linkage_drag": "None via native edit.",
         "pleiotropic_effects": "Loss of AGL11 function prevents seed set, which removes the way the line itself is propagated: a seedless diploid cannot be maintained from seed. This is the practical reason commercial watermelon seedlessness runs through triploid hybrids. Any editing route here has to answer how the line is maintained — vegetative or in vitro propagation, a maintainer line, or a conditional allele — before it is a breeding plan rather than a result.",
@@ -1256,9 +1256,22 @@
             "AtSHP1/AGL1 (C-class paralogue)": 644.0,
             "AtAG (C-class)": 377.0
           },
-          "why_this_one": "It is closest to both D-class queries and about 165 points clear of the nearest C-class paralogue, which is the discrimination that matters here. The runner-up on the D-class side, Cla97C01G024020, scores 718 against VviAGL11 but 696 against AtSHP2 — effectively tied, so it cannot be assigned. An 8.2 kb multi-exon span also fits a MADS-box gene.",
-          "what_this_is_not": "Not an established ortholog. Protein similarity with paralogue discrimination gives a ranked candidate; orthology needs a phylogenetic tree over the MADS and K-box domains, and expression in the ovule would be the biological confirmation. Until then this is the gene to test first, not the answer.",
-          "contradicts": "Both chromosome-7 identifiers previously attached to this entry. The draft's own tag Cla97C07G144940 exists in no reachable build. The locus suggested by an external analysis, Cla97C07G140950, does exist but carries no annotation, spans only 722 bp, and does not appear among the top candidates here. The best candidate is on chromosome 8."
+          "why_this_one": "It is closest to both D-class queries and about 165 points clear of the nearest C-class paralogue, which is the discrimination that matters here. The runner-up by score, Cla97C01G024020 (718 against VviAGL11, 696 against AtSHP2), turned out in the tree to belong to the C-class AGAMOUS lineage. An 8.2 kb multi-exon span also fits a MADS-box gene.",
+          "what_this_is_not": "Not proof of function. Subfamily membership is now supported by two independent lines (Ensembl Compara one-to-one call and our own tree, see phylogeny_check), so this is the watermelon AGL11/STK orthologue on present evidence. Whether it acts in the ovule, and whether suppressing it gives seedless fruit in watermelon, is untested; expression in the ovule would be the next biological check.",
+          "contradicts": "Both chromosome-7 identifiers previously attached to this entry. The draft's own tag Cla97C07G144940 exists in no reachable build. The locus suggested by an external analysis, Cla97C07G140950, does exist but carries no annotation, spans only 722 bp, and does not appear among the top candidates here. The best candidate is on chromosome 8.",
+          "phylogeny_check": {
+            "checked": "2026-11-17",
+            "verdict": "groups with the D-class (STK/AGL11), not with SHP",
+            "summary": "Two independent lines agree. (1) Ensembl Compara's own gene tree calls Cla97C08G144840 a one-to-one ortholog of Arabidopsis STK (AT4G09960) and of grape Vitis18g02617. (2) Our tree over the MADS, I and K regions places it in the clade with Arabidopsis STK, tomato AGL11 and grape AGL11; in 0 of 200 bootstrap trees did it group with SHP1/SHP2, while SHP1+SHP2 held together in 196 of 200. Like the other D-class proteins it has no N-terminal extension before the MADS domain; AG, SHP1, SHP2 and TAGL1 all have one. Identity over that region: 88.3% to grape AGL11, 81.9% to AtSTK, 74.3–74.9% to SHP1/SHP2.",
+            "support": {
+              "D-class clade (AtSTK + tomato AGL11 + grape AGL11 + Cla97C08G144840), bootstrap": "126/200 (63%)",
+              "Cla97C08G144840 with SHP1/SHP2, bootstrap": "0/200",
+              "Ensembl Compara call vs AT4G09960": "ortholog_one2one",
+              "Identity to grape AGL11 / AtSTK / AtSHP2 / AtSHP1": "88.3% / 81.9% / 74.9% / 74.3%"
+            },
+            "also_found": "Cla97C01G024020, earlier listed as the D-class runner-up, groups instead with the C-class AGAMOUS lineage (with Cla97C03G058570 in 151/200 trees, next to tomato AGAMOUS). Cla97C02G044160 sits with tomato TAGL1 (PLENA/SHP lineage), weakly (67/200).",
+            "limits": "63% bootstrap is moderate support, not strong. 13 sequences, one alignment, one model; no other cucurbit sequence (the cucumber orthologue came back as a 114 aa fragment). This settles which subfamily the gene belongs to; it does not show that the gene acts in the watermelon ovule or that suppressing it gives seedless fruit. Files: data/phylogeny/WAT-SEED-01/."
+          }
         },
         "locus_claims_checked": {
           "checked": "2026-11-16 against the Citrullus lanatus Cla97_v1 proteome from Ensembl Plants (22,541 proteins)",
@@ -1284,7 +1297,7 @@
           "trait": "Seedlessness (stenospermocarpy) — documented in grape, untested in watermelon",
           "documented_in": "Vitis vinifera (grape)",
           "gene_species": "Vitis vinifera",
-          "target_note": "Candidate ortholog identified by protein similarity: Cla97C08G144840 on chromosome 8 of the Cla97_v1 build, closest to grape AGL11 and to Arabidopsis STK and clearly separated from the C-class paralogues (see ortholog_candidate for the score profile). This is the gene to test first; orthology itself is not established, and nothing has been edited or expressed.",
+          "target_note": "Candidate ortholog identified by protein similarity: Cla97C08G144840 on chromosome 8 of the Cla97_v1 build, closest to grape AGL11 and to Arabidopsis STK and clearly separated from the C-class paralogues (see ortholog_candidate for the score profile). On 2026-11-17 a phylogenetic check placed it with the D-class (STK/AGL11) rather than SHP, agreeing with Ensembl Compara's one-to-one call against AtSTK (moderate tree support, 63%). Nothing has been edited or expressed.",
           "gene_id": "",
           "portability": "t1",
           "editing_possibility": "Native edit candidate: suppress watermelon's own AGL11 ortholog once identified. No specific mutation is defined in this entry, because the ortholog is not identified — so a sequence-based patent search is not yet possible either. The grape evidence is for suppression of the gene, not for a transgene.",
