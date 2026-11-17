@@ -243,7 +243,19 @@
         "gene": "CRb, Crr1, Crr3",
         "why": "Not characterised in PMID 23054353. The PMIDs offered for them were checked and are wrong papers entirely: 23175754 is about cellulose microfibrils in collenchyma, and 24831572 is a cardiovascular medicine review. Each locus needs its own entry and a real reference."
       },
-      "commercial_status": "NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syngenta holds a patent on monogenic dominant clubroot resistance introgressed into B. oleracea. But the specific cultivar names offered — Kilaton F1, Clapton F1, Crispus F1, Monclano F1 — could not be tied to CRa by any source found, and 'carries a major CR locus' is not the same claim as 'carries this gene'. Needs one source naming a cultivar and its locus."
+      "commercial_status": "NOT set to Level 1. The literature does document that CR loci have been introduced into commercial F1 cultivars of Chinese cabbage, and that CRb/CRbKato is the same allele as CRa (Breeding Science 72:21040; Hatakeyama et al. 2017), and Syngenta holds a patent on monogenic dominant clubroot resistance introgressed into B. oleracea. But the specific cultivar names offered — Kilaton F1, Clapton F1, Crispus F1, Monclano F1 — could not be tied to CRa by any source found, and 'carries a major CR locus' is not the same claim as 'carries this gene'. Needs one source naming a cultivar and its locus.",
+      "locus_claims_checked": {
+        "checked": "2026-11-17, against the source paper (PMID 35445530, full text PMC9342621) and NCBI",
+        "BraA03g012133E": {
+          "result": "real identifier, but from a different genome than the draft implies",
+          "detail": "It is a gene model of the European fodder turnip ECD04 genome (Yang et al. 2022, Plant Biotechnol J 20:1502-1517), not of the Chiifu reference. The paper names it CRA3.7.1, one of five tandem candidates in the CRA3.7 locus at 24.71-25.34 Mb on A03 (BraA03g012133E, -134E, -135E, -137E, -138E), reports it identical to CRa from Chinese cabbage T136-8 and to CRb-alpha from European turnip ECD02, and validates it by over-expression in B. napus.",
+          "genome_source": "Raw reads: NCBI BioProject PRJNA672906. Assembly and annotation: bna.hzau.edu.cn (not reachable from here). NCBI Gene, Nucleotide and Protein return no record for this identifier.",
+          "about_the_E_suffix": "Every ECD04 gene model cited in the paper ends in E (BraA03g012133E, BraA08g039305E), unlike Chiifu v3.0 (BraA03g005120.3C) or v3.5 (BraA03g010420.3.5C). That pattern fits E standing for the ECD04 annotation, but the paper does not say so; recorded as a pattern, not a definition.",
+          "what_was_wrong_in_the_draft": "'(CRa/CRb)' presented the ID as a reference-genome locus for two genes. It is one ECD04 gene that matches both CRa and CRb-alpha in sequence; using it to look up the Chiifu genome or Ensembl Plants (Brapa_1.0) will find nothing.",
+          "use_in_this_entry": "Kept as a cross-reference only. Identity stays anchored to GenBank AB751517 and NCBI Gene 103861267 (LOC103861267, which lists cra as alias, chr A03). The ECD04 paper is a second, independent functional validation of the same gene."
+        }
+      },
+      "open_question": "PMID 35445530 (Yang et al. 2022) functionally validates the ECD04 copy of CRa (CRA3.7.1, BraA03g012133E); it could be added as a curated reference once the maintainer accepts it."
     },
     "ONI-TEAR-01": {
       "decided_by": "maintainer, 2026-11-13, from an external AI suggestion (Gemini) checked against NCBI",

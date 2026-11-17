@@ -275,7 +275,10 @@ function correction(e){
     ${un ? `<p class="note warn">Not pinned to a named gene:<ul style="margin:6px 0 0 16px">${un}</ul></p>` : ''}
     ${c.superseded ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">Superseded: ${esc(c.superseded.gene)} — ${esc(c.superseded.why)}</p>` : ''}
     ${cs ? `<h3>Commercial status</h3><p class="note warn">${esc(cs)}</p>` : ''}
-    ${c.open_question ? `<h3>Open question</h3><p class="note warn">${esc(c.open_question)}</p>` : ''}`;
+    ${c.open_question ? `<h3>Open question</h3><p class="note warn">${esc(c.open_question)}</p>` : ''}
+    ${c.locus_claims_checked ? `<h3>Locus IDs checked</h3><p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(c.locus_claims_checked.checked)}</p>
+      ${Object.entries(c.locus_claims_checked).filter(([k]) => k !== 'checked').map(([id, r]) =>
+        `<dl class="kv"><dt>${esc(id)}</dt><dd><b>${esc(r.result)}</b> — ${esc(r.detail)}${r.reading ? ' ' + esc(r.reading) : ''}${r.what_was_wrong_in_the_draft ? ' ' + esc(r.what_was_wrong_in_the_draft) : ''}</dd></dl>`).join('')}` : ''}`;
 }
 
 /* ---------- supplied references ----------
