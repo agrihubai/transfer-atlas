@@ -40,13 +40,25 @@ Gene, source and evidence are sourced. Portability, linkage, side-effects and IP
    candidates, not established orthologs.
 5. **Publish** the site from `data/atlas_v3.json`.
 
-Run it yourself:
+Run it yourself — after any edit to `data/corrections.json`, rebuild the whole
+atlas with one command:
+
+```bash
+python3 scripts/rebuild.py
+```
+
+It runs the steps below in order and ends with `scripts/check_atlas.py`, which
+refuses an atlas that is not fit to publish. Never commit the output of
+`--migrate` alone: it resets every entry to "unverified", and the published
+site would show nothing verified. `.github/workflows/check.yml` fails on any
+push that does this.
 
 ```bash
 python3 scripts/verify_genes.py --migrate
 python3 scripts/resolve_loci.py
 python3 scripts/verify_genes.py --verify --accessions
 python3 scripts/write_gaps.py
+python3 scripts/check_atlas.py
 ```
 
 Or let it run itself: `.github/workflows/verify.yml` does the same every Monday

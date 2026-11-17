@@ -1201,6 +1201,10 @@ def main() -> int:
         return 1
     if a.migrate:
         migrate()
+        if not a.verify:
+            print("\nWARNING: data/atlas_v3.json is now an unverified skeleton — every entry "
+                  "reads 'unverified'.\nDo not commit it like this. Finish the pipeline, or "
+                  "run everything at once with:\n  python3 scripts/rebuild.py\n", file=sys.stderr)
     if a.verify:
         verify(a.only)
     if a.accessions:

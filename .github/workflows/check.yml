@@ -1,0 +1,31 @@
+name: Check atlas
+
+# Runs on every push that touches the published atlas. It makes no network
+# calls and changes nothing; it fails, visibly, if the committed file is not
+# fit to publish — most often because it was regenerated with
+# `verify_genes.py --migrate` alone, which resets every entry to 'unverified'.
+# Fix: python3 scripts/rebuild.py, then commit again.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/atlas_v3.json"
+  pull_request:
+    paths:
+      - "data/atlas_v3.json"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Atlas is fit to publish
+        run: python3 scripts/check_atlas.py
