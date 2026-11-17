@@ -1217,13 +1217,13 @@
         },
         "open_question": "Next steps are now concrete, in this order: confirm Cla97C08G144840 is the AGL11 ortholog with a phylogenetic tree over the conserved domains and ovule expression; then, with a real sequence in hand, a sequence-based patent search becomes possible for the first time. The IP position remains an unverified lead until someone supplies patent publication numbers — see ip_signal.",
         "ip_signal": {
-          "status": "lead now grounded in real patent numbers, but it is not the patent that was supplied",
+          "status": "claims of the three US rights tabled; one of them very probably names the same watermelon gene as this entry's candidate",
           "supplied_claim": "An external AI named EP3046410A1 (said family: WO2015036378A1, US20160222401A1) as the concrete patent covering seedlessness via AGL11 loss of function in Cucurbitaceae.",
           "checked": "2026-11-16, via web search of the patent family and the applicant's own trait-patent page",
           "what_is_true": [
             "The family is real: 'Plants with an intense fruit phenotype', Nunhems B.V., priority 2013-09-18.",
             "It does carry a Cucurbitaceae-level aspect: a plant whose endogenous AGL11-like ortholog has reduced amount, activity or function, the ortholog being of the tomato TAGL11-like protein of SEQ ID NO: 3.",
-            "Species-specific aspects are sequence-bound: Cucumis sativus against SEQ ID NO: 12, Cucumis melo against SEQ ID NO: 22, each at 75% cDNA identity or more."
+            "Species-specific aspects in the description are sequence-bound: Cucumis sativus against SEQ ID NO: 12, Cucumis melo against SEQ ID NO: 22, each at 75% cDNA identity or more. These are description passages; the claims use a different threshold (see claims_table)."
           ],
           "what_is_wrong": [
             "EP3046410A1 is withdrawn (EP14766735.6, 'not_active Withdrawn'), so it is not a live European right to clear.",
@@ -1232,17 +1232,73 @@
             "No watermelon sequence was found among the species-specific aspects retrieved; Citrullus is reached only through the family-level Cucurbitaceae wording."
           ],
           "live_members_to_clear": [
-            "US10212898B2 (listed Active)",
-            "US11202420B2"
+            "US10694696B2 (watermelon, ClMBP 17_2)",
+            "US10212898B2 (claim 9: Cucurbitaceae)",
+            "US11202420B2 (tomato only, per secondary source)"
           ],
-          "more_relevant_find": {
-            "patent": "US10694696B2",
-            "title": "Citrullus lanatus producing fruits with high texture fruit flesh",
-            "why": "A watermelon-specific right over a flesh-texture phenotype that also provides the gene and markers for identifying it in Citrullus lanatus. For a watermelon AGL11 question this is closer to the point than the withdrawn EP.",
-            "status": "not yet read in full — claims and assignee still to check"
+          "still_missing": "The amino-acid sequence of SEQ ID NO: 1 of US10694696B2 and SEQ ID NO: 3 of US10212898B2 (sequence listings not readable from here), so the gene match below is inferred from matching features, not from a sequence comparison. US11202420B2 claims were read from a secondary site (ipiq.io) because Google Patents failed to load. EP3244726A1: Google Patents lists it 'not_active Withdrawn', the EPO Global Patent Index page shows no status — unconfirmed.",
+          "not_evidence": "Google Patents prints a legal-status line with its own disclaimer that it is an assumption, not a legal conclusion. Treat 'Active' as a prompt to check a register, not as a finding.",
+          "claims_table": {
+            "checked": "2026-11-17, Google Patents (US10694696B2, US10212898B2) and ipiq.io (US11202420B2); Nunhems trait-patent page for family numbers",
+            "note": "A table of what the claims name. Not a legal reading, not a freedom-to-operate opinion.",
+            "rows": [
+              {
+                "patent": "US10694696B2",
+                "family": "WO2016113329A1; EP3244726A1; US20180049384A1",
+                "assignee": "Nunhems B.V.",
+                "priority": "2015-01-15 (EP15151329), 2015-05-12 (EP15167355)",
+                "granted": "2020-06-30",
+                "status_printed": "Active, anticipated expiry 2036-01-14 (search-engine assumption)",
+                "species_in_claims": "Citrullus lanatus var. lanatus only",
+                "gene": "ClMBP 17_2 (Citrullus lanatus MADS Box Protein 17_2)",
+                "independent_claims": "1: mutation replacing amino acid 36 of SEQ ID NO: 1, reduced or no protein function. 10: same, allele encoding a protein with ≥95% identity to SEQ ID NO: 1.",
+                "dependent_features": "S36F; homozygous; no wild-type allele; inbred or hybrid; mutant protein SEQ ID NO: 4 as in seed NCIMB 42340; seed, plant parts, fruit, food products",
+                "phenotype": "high texture (firm) fruit flesh — not seedlessness",
+                "deposit": "NCIMB 42340 (accepted 2014-11-28)"
+              },
+              {
+                "patent": "US10212898B2",
+                "family": "WO2015040098; EP3046410A1 (withdrawn); continuation US11202420B2",
+                "assignee": "Nunhems B.V.",
+                "priority": "2013-09-18",
+                "status_printed": "Active, anticipated expiry 2034-10-28 (search-engine assumption)",
+                "species_in_claims": "Claim 1: Solanum lycopersicum. Claim 9: any member of the family Cucurbitaceae, no species named.",
+                "gene": "AGL11-like protein, ortholog of the tomato protein of SEQ ID NO: 3",
+                "independent_claims": "1: tomato, ≥95% identity to SEQ ID NO: 3, reduced amount/activity/function, excluding the 1042–637 promoter deletion. 9: Cucurbitaceae, ≥65% identity to SEQ ID NO: 3, reduced amount/activity/function, no exclusion.",
+                "phenotype": "intense fruit (seed-cavity gel replaced by flesh)",
+                "deposit": "NCIMB 42161, NCIMB 42162 (tomato)"
+              },
+              {
+                "patent": "US11202420B2",
+                "family": "continuation of US10212898B2",
+                "assignee": "Nunhems B.V.",
+                "status_printed": "listed active",
+                "species_in_claims": "Solanum lycopersicum only (per secondary source); the Cucurbitaceae scope of the abstract does not appear in the claims",
+                "independent_claims": "1: cultivated tomato, ≥95% identity to SEQ ID NO: 3, reduced amount/activity/function, fruit ≥ about 120 g",
+                "phenotype": "intense fruit; dependents add ogc, Oidium resistance (Ol-6), round type, promoter deletion 1042–637",
+                "deposit": "NCIMB 42161, NCIMB 42162"
+              }
+            ]
           },
-          "still_missing": "the claim text of the live US members, read as claims rather than as description passages",
-          "not_evidence": "Google Patents prints a legal-status line with its own disclaimer that it is an assumption, not a legal conclusion. Treat 'Active' as a prompt to check a register, not as a finding."
+          "same_gene_check": {
+            "finding": "ClMBP 17_2 in US10694696B2 is very probably Cla97C08G144840, this entry's candidate.",
+            "matching_features": [
+              "Both proteins are 227 aa.",
+              "Both on chromosome 8.",
+              "Patent: 8 exons, 7 introns. Ensembl Cla97C08G144840: 8 exons.",
+              "Patent: serine at position 36; Cla97C08G144840.1 has serine at 36.",
+              "Patent: S36F caused by C→T at cDNA nucleotide 107. Ensembl CDS: codon 36 is TCT, nucleotide 107 is C; C→T gives TTT = phenylalanine.",
+              "Patent: MADS domain at residues 2–58; Cla97C08G144840.1 starts MGRGKIEIKRIE, the MADS start."
+            ],
+            "not_checked": "The two sequences were not compared residue by residue, because SEQ ID NO: 1 could not be read. Patent genomic position 1116 vs Ensembl position 107 for the same base implies the patent's genomic sequence starts about 1 kb upstream; consistent, not proof.",
+            "why_it_matters": "The same gene this entry proposes to suppress for seedlessness is claimed by Nunhems, as a loss-of-function S36F allele, for firm flesh in watermelon. The patent reports a texture phenotype, not seedlessness. That fits the tomato intense phenotype (locular tissue turns fleshy) and is a pleiotropy signal for this entry: in watermelon, loss of this gene's function is reported by the applicant to change flesh texture, and seed set is not mentioned in what was read."
+          },
+          "identity_to_claim_threshold": {
+            "what": "EMBOSS needle, gap open 10, extend 0.5 (the method the patents name), Cla97C08G144840.1 vs tomato AGL11 RefSeq NP_001234194.1",
+            "result": "154/232 = 66.4% identity over the alignment length (similarity 78.0%). Other watermelon AG-subfamily paralogues vs the same tomato protein: Cla97C01G024020 54.3%, Cla97C03G058570 53.1%, Cla97C02G044160 45.8%.",
+            "caveat": "The 65% threshold in claim 9 of US10212898B2 is against SEQ ID NO: 3, which was not read; NP_001234194.1 is assumed, not confirmed, to be that sequence. 66.4% sits close to 65%, and the figure moves with the denominator convention (154/223 = 69.1% over the tomato length). This is a measurement, not a reading of claim scope."
+          },
+          "other_leads_not_checked": "The Nunhems trait-patent page also lists 'Seedless Fruit Producing Plants' (WO2018011075; US10947557 B2, US11591611 B2) and 'Solanaceous plant capable of stenospermocarpic fruit formation' (WO2020239495). Not read; gene and species unknown."
         },
         "ortholog_candidate": {
           "gene": "Cla97C08G144840",

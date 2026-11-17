@@ -423,7 +423,18 @@ function sheet(e){
       <p class="note">What was actually checked: ${esc(e.correction.ip_signal.what_was_checked)}</p>
       ${e.correction.ip_signal.note_on_the_query ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(e.correction.ip_signal.note_on_the_query)}</p>` : ''}
       ${(e.correction.ip_signal.before_acting || []).length ? `<p class="note">Before acting:<ul style="margin:6px 0 0 16px">${
-        e.correction.ip_signal.before_acting.map(x => `<li>${esc(x)}</li>`).join('')}</ul></p>` : ''}` : ''}
+        e.correction.ip_signal.before_acting.map(x => `<li>${esc(x)}</li>`).join('')}</ul></p>` : ''}
+      ${(ip => ip.same_gene_check ? `<p class="note warn"><b>${esc(ip.same_gene_check.finding)}</b> ${esc(ip.same_gene_check.why_it_matters)}</p>
+        <ul class="note flat" style="font-size:13px;margin:6px 0 0 16px">${(ip.same_gene_check.matching_features || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        <p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(ip.same_gene_check.not_checked)}</p>` : '')(e.correction.ip_signal)}
+      ${(ip => ip.claims_table ? `<h3>What the claims name</h3><p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(ip.claims_table.note)} Checked ${esc(ip.claims_table.checked)}.</p>
+        ${ip.claims_table.rows.map(r => `<dl class="kv"><dt>Patent</dt><dd><b>${esc(r.patent)}</b> — ${esc(r.status_printed || '')}</dd>
+          <dt>Species</dt><dd>${esc(r.species_in_claims)}</dd><dt>Gene</dt><dd>${esc(r.gene || '')}</dd>
+          <dt>Claims</dt><dd>${esc(r.independent_claims)}</dd><dt>Phenotype</dt><dd>${esc(r.phenotype)}</dd></dl>`).join('')}` : '')(e.correction.ip_signal)}
+      ${(ip => ip.identity_to_claim_threshold ? `<p class="note">${esc(ip.identity_to_claim_threshold.result)}</p>
+        <p class="note flat" style="font-size:13px;color:var(--txt3)">${esc(ip.identity_to_claim_threshold.caveat)}</p>` : '')(e.correction.ip_signal)}
+      ${e.correction.ip_signal.still_missing ? `<p class="note flat" style="font-size:13px;color:var(--txt3)">Still missing: ${esc(e.correction.ip_signal.still_missing)}</p>` : ''}
+      <p class="note flat" style="font-size:13px">Research signal only — not legal advice, not a freedom-to-operate opinion.</p>` : ''}
     ${c.patent_reference ? `<h3>IP signal</h3><p class="note warn">${esc(c.patent_reference)}
       <br>Research signal only — not legal advice, not a freedom-to-operate opinion.</p>` : ''}`;
 

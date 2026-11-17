@@ -1,0 +1,55 @@
+########################################
+# Program: needle
+# Rundate: Tue 17 Nov 2026 14:21:03
+# Commandline: needle
+#    -asequence cla.fa
+#    -bsequence NP_001234194.fa
+#    -gapopen 10
+#    -gapextend 0.5
+#    -outfile n_NP_001234194.txt
+#    -auto
+# Align_format: srspair
+# Report_file: n_NP_001234194.txt
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Cla_C08G144840
+# 2: NP_001234194.1
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 232
+# Identity:     154/232 (66.4%)
+# Similarity:   181/232 (78.0%)
+# Gaps:          14/232 ( 6.0%)
+# Score: 751.0
+# 
+#
+#=======================================
+
+Cla_C08G14484      1 MGRGKIEIKRIENTTNRQVTFCKRRNGLLKKAYELSVLCDAEVALIVFSS     50
+                     |||||||||||||.||||||||||||||||||||||||||||:||||||:
+NP_001234194.      1 MGRGKIEIKRIENNTNRQVTFCKRRNGLLKKAYELSVLCDAEIALIVFST     50
+
+Cla_C08G14484     51 RGRLYEYSNNSIKTTIERYKKACSDSSATSSVTELNTQYYQQESAKLRQQ    100
+                     ||||||||||::|.||||||||.:::|:..:..|||.|:|||||.|||||
+NP_001234194.     51 RGRLYEYSNNNVKATIERYKKATAETSSAYTTQELNAQFYQQESKKLRQQ    100
+
+Cla_C08G14484    101 IQMLQNSNSNLVRHLMGDSLSALTVKELKQLENRLERGITRIRSKKHEML    150
+                     |||:||:|    |||:|:.||:|.|:||||||||||||||||||||||.:
+NP_001234194.    101 IQMMQNTN----RHLVGEGLSSLNVRELKQLENRLERGITRIRSKKHEAI    146
+
+Cla_C08G14484    151 LAEIEYLQKREIELENENVCIRTKIAEVERLQQANMV--SGQELNAIQAL    198
+                     |||.|.|.||||:||.||..:|:||||.||||:.:|:  .|:|.||.|..
+NP_001234194.    147 LAETEDLHKREIQLEQENAFLRSKIAENERLQELSMMPSGGEEYNAFQQY    196
+
+Cla_C08G14484    199 ASRNFFSPNMMEGGAVTY---SHQDKKMLHIG    227
+                     .:||....||||....:|   |...|:     
+NP_001234194.    197 LARNMLQLNMMETALPSYDPLSPDHKR-----    223
+
+
+#---------------------------------------
+#---------------------------------------
