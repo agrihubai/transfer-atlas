@@ -2,157 +2,152 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232BAD4E'/%3E%3Ctext x='16' y='23' font-size='20' font-family='sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2334A853'/%3E%3Ctext x='16' y='23' font-size='20' font-family='sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Transfer Atlas — AgriHub·AI</title>
-<meta name="description" content="Pick a crop and what you want changed. The Atlas shows which gene already solved it somewhere, how far it has been taken, whether the patent space is occupied, and where to look next.">
+<meta name="description" content="Pick a crop and a goal. The Atlas shows which gene already solved it somewhere, how far it has been taken, whether the patent space is occupied, and where to look next.">
 <style>
   :root{
-    --txt:#15181C; --txt2:#5A6069; --txt3:#8A9099;
-    --blue:#0A66C2; --blue-d:#084E94;
-    --fill:#F4F5F7; --fill2:#EBEDF0; --sep:#DFE2E6; --card:#fff;
-    --green-bg:#E3F6E8; --green-fg:#136B2C; --green-dot:#2BAD4E;
-    --blue-bg:#E4EEFB; --blue-fg:#0A5BC4; --blue-dot:#2E86FF;
-    --amber-bg:#FDF0D8; --amber-fg:#8A5500; --amber-dot:#F0A000;
-    --red-bg:#FCE8E6; --red-fg:#A3271A; --red-dot:#E0503B;
-    --grey-bg:#EFF0F2; --grey-fg:#5A6069; --grey-dot:#AEB4BC;
+    --txt:#1C1C1E; --txt2:#6C6C70; --txt3:#8E8E93;
+    --blue:#007AFF; --blue-d:#0A63C9;
+    --fill:#F2F2F7; --sep:#D8D8DC; --card:#fff;
+    --ok-bg:#DFF6E5; --ok-fg:#14702B; --ok-dot:#30D158;
+    --mid-bg:#FFEBCF; --mid-fg:#9A5300; --mid-dot:#FF9F0A;
+    --off-bg:#EFEFF4; --off-fg:#6C6C70; --off-dot:#B8B8BE;
+    --cis-bg:#DCEBFF; --cis-fg:#0A5BC4; --cis-dot:#007AFF;
+    --hot-bg:#FFE3DF; --hot-fg:#A3271A; --hot-dot:#FF453A;
     --r:14px;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{background:#fff;color:var(--txt);-webkit-font-smoothing:antialiased;
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','SF Pro Text',Helvetica,Arial,sans-serif;
-    letter-spacing:-0.01em;line-height:1.45}
+  body{
+    background:#fff;color:var(--txt);-webkit-font-smoothing:antialiased;
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;
+    letter-spacing:-0.01em;
+  }
   a{color:var(--blue);text-decoration:none}
   a:hover{color:var(--blue-d)}
-  .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px}
-  .head{padding-top:40px}
-  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .wrap{max-width:560px;margin:0 auto;padding:0 20px 56px}
+  .head{padding-top:48px}
   .kicker{font-size:13px;font-weight:600;color:var(--txt2)}
-  .kicker span{color:#2BAD4E}
+  .kline{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .lang{display:flex;background:var(--fill);border-radius:8px;padding:2px;flex:none}
   .lang button{border:none;background:transparent;cursor:pointer;color:var(--txt2);
-    font:600 12px inherit;padding:5px 10px;border-radius:6px;letter-spacing:.02em}
-  .lang button[aria-pressed=true]{background:#fff;color:var(--txt);box-shadow:0 1px 3px rgba(0,0,0,.14)}
-  h1{font-size:32px;font-weight:700;letter-spacing:-0.028em;margin:10px 0 7px}
-  .sub{font-size:16px;line-height:1.4;color:var(--txt2);margin:0;text-wrap:pretty}
+    font:600 12px inherit;padding:4px 9px;border-radius:6px}
+  .lang button[aria-pressed=true]{background:#fff;color:var(--txt);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+  .kicker span{color:#34A853}
+  h1{font-size:34px;font-weight:700;letter-spacing:-0.025em;margin:8px 0 6px}
+  .sub{font-size:16px;line-height:1.35;color:var(--txt2);margin:0 0 20px;text-wrap:pretty}
 
-  /* one quiet grouped list, the way the first version read */
-  .list{background:var(--fill);border-radius:var(--r);overflow:hidden;margin-top:22px}
-  .row{display:flex;align-items:center;gap:8px;min-height:50px;padding:0 15px;border-bottom:1px solid var(--sep)}
+  /* segmented control */
+  .seg{display:flex;background:var(--fill);border-radius:9px;padding:2px;margin:0 0 18px}
+  .seg button{
+    flex:1;border:none;background:transparent;cursor:pointer;color:var(--txt);
+    font:500 13px inherit;padding:7px 0;border-radius:7px;letter-spacing:-0.01em;
+  }
+  .seg button[aria-selected=true]{background:#fff;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+
+  /* filter list */
+  .list{background:var(--fill);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+  .row{display:flex;align-items:center;gap:8px;min-height:52px;padding:0 16px;border-bottom:.5px solid var(--sep)}
   .row:last-child{border-bottom:0}
-  .row label{font-size:15px;color:var(--txt);width:92px;flex:none}
-  .row select{flex:1;border:none;background:transparent;text-align:right;color:var(--blue);
-    font:400 15px inherit;letter-spacing:-0.01em;cursor:pointer;
-    -webkit-appearance:none;appearance:none;padding-right:2px;direction:rtl;min-width:0}
+  .row label{font-size:17px;width:104px;flex:none}
+  .row select{
+    flex:1;border:none;background:transparent;text-align:right;color:var(--blue);
+    font:400 17px inherit;letter-spacing:-0.01em;cursor:pointer;
+    -webkit-appearance:none;appearance:none;padding-right:2px;direction:rtl;
+  }
   .row select:focus{outline:none}
-  .row input{flex:1;border:none;background:transparent;font:400 15px inherit;color:var(--txt);
-    letter-spacing:-0.01em;min-width:0;text-align:right}
-  .row input:focus{outline:none}
-  .chev{color:var(--txt3);font-size:13px;flex:none}
-  .clr{border:none;background:var(--fill2);color:var(--txt2);width:21px;height:21px;border-radius:11px;
-    cursor:pointer;font:600 12px inherit;flex:none;display:none}
-  .clr.on{display:block}
+  .chev{color:var(--txt3);font-size:14px;flex:none}
 
-  .fold{margin-top:10px}
-  .fold summary{list-style:none;cursor:pointer;padding:9px 2px;font-size:13.5px;color:var(--blue)}
-  .fold summary::-webkit-details-marker{display:none}
-  .fold[open] summary{color:var(--txt2)}
-  .fold .body{padding:2px 2px 14px}
-  .ldef{display:flex;gap:9px;align-items:flex-start;margin-top:10px;font-size:13.5px;line-height:1.4;color:var(--txt2)}
-  .ldef .chip{flex:none;margin-top:1px}
-
-  .count{font-size:13px;color:var(--txt3);margin:20px 2px 11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .count{font-size:13px;color:var(--txt3);margin:0 2px 10px;display:flex;justify-content:space-between}
   .count b{font-weight:600;color:var(--txt2)}
 
-  .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r);
-    padding:13px 16px 12px 17px;margin-bottom:9px;cursor:pointer;position:relative;text-align:left;
-    width:100%;font:inherit;display:block;overflow:hidden}
-  .card:hover{border-color:#C4C9D0;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-  .rail{position:absolute;left:0;top:0;bottom:0;width:3px}
-  .card .top{display:flex;align-items:baseline;gap:10px}
-  /* on a card the three states are quiet text with a dot; filled chips stay in
-     the legend and the detail sheet, where they are being explained */
-  .state{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:12.5px;color:var(--txt2);line-height:1.5}
-  .state span{display:inline-flex;align-items:center;gap:5px}
-  .trait{font-size:17px;font-weight:650;flex:1;line-height:1.25;letter-spacing:-0.015em}
-  .crop{font-size:12.5px;font-weight:600;color:var(--txt3);flex:none}
-  .gives{font-size:14.5px;color:var(--txt2);margin:5px 0 9px;line-height:1.42;text-wrap:pretty}
-  .chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
-    padding:3.5px 9px;border-radius:20px;line-height:1.3}
-  .dot{width:7px;height:7px;border-radius:4px;flex:none}
-  .genes-line{font-size:12.5px;color:var(--txt3);margin-top:7px;
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
-
-  .empty{text-align:center;color:var(--txt3);font-size:15px;padding:38px 20px;line-height:1.5;
-    border:1px dashed var(--sep);border-radius:var(--r)}
-
-  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40;display:none}
-  .scrim.on{display:block}
-  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:#fff;
-    border-radius:18px 18px 0 0;max-height:92vh;overflow-y:auto;display:none;
-    padding:0 20px 40px;box-shadow:0 -8px 40px rgba(0,0,0,.22)}
-  .sheet.on{display:block}
-  @media(min-width:620px){
-    .sheet{left:50%;transform:translateX(-50%);max-width:620px;border-radius:18px;bottom:3vh;max-height:88vh}
+  /* cards */
+  .card{
+    background:var(--card);border-radius:var(--r);box-shadow:0 0 0 .5px rgba(0,0,0,.10),0 1px 3px rgba(0,0,0,.05);
+    padding:14px 16px;margin-bottom:10px;cursor:pointer;position:relative;overflow:hidden;
   }
-  .grab{position:sticky;top:0;background:#fff;padding:10px 0 6px;z-index:2}
-  .grab i{display:block;width:38px;height:5px;border-radius:3px;background:var(--sep);margin:0 auto}
-  .sh-close{position:absolute;right:15px;top:13px;border:none;background:var(--fill);color:var(--txt2);
-    width:31px;height:31px;border-radius:16px;font:600 15px inherit;cursor:pointer;z-index:3}
-  .sh-crop{font-size:12.5px;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
-  .sh-trait{font-size:23px;font-weight:700;letter-spacing:-0.025em;margin:5px 0 12px;padding-right:38px;line-height:1.2}
-  .lead{font-size:16.5px;line-height:1.45;margin:14px 0 0;text-wrap:pretty}
-  .lead-lab{font-size:11.5px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.07em;
-    display:block;margin-bottom:3px}
-  h3{font-size:12px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.06em;margin:26px 0 9px}
-  .stand{border:1px solid var(--sep);border-radius:12px;overflow:hidden}
-  .sline{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-bottom:1px solid var(--sep)}
-  .sline:last-child{border-bottom:0}
-  .sline .sq{font-size:12.5px;font-weight:600;color:var(--txt3);width:86px;flex:none;padding-top:2px;line-height:1.3}
-  .sline .sv{flex:1;font-size:13.5px;color:var(--txt2);line-height:1.4}
-  .sline .sv .chip{margin-bottom:4px}
-  .warn{font-size:13.5px;line-height:1.45;color:#7A4A00;background:#FFF8E8;border-radius:11px;padding:11px 13px;margin-top:9px}
-  .note{font-size:13.5px;line-height:1.45;color:var(--txt2);background:var(--fill);border-radius:11px;padding:11px 13px;margin-top:9px}
-  .note.flat{background:transparent;padding:0}
-  .tiny{font-size:12.5px;color:var(--txt3);line-height:1.45;margin-top:8px}
+  .card:hover{box-shadow:0 0 0 .5px rgba(0,0,0,.16),0 2px 8px rgba(0,0,0,.08)}
+  .rail{position:absolute;left:0;top:0;bottom:0;width:3px}
+  .card .top{display:flex;align-items:baseline;gap:8px}
+  .trait{font-size:17px;font-weight:600;flex:1;line-height:1.25}
+  .crop{font-size:13px;color:var(--txt3);flex:none}
+  .gives{font-size:14px;color:var(--txt2);margin:4px 0 9px;line-height:1.4;text-wrap:pretty}
+  .gene{font-size:13px;color:var(--txt3);margin:8px 0 0;font-variant-ligatures:none;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:20px}
+  .dot{width:7px;height:7px;border-radius:4px;flex:none}
 
-  .gbox{border:1px solid var(--sep);border-radius:12px;padding:11px 13px;margin-bottom:9px}
-  .gname{font-size:15px;font-weight:650;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
-  .gmeta{font-size:12.5px;color:var(--txt3);margin-top:3px;line-height:1.4}
-  .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
-  .lk{font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:8px;background:var(--blue-bg);color:var(--blue-fg)}
-  .lk:hover{background:#D5E5F9;color:var(--blue-d)}
-  .lk.sec{background:var(--fill);color:var(--txt2)}
-  .lk.sec:hover{background:var(--fill2);color:var(--txt)}
-  ol.todo{margin:9px 0 0 19px;font-size:14px;line-height:1.5;color:var(--txt2)}
+  /* sheet */
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40;display:none}
+  .scrim.on{display:block}
+  .sheet{
+    position:fixed;left:0;right:0;bottom:0;z-index:41;background:#fff;
+    border-radius:16px 16px 0 0;max-height:88vh;overflow-y:auto;display:none;
+    padding:0 20px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.2);
+  }
+  .sheet.on{display:block}
+  @media(min-width:600px){
+    .sheet{left:50%;transform:translateX(-50%);max-width:560px;border-radius:16px;bottom:4vh;max-height:84vh}
+  }
+  .grab{position:sticky;top:0;background:#fff;padding:10px 0 4px;z-index:1}
+  .grab i{display:block;width:36px;height:5px;border-radius:3px;background:var(--sep);margin:0 auto}
+  .sh-close{position:absolute;right:16px;top:14px;border:none;background:var(--fill);color:var(--txt2);
+    width:30px;height:30px;border-radius:15px;font:600 15px inherit;cursor:pointer}
+  .sh-trait{font-size:22px;font-weight:700;letter-spacing:-0.02em;margin:6px 0 2px;padding-right:40px}
+  .sh-crop{font-size:14px;color:var(--txt3);margin-bottom:12px}
+  .sh-crop i{font-style:italic}
+  h3{font-size:12px;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px}
+  .kv{display:grid;grid-template-columns:120px 1fr;gap:7px 12px;font-size:14px;line-height:1.4}
+  .kv dt{color:var(--txt3)}
+  .kv dd{color:var(--txt)}
+  .note{font-size:13px;line-height:1.45;color:var(--txt2);background:var(--fill);border-radius:10px;padding:10px 12px;margin-top:8px}
+  .note.warn{background:#FFF6E5;color:#6B4500}
+  .note.flat{background:transparent;padding:0}
+  .glist{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .glist li{border:.5px solid var(--sep);border-radius:10px;padding:9px 11px}
+  .gname{font-size:15px;font-weight:600}
+  .gmeta{font-size:12px;color:var(--txt3);margin-top:2px;line-height:1.4}
+  .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+  .lk{font-size:12px;font-weight:500;padding:4px 9px;border-radius:7px;background:var(--fill);color:var(--blue)}
+  .lk:hover{background:#E6E6EB}
+  .lk.off{color:var(--txt3);pointer-events:none}
+  .matrix{display:flex;flex-direction:column;gap:6px}
+  .mrow{display:flex;align-items:center;gap:10px;font-size:14px;padding:8px 11px;border-radius:10px;background:var(--fill)}
+  .mrow.pick{background:var(--ok-bg);color:var(--ok-fg);font-weight:600}
+  .mrow .m1{flex:1}
+  .lead{font-size:16px;line-height:1.45;margin:14px 0 0;text-wrap:pretty}
+  .lead-lab{font-size:11px;font-weight:600;color:var(--txt3);text-transform:uppercase;
+    letter-spacing:.06em;display:block;margin-bottom:3px}
+  .tiny{font-size:12px;color:var(--txt3);line-height:1.45;margin-top:8px}
+  ol.todo{margin:8px 0 0 18px;font-size:14px;line-height:1.5;color:var(--txt2)}
   ol.todo li{margin-bottom:6px}
   ol.todo b{color:var(--txt);font-weight:600}
-
-  details.tech{border:1px solid var(--sep);border-radius:12px;margin-top:10px;overflow:hidden}
-  details.tech summary{list-style:none;cursor:pointer;padding:12px 14px;font-size:14px;font-weight:600;color:var(--txt2)}
+  .stand{display:flex;flex-direction:column;gap:8px}
+  .stand .srow{border:.5px solid var(--sep);border-radius:10px;padding:9px 11px}
+  .stand .sq{font-size:11px;font-weight:600;color:var(--txt3);text-transform:uppercase;
+    letter-spacing:.05em;margin-bottom:5px}
+  .stand .sv{font-size:13px;color:var(--txt2);line-height:1.45;margin-top:5px}
+  details.tech{border:.5px solid var(--sep);border-radius:10px;margin-top:16px;overflow:hidden}
+  details.tech summary{list-style:none;cursor:pointer;padding:10px 12px;font-size:13px;
+    font-weight:600;color:var(--txt2)}
   details.tech summary::-webkit-details-marker{display:none}
   details.tech summary::after{content:'＋';float:right;color:var(--txt3);font-weight:400}
   details.tech[open] summary::after{content:'－'}
-  details.tech .tbody{padding:2px 14px 16px;border-top:1px solid var(--sep)}
-  details.tech h3:first-child{margin-top:14px}
-  .kv{display:grid;grid-template-columns:118px 1fr;gap:7px 12px;font-size:13.5px;line-height:1.45}
-  .kv dt{color:var(--txt3)}
-  .kv dd{color:var(--txt)}
-  .mrow{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:8px 11px;border-radius:9px;background:var(--fill);margin-bottom:5px}
-  .mrow.sel{background:var(--green-bg);color:var(--green-fg);font-weight:600}
-  .mrow .m1{flex:1}
-
-  footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--sep);font-size:12.5px;line-height:1.55;color:var(--txt3)}
+  details.tech .tbody{padding:0 12px 14px;border-top:.5px solid var(--sep)}
+  details.tech h3:first-of-type{margin-top:14px}
+  .empty{text-align:center;color:var(--txt3);font-size:15px;padding:40px 20px;line-height:1.5}
+  footer{margin-top:34px;padding-top:18px;border-top:.5px solid var(--sep);font-size:12px;line-height:1.55;color:var(--txt3)}
   footer p{margin-bottom:8px}
-  .skel{height:92px;background:var(--fill);border-radius:var(--r);margin-bottom:10px;animation:p 1.4s ease-in-out infinite}
+  .skel{height:74px;background:var(--fill);border-radius:var(--r);margin-bottom:10px;animation:p 1.4s ease-in-out infinite}
   @keyframes p{0%,100%{opacity:1}50%{opacity:.55}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="head">
-    <div class="topbar">
+    <div class="kline">
       <div class="kicker">AgriHub<span>·AI</span> · proof-of-concept</div>
       <div class="lang">
         <button data-lang="en" aria-pressed="true">EN</button>
@@ -163,35 +158,38 @@
     <p class="sub" id="t-sub"></p>
   </div>
 
-  <div class="list">
-    <div class="row"><label for="f-crop" id="t-step1"></label>
-      <select id="f-crop"></select><span class="chev">⌄</span></div>
-    <div class="row"><label for="f-goal" id="t-step2"></label>
-      <select id="f-goal"></select><span class="chev">⌄</span></div>
-    <div class="row"><label for="q" id="t-step3"></label>
-      <input id="q" type="search" autocomplete="off">
-      <button class="clr" id="clr" aria-label="Clear">✕</button></div>
+  <div class="seg" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="explore" id="t-tab1"></button>
+    <button role="tab" aria-selected="false" data-tab="frontier" id="t-tab2"></button>
+    <button role="tab" aria-selected="false" data-tab="about" id="t-tab3"></button>
   </div>
 
-  <details class="fold" id="legend">
-    <summary id="t-legend"></summary>
-    <div class="body" id="legend-body"></div>
-  </details>
+  <div id="panel-explore">
+    <div class="list">
+      <div class="row"><label for="f-crop" id="t-lcrop"></label>
+        <select id="f-crop"></select><span class="chev">⌄</span></div>
+      <div class="row"><label for="f-goal" id="t-lgoal"></label>
+        <select id="f-goal"></select><span class="chev">⌄</span></div>
+    </div>
+    <div class="count"><span id="count">—</span><span id="asof"></span></div>
+    <div id="results"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+    <p class="tiny" style="margin-top:14px"><a href="#" id="legend-link"></a></p>
+  </div>
 
-  <div class="count"><span id="count">—</span><span id="asof"></span></div>
-  <div id="results"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+  <div id="panel-frontier" hidden>
+    <p class="sub" style="font-size:15px" id="t-frontier"></p>
+    <div id="frontier"></div>
+  </div>
 
-  <details class="fold" style="margin-top:24px">
-    <summary id="t-method"></summary>
-    <div class="body" id="method-body"></div>
-  </details>
+  <div id="panel-about" hidden>
+    <div id="about-body"></div>
+  </div>
 
   <footer id="foot"></footer>
 </div>
 
 <div class="scrim" id="scrim"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Entry detail"></div>
-
 <script>
 'use strict';
 
@@ -203,48 +201,48 @@
    ============================================================ */
 
 const READY = {
-  'Level 1': {tone:'green', order:0,
+  'Level 1': {tone:'ok', order:0,
     en:{label:'Used in a product',
         means:'A product on sale was made by this same route. It has been taken all the way out of the lab at least once.'},
     tr:{label:'Üründe kullanılmış',
         means:'Satıştaki bir ürün bu yolla yapılmış. Yani bu çözüm en az bir kez laboratuvarın dışına çıkarılmış.'}},
-  'Level 2': {tone:'blue', order:1,
+  'Level 2': {tone:'cis', order:1,
     en:{label:'Proven in plants',
         means:'Edited or mutant plants exist and behave as described, and the cited paper checks out. No product yet — this is where a commercial candidate starts.'},
     tr:{label:'Bitkide kanıtlanmış',
         means:'Düzenlenmiş ya da mutant bitkiler var ve anlatıldığı gibi davranıyor; atıf verilen makale de doğrulandı. Henüz ürün yok — ticari aday buradan çıkar.'}},
-  'Level 3': {tone:'amber', order:2,
+  'Level 3': {tone:'mid', order:2,
     en:{label:'Documented, gene not pinned',
         means:'The paper is confirmed, but not every gene named here resolves to a database record. The biology is documented; the exact target is not nailed down.'},
     tr:{label:'Belgelenmiş, gen sabitlenmemiş',
         means:'Makale doğrulandı, ama burada adı geçen her gen bir veritabanı kaydına oturmuyor. Biyoloji belgelenmiş; hedefin tam kendisi netleşmemiş.'}},
-  'Level 4': {tone:'amber', order:3,
+  'Level 4': {tone:'mid', order:3,
     en:{label:'Candidate gene',
         means:'The gene records resolve, but no paper confirming this use could be verified. A lead to check, not a target to edit.'},
     tr:{label:'Aday gen',
         means:'Gen kayıtları doğrulandı, ama bu kullanımı doğrulayan bir makale teyit edilemedi. Düzenlenecek hedef değil, kontrol edilecek bir ipucu.'}},
-  'Level 5': {tone:'grey', order:4,
+  'Level 5': {tone:'off', order:4,
     en:{label:'Open question',
         means:'Neither a gene record nor a confirming paper resolved. Kept visible because the gap itself is worth knowing about.'},
     tr:{label:'Açık soru',
         means:'Ne gen kaydı ne de doğrulayıcı makale oturdu. Boşluğun kendisi bilmeye değer olduğu için görünür bırakıldı.'}},
-  '': {tone:'grey', order:5,
+  '': {tone:'off', order:5,
     en:{label:'Not graded', means:'No readiness level was derived for this entry.'},
     tr:{label:'Derecelendirilmemiş', means:'Bu kayıt için hazırlık düzeyi türetilmedi.'}}
 };
 
 const ROUTE = {
-  t1:{tone:'green', order:0,
+  t1:{tone:'ok', order:0,
     en:{label:"Edit the crop's own gene",
         means:"The gene is already in your crop; you change its own sequence. Candidate for the EU NGT category-1 route, and it drags nothing else along."},
     tr:{label:'Kendi geninde düzenleme',
         means:'Gen zaten senin üründe; kendi dizisini değiştiriyorsun. AB NGT kategori-1 yolu için aday ve yanında başka hiçbir şey sürüklemiyor.'}},
-  t2:{tone:'blue', order:1,
+  t2:{tone:'cis', order:1,
     en:{label:'Cross from a wild relative',
         means:'The solution sits in a crossable relative. Classical introgression works, but it carries the neighbouring genes with it.'},
     tr:{label:'Yabani akrabadan aktarım',
         means:'Çözüm melezlenebilir bir akrabada. Klasik introgresyon işe yarar, ama komşu genleri de beraberinde getirir.'}},
-  t3:{tone:'amber', order:2,
+  t3:{tone:'mid', order:2,
     en:{label:'Transgenic',
         means:'The gene comes from outside the crop gene pool. A different regulatory track entirely.'},
     tr:{label:'Transgenik',
@@ -252,27 +250,27 @@ const ROUTE = {
 };
 
 const IP = {
-  named:{tone:'red',
+  named:{tone:'hot',
     en:{label:'Filings named — assume occupied',
         means:'A company or institute is named as holding filings on this gene or use. Assume the space is taken until your own search says otherwise.'},
     tr:{label:'Başvuru sahibi belli — dolu varsay',
         means:'Bu gen ya da kullanım üzerinde başvurusu olan bir şirket veya enstitü adlandırılmış. Kendi aramanı yapana kadar alanı dolu varsay.'}},
-  examined:{tone:'red',
+  examined:{tone:'hot',
     en:{label:'Claims examined',
         means:'Actual patent claims were pulled and read for this entry. The detail below says which rights are live and what they cover.'},
     tr:{label:'İstemler okundu',
         means:'Bu kayıt için gerçek patent istemleri çekilip okundu. Aşağıdaki detay hangi hakların yürürlükte olduğunu ve neyi kapsadığını söylüyor.'}},
-  crowded:{tone:'amber',
+  crowded:{tone:'mid',
     en:{label:'Crowded area',
         means:'Many filings touch these genes. No single owner was identified.'},
     tr:{label:'Kalabalık alan',
         means:'Bu genlere dokunan çok sayıda başvuru var. Tek bir sahip belirlenemedi.'}},
-  unchecked:{tone:'amber',
+  unchecked:{tone:'mid',
     en:{label:'Not searched yet',
         means:'Nobody has run the patent search for this entry. The link below starts it.'},
     tr:{label:'Henüz aranmadı',
         means:'Bu kayıt için patent araması kimse tarafından yapılmadı. Aşağıdaki bağlantı aramayı başlatır.'}},
-  open:{tone:'grey',
+  open:{tone:'off',
     en:{label:'Public, no filing named',
         means:'The locus is publicly characterised and no filing was recorded here. That is not a clearance — it only means nothing was found.'},
     tr:{label:'Açık, başvuru kaydı yok',
@@ -283,18 +281,19 @@ const IP = {
 const T = {
   en:{
     sub:'You want a trait in a crop, and someone has probably already found the gene. Pick the crop and the goal: how far the solution has been taken, what it costs elsewhere in the plant, and whether the patent space is occupied.',
-    step1:'Crop', step2:'Goal', step3:'Search',
+    step1:'Crop', step2:'Goal',
+    tab1:'Explorer', tab2:'Frontiers', tab3:'Labels & method',
+    frontierIntro:'Entries that name gene families rather than a validated locus. They are research questions, not targets ready to edit — kept visible so the gap is explicit.',
     allCrops:'All crops', anything:'Anything',
-    search:'mildew, ToBRFV, shelf life…',
-    legend:'What do the labels mean?',
+    mVerified:'What is verified, and what is not',
+    legend:'What do these labels mean? →',
     lgReady:'How far it has been taken', lgRoute:'How you would get it', lgIp:'Patent space',
     lgFoot:'Readiness is derived from what the verification pipeline could confirm in public databases, not from what a draft claimed. Route and patent lines are a breeder\'s research signals — not lab results, not legal classifications.',
-    method:'How this atlas is built, and what is actually verified',
-    mState:'Current state', mLimit:'Known limitation', mRule:'How the readiness label is decided',
+        mState:'Current state', mLimit:'Known limitation', mRule:'How the readiness label is decided',
     mLimitText:'Genome-project locus tags (Solyc, Csa, Cla97, MELO3C, SMEL4.1, BraA) are not indexed in NCBI, so most of them could not be checked there. A missing confirmation is not evidence that an ID is wrong — it means NCBI is the wrong database to ask. Resolving them needs Ensembl Plants or Sol Genomics.',
     mStats:['Solutions','Fully verified','Partly verified','Unverified','Genes with accession','Last checked'],
     solutions:['solution','solutions'], ofWhich:'used in a product', ofWhich2:'proven in plants',
-    asof:'genes and papers last checked',
+    asof:'checked',
     empty:'Nothing matches that yet.', emptyWhy:'The atlas is a seed, not a complete map — an empty result is usually a gap in the atlas, not an answer about the crop.',
     whatYouGet:'What you get', watchOut:'Watch out',
     otherRoute:'A product with this trait exists — but not by this route.',
@@ -333,18 +332,19 @@ const T = {
   },
   tr:{
     sub:'Bir üründe bir özellik istiyorsun ve geni birileri büyük ihtimalle çoktan bulmuş. Ürünü ve hedefi seç: çözüm nereye kadar götürülmüş, bitkinin başka yerinde neye mal oluyor, patent alanı dolu mu.',
-    step1:'Ürün', step2:'Hedef', step3:'Ara',
+    step1:'Ürün', step2:'Hedef',
+    tab1:'Keşfet', tab2:'Sınırlar', tab3:'Etiketler ve yöntem',
+    frontierIntro:'Doğrulanmış bir lokus yerine gen ailesi adlandıran kayıtlar. Bunlar düzenlenmeye hazır hedefler değil, araştırma soruları — boşluk açıkça görünsün diye burada duruyorlar.',
     allCrops:'Tüm ürünler', anything:'Her şey',
-    search:'külleme, ToBRFV, raf ömrü…',
-    legend:'Etiketler ne demek?',
+    mVerified:'Ne doğrulandı, ne doğrulanmadı',
+    legend:'Bu etiketler ne demek? →',
     lgReady:'Nereye kadar götürülmüş', lgRoute:'Nasıl elde edilir', lgIp:'Patent durumu',
     lgFoot:'Hazırlık düzeyi, doğrulama hattının kamuya açık veritabanlarında teyit edebildiğinden türetilir; taslağın iddiasından değil. Yol ve patent satırları bir ıslahçının araştırma sinyalleridir — laboratuvar sonucu değil, hukuki sınıflandırma hiç değil.',
-    method:'Bu atlas nasıl kuruldu ve gerçekte ne doğrulandı',
-    mState:'Mevcut durum', mLimit:'Bilinen sınır', mRule:'Hazırlık etiketi nasıl belirleniyor',
+        mState:'Mevcut durum', mLimit:'Bilinen sınır', mRule:'Hazırlık etiketi nasıl belirleniyor',
     mLimitText:'Genom projesi lokus etiketleri (Solyc, Csa, Cla97, MELO3C, SMEL4.1, BraA) NCBI\'da indekslenmiyor, bu yüzden çoğu orada kontrol edilemedi. Teyidin olmaması bir kimliğin yanlış olduğunun kanıtı değil — NCBI\'nın sorulacak yanlış veritabanı olduğu anlamına geliyor. Bunları çözmek için Ensembl Plants ya da Sol Genomics gerekiyor.',
     mStats:['Çözüm','Tam doğrulanmış','Kısmen doğrulanmış','Doğrulanmamış','Accession\'ı olan gen','Son kontrol'],
     solutions:['çözüm','çözüm'], ofWhich:'üründe kullanılmış', ofWhich2:'bitkide kanıtlanmış',
-    asof:'gen ve makaleler son kontrol',
+    asof:'kontrol:',
     empty:'Bununla eşleşen bir şey yok.', emptyWhy:'Atlas tohum hâlinde, tamamlanmış bir harita değil — boş sonuç genellikle üründe bir cevap değil, atlasta bir boşluktur.',
     whatYouGet:'Ne kazandırır', watchOut:'Dikkat',
     otherRoute:'Bu özelliğe sahip bir ürün var — ama bu yolla yapılmadı.',
@@ -384,7 +384,7 @@ const T = {
 };
 
 let ATLAS = null, PLAIN = {}, GOALS = {}, GOALS_TR = {}, CROPS_TR = {}, SHOWN = [];
-let CROP = '', GOAL = '', Q = '', LANG = 'en';
+let CROP = '', GOAL = '', LANG = 'en';
 
 const el = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
@@ -467,24 +467,21 @@ function locusLinks(e){
 }
 
 /* ---------- result card ---------- */
-function card(e, i){
+function card(e, i, idx){
   const r = ready(e), rt = route(e), ip = ipState(e), g = say(e, 'gives');
-  const flag = [say(e, 'why_not_product') ? t().otherRouteChip : '',
-                e.claims.documented_in
-                  ? t().evidenceFrom + ' ' + e.claims.documented_in.split('(')[0].trim() : '']
-               .filter(Boolean);
-  const dot = (tone, label) =>
-    `<span><i class="dot" style="background:${TONE(tone).dot}"></i>${esc(label)}</span>`;
-  return `<button class="card" data-i="${i}">
+  const flags = [];
+  if (say(e, 'why_not_product')) flags.push(t().otherRouteChip);
+  if (e.claims.documented_in) flags.push(t().evidenceFrom + ' ' + e.claims.documented_in.split('(')[0].trim());
+  return `<div class="card" data-${idx || 'i'}="${i}" tabindex="0" role="button">
     <div class="rail" style="background:${TONE(r.tone).dot}"></div>
     <div class="top"><div class="trait">${esc(goalPhrase(e))}</div><div class="crop">${esc(cropName(e.crop))}</div></div>
     ${g ? `<div class="gives">${esc(g)}</div>` : ''}
-    <div class="state">
-      ${dot(r.tone, L(r).label)}${dot(rt.tone, L(rt).label)}${dot(ip.tone, L(ip).label.split(' — ')[0])}
-      ${flag.map(f => dot('grey', f)).join('')}
+    <div class="chips">
+      ${chip(r.tone, L(r).label)}${chip(rt.tone, L(rt).label)}${chip(ip.tone, L(ip).label.split(' — ')[0])}
+      ${flags.map(f => chip('off', f)).join('')}
     </div>
-    <div class="genes-line">${esc(e.gene_label)}</div>
-  </button>`;
+    <div class="gene">${esc(e.gene_label)}</div>
+  </div>`;
 }
 
 /* ---------- detail sheet ---------- */
@@ -504,16 +501,16 @@ function sheet(e){
     if (hit) meta = `${s.gFound} ${esc(hit.organism || '—')} ${s.gAs} ${esc(hit.official_symbol)} — ${esc(hit.description || '')}`;
     else if (gl && gl.accession) meta = `${s.gGenbank} ${esc(gl.accession)}`;
     else meta = s.gNone;
-    return `<div class="gbox"><div class="gname">${esc(g.symbol)}</div>
+    return `<li><div class="gname">${esc(g.symbol)}</div>
       <div class="gmeta">${meta}</div>
-      <div class="links">${geneLinks(g, e).map(([x, u, sec]) =>
-        `<a class="lk${sec ? ' sec' : ''}" href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`).join('')}</div></div>`;
+      <div class="links">${geneLinks(g, e).map(([x, u]) =>
+        `<a class="lk" href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`).join('')}</div></li>`;
   }).join('');
 
   const loci = locusLinks(e);
-  const lociBox = loci.length ? `<div class="gbox"><div class="gmeta" style="margin:0 0 2px">${s.locusBox}</div>
+  const lociBox = loci.length ? `<li><div class="gmeta" style="margin:0 0 2px">${s.locusBox}</div>
     <div class="links">${loci.map(([x, u]) =>
-      `<a class="lk sec" href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`).join('')}</div></div>` : '';
+      `<a class="lk" href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`).join('')}</div></li>` : '';
 
   const ipLink = `https://patents.google.com/?q=${encodeURIComponent('"' + (e.gene_label.split(',')[0] || '').trim() + '" ' + e.trait.split('(')[0].trim())}`;
 
@@ -528,7 +525,7 @@ function sheet(e){
     const enLabel = T.en.strategies[i];
     const on = rec && (enLabel.toLowerCase().includes(rec.toLowerCase().split(' ')[0]) ||
                        rec.toLowerCase().includes(enLabel.toLowerCase().split(' ')[0]));
-    return `<div class="mrow${on ? ' sel' : ''}"><span class="m1">${esc(label)}</span>${on ? `<span>${s.recommended}</span>` : ''}</div>`;
+    return `<div class="mrow${on ? ' pick' : ''}"><span class="m1">${esc(label)}</span>${on ? `<span>${s.recommended}</span>` : ''}</div>`;
   }).join('');
 
   const co = e.correction || {}, ev = e.evidence || {};
@@ -587,9 +584,9 @@ function sheet(e){
 
     <h3>${s.stands}</h3>
     <div class="stand">
-      <div class="sline"><div class="sq">${s.qReady}</div><div class="sv">${chip(r.tone, L(r).label)}<br>${esc(L(r).means)}</div></div>
-      <div class="sline"><div class="sq">${s.qRoute}</div><div class="sv">${chip(rt.tone, L(rt).label)}<br>${esc(L(rt).means)}</div></div>
-      <div class="sline"><div class="sq">${s.qIp}</div><div class="sv">${chip(ip.tone, L(ip).label)}<br>${esc(L(ip).means)}<br>
+      <div class="srow"><div class="sq">${s.qReady}</div>${chip(r.tone, L(r).label)}<div class="sv">${esc(L(r).means)}</div></div>
+      <div class="srow"><div class="sq">${s.qRoute}</div>${chip(rt.tone, L(rt).label)}<div class="sv">${esc(L(rt).means)}</div></div>
+      <div class="srow"><div class="sq">${s.qIp}</div>${chip(ip.tone, L(ip).label)}<div class="sv">${esc(L(ip).means)}<br>
         <span style="color:var(--txt3)">${s.recorded}: ${esc(ipText)}</span></div></div>
     </div>
 
@@ -603,8 +600,7 @@ function sheet(e){
     </ol>
 
     <h3>${s.genesWhere}</h3>
-    ${genes || `<div class="gbox"><div class="gmeta">${s.gNoGenes}</div></div>`}
-    ${lociBox}
+    <ul class="glist">${genes || `<li class="gmeta">${s.gNoGenes}</li>`}${lociBox}</ul>
 
     <details class="tech"><summary>${s.tech}</summary><div class="tbody">${tech}</div></details>`;
 
@@ -618,30 +614,40 @@ el('scrim').onclick = close;
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape') close(); });
 
 /* ---------- filtering ---------- */
+/* A frontier entry names gene families rather than a validated locus: it is a
+   research question, so it lives in its own tab rather than among targets. */
+const isFrontier = e => /^GAP-/.test(e.id || '') || (e.evidence || {}).derived_level === 'Level 5';
+
 function matches(e){
   if (CROP && e.crop !== CROP) return false;
   if (GOAL && plain(e).goal !== GOAL) return false;
-  if (Q){
-    const p = plain(e), tr = p.tr || {};
-    const hay = [e.trait, e.crop, cropName(e.crop), e.category, e.gene_label, e.id, p.ask, p.gives,
-                 tr.ask, tr.gives, e.claims.gene_function].join(' ').toLowerCase();
-    if (!Q.toLowerCase().split(/\s+/).every(w => hay.includes(w))) return false;
-  }
   return true;
 }
 function apply(){
-  SHOWN = ATLAS.entries.filter(matches).sort((a, b) =>
+  SHOWN = ATLAS.entries.filter(e => !isFrontier(e) && matches(e)).sort((a, b) =>
     (ready(a).order - ready(b).order) || (route(a).order - route(b).order) ||
     a.crop.localeCompare(b.crop));
-  const s = t();
-  el('results').innerHTML = SHOWN.length ? SHOWN.map(card).join('')
-    : `<div class="empty">${s.empty}<br><span style="font-size:13.5px">${s.emptyWhy}</span></div>`;
-  const n = SHOWN.length;
+  const s = t(), n = SHOWN.length;
+  el('results').innerHTML = n ? SHOWN.map((e, i) => card(e, i)).join('')
+    : `<div class="empty">${s.empty}<br><span style="font-size:13px">${s.emptyWhy}</span></div>`;
   const used = SHOWN.filter(e => (e.evidence || {}).derived_level === 'Level 1').length;
   const proven = SHOWN.filter(e => (e.evidence || {}).derived_level === 'Level 2').length;
   el('count').innerHTML = `<span><b>${n}</b> ${s.solutions[n === 1 ? 0 : 1]}` +
     (n ? ` · ${used} ${s.ofWhich} · ${proven} ${s.ofWhich2}` : '') + '</span>';
-  el('results').querySelectorAll('.card').forEach(b => b.onclick = () => sheet(SHOWN[+b.dataset.i]));
+  bind('results', SHOWN, 'i');
+}
+function frontiers(){
+  const f = ATLAS.entries.filter(isFrontier);
+  el('frontier').innerHTML = f.map((e, i) => card(e, i, 'f')).join('')
+    || `<div class="empty">${t().empty}</div>`;
+  bind('frontier', f, 'f');
+}
+function bind(id, list, key){
+  el(id).querySelectorAll('.card').forEach(c => {
+    const open = () => sheet(list[+c.dataset[key]]);
+    c.onclick = open;
+    c.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(); } };
+  });
 }
 
 /* ---------- pickers ---------- */
@@ -651,12 +657,14 @@ function options(sel, items, value){
 }
 function drawCrops(){
   const counts = {};
-  ATLAS.entries.forEach(e => { counts[e.crop] = (counts[e.crop] || 0) + 1; });
-  options(el('f-crop'), [['', t().allCrops, ATLAS.entries.length]].concat(
+  ATLAS.entries.filter(e => !isFrontier(e)).forEach(e => { counts[e.crop] = (counts[e.crop] || 0) + 1; });
+  const total = ATLAS.entries.filter(e => !isFrontier(e)).length;
+  if (CROP && !counts[CROP]) CROP = '';
+  options(el('f-crop'), [['', t().allCrops, total]].concat(
     Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([c, n]) => [c, cropName(c), n])), CROP);
 }
 function drawGoals(){
-  const pool = ATLAS.entries.filter(e => !CROP || e.crop === CROP);
+  const pool = ATLAS.entries.filter(e => !isFrontier(e) && (!CROP || e.crop === CROP));
   const counts = {};
   pool.forEach(e => { const g = plain(e).goal; if (g) counts[g] = (counts[g] || 0) + 1; });
   if (GOAL && !counts[GOAL]) GOAL = '';
@@ -665,56 +673,58 @@ function drawGoals(){
 }
 el('f-crop').onchange = () => { CROP = el('f-crop').value; drawGoals(); apply(); };
 el('f-goal').onchange = () => { GOAL = el('f-goal').value; apply(); };
-el('q').oninput = () => {
-  Q = el('q').value.trim();
-  el('clr').classList.toggle('on', !!Q);
-  apply();
-};
-el('clr').onclick = () => { el('q').value = ''; Q = ''; el('clr').classList.remove('on'); apply(); };
+
+/* ---------- tabs ---------- */
+function tab(name){
+  document.querySelectorAll('.seg button').forEach(b =>
+    b.setAttribute('aria-selected', String(b.dataset.tab === name)));
+  ['explore','frontier','about'].forEach(x => el('panel-' + x).hidden = (x !== name));
+}
+document.querySelectorAll('.seg button').forEach(b => b.onclick = () => tab(b.dataset.tab));
+el('legend-link').onclick = ev => { ev.preventDefault(); tab('about'); window.scrollTo({top:0, behavior:'smooth'}); };
 
 /* ---------- static chrome ---------- */
 function drawChrome(){
   const s = t();
   document.documentElement.lang = LANG;
   el('t-sub').textContent = s.sub;
-  el('t-step1').textContent = s.step1;
-  el('t-step2').textContent = s.step2;
-  el('t-step3').textContent = s.step3;
-  el('q').placeholder = s.search;
-  el('t-legend').textContent = s.legend;
-  el('t-method').textContent = s.method;
+  el('t-tab1').textContent = s.tab1;
+  el('t-tab2').textContent = s.tab2;
+  el('t-tab3').textContent = s.tab3;
+  el('t-lcrop').textContent = s.step1;
+  el('t-lgoal').textContent = s.step2;
+  el('t-frontier').textContent = s.frontierIntro;
+  el('legend-link').textContent = s.legend;
   el('foot').innerHTML = s.foot.map(p => `<p>${p}</p>`).join('');
   document.querySelectorAll('.lang button').forEach(b =>
     b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)));
 
-  const row = o => `<div class="ldef">${chip(o.tone, L(o).label)}<span>${esc(L(o).means)}</span></div>`;
-  el('legend-body').innerHTML =
-    `<h3 style="margin-top:14px">${s.lgReady}</h3>` +
-    Object.values(READY).filter(r => r.order < 5).map(row).join('') +
-    `<h3>${s.lgRoute}</h3>` + Object.values(ROUTE).map(row).join('') +
-    `<h3>${s.lgIp}</h3>` + [IP.named, IP.examined, IP.crowded, IP.unchecked, IP.open].map(row).join('') +
-    `<p class="tiny" style="margin-top:14px">${s.lgFoot}</p>`;
-
+  const row = o => `<li><div class="gname" style="font-size:13px">${chip(o.tone, L(o).label)}</div>
+    <div class="gmeta" style="font-size:12.5px;color:var(--txt2)">${esc(L(o).means)}</div></li>`;
   const st = ATLAS.stats || {}, sc = ATLAS._schema || {};
   const nums = [st.total_entries, st.verified, st.partial, st.unverified,
                 st.genes_with_accession, st.last_verified];
-  el('method-body').innerHTML =
-    `<p class="note flat" style="margin-top:12px">${esc(sc.principle || '')}</p>
+  el('about-body').innerHTML =
+    `<h3>${s.lgReady}</h3><ul class="glist">${Object.values(READY).filter(r => r.order < 5).map(row).join('')}</ul>
+     <h3>${s.lgRoute}</h3><ul class="glist">${Object.values(ROUTE).map(row).join('')}</ul>
+     <h3>${s.lgIp}</h3><ul class="glist">${[IP.named, IP.examined, IP.crowded, IP.unchecked, IP.open].map(row).join('')}</ul>
+     <p class="tiny">${s.lgFoot}</p>
+     <h3>${s.mVerified}</h3><p class="note flat">${esc(sc.principle || '')}</p>
      <h3>${s.mState}</h3><dl class="kv">${nums.map((v, i) =>
        v == null ? '' : `<dt>${esc(s.mStats[i])}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
-     <h3>${s.mLimit}</h3><p class="warn">${s.mLimitText}</p>
-     <h3>${s.mRule}</h3><p class="note flat" style="font-size:13px">${esc(sc.level_derivation || '')}</p>`;
+     <h3>${s.mLimit}</h3><p class="note warn">${s.mLimitText}</p>
+     <h3>${s.mRule}</h3><p class="note flat" style="font-size:12.5px">${esc(sc.level_derivation || '')}</p>`;
   el('asof').textContent = st.last_verified ? `${s.asof} ${st.last_verified}` : '';
 }
 function setLang(lang){
   LANG = (lang === 'tr') ? 'tr' : 'en';
   try { localStorage.setItem('ta-lang', LANG); } catch (err) { /* private mode */ }
-  drawChrome(); drawCrops(); drawGoals(); apply(); close();
+  drawChrome(); drawCrops(); drawGoals(); apply(); frontiers(); close();
 }
 document.querySelectorAll('.lang button').forEach(b => b.onclick = () => setLang(b.dataset.lang));
 
 /* ---------- boot ---------- */
-let start = 'en';
+let start = '';
 try { start = localStorage.getItem('ta-lang') || ''; } catch (err) { start = ''; }
 if (!start) start = /^tr\b/i.test(navigator.language || '') ? 'tr' : 'en';
 LANG = start === 'tr' ? 'tr' : 'en';
@@ -728,7 +738,7 @@ Promise.all([
   PLAIN = pl.entries || {};
   const a = pl._about || {};
   GOALS = a.goals || {}; GOALS_TR = a.goals_tr || {}; CROPS_TR = a.crops_tr || {};
-  drawChrome(); drawCrops(); drawGoals(); apply();
+  drawChrome(); drawCrops(); drawGoals(); apply(); frontiers();
 }).catch(err => {
   el('results').innerHTML = `<div class="empty">Could not load the atlas data.<br>
     <span style="font-size:13px">${esc(err.message)}</span></div>`;
