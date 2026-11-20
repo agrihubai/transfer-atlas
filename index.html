@@ -69,7 +69,7 @@
   }
   .card:hover{box-shadow:0 0 0 .5px rgba(0,0,0,.16),0 2px 8px rgba(0,0,0,.08)}
   .rail{position:absolute;left:0;top:0;bottom:0;width:3px}
-  .card .top{display:flex;align-items:baseline;gap:8px}
+  .card .top{display:flex;align-items:baseline;gap:8px;margin-bottom:9px}
   .trait{font-size:17px;font-weight:600;flex:1;line-height:1.25}
   .crop{font-size:13px;color:var(--txt3);flex:none}
   .gives{font-size:14px;color:var(--txt2);margin:4px 0 9px;line-height:1.4;text-wrap:pretty}
@@ -468,19 +468,15 @@ function locusLinks(e){
 
 /* ---------- result card ---------- */
 function card(e, i, idx){
-  const r = ready(e), rt = route(e), ip = ipState(e), g = say(e, 'gives');
-  const flags = [];
-  if (say(e, 'why_not_product')) flags.push(t().otherRouteChip);
-  if (e.claims.documented_in) flags.push(t().evidenceFrom + ' ' + e.claims.documented_in.split('(')[0].trim());
+  // The list is for scanning: the goal, the crop, and the three states. The
+  // sentence explaining it, the gene symbols and everything else wait for the tap.
+  const r = ready(e), rt = route(e), ip = ipState(e);
   return `<div class="card" data-${idx || 'i'}="${i}" tabindex="0" role="button">
     <div class="rail" style="background:${TONE(r.tone).dot}"></div>
     <div class="top"><div class="trait">${esc(goalPhrase(e))}</div><div class="crop">${esc(cropName(e.crop))}</div></div>
-    ${g ? `<div class="gives">${esc(g)}</div>` : ''}
     <div class="chips">
       ${chip(r.tone, L(r).label)}${chip(rt.tone, L(rt).label)}${chip(ip.tone, L(ip).label.split(' — ')[0])}
-      ${flags.map(f => chip('off', f)).join('')}
     </div>
-    <div class="gene">${esc(e.gene_label)}</div>
   </div>`;
 }
 
