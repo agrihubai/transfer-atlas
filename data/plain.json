@@ -1,0 +1,220 @@
+{
+  "_about": {
+    "what_this_is": "A plain-language layer over data/atlas_v3.json. Every line here is a restatement of fields the entry already carries (trait, gene_function, evidence_note, pleiotropic_effects, correction) in words a breeder or a manager can read without a biotech background. It adds no new facts, no new genes and no new claims: if it is not in the entry, it is not here.",
+    "fields": {
+      "goal": "Which plain-language goal group the entry answers. Used for the 'what do you want' picker.",
+      "ask": "The breeder's own sentence — 'I want X in Y' — in the plainest form.",
+      "gives": "What the grower or the line actually gets, in one sentence, no gene names.",
+      "watch": "The one thing that most often spoils it, restated from pleiotropic_effects / linkage_drag / evidence_note.",
+      "why_not_product": "Where a product with this trait exists but was NOT made this way, the plain reason — restated from correction.commercial_status."
+    },
+    "written_by": "maintainer, 2026-11-20",
+    "goals": {
+      "protect": "Keep the crop healthy — disease, virus, fungus",
+      "quality": "Fruit quality, firmness, shelf life",
+      "nutrition": "Nutrition, flavour, consumer appeal",
+      "shape": "Plant shape, harvest, labour",
+      "seed": "Seeds, flowering, hybrid production",
+      "climate": "Heat, drought, salinity, bolting"
+    }
+  },
+  "entries": {
+    "TOM-GABA-01": {
+      "goal": "nutrition",
+      "ask": "I want a tomato with a health claim built into the fruit.",
+      "gives": "Fruit that accumulates several times more GABA, a compound sold as a blood-pressure/relaxation benefit in Japan.",
+      "watch": "In some elite backgrounds the plant pays for it with smaller leaves or lighter fruit, so it has to be tested in your own material."
+    },
+    "TOM-VITD-01": {
+      "goal": "nutrition",
+      "ask": "I want a tomato that carries provitamin D.",
+      "gives": "Fruit and leaves that build up provitamin D3, which converts to vitamin D under UVB light.",
+      "watch": "It shifts the fruit's own alkaloid profile; no big yield penalty was reported, but the compound needs UVB exposure to become vitamin D at all."
+    },
+    "TOM-TOBRFV-01": {
+      "goal": "protect",
+      "ask": "I want ToBRFV resistance without dragging in a wild tomato.",
+      "gives": "Plants that the virus cannot replicate in, because the host proteins it borrows are switched off.",
+      "watch": "One knockout is not enough — the genes back each other up, so several must go at once, and the resulting plants have to be screened for vigour. Resistance was shown against the isolates tested, not against every tobamovirus."
+    },
+    "TOM-TYLCV-01": {
+      "goal": "protect",
+      "ask": "I want TYLCV resistance in an elite line without a long backcross.",
+      "gives": "The same ty-5 resistance the industry already uses, reached directly in your own line.",
+      "watch": "Well tolerated in commercial hybrids; the resistance is recessive, so both copies have to carry it.",
+      "why_not_product": "ty-5 resistance is widely sold, but no source could be found naming a cultivar together with its ty-5 allele — so the atlas does not claim the product proves this route."
+    },
+    "TOM-MILDEW-01": {
+      "goal": "protect",
+      "ask": "I want powdery mildew resistance in tomato without a donor line.",
+      "gives": "Durable, broad resistance to powdery mildew by removing the gene the fungus needs to get in — shown in transgene-free plants.",
+      "watch": "Some MLO knockouts show minor necrotic flecking under stress."
+    },
+    "TOM-BROAD-01": {
+      "goal": "protect",
+      "ask": "I want one edit that helps against several diseases.",
+      "gives": "Higher natural salicylic acid, and with it resistance to bacterial speck, Phytophthora and powdery mildew at once.",
+      "watch": "Permanently raised defence can cost growth or yield when there is no disease pressure to justify it."
+    },
+    "TOM-DWARF-01": {
+      "goal": "shape",
+      "ask": "I want a compact, fast tomato for vertical or high-density growing.",
+      "gives": "Short internodes and early flowering — more crop per square metre per week, rather than per plant.",
+      "watch": "Each plant carries less biomass; it only pays off in a high-density or indoor system."
+    },
+    "TOM-PARTH-01": {
+      "goal": "seed",
+      "ask": "I want fruit set without pollination.",
+      "gives": "Fruit that sets and fills without fertilisation — useful when pollination fails.",
+      "watch": "Fruit set without pollination is not heat tolerance: the rest of the plant still suffers. One of the routes also distorts the leaves; the other avoids that."
+    },
+    "TOM-SIZE-01": {
+      "goal": "quality",
+      "ask": "I want bigger fruit with a thicker wall.",
+      "gives": "Larger fruit with thicker pericarp, from releasing a brake on cell division.",
+      "watch": "Cup-shaped, enlarged leaves, and the usual trade: bigger fruit often means fewer of them."
+    },
+    "TOM-FIRM-01": {
+      "goal": "quality",
+      "ask": "I want a firmer tomato that still ripens and tastes normal.",
+      "gives": "Firmer fruit and less postharvest rot without blocking ripening, so colour and Brix stay.",
+      "watch": "An unusually clean profile — this is one of the few with no listed penalty."
+    },
+    "PEP-PUNG-01": {
+      "goal": "nutrition",
+      "ask": "I want to turn a hot line sweet without losing its other traits.",
+      "gives": "A non-pungent version of a line, by switching off the last step of capsaicin synthesis.",
+      "watch": "Capsaicin is also a defence compound; removing it may make the fruit more attractive to some pests.",
+      "why_not_product": "Every sweet bell pepper carries this loss-of-function allele — but it arrived through domestication centuries ago, not because anyone deployed this solution."
+    },
+    "PEP-PAMT-01": {
+      "goal": "nutrition",
+      "ask": "I want pepper warmth without the burn.",
+      "gives": "Fruit that builds capsinoids instead of capsaicinoids — the flavour without the heat.",
+      "watch": "It changes the aroma profile too, so taste panels matter."
+    },
+    "PEP-VIRUS-01": {
+      "goal": "protect",
+      "ask": "I want potyvirus resistance (PVY, TEV, PepMoV) in pepper.",
+      "gives": "The pvr1/pvr2 resistance the market already relies on, reached by a single letter change rather than a knockout.",
+      "watch": "Knocking the genes out entirely stunts the plant. The point edit is the safe route — the full double knockout is not."
+    },
+    "PEP-MILDEW-01": {
+      "goal": "protect",
+      "ask": "I want powdery mildew resistance in pepper without an interspecific cross.",
+      "gives": "Resistance to Leveillula taurica by removing the susceptibility factor the fungus uses.",
+      "watch": "Not every member of this gene family gives resistance — the right paralogue must be confirmed first. Check for early leaf senescence."
+    },
+    "CUC-BITTER-01": {
+      "goal": "nutrition",
+      "ask": "I want non-bitter cucumber fruit but I still want the leaves to defend themselves.",
+      "gives": "Sweet fruit with the leaf's bitter pest defence left intact — bitterness is controlled separately in fruit and leaf.",
+      "watch": "Hitting the core pathway gene instead removes bitterness everywhere and with it the pest deterrence. Target the fruit-specific regulator.",
+      "why_not_product": "Non-bitter cucumbers have existed for decades by ordinary selection; that is not the same as the tissue-specific solution described here."
+    },
+    "CUC-MILDEW-01": {
+      "goal": "protect",
+      "ask": "I want powdery mildew resistance in cucumber.",
+      "gives": "Resistance by removing the susceptibility factor, which also avoids the skin-netting and yellowing that come with the classical donors.",
+      "watch": "Which family member to target is the whole question, and the gene identities here are not fully pinned down. Possible mild chlorosis in older leaves."
+    },
+    "CUC-SEX-01": {
+      "goal": "seed",
+      "ask": "I want an all-female cucumber parent for hybrid seed, fast.",
+      "gives": "A gynoecious line — female flowers only — which is what hybrid seed production runs on, plus fruit set without seeds.",
+      "watch": "A fully female line cannot make its own pollen: seed production then needs chemical induction of male flowers."
+    },
+    "MEL-SHELF-01": {
+      "goal": "quality",
+      "ask": "I want melon that travels without going soft.",
+      "gives": "Slower ripening and a longer shelf life, by turning down ethylene production.",
+      "watch": "Switch ethylene off completely and the aroma goes with it. Turning it down partly, not off, is the route."
+    },
+    "WAT-SEED-01": {
+      "goal": "seed",
+      "ask": "I want seedless watermelon without the triploid system.",
+      "gives": "Nothing yet. This is the documented grape solution, with a watermelon candidate gene identified by sequence — nobody has edited or tested it.",
+      "watch": "A seedless diploid cannot be propagated from seed — that is exactly why the industry uses triploid hybrids. And the IP around this gene family is occupied: see the patent section before planning anything."
+    },
+    "WAT-BRIX-01": {
+      "goal": "quality",
+      "ask": "I want sweeter watermelon.",
+      "gives": "More sugar loaded into the flesh, through the transporter that fills the vacuole.",
+      "watch": "Minimal side effects reported in cultivated backgrounds."
+    },
+    "EGG-BROWN-01": {
+      "goal": "quality",
+      "ask": "I want eggplant that does not brown when it is cut.",
+      "gives": "Cut flesh that stays pale — relevant for fresh-cut and processing — with the antioxidant phenolics still in it.",
+      "watch": "Several copies of the gene have to go at once; no yield penalty was seen in greenhouse trials."
+    },
+    "EGG-PRICKLE-01": {
+      "goal": "shape",
+      "ask": "I want eggplant without prickles, so picking does not hurt.",
+      "gives": "Prickle-free calyx and stem — a labour and harvest-injury trait, not a yield one.",
+      "watch": "The natural prickleless variation sits outside the coding sequence, so a plain knockout is not the route the natural allele uses. Prickle and trichome pathways can overlap with insect deterrence."
+    },
+    "LET-BOLT-01": {
+      "goal": "climate",
+      "ask": "I want lettuce that does not bolt in summer heat.",
+      "gives": "A longer harvest window before the plant runs to seed.",
+      "watch": "Bolting depends on genotype, temperature and daylength together, so it has to be trialled across environments. A full knockout also makes your own seed increase difficult."
+    },
+    "LET-VITC-01": {
+      "goal": "nutrition",
+      "ask": "I want lettuce with more vitamin C.",
+      "gives": "Two to three times the ascorbate, by removing a small brake on the gene's own translation — and with it better oxidative-stress tolerance.",
+      "watch": "The reported effect comes from that specific small edit, not from disabling the gene."
+    },
+    "BRA-CLUB-01": {
+      "goal": "protect",
+      "ask": "I want clubroot resistance in brassicas.",
+      "gives": "Resistance from a known immune receptor locus, the one the industry already selects for.",
+      "watch": "The resistance is pathotype-specific and single-gene cultivars break down fast — it has to be stacked, not deployed alone. Moderate linkage drag when moving between brassica species.",
+      "why_not_product": "Commercial cultivars do carry a major clubroot locus, but no source could be found naming a cultivar together with this gene — 'carries a major locus' is a weaker claim than 'carries this gene'."
+    },
+    "BRA-GLUC-01": {
+      "goal": "nutrition",
+      "ask": "I want high-glucoraphanin broccoli.",
+      "gives": "Several times the glucoraphanin — the sulforaphane precursor behind the health-marketed broccoli already on shelves.",
+      "watch": "High glucosinolates change the pungency and the way insects feed on the crop."
+    },
+    "CAR-COLOR-01": {
+      "goal": "nutrition",
+      "ask": "I want deeper colour and more beta-carotene in carrot.",
+      "gives": "More carotenoid in the taproot, through the regulatory module that controls how the pigment bodies form.",
+      "watch": "A candidate-stage target: the regulators are named but their carrot identities are not fully confirmed here."
+    },
+    "ONI-TEAR-01": {
+      "goal": "nutrition",
+      "ask": "I want an onion that does not make people cry.",
+      "gives": "Less of the tear compound and a sweeter onion, by suppressing the enzyme that makes it.",
+      "watch": "Not a simple single-gene job: the gene is present in several copies in a very large genome, and low pungency often comes with shorter storage life.",
+      "why_not_product": "A tearless onion is on sale, but its maker states it came from three decades of conventional breeding — same trait, different route. The product does not validate this solution."
+    },
+    "GAP-COMB-01": {
+      "goal": "climate",
+      "ask": "I want a tomato that holds up to heat, salt and drought together, in the field.",
+      "gives": "Nothing ready. This is the gap itself: single-stress lab screens do not predict combined-stress field performance.",
+      "watch": "Switching these networks on permanently stunts the plant. Any route has to be inducible, and the wild-relative crosses carry heavy linkage drag."
+    },
+    "GAP-REPRO-01": {
+      "goal": "climate",
+      "ask": "I want fruit set to survive a heat wave.",
+      "gives": "Nothing ready — a named frontier. Pollen, ovule and stigma function under heat is a separate problem from the plant surviving heat.",
+      "watch": "A plant that looks fine in a heat wave can still set no fruit. Any edit here must not disturb normal flower development."
+    },
+    "GAP-RECOV-01": {
+      "goal": "climate",
+      "ask": "I want a crop that bounces back fast after a stress episode.",
+      "gives": "Nothing ready — an exploratory idea: how quickly yield recovers once heat or drought passes, as a trait in its own right.",
+      "watch": "Clearing the stress signal too fast leaves the plant exposed to the next episode."
+    },
+    "WAT-SEX-01": {
+      "goal": "seed",
+      "ask": "I want an all-female watermelon parent for hybrid seed.",
+      "gives": "A candidate route to gynoecious watermelon lines, following the pathway already established in cucumber and melon.",
+      "watch": "Changing sex expression changes pollination management: a fully female line needs a pollenizer. Candidate stage in watermelon."
+    }
+  }
+}

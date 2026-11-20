@@ -38,7 +38,12 @@ Gene, source and evidence are sourced. Portability, linkage, side-effects and IP
    `scripts/find_ortholog.py` aligns the gene and its close paralogues against the target crop's
    whole proteome, so a hit that is really a paralogue shows up as one. It returns ranked
    candidates, not established orthologs.
-5. **Publish** the site from `data/atlas_v3.json`.
+5. **Publish** the site from `data/atlas_v3.json`, with `data/plain.json` layered over it.
+
+`data/plain.json` is the plain-language layer: for each entry, the breeder's own
+sentence ("I want X in Y"), what the line actually gets, and the one thing that most
+often spoils it. Every line there is a restatement of fields the entry already carries
+— it adds no gene, no claim and no fact of its own, and the pipeline never writes to it.
 
 Run it yourself — after any edit to `data/corrections.json`, rebuild the whole
 atlas with one command:
