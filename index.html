@@ -33,55 +33,55 @@
   .lang button{border:none;background:transparent;cursor:pointer;color:var(--txt2);
     font:600 12px inherit;padding:5px 10px;border-radius:6px;letter-spacing:.02em}
   .lang button[aria-pressed=true]{background:#fff;color:var(--txt);box-shadow:0 1px 3px rgba(0,0,0,.14)}
-  h1{font-size:34px;font-weight:700;letter-spacing:-0.028em;margin:10px 0 8px}
-  .sub{font-size:17px;line-height:1.4;color:var(--txt2);margin:0;text-wrap:pretty}
+  h1{font-size:32px;font-weight:700;letter-spacing:-0.028em;margin:10px 0 7px}
+  .sub{font-size:16px;line-height:1.4;color:var(--txt2);margin:0;text-wrap:pretty}
 
-  .step{margin-top:22px}
-  .step-h{font-size:12px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-  .chips-row{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-  .chips-row::-webkit-scrollbar{display:none}
-  .pick{flex:none;border:1px solid var(--sep);background:#fff;border-radius:19px;padding:7px 13px;
-    font:500 14px inherit;color:var(--txt);cursor:pointer;letter-spacing:-0.01em;white-space:nowrap}
-  .pick:hover{background:var(--fill)}
-  .pick.on{background:var(--txt);color:#fff;border-color:var(--txt);font-weight:600}
-  .pick b{font-weight:600;opacity:.5;margin-left:5px}
-  .pick.on b{opacity:.65}
-  .goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:7px}
-  .goals .pick{width:100%;text-align:left;white-space:normal;line-height:1.3}
-
-  .searchbar{margin-top:18px;display:flex;align-items:center;gap:9px;background:var(--fill);
-    border-radius:11px;padding:0 13px;height:44px}
-  .searchbar input{flex:1;border:none;background:transparent;font:400 16px inherit;color:var(--txt);letter-spacing:-0.01em;min-width:0}
-  .searchbar input:focus{outline:none}
-  .searchbar svg{flex:none;opacity:.45}
-  .clr{border:none;background:var(--fill2);color:var(--txt2);width:22px;height:22px;border-radius:11px;
-    cursor:pointer;font:600 13px inherit;flex:none;display:none}
+  /* one quiet grouped list, the way the first version read */
+  .list{background:var(--fill);border-radius:var(--r);overflow:hidden;margin-top:22px}
+  .row{display:flex;align-items:center;gap:8px;min-height:50px;padding:0 15px;border-bottom:1px solid var(--sep)}
+  .row:last-child{border-bottom:0}
+  .row label{font-size:15px;color:var(--txt);width:92px;flex:none}
+  .row select{flex:1;border:none;background:transparent;text-align:right;color:var(--blue);
+    font:400 15px inherit;letter-spacing:-0.01em;cursor:pointer;
+    -webkit-appearance:none;appearance:none;padding-right:2px;direction:rtl;min-width:0}
+  .row select:focus{outline:none}
+  .row input{flex:1;border:none;background:transparent;font:400 15px inherit;color:var(--txt);
+    letter-spacing:-0.01em;min-width:0;text-align:right}
+  .row input:focus{outline:none}
+  .chev{color:var(--txt3);font-size:13px;flex:none}
+  .clr{border:none;background:var(--fill2);color:var(--txt2);width:21px;height:21px;border-radius:11px;
+    cursor:pointer;font:600 12px inherit;flex:none;display:none}
   .clr.on{display:block}
 
-  .fold{margin-top:14px;border:1px solid var(--sep);border-radius:12px;overflow:hidden}
-  .fold summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:14px;font-weight:600;color:var(--txt2)}
+  .fold{margin-top:10px}
+  .fold summary{list-style:none;cursor:pointer;padding:9px 2px;font-size:13.5px;color:var(--blue)}
   .fold summary::-webkit-details-marker{display:none}
-  .fold summary::after{content:'＋';float:right;color:var(--txt3);font-weight:400}
-  .fold[open] summary::after{content:'－'}
-  .fold .body{padding:2px 14px 14px;border-top:1px solid var(--sep)}
+  .fold[open] summary{color:var(--txt2)}
+  .fold .body{padding:2px 2px 14px}
   .ldef{display:flex;gap:9px;align-items:flex-start;margin-top:10px;font-size:13.5px;line-height:1.4;color:var(--txt2)}
   .ldef .chip{flex:none;margin-top:1px}
 
-  .count{font-size:13px;color:var(--txt3);margin:22px 2px 11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .count{font-size:13px;color:var(--txt3);margin:20px 2px 11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   .count b{font-weight:600;color:var(--txt2)}
 
   .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r);
-    padding:14px 16px 13px;margin-bottom:10px;cursor:pointer;position:relative;text-align:left;width:100%;font:inherit;display:block}
+    padding:13px 16px 12px 17px;margin-bottom:9px;cursor:pointer;position:relative;text-align:left;
+    width:100%;font:inherit;display:block;overflow:hidden}
   .card:hover{border-color:#C4C9D0;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .rail{position:absolute;left:0;top:0;bottom:0;width:3px}
   .card .top{display:flex;align-items:baseline;gap:10px}
+  /* on a card the three states are quiet text with a dot; filled chips stay in
+     the legend and the detail sheet, where they are being explained */
+  .state{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:12.5px;color:var(--txt2);line-height:1.5}
+  .state span{display:inline-flex;align-items:center;gap:5px}
   .trait{font-size:17px;font-weight:650;flex:1;line-height:1.25;letter-spacing:-0.015em}
   .crop{font-size:12.5px;font-weight:600;color:var(--txt3);flex:none}
-  .gives{font-size:14.5px;color:var(--txt2);margin:5px 0 10px;line-height:1.42;text-wrap:pretty}
+  .gives{font-size:14.5px;color:var(--txt2);margin:5px 0 9px;line-height:1.42;text-wrap:pretty}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
   .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
     padding:3.5px 9px;border-radius:20px;line-height:1.3}
   .dot{width:7px;height:7px;border-radius:4px;flex:none}
-  .genes-line{font-size:12.5px;color:var(--txt3);margin-top:9px;
+  .genes-line{font-size:12.5px;color:var(--txt3);margin-top:7px;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
 
   .empty{text-align:center;color:var(--txt3);font-size:15px;padding:38px 20px;line-height:1.5;
@@ -163,20 +163,14 @@
     <p class="sub" id="t-sub"></p>
   </div>
 
-  <div class="step">
-    <div class="step-h" id="t-step1"></div>
-    <div class="chips-row" id="crops"></div>
-  </div>
-
-  <div class="step">
-    <div class="step-h" id="t-step2"></div>
-    <div class="goals" id="goals"></div>
-  </div>
-
-  <div class="searchbar">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
-    <input id="q" type="search" autocomplete="off">
-    <button class="clr" id="clr" aria-label="Clear">✕</button>
+  <div class="list">
+    <div class="row"><label for="f-crop" id="t-step1"></label>
+      <select id="f-crop"></select><span class="chev">⌄</span></div>
+    <div class="row"><label for="f-goal" id="t-step2"></label>
+      <select id="f-goal"></select><span class="chev">⌄</span></div>
+    <div class="row"><label for="q" id="t-step3"></label>
+      <input id="q" type="search" autocomplete="off">
+      <button class="clr" id="clr" aria-label="Clear">✕</button></div>
   </div>
 
   <details class="fold" id="legend">
@@ -288,10 +282,10 @@ const IP = {
 /* ---------- interface strings ---------- */
 const T = {
   en:{
-    sub:'You want a trait in a crop. Someone has probably already found the gene — in another crop, a wild relative, or a paper nobody in your team has read. Pick the crop and the goal; the Atlas tells you how far that solution has been taken, what it costs you elsewhere in the plant, and whether the patent space is already occupied.',
-    step1:'1 · Which crop', step2:'2 · What do you want to change',
+    sub:'You want a trait in a crop, and someone has probably already found the gene. Pick the crop and the goal: how far the solution has been taken, what it costs elsewhere in the plant, and whether the patent space is occupied.',
+    step1:'Crop', step2:'Goal', step3:'Search',
     allCrops:'All crops', anything:'Anything',
-    search:'or search: mildew, ToBRFV, shelf life, MLO…',
+    search:'mildew, ToBRFV, shelf life…',
     legend:'What do the labels mean?',
     lgReady:'How far it has been taken', lgRoute:'How you would get it', lgIp:'Patent space',
     lgFoot:'Readiness is derived from what the verification pipeline could confirm in public databases, not from what a draft claimed. Route and patent lines are a breeder\'s research signals — not lab results, not legal classifications.',
@@ -338,10 +332,10 @@ const T = {
           'Part of <a href="https://agrihubai.wordpress.com">AgriHub-AI</a> · Almería · <a href="https://github.com/agrihubai/transfer-atlas">source and data</a>']
   },
   tr:{
-    sub:'Bir üründe bir özellik istiyorsun. Geni birileri büyük ihtimalle çoktan bulmuş — başka bir üründe, bir yabani akrabada ya da ekibinden kimsenin okumadığı bir makalede. Ürünü ve hedefi seç; Atlas sana o çözümün nereye kadar götürüldüğünü, bitkinin başka yerinde neye mal olduğunu ve patent alanının dolu olup olmadığını söylesin.',
-    step1:'1 · Hangi ürün', step2:'2 · Neyi değiştirmek istiyorsun',
+    sub:'Bir üründe bir özellik istiyorsun ve geni birileri büyük ihtimalle çoktan bulmuş. Ürünü ve hedefi seç: çözüm nereye kadar götürülmüş, bitkinin başka yerinde neye mal oluyor, patent alanı dolu mu.',
+    step1:'Ürün', step2:'Hedef', step3:'Ara',
     allCrops:'Tüm ürünler', anything:'Her şey',
-    search:'ya da ara: külleme, ToBRFV, raf ömrü, MLO…',
+    search:'külleme, ToBRFV, raf ömrü…',
     legend:'Etiketler ne demek?',
     lgReady:'Nereye kadar götürülmüş', lgRoute:'Nasıl elde edilir', lgIp:'Patent durumu',
     lgFoot:'Hazırlık düzeyi, doğrulama hattının kamuya açık veritabanlarında teyit edebildiğinden türetilir; taslağın iddiasından değil. Yol ve patent satırları bir ıslahçının araştırma sinyalleridir — laboratuvar sonucu değil, hukuki sınıflandırma hiç değil.',
@@ -475,15 +469,19 @@ function locusLinks(e){
 /* ---------- result card ---------- */
 function card(e, i){
   const r = ready(e), rt = route(e), ip = ipState(e), g = say(e, 'gives');
+  const flag = [say(e, 'why_not_product') ? t().otherRouteChip : '',
+                e.claims.documented_in
+                  ? t().evidenceFrom + ' ' + e.claims.documented_in.split('(')[0].trim() : '']
+               .filter(Boolean);
+  const dot = (tone, label) =>
+    `<span><i class="dot" style="background:${TONE(tone).dot}"></i>${esc(label)}</span>`;
   return `<button class="card" data-i="${i}">
+    <div class="rail" style="background:${TONE(r.tone).dot}"></div>
     <div class="top"><div class="trait">${esc(goalPhrase(e))}</div><div class="crop">${esc(cropName(e.crop))}</div></div>
     ${g ? `<div class="gives">${esc(g)}</div>` : ''}
-    <div class="chips">
-      ${chip(r.tone, L(r).label)}
-      ${chip(rt.tone, L(rt).label)}
-      ${chip(ip.tone, L(ip).label.split(' — ')[0])}
-      ${say(e, 'why_not_product') ? chip('grey', t().otherRouteChip) : ''}
-      ${e.claims.documented_in ? chip('grey', t().evidenceFrom + ' ' + e.claims.documented_in.split('(')[0].trim()) : ''}
+    <div class="state">
+      ${dot(r.tone, L(r).label)}${dot(rt.tone, L(rt).label)}${dot(ip.tone, L(ip).label.split(' — ')[0])}
+      ${flag.map(f => dot('grey', f)).join('')}
     </div>
     <div class="genes-line">${esc(e.gene_label)}</div>
   </button>`;
@@ -647,30 +645,26 @@ function apply(){
 }
 
 /* ---------- pickers ---------- */
+function options(sel, items, value){
+  sel.innerHTML = items.map(([v, l, n]) =>
+    `<option value="${esc(v)}"${v === value ? ' selected' : ''}>${esc(l)}${n == null ? '' : '  ' + n}</option>`).join('');
+}
 function drawCrops(){
   const counts = {};
   ATLAS.entries.forEach(e => { counts[e.crop] = (counts[e.crop] || 0) + 1; });
-  const items = [['', t().allCrops, ATLAS.entries.length]]
-    .concat(Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([c, n]) => [c, cropName(c), n]));
-  el('crops').innerHTML = items.map(([v, l, n]) =>
-    `<button class="pick${v === CROP ? ' on' : ''}" data-v="${esc(v)}">${esc(l)}<b>${n}</b></button>`).join('');
-  el('crops').querySelectorAll('.pick').forEach(b => b.onclick = () => {
-    CROP = b.dataset.v; drawCrops(); drawGoals(); apply();
-  });
+  options(el('f-crop'), [['', t().allCrops, ATLAS.entries.length]].concat(
+    Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([c, n]) => [c, cropName(c), n])), CROP);
 }
 function drawGoals(){
   const pool = ATLAS.entries.filter(e => !CROP || e.crop === CROP);
   const counts = {};
   pool.forEach(e => { const g = plain(e).goal; if (g) counts[g] = (counts[g] || 0) + 1; });
   if (GOAL && !counts[GOAL]) GOAL = '';
-  const items = [['', t().anything, pool.length]].concat(
-    Object.keys(GOALS).filter(k => counts[k]).map(k => [k, goalName(k), counts[k]]));
-  el('goals').innerHTML = items.map(([v, l, n]) =>
-    `<button class="pick${v === GOAL ? ' on' : ''}" data-v="${esc(v)}">${esc(l)}<b>${n}</b></button>`).join('');
-  el('goals').querySelectorAll('.pick').forEach(b => b.onclick = () => {
-    GOAL = b.dataset.v; drawGoals(); apply();
-  });
+  options(el('f-goal'), [['', t().anything, pool.length]].concat(
+    Object.keys(GOALS).filter(k => counts[k]).map(k => [k, goalName(k), counts[k]])), GOAL);
 }
+el('f-crop').onchange = () => { CROP = el('f-crop').value; drawGoals(); apply(); };
+el('f-goal').onchange = () => { GOAL = el('f-goal').value; apply(); };
 el('q').oninput = () => {
   Q = el('q').value.trim();
   el('clr').classList.toggle('on', !!Q);
@@ -685,6 +679,7 @@ function drawChrome(){
   el('t-sub').textContent = s.sub;
   el('t-step1').textContent = s.step1;
   el('t-step2').textContent = s.step2;
+  el('t-step3').textContent = s.step3;
   el('q').placeholder = s.search;
   el('t-legend').textContent = s.legend;
   el('t-method').textContent = s.method;
