@@ -5,7 +5,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232BAD4E'/%3E%3Ctext x='16' y='23' font-size='20' font-family='sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Transfer Atlas — AgriHub·AI</title>
-<meta name="description" content="Pick a crop and what you want changed. The Atlas shows which gene already solved it somewhere, how ready it is, whether the patent space is taken, and where to look next.">
+<meta name="description" content="Pick a crop and what you want changed. The Atlas shows which gene already solved it somewhere, how far it has been taken, whether the patent space is occupied, and where to look next.">
 <style>
   :root{
     --txt:#15181C; --txt2:#5A6069; --txt3:#8A9099;
@@ -25,13 +25,17 @@
   a{color:var(--blue);text-decoration:none}
   a:hover{color:var(--blue-d)}
   .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px}
-  .head{padding-top:44px}
+  .head{padding-top:40px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .kicker{font-size:13px;font-weight:600;color:var(--txt2)}
   .kicker span{color:#2BAD4E}
-  h1{font-size:34px;font-weight:700;letter-spacing:-0.028em;margin:8px 0 8px}
-  .sub{font-size:17px;line-height:1.4;color:var(--txt2);margin:0 0 6px;text-wrap:pretty}
+  .lang{display:flex;background:var(--fill);border-radius:8px;padding:2px;flex:none}
+  .lang button{border:none;background:transparent;cursor:pointer;color:var(--txt2);
+    font:600 12px inherit;padding:5px 10px;border-radius:6px;letter-spacing:.02em}
+  .lang button[aria-pressed=true]{background:#fff;color:var(--txt);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+  h1{font-size:34px;font-weight:700;letter-spacing:-0.028em;margin:10px 0 8px}
+  .sub{font-size:17px;line-height:1.4;color:var(--txt2);margin:0;text-wrap:pretty}
 
-  /* step pickers */
   .step{margin-top:22px}
   .step-h{font-size:12px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
   .chips-row{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
@@ -42,31 +46,30 @@
   .pick.on{background:var(--txt);color:#fff;border-color:var(--txt);font-weight:600}
   .pick b{font-weight:600;opacity:.5;margin-left:5px}
   .pick.on b{opacity:.65}
-  .goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px}
+  .goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:7px}
   .goals .pick{width:100%;text-align:left;white-space:normal;line-height:1.3}
 
   .searchbar{margin-top:18px;display:flex;align-items:center;gap:9px;background:var(--fill);
     border-radius:11px;padding:0 13px;height:44px}
-  .searchbar input{flex:1;border:none;background:transparent;font:400 16px inherit;color:var(--txt);letter-spacing:-0.01em}
+  .searchbar input{flex:1;border:none;background:transparent;font:400 16px inherit;color:var(--txt);letter-spacing:-0.01em;min-width:0}
   .searchbar input:focus{outline:none}
   .searchbar svg{flex:none;opacity:.45}
   .clr{border:none;background:var(--fill2);color:var(--txt2);width:22px;height:22px;border-radius:11px;
     cursor:pointer;font:600 13px inherit;flex:none;display:none}
   .clr.on{display:block}
 
-  .legend{margin-top:14px;border:1px solid var(--sep);border-radius:12px;overflow:hidden}
-  .legend summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:14px;font-weight:600;color:var(--txt2)}
-  .legend summary::-webkit-details-marker{display:none}
-  .legend summary::after{content:'＋';float:right;color:var(--txt3);font-weight:400}
-  .legend[open] summary::after{content:'－'}
-  .legend .body{padding:2px 14px 14px;border-top:1px solid var(--sep)}
+  .fold{margin-top:14px;border:1px solid var(--sep);border-radius:12px;overflow:hidden}
+  .fold summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:14px;font-weight:600;color:var(--txt2)}
+  .fold summary::-webkit-details-marker{display:none}
+  .fold summary::after{content:'＋';float:right;color:var(--txt3);font-weight:400}
+  .fold[open] summary::after{content:'－'}
+  .fold .body{padding:2px 14px 14px;border-top:1px solid var(--sep)}
   .ldef{display:flex;gap:9px;align-items:flex-start;margin-top:10px;font-size:13.5px;line-height:1.4;color:var(--txt2)}
   .ldef .chip{flex:none;margin-top:1px}
 
-  .count{font-size:13px;color:var(--txt3);margin:22px 2px 11px;display:flex;justify-content:space-between;gap:10px}
+  .count{font-size:13px;color:var(--txt3);margin:22px 2px 11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
   .count b{font-weight:600;color:var(--txt2)}
 
-  /* result cards */
   .card{background:var(--card);border:1px solid var(--sep);border-radius:var(--r);
     padding:14px 16px 13px;margin-bottom:10px;cursor:pointer;position:relative;text-align:left;width:100%;font:inherit;display:block}
   .card:hover{border-color:#C4C9D0;box-shadow:0 2px 10px rgba(0,0,0,.05)}
@@ -84,7 +87,6 @@
   .empty{text-align:center;color:var(--txt3);font-size:15px;padding:38px 20px;line-height:1.5;
     border:1px dashed var(--sep);border-radius:var(--r)}
 
-  /* sheet */
   .scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40;display:none}
   .scrim.on{display:block}
   .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:#fff;
@@ -107,7 +109,7 @@
   .stand{border:1px solid var(--sep);border-radius:12px;overflow:hidden}
   .sline{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-bottom:1px solid var(--sep)}
   .sline:last-child{border-bottom:0}
-  .sline .sq{font-size:12.5px;font-weight:600;color:var(--txt3);width:74px;flex:none;padding-top:2px}
+  .sline .sq{font-size:12.5px;font-weight:600;color:var(--txt3);width:86px;flex:none;padding-top:2px;line-height:1.3}
   .sline .sv{flex:1;font-size:13.5px;color:var(--txt2);line-height:1.4}
   .sline .sv .chip{margin-bottom:4px}
   .warn{font-size:13.5px;line-height:1.45;color:#7A4A00;background:#FFF8E8;border-radius:11px;padding:11px 13px;margin-top:9px}
@@ -115,7 +117,6 @@
   .note.flat{background:transparent;padding:0}
   .tiny{font-size:12.5px;color:var(--txt3);line-height:1.45;margin-top:8px}
 
-  /* next steps */
   .gbox{border:1px solid var(--sep);border-radius:12px;padding:11px 13px;margin-bottom:9px}
   .gname{font-size:15px;font-weight:650;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0}
   .gmeta{font-size:12.5px;color:var(--txt3);margin-top:3px;line-height:1.4}
@@ -128,7 +129,6 @@
   ol.todo li{margin-bottom:6px}
   ol.todo b{color:var(--txt);font-weight:600}
 
-  /* technical fold */
   details.tech{border:1px solid var(--sep);border-radius:12px;margin-top:10px;overflow:hidden}
   details.tech summary{list-style:none;cursor:pointer;padding:12px 14px;font-size:14px;font-weight:600;color:var(--txt2)}
   details.tech summary::-webkit-details-marker{display:none}
@@ -152,63 +152,47 @@
 <body>
 <div class="wrap">
   <div class="head">
-    <div class="kicker">AgriHub<span>·AI</span> · proof-of-concept</div>
+    <div class="topbar">
+      <div class="kicker">AgriHub<span>·AI</span> · proof-of-concept</div>
+      <div class="lang">
+        <button data-lang="en" aria-pressed="true">EN</button>
+        <button data-lang="tr" aria-pressed="false">TR</button>
+      </div>
+    </div>
     <h1>Transfer Atlas</h1>
-    <p class="sub">You want a trait in a crop. Someone has probably already found the gene — in another
-      crop, a wild relative, or a paper nobody in your team has read. Pick the crop and the goal; the
-      Atlas tells you how ready that solution is, what it costs you elsewhere in the plant, and whether
-      the patent space is already taken.</p>
+    <p class="sub" id="t-sub"></p>
   </div>
 
   <div class="step">
-    <div class="step-h">1 · Which crop</div>
+    <div class="step-h" id="t-step1"></div>
     <div class="chips-row" id="crops"></div>
   </div>
 
   <div class="step">
-    <div class="step-h">2 · What do you want to change</div>
+    <div class="step-h" id="t-step2"></div>
     <div class="goals" id="goals"></div>
   </div>
 
   <div class="searchbar">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
-    <input id="q" type="search" placeholder="or search: mildew, ToBRFV, shelf life, MLO…" autocomplete="off">
+    <input id="q" type="search" autocomplete="off">
     <button class="clr" id="clr" aria-label="Clear">✕</button>
   </div>
 
-  <details class="legend">
-    <summary>What do the labels mean?</summary>
+  <details class="fold" id="legend">
+    <summary id="t-legend"></summary>
     <div class="body" id="legend-body"></div>
   </details>
 
   <div class="count"><span id="count">—</span><span id="asof"></span></div>
   <div id="results"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
 
-  <details class="legend" style="margin-top:24px">
-    <summary>How this atlas is built, and what is actually verified</summary>
-    <div class="body">
-      <p class="note flat" id="method-text" style="margin-top:12px"></p>
-      <h3>Current state</h3>
-      <div class="kv" id="method-stats"></div>
-      <h3>Known limitation</h3>
-      <p class="warn">Genome-project locus tags (Solyc, Csa, Cla97, MELO3C, SMEL4.1, BraA) are not indexed
-        in NCBI, so most of them could not be checked there. A missing confirmation is not evidence that
-        an ID is wrong — it means NCBI is the wrong database to ask. Resolving them needs Ensembl Plants
-        or Sol Genomics.</p>
-      <h3>How the readiness label is decided</h3>
-      <p class="note flat" id="method-rule" style="font-size:13px"></p>
-    </div>
+  <details class="fold" style="margin-top:24px">
+    <summary id="t-method"></summary>
+    <div class="body" id="method-body"></div>
   </details>
 
-  <footer>
-    <p><b>Gene identity and references</b> are machine-verified against NCBI Gene and PubMed by
-      <code>scripts/verify_genes.py</code>, which records only what the databases return.</p>
-    <p><b>Route, linkage drag, side effects and patent signals</b> are indicative research signals
-      curated by a breeder — not lab results and not legal classifications. Every candidate still needs
-      allele checking in your own material and validation in the target crop.</p>
-    <p>Part of <a href="https://agrihubai.wordpress.com">AgriHub-AI</a> · Almería ·
-      <a href="https://github.com/agrihubai/transfer-atlas">source and data</a></p>
-  </footer>
+  <footer id="foot"></footer>
 </div>
 
 <div class="scrim" id="scrim"></div>
@@ -217,77 +201,232 @@
 <script>
 'use strict';
 
-/* ---------- plain-language label vocabularies ----------
-   Every label here is a restatement of a field the entry already carries.
+/* ============================================================
+   Plain-language vocabularies.
+   Every label restates something the entry already carries.
    READY comes from evidence.derived_level, which is itself derived from what
-   the verification pipeline could confirm — never from a draft's claim. */
+   the verification pipeline could confirm — never from a draft's claim.
+   ============================================================ */
 
 const READY = {
-  'Level 1': {label:'On the market',        tone:'green', order:0,
-    means:'A product made this same way is being sold. The route works outside a lab.'},
-  'Level 2': {label:'Proven in plants',     tone:'blue',  order:1,
-    means:'Edited or mutant plants exist and behave as described, and the cited paper checks out. No product yet.'},
-  'Level 3': {label:'Documented, gene not pinned', tone:'amber', order:2,
-    means:'The paper is confirmed, but not every gene named here resolves to a database record. The biology is documented; the exact target is not fully nailed down.'},
-  'Level 4': {label:'Candidate gene only',  tone:'amber', order:3,
-    means:'The gene records resolve, but no paper confirming this use could be verified. Treat it as a lead to check, not a target to edit.'},
-  'Level 5': {label:'Open question',        tone:'grey',  order:4,
-    means:'Neither a gene record nor a confirming paper resolved. Kept visible because the gap is worth knowing about.'},
-  '':        {label:'Not graded',           tone:'grey',  order:5,
-    means:'No readiness level was derived for this entry.'}
+  'Level 1': {tone:'green', order:0,
+    en:{label:'Used in a product',
+        means:'A product on sale was made by this same route. It has been taken all the way out of the lab at least once.'},
+    tr:{label:'Üründe kullanılmış',
+        means:'Satıştaki bir ürün bu yolla yapılmış. Yani bu çözüm en az bir kez laboratuvarın dışına çıkarılmış.'}},
+  'Level 2': {tone:'blue', order:1,
+    en:{label:'Proven in plants',
+        means:'Edited or mutant plants exist and behave as described, and the cited paper checks out. No product yet — this is where a commercial candidate starts.'},
+    tr:{label:'Bitkide kanıtlanmış',
+        means:'Düzenlenmiş ya da mutant bitkiler var ve anlatıldığı gibi davranıyor; atıf verilen makale de doğrulandı. Henüz ürün yok — ticari aday buradan çıkar.'}},
+  'Level 3': {tone:'amber', order:2,
+    en:{label:'Documented, gene not pinned',
+        means:'The paper is confirmed, but not every gene named here resolves to a database record. The biology is documented; the exact target is not nailed down.'},
+    tr:{label:'Belgelenmiş, gen sabitlenmemiş',
+        means:'Makale doğrulandı, ama burada adı geçen her gen bir veritabanı kaydına oturmuyor. Biyoloji belgelenmiş; hedefin tam kendisi netleşmemiş.'}},
+  'Level 4': {tone:'amber', order:3,
+    en:{label:'Candidate gene',
+        means:'The gene records resolve, but no paper confirming this use could be verified. A lead to check, not a target to edit.'},
+    tr:{label:'Aday gen',
+        means:'Gen kayıtları doğrulandı, ama bu kullanımı doğrulayan bir makale teyit edilemedi. Düzenlenecek hedef değil, kontrol edilecek bir ipucu.'}},
+  'Level 5': {tone:'grey', order:4,
+    en:{label:'Open question',
+        means:'Neither a gene record nor a confirming paper resolved. Kept visible because the gap itself is worth knowing about.'},
+    tr:{label:'Açık soru',
+        means:'Ne gen kaydı ne de doğrulayıcı makale oturdu. Boşluğun kendisi bilmeye değer olduğu için görünür bırakıldı.'}},
+  '': {tone:'grey', order:5,
+    en:{label:'Not graded', means:'No readiness level was derived for this entry.'},
+    tr:{label:'Derecelendirilmemiş', means:'Bu kayıt için hazırlık düzeyi türetilmedi.'}}
 };
 
 const ROUTE = {
-  t1:{label:"Edit the crop's own gene", tone:'green', order:0,
-    means:"The gene is already in your crop; you change its own sequence. Candidate for the EU NGT category-1 route, and it drags nothing else along."},
-  t2:{label:'Cross from a wild relative', tone:'blue', order:1,
-    means:'The solution sits in a crossable relative. Classical introgression works, but it carries the neighbouring genes with it.'},
-  t3:{label:'Transgenic', tone:'amber', order:2,
-    means:'The gene comes from outside the crop gene pool. A different regulatory track entirely.'}
+  t1:{tone:'green', order:0,
+    en:{label:"Edit the crop's own gene",
+        means:"The gene is already in your crop; you change its own sequence. Candidate for the EU NGT category-1 route, and it drags nothing else along."},
+    tr:{label:'Kendi geninde düzenleme',
+        means:'Gen zaten senin üründe; kendi dizisini değiştiriyorsun. AB NGT kategori-1 yolu için aday ve yanında başka hiçbir şey sürüklemiyor.'}},
+  t2:{tone:'blue', order:1,
+    en:{label:'Cross from a wild relative',
+        means:'The solution sits in a crossable relative. Classical introgression works, but it carries the neighbouring genes with it.'},
+    tr:{label:'Yabani akrabadan aktarım',
+        means:'Çözüm melezlenebilir bir akrabada. Klasik introgresyon işe yarar, ama komşu genleri de beraberinde getirir.'}},
+  t3:{tone:'amber', order:2,
+    en:{label:'Transgenic',
+        means:'The gene comes from outside the crop gene pool. A different regulatory track entirely.'},
+    tr:{label:'Transgenik',
+        means:'Gen, ürünün gen havuzunun dışından geliyor. Tamamen farklı bir mevzuat yolu.'}}
 };
 
 const IP = {
-  named:{label:'Filings named — assume occupied', tone:'red',
-    means:'A company or institute is named as holding filings on this gene or use. Assume the space is taken until your own search says otherwise.'},
-  crowded:{label:'Crowded area', tone:'amber',
-    means:'Many filings touch these genes. No single owner was identified.'},
-  unchecked:{label:'Not searched yet', tone:'amber',
-    means:'Nobody has run the patent search for this entry. The link below starts it.'},
-  open:{label:'Public, no filing named', tone:'grey',
-    means:'The locus is publicly characterised and no filing was recorded here. That is not a clearance — it only means nothing was found.'},
-  examined:{label:'Claims examined — read this one', tone:'red',
-    means:'Actual patent claims were pulled and read for this entry. The detail below says which rights are live and what they cover.'}
+  named:{tone:'red',
+    en:{label:'Filings named — assume occupied',
+        means:'A company or institute is named as holding filings on this gene or use. Assume the space is taken until your own search says otherwise.'},
+    tr:{label:'Başvuru sahibi belli — dolu varsay',
+        means:'Bu gen ya da kullanım üzerinde başvurusu olan bir şirket veya enstitü adlandırılmış. Kendi aramanı yapana kadar alanı dolu varsay.'}},
+  examined:{tone:'red',
+    en:{label:'Claims examined',
+        means:'Actual patent claims were pulled and read for this entry. The detail below says which rights are live and what they cover.'},
+    tr:{label:'İstemler okundu',
+        means:'Bu kayıt için gerçek patent istemleri çekilip okundu. Aşağıdaki detay hangi hakların yürürlükte olduğunu ve neyi kapsadığını söylüyor.'}},
+  crowded:{tone:'amber',
+    en:{label:'Crowded area',
+        means:'Many filings touch these genes. No single owner was identified.'},
+    tr:{label:'Kalabalık alan',
+        means:'Bu genlere dokunan çok sayıda başvuru var. Tek bir sahip belirlenemedi.'}},
+  unchecked:{tone:'amber',
+    en:{label:'Not searched yet',
+        means:'Nobody has run the patent search for this entry. The link below starts it.'},
+    tr:{label:'Henüz aranmadı',
+        means:'Bu kayıt için patent araması kimse tarafından yapılmadı. Aşağıdaki bağlantı aramayı başlatır.'}},
+  open:{tone:'grey',
+    en:{label:'Public, no filing named',
+        means:'The locus is publicly characterised and no filing was recorded here. That is not a clearance — it only means nothing was found.'},
+    tr:{label:'Açık, başvuru kaydı yok',
+        means:'Lokus kamuya açık biçimde tanımlanmış ve burada bir başvuru kaydedilmemiş. Bu bir serbestlik belgesi değil — yalnızca bir şey bulunmadığı anlamına gelir.'}}
 };
 
-const TONE = t => ({bg:`var(--${t}-bg)`, fg:`var(--${t}-fg)`, dot:`var(--${t}-dot)`});
+/* ---------- interface strings ---------- */
+const T = {
+  en:{
+    sub:'You want a trait in a crop. Someone has probably already found the gene — in another crop, a wild relative, or a paper nobody in your team has read. Pick the crop and the goal; the Atlas tells you how far that solution has been taken, what it costs you elsewhere in the plant, and whether the patent space is already occupied.',
+    step1:'1 · Which crop', step2:'2 · What do you want to change',
+    allCrops:'All crops', anything:'Anything',
+    search:'or search: mildew, ToBRFV, shelf life, MLO…',
+    legend:'What do the labels mean?',
+    lgReady:'How far it has been taken', lgRoute:'How you would get it', lgIp:'Patent space',
+    lgFoot:'Readiness is derived from what the verification pipeline could confirm in public databases, not from what a draft claimed. Route and patent lines are a breeder\'s research signals — not lab results, not legal classifications.',
+    method:'How this atlas is built, and what is actually verified',
+    mState:'Current state', mLimit:'Known limitation', mRule:'How the readiness label is decided',
+    mLimitText:'Genome-project locus tags (Solyc, Csa, Cla97, MELO3C, SMEL4.1, BraA) are not indexed in NCBI, so most of them could not be checked there. A missing confirmation is not evidence that an ID is wrong — it means NCBI is the wrong database to ask. Resolving them needs Ensembl Plants or Sol Genomics.',
+    mStats:['Solutions','Fully verified','Partly verified','Unverified','Genes with accession','Last checked'],
+    solutions:['solution','solutions'], ofWhich:'used in a product', ofWhich2:'proven in plants',
+    asof:'genes and papers last checked',
+    empty:'Nothing matches that yet.', emptyWhy:'The atlas is a seed, not a complete map — an empty result is usually a gap in the atlas, not an answer about the crop.',
+    whatYouGet:'What you get', watchOut:'Watch out',
+    otherRoute:'A product with this trait exists — but not by this route.',
+    otherRouteChip:'product exists, other route', evidenceFrom:'evidence from',
+    stands:'Where this stands', qReady:'How far', qRoute:'How to get it', qIp:'Patent space',
+    recorded:'Recorded', next:'Next steps',
+    step_a:'<b>Open the gene record and the paper</b> below — check the paper actually shows the phenotype you want, in a background close to yours.',
+    step_b:'<b>Check the allele in your own material.</b> BLAST the sequence against your line: the gene being present says nothing about which allele you carry.',
+    step_c:'<b>Run the patent search</b> before any plan is costed — ',
+    step_c2:'start it here', step_c3:' — and hand the result to someone who does FTO for a living.',
+    step_d:'<b>Budget for linkage drag.</b> This route brings the donor\'s neighbouring genes with it; plan the backcross generations or the fine-mapping.',
+    step_e:'<b>Validate in the target crop.</b> Nothing in this atlas replaces your own trial.',
+    genesWhere:'Genes, and where to look',
+    gFound:'database record found in', gAs:'as', gGenbank:'pinned by GenBank record',
+    gNone:'no database record resolved for this symbol — the locus-tag links below are the place to look',
+    gNoGenes:'No gene symbols parsed for this entry.',
+    locusBox:'Genome-database locus IDs for this entry — the crop databases, not NCBI',
+    lGene:'Gene record', lPaper:'Read the paper', lBlast:'BLAST it', lFindSeq:'Find a sequence to BLAST',
+    lPatent:'Patent search', lPapers:'Papers on this gene',
+    tech:'Technical detail — verification, curation, full records',
+    techNote:'The records below are kept in English: they are what the databases and the curation log returned, word for word.',
+    tRecords:'What the entry records', tReady:'Readiness, derived', tLevel:'Level', tDraft:'Draft claimed',
+    tVer:'Verification', tGenesRes:'genes resolved', tChecked:'checked',
+    tDraftNote:'Draft note, not verified:', tLocus:'Locus IDs checked', tRoute:'Breeding route considered',
+    tDecision:'Curated decision', tWhyNot:'Why not "used in a product"', tOpen:'Open question',
+    tCand:'Candidate gene in the target crop', tGene:'Gene', tStatus:'Status', tLoc:'Location',
+    tClaims:'Patent claims, as read', tClaimChecked:'Claim checked', tHolds:'What holds up',
+    tWrong:'What turned out wrong', tLive:'Live rights to clear', tMissing:'Still missing',
+    tDisc:'Patent lines are a research signal — not legal advice and not a freedom-to-operate opinion.',
+    recommended:'recommended',
+    strategies:['Genome editing (CRISPR / base / promoter)','Marker-assisted selection','Genomic selection','Classical introgression'],
+    kvLabels:['Documented in','Status in target','Gene function','Gene action','Inheritance','Tissue','Editing route','Conventional route','Locus IDs','Commercial product','Linkage drag','Side effects','Environment','Reference cited'],
+    foot:['<b>Gene identity and references</b> are machine-verified against NCBI Gene and PubMed by <code>scripts/verify_genes.py</code>, which records only what the databases return.',
+          '<b>Route, linkage drag, side effects and patent signals</b> are indicative research signals curated by a breeder — not lab results and not legal classifications. Every candidate still needs allele checking in your own material and validation in the target crop.',
+          'Part of <a href="https://agrihubai.wordpress.com">AgriHub-AI</a> · Almería · <a href="https://github.com/agrihubai/transfer-atlas">source and data</a>']
+  },
+  tr:{
+    sub:'Bir üründe bir özellik istiyorsun. Geni birileri büyük ihtimalle çoktan bulmuş — başka bir üründe, bir yabani akrabada ya da ekibinden kimsenin okumadığı bir makalede. Ürünü ve hedefi seç; Atlas sana o çözümün nereye kadar götürüldüğünü, bitkinin başka yerinde neye mal olduğunu ve patent alanının dolu olup olmadığını söylesin.',
+    step1:'1 · Hangi ürün', step2:'2 · Neyi değiştirmek istiyorsun',
+    allCrops:'Tüm ürünler', anything:'Her şey',
+    search:'ya da ara: külleme, ToBRFV, raf ömrü, MLO…',
+    legend:'Etiketler ne demek?',
+    lgReady:'Nereye kadar götürülmüş', lgRoute:'Nasıl elde edilir', lgIp:'Patent durumu',
+    lgFoot:'Hazırlık düzeyi, doğrulama hattının kamuya açık veritabanlarında teyit edebildiğinden türetilir; taslağın iddiasından değil. Yol ve patent satırları bir ıslahçının araştırma sinyalleridir — laboratuvar sonucu değil, hukuki sınıflandırma hiç değil.',
+    method:'Bu atlas nasıl kuruldu ve gerçekte ne doğrulandı',
+    mState:'Mevcut durum', mLimit:'Bilinen sınır', mRule:'Hazırlık etiketi nasıl belirleniyor',
+    mLimitText:'Genom projesi lokus etiketleri (Solyc, Csa, Cla97, MELO3C, SMEL4.1, BraA) NCBI\'da indekslenmiyor, bu yüzden çoğu orada kontrol edilemedi. Teyidin olmaması bir kimliğin yanlış olduğunun kanıtı değil — NCBI\'nın sorulacak yanlış veritabanı olduğu anlamına geliyor. Bunları çözmek için Ensembl Plants ya da Sol Genomics gerekiyor.',
+    mStats:['Çözüm','Tam doğrulanmış','Kısmen doğrulanmış','Doğrulanmamış','Accession\'ı olan gen','Son kontrol'],
+    solutions:['çözüm','çözüm'], ofWhich:'üründe kullanılmış', ofWhich2:'bitkide kanıtlanmış',
+    asof:'gen ve makaleler son kontrol',
+    empty:'Bununla eşleşen bir şey yok.', emptyWhy:'Atlas tohum hâlinde, tamamlanmış bir harita değil — boş sonuç genellikle üründe bir cevap değil, atlasta bir boşluktur.',
+    whatYouGet:'Ne kazandırır', watchOut:'Dikkat',
+    otherRoute:'Bu özelliğe sahip bir ürün var — ama bu yolla yapılmadı.',
+    otherRouteChip:'ürün var, başka yolla', evidenceFrom:'kanıt kaynağı:',
+    stands:'Durum', qReady:'Nereye kadar', qRoute:'Nasıl elde edilir', qIp:'Patent durumu',
+    recorded:'Kayıtlı', next:'Sonraki adımlar',
+    step_a:'<b>Aşağıdan gen kaydını ve makaleyi aç</b> — makale gerçekten istediğin fenotipi, seninkine yakın bir genetik altyapıda gösteriyor mu, kontrol et.',
+    step_b:'<b>Kendi materyalinde alleli kontrol et.</b> Diziyi kendi hattına karşı BLAST\'la: genin bulunuyor olması hangi alleli taşıdığın hakkında hiçbir şey söylemez.',
+    step_c:'<b>Patent aramasını yap</b> — hiçbir plan maliyetlendirilmeden önce; ',
+    step_c2:'buradan başlat', step_c3:' — ve sonucu işi FTO olan birine ver.',
+    step_d:'<b>Bağlantı sürüklemesini bütçele.</b> Bu yol donörün komşu genlerini de getirir; geri melezleme generasyonlarını ya da ince haritalamayı planla.',
+    step_e:'<b>Hedef üründe doğrula.</b> Bu atlastaki hiçbir şey senin kendi denemenin yerine geçmez.',
+    genesWhere:'Genler ve nereye bakmalı',
+    gFound:'veritabanı kaydı şurada bulundu:', gAs:'·', gGenbank:'GenBank kaydıyla sabitlendi:',
+    gNone:'bu sembol için veritabanı kaydı oturmadı — aşağıdaki lokus etiketi bağlantıları bakılacak yer',
+    gNoGenes:'Bu kayıt için gen sembolü ayrıştırılmadı.',
+    locusBox:'Bu kaydın genom veritabanı lokus kimlikleri — NCBI değil, ürün veritabanları',
+    lGene:'Gen kaydı', lPaper:'Makaleyi oku', lBlast:'BLAST\'la', lFindSeq:'BLAST için dizi bul',
+    lPatent:'Patent araması', lPapers:'Bu gen üzerine makaleler',
+    tech:'Teknik detay — doğrulama, kürasyon, tam kayıtlar',
+    techNote:'Aşağıdaki kayıtlar İngilizce tutuluyor: veritabanlarının ve kürasyon defterinin kelimesi kelimesine döndürdüğü şey bunlar.',
+    tRecords:'Kayıtta ne var', tReady:'Türetilmiş hazırlık', tLevel:'Seviye', tDraft:'Taslağın iddiası',
+    tVer:'Doğrulama', tGenesRes:'oturan gen', tChecked:'kontrol',
+    tDraftNote:'Taslak notu, doğrulanmadı:', tLocus:'Kontrol edilen lokus kimlikleri', tRoute:'Değerlendirilen ıslah yolu',
+    tDecision:'Kürasyon kararı', tWhyNot:'Neden "üründe kullanılmış" değil', tOpen:'Açık soru',
+    tCand:'Hedef üründeki aday gen', tGene:'Gen', tStatus:'Durum', tLoc:'Konum',
+    tClaims:'Okunduğu hâliyle patent istemleri', tClaimChecked:'Kontrol edilen iddia', tHolds:'Doğru çıkanlar',
+    tWrong:'Yanlış çıkanlar', tLive:'Temizlenmesi gereken yürürlükteki haklar', tMissing:'Hâlâ eksik',
+    tDisc:'Patent satırları bir araştırma sinyalidir — hukuki tavsiye değildir ve bir serbestçe çalışma (FTO) görüşü değildir.',
+    recommended:'önerilen',
+    strategies:['Genom düzenleme (CRISPR / baz / promotör)','Markör destekli seleksiyon','Genomik seleksiyon','Klasik introgresyon'],
+    kvLabels:['Belgelendiği tür','Hedefteki durum','Gen işlevi','Gen etkisi','Kalıtım','Doku','Düzenleme yolu','Klasik yol','Lokus kimlikleri','Ticari ürün','Bağlantı sürüklemesi','Yan etkiler','Çevre','Atıf verilen kaynak'],
+    foot:['<b>Gen kimliği ve kaynaklar</b> <code>scripts/verify_genes.py</code> tarafından NCBI Gene ve PubMed\'e karşı makineyle doğrulanır; betik yalnızca veritabanlarının döndürdüğünü kaydeder.',
+          '<b>Yol, bağlantı sürüklemesi, yan etkiler ve patent sinyalleri</b> bir ıslahçı tarafından derlenmiş gösterge niteliğinde araştırma sinyalleridir — laboratuvar sonucu değildir, hukuki sınıflandırma değildir. Her aday yine kendi materyalinde allel kontrolü ve hedef üründe doğrulama gerektirir.',
+          '<a href="https://agrihubai.wordpress.com">AgriHub-AI</a>\'ın parçası · Almería · <a href="https://github.com/agrihubai/transfer-atlas">kaynak ve veri</a>']
+  }
+};
 
-const STRATEGIES = ['Genome editing (CRISPR / base / promoter)','Marker-assisted selection',
-                    'Genomic selection','Classical introgression'];
-
-let ATLAS = null, PLAIN = {}, GOALS = {}, SHOWN = [];
-let CROP = '', GOAL = '', Q = '';
+let ATLAS = null, PLAIN = {}, GOALS = {}, GOALS_TR = {}, CROPS_TR = {}, SHOWN = [];
+let CROP = '', GOAL = '', Q = '', LANG = 'en';
 
 const el = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const chip = (t, label, extra) =>
-  `<span class="chip" style="background:${TONE(t).bg};color:${TONE(t).fg}${extra || ''}"><i class="dot" style="background:${TONE(t).dot}"></i>${esc(label)}</span>`;
+const t = () => T[LANG];
+const L = o => o[LANG] || o.en;                       // label pack for the active language
+const TONE = x => ({bg:`var(--${x}-bg)`, fg:`var(--${x}-fg)`, dot:`var(--${x}-dot)`});
+const chip = (tone, label) =>
+  `<span class="chip" style="background:${TONE(tone).bg};color:${TONE(tone).fg}"><i class="dot" style="background:${TONE(tone).dot}"></i>${esc(label)}</span>`;
 
 const plain = e => PLAIN[e.id] || {};
-/* On a card the goal reads better without the "I want" opener; the sheet keeps
-   the breeder's own sentence whole. */
-const goalPhrase = e => {
-  const a = plain(e).ask;
-  if (!a) return e.trait;
-  const s = a.replace(/^I want (to )?/i, '');
-  return s.charAt(0).toUpperCase() + s.slice(1);
+/* The Turkish lines live under .tr; fall back to English when one is missing. */
+const say = (e, field) => {
+  const p = plain(e);
+  return (LANG === 'tr' && p.tr && p.tr[field]) ? p.tr[field] : p[field];
 };
+const cropName = c => (LANG === 'tr' && CROPS_TR[c]) ? CROPS_TR[c] : c;
+const goalName = g => (LANG === 'tr' && GOALS_TR[g]) ? GOALS_TR[g] : GOALS[g];
 const ready = e => READY[(e.evidence || {}).derived_level || ''] || READY[''];
 const route = e => ROUTE[e.portability] || ROUTE.t1;
 
+/* On a card the goal reads better without the "I want" opener; the sheet keeps
+   the breeder's own sentence whole. */
+const goalPhrase = e => {
+  const a = say(e, 'ask');
+  if (!a) return e.trait;
+  // English opens with "I want ..."; Turkish closes with "... istiyorum."
+  const s = LANG === 'tr'
+    ? a.replace(/\s*istiyorum\s*\.?\s*$/i, '.')
+    : a.replace(/^I want (to )?/i, '');
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 /* Patent state, read off what the entry records — never inferred beyond it. */
 function ipState(e){
-  if (((e.correction || {}).ip_signal)) return IP.examined;
+  if ((e.correction || {}).ip_signal) return IP.examined;
   const p = (e.claims.patent_reference || '').trim();
   if (!p || /^n\/a$/i.test(p)) return IP.open;
   if (/^check/i.test(p)) return IP.unchecked;
@@ -304,23 +443,23 @@ function geneLinks(gene, entry){
   const pm = ((v.pubmed || {}).hits || [])[0];
   const sp = entry.scientific_name || '';
   const out = [];
-  if (hit) out.push(['Gene record', `https://www.ncbi.nlm.nih.gov/gene/${hit.ncbi_gene_id}`, 0]);
+  if (hit) out.push([t().lGene, `https://www.ncbi.nlm.nih.gov/gene/${hit.ncbi_gene_id}`, 0]);
   if (gl && gl.accession) out.push([`GenBank ${gl.accession}`,
     `https://www.ncbi.nlm.nih.gov/nuccore/${encodeURIComponent(gl.accession)}`, 0]);
-  if (pm) out.push(['Read the paper', `https://pubmed.ncbi.nlm.nih.gov/${pm.pmid}/`, 0]);
+  if (pm) out.push([t().lPaper, `https://pubmed.ncbi.nlm.nih.gov/${pm.pmid}/`, 0]);
   if (pm && pm.doi) out.push(['DOI', `https://doi.org/${pm.doi}`, 1]);
   const acc = v.refseq_accession || (gl && gl.accession) || '';
   if (acc){
     const org = sp ? `&EQ_MENU=${encodeURIComponent(sp)}` : '';
-    out.push([`BLAST it (${acc})`,
+    out.push([`${t().lBlast} (${acc})`,
       `https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&BLAST_PROGRAMS=megaBlast&DATABASE=core_nt&QUERY=${encodeURIComponent(acc)}${org}`, 0]);
   } else {
-    out.push(['Find a sequence to BLAST',
+    out.push([t().lFindSeq,
       `https://www.ncbi.nlm.nih.gov/nuccore/?term=${encodeURIComponent(gene.symbol + ' ' + sp)}`, 1]);
   }
-  out.push(['Patent search',
+  out.push([t().lPatent,
     `https://patents.google.com/?q=${encodeURIComponent('"' + gene.symbol + '" ' + entry.trait.split('(')[0].trim())}`, 1]);
-  out.push(['Papers on this gene',
+  out.push([t().lPapers,
     `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(gene.symbol + ' ' + sp)}`, 1]);
   return out;
 }
@@ -328,26 +467,23 @@ function geneLinks(gene, entry){
 /* Locus tags live in crop genome databases, not NCBI — link them there. */
 function locusLinks(e){
   const ids = (e.claims.gene_id || '').match(/[A-Za-z][A-Za-z0-9._]*\d[A-Za-z0-9._]*/g) || [];
-  const out = [];
-  ids.slice(0, 4).forEach(id => {
-    if (/^Solyc/.test(id)) out.push([id, `https://solgenomics.net/search/quick?term=${id}`]);
-    else out.push([id, `https://plants.ensembl.org/Multi/Search/Results?q=${encodeURIComponent(id)}`]);
-  });
-  return out;
+  return ids.slice(0, 4).map(id => /^Solyc/.test(id)
+    ? [id, `https://solgenomics.net/search/quick?term=${id}`]
+    : [id, `https://plants.ensembl.org/Multi/Search/Results?q=${encodeURIComponent(id)}`]);
 }
 
 /* ---------- result card ---------- */
 function card(e, i){
-  const p = plain(e), r = ready(e), rt = route(e), ip = ipState(e);
+  const r = ready(e), rt = route(e), ip = ipState(e), g = say(e, 'gives');
   return `<button class="card" data-i="${i}">
-    <div class="top"><div class="trait">${esc(goalPhrase(e))}</div><div class="crop">${esc(e.crop)}</div></div>
-    ${p.gives ? `<div class="gives">${esc(p.gives)}</div>` : ''}
+    <div class="top"><div class="trait">${esc(goalPhrase(e))}</div><div class="crop">${esc(cropName(e.crop))}</div></div>
+    ${g ? `<div class="gives">${esc(g)}</div>` : ''}
     <div class="chips">
-      ${chip(r.tone, r.label)}
-      ${chip(rt.tone, rt.label)}
-      ${chip(ip.tone, ip.label.replace(' — assume occupied','').replace(' — read this one',''))}
-      ${p.why_not_product ? chip('grey', 'product exists, other route') : ''}
-      ${e.claims.documented_in ? chip('grey', 'evidence from ' + e.claims.documented_in.split('(')[0].trim()) : ''}
+      ${chip(r.tone, L(r).label)}
+      ${chip(rt.tone, L(rt).label)}
+      ${chip(ip.tone, L(ip).label.split(' — ')[0])}
+      ${say(e, 'why_not_product') ? chip('grey', t().otherRouteChip) : ''}
+      ${e.claims.documented_in ? chip('grey', t().evidenceFrom + ' ' + e.claims.documented_in.split('(')[0].trim()) : ''}
     </div>
     <div class="genes-line">${esc(e.gene_label)}</div>
   </button>`;
@@ -355,13 +491,11 @@ function card(e, i){
 
 /* ---------- detail sheet ---------- */
 function sheet(e){
-  const p = plain(e), r = ready(e), rt = route(e), ip = ipState(e);
+  const r = ready(e), rt = route(e), ip = ipState(e), s = t();
   const c = e.claims || {}, ver = e.verification || {};
   const ipText = (e.correction || {}).ip_signal
-    ? (e.correction.ip_signal.status || '')
-    : (c.patent_reference || 'nothing recorded');
+    ? (e.correction.ip_signal.status || '') : (c.patent_reference || '—');
 
-  /* --- next steps, per gene --- */
   const genes = (e.genes || []).map(g => {
     const gv = g.verification || {};
     const hit = ((gv.ncbi_gene || {}).hits || [])[0];
@@ -369,117 +503,112 @@ function sheet(e){
     let meta;
     // name the species the database record is actually in — for a transfer entry
     // that is the source species, not the crop being targeted
-    if (hit) meta = `database record found in ${esc(hit.organism || 'the named species')} as ${esc(hit.official_symbol)} — ${esc(hit.description || '')}`;
-    else if (gl && gl.accession) meta = `pinned by GenBank record ${esc(gl.accession)}`;
-    else meta = 'no database record resolved for this symbol — the locus-tag links below are the place to look';
+    if (hit) meta = `${s.gFound} ${esc(hit.organism || '—')} ${s.gAs} ${esc(hit.official_symbol)} — ${esc(hit.description || '')}`;
+    else if (gl && gl.accession) meta = `${s.gGenbank} ${esc(gl.accession)}`;
+    else meta = s.gNone;
     return `<div class="gbox"><div class="gname">${esc(g.symbol)}</div>
       <div class="gmeta">${meta}</div>
-      <div class="links">${geneLinks(g, e).map(([t, u, sec]) =>
-        `<a class="lk${sec ? ' sec' : ''}" href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>`;
+      <div class="links">${geneLinks(g, e).map(([x, u, sec]) =>
+        `<a class="lk${sec ? ' sec' : ''}" href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`).join('')}</div></div>`;
   }).join('');
 
   const loci = locusLinks(e);
-  const lociBox = loci.length ? `<div class="gbox"><div class="gmeta" style="margin:0 0 2px">Genome-database
-    locus IDs for this entry — the crop databases, not NCBI</div>
-    <div class="links">${loci.map(([t, u]) =>
-      `<a class="lk sec" href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div></div>` : '';
+  const lociBox = loci.length ? `<div class="gbox"><div class="gmeta" style="margin:0 0 2px">${s.locusBox}</div>
+    <div class="links">${loci.map(([x, u]) =>
+      `<a class="lk sec" href="${u}" target="_blank" rel="noopener">${esc(x)}</a>`).join('')}</div></div>` : '';
 
   const ipLink = `https://patents.google.com/?q=${encodeURIComponent('"' + (e.gene_label.split(',')[0] || '').trim() + '" ' + e.trait.split('(')[0].trim())}`;
 
-  /* --- technical fold: everything the curation pipeline recorded --- */
-  const kv = [
-    ['Documented in', c.documented_in], ['Status in target', c.target_note],
-    ['Gene function', c.gene_function], ['Gene action', c.gene_action],
-    ['Inheritance', c.trait_inheritance], ['Tissue', c.tissue],
-    ['Editing route', c.editing_possibility], ['Conventional route', c.conventional_breeding],
-    ['Locus IDs', c.gene_id], ['Commercial product', c.commercial_product],
-    ['Linkage drag', c.linkage_drag], ['Side effects', c.pleiotropic_effects],
-    ['Environment', c.environmental_interaction], ['Reference cited', c.scientific_reference]
-  ].filter(x => x[1]).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  /* --- technical fold: the records, kept in the language the databases returned --- */
+  const vals = [c.documented_in, c.target_note, c.gene_function, c.gene_action, c.trait_inheritance,
+    c.tissue, c.editing_possibility, c.conventional_breeding, c.gene_id, c.commercial_product,
+    c.linkage_drag, c.pleiotropic_effects, c.environmental_interaction, c.scientific_reference];
+  const kv = vals.map((v, i) => v ? `<dt>${esc(s.kvLabels[i])}</dt><dd>${esc(v)}</dd>` : '').join('');
 
   const rec = c.recommended_strategy || '';
-  const matrix = STRATEGIES.map(s => {
-    const on = rec && (s.toLowerCase().includes(rec.toLowerCase().split(' ')[0]) ||
-                       rec.toLowerCase().includes(s.toLowerCase().split(' ')[0]));
-    return `<div class="mrow${on ? ' sel' : ''}"><span class="m1">${esc(s)}</span>${on ? '<span>recommended</span>' : ''}</div>`;
+  const matrix = s.strategies.map((label, i) => {
+    const enLabel = T.en.strategies[i];
+    const on = rec && (enLabel.toLowerCase().includes(rec.toLowerCase().split(' ')[0]) ||
+                       rec.toLowerCase().includes(enLabel.toLowerCase().split(' ')[0]));
+    return `<div class="mrow${on ? ' sel' : ''}"><span class="m1">${esc(label)}</span>${on ? `<span>${s.recommended}</span>` : ''}</div>`;
   }).join('');
 
-  const co = e.correction || {};
-  const ev = e.evidence || {};
+  const co = e.correction || {}, ev = e.evidence || {};
   const locus = ((e.locus_check || {}).results || []).map(x =>
     `<dt>${esc(x.locus)}</dt><dd>${esc(x.status)}</dd>`).join('');
-  const oc = co.ortholog_candidate;
-  const ips = co.ip_signal;
+  const oc = co.ortholog_candidate, ips = co.ip_signal;
 
   const tech = `
-    <h3>What the entry records</h3><dl class="kv">${kv}</dl>
-    <h3>Readiness, derived</h3>
-    <dl class="kv"><dt>Level</dt><dd><b>${esc(ev.derived_level || '—')}</b> — ${esc(ev.basis || '')}</dd>
-      ${ev.draft_claimed ? `<dt>Draft claimed</dt><dd>${esc(ev.draft_claimed)}</dd>` : ''}
-      <dt>Verification</dt><dd>${esc(ver.status || '')}${ver.genes_resolved ? ` · genes resolved ${esc(ver.genes_resolved)}` : ''}${ver.verified_on ? ` · checked ${esc(ver.verified_on)}` : ''}</dd></dl>
+    <p class="tiny">${s.techNote}</p>
+    <h3>${s.tRecords}</h3><dl class="kv">${kv}</dl>
+    <h3>${s.tReady}</h3>
+    <dl class="kv"><dt>${s.tLevel}</dt><dd><b>${esc(ev.derived_level || '—')}</b> — ${esc(ev.basis || '')}</dd>
+      ${ev.draft_claimed ? `<dt>${s.tDraft}</dt><dd>${esc(ev.draft_claimed)}</dd>` : ''}
+      <dt>${s.tVer}</dt><dd>${esc(ver.status || '')}${ver.genes_resolved ? ` · ${s.tGenesRes} ${esc(ver.genes_resolved)}` : ''}${ver.verified_on ? ` · ${s.tChecked} ${esc(ver.verified_on)}` : ''}</dd></dl>
     ${ev.disagrees_with_draft ? `<p class="warn">${esc(ev.disagrees_with_draft)}</p>` : ''}
     ${(ver.notes || []).length ? `<p class="warn">${(ver.notes || []).map(esc).join('<br>')}</p>` : ''}
-    ${c.evidence_note ? `<p class="note">Draft note, not verified: ${esc(c.evidence_note)}</p>` : ''}
-    ${locus ? `<h3>Locus IDs checked</h3><dl class="kv">${locus}</dl>` : ''}
-    <h3>Breeding route considered</h3>${matrix}
-    ${co.decision ? `<h3>Curated decision</h3><p class="note">${esc(co.decision)}
+    ${c.evidence_note ? `<p class="note">${s.tDraftNote} ${esc(c.evidence_note)}</p>` : ''}
+    ${locus ? `<h3>${s.tLocus}</h3><dl class="kv">${locus}</dl>` : ''}
+    <h3>${s.tRoute}</h3>${matrix}
+    ${co.decision ? `<h3>${s.tDecision}</h3><p class="note">${esc(co.decision)}
       <span style="color:var(--txt3)">— ${esc(co.decided_by || '')}</span></p>
       ${co.rationale ? `<p class="tiny">${esc(co.rationale)}</p>` : ''}` : ''}
-    ${co.commercial_status ? `<h3>Why not "on the market"</h3><p class="warn">${esc(co.commercial_status)}</p>` : ''}
-    ${co.open_question ? `<h3>Open question</h3><p class="warn">${esc(co.open_question)}</p>` : ''}
-    ${oc ? `<h3>Candidate gene in the target crop</h3>
-      <dl class="kv">${oc.gene ? `<dt>Gene</dt><dd><b>${esc(oc.gene)}</b></dd>` : ''}
-        ${oc.status ? `<dt>Status</dt><dd>${esc(oc.status)}</dd>` : ''}
-        ${oc.location ? `<dt>Location</dt><dd>${esc(oc.location)}</dd>` : ''}</dl>
+    ${co.commercial_status ? `<h3>${s.tWhyNot}</h3><p class="warn">${esc(co.commercial_status)}</p>` : ''}
+    ${co.open_question ? `<h3>${s.tOpen}</h3><p class="warn">${esc(co.open_question)}</p>` : ''}
+    ${oc ? `<h3>${s.tCand}</h3>
+      <dl class="kv">${oc.gene ? `<dt>${s.tGene}</dt><dd><b>${esc(oc.gene)}</b></dd>` : ''}
+        ${oc.status ? `<dt>${s.tStatus}</dt><dd>${esc(oc.status)}</dd>` : ''}
+        ${oc.location ? `<dt>${s.tLoc}</dt><dd>${esc(oc.location)}</dd>` : ''}</dl>
       ${oc.why_this_one ? `<p class="note">${esc(oc.why_this_one)}</p>` : ''}
       ${oc.how_it_was_found ? `<p class="tiny">${esc(oc.how_it_was_found)}</p>` : ''}
       ${oc.what_this_is_not ? `<p class="warn">${esc(oc.what_this_is_not)}</p>` : ''}
       ${oc.limit ? `<p class="tiny">${esc(oc.limit)}</p>` : ''}` : ''}
-    ${ips ? `<h3>Patent claims, as read</h3>
+    ${ips ? `<h3>${s.tClaims}</h3>
       <p class="warn">${esc(ips.status || '')}</p>
-      ${ips.supplied_claim ? `<p class="tiny"><b>Claim checked:</b> ${esc(ips.supplied_claim)}</p>` : ''}
-      ${(ips.what_is_true || []).length ? `<p class="note flat" style="margin-top:9px"><b>What holds up</b><ul style="margin:6px 0 0 17px">${
-        ips.what_is_true.map(x => `<li>${esc(x)}</li>`).join('')}</ul></p>` : ''}
-      ${(ips.what_is_wrong || []).length ? `<p class="note flat" style="margin-top:9px"><b>What turned out wrong</b><ul style="margin:6px 0 0 17px">${
-        ips.what_is_wrong.map(x => `<li>${esc(x)}</li>`).join('')}</ul></p>` : ''}
-      ${(ips.live_members_to_clear || []).length ? `<p class="warn"><b>Live rights to clear:</b> ${
+      ${ips.supplied_claim ? `<p class="tiny"><b>${s.tClaimChecked}:</b> ${esc(ips.supplied_claim)}</p>` : ''}
+      ${(ips.what_is_true || []).length ? `<div class="note flat" style="margin-top:9px"><b>${s.tHolds}</b><ul style="margin:6px 0 0 17px">${
+        ips.what_is_true.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}
+      ${(ips.what_is_wrong || []).length ? `<div class="note flat" style="margin-top:9px"><b>${s.tWrong}</b><ul style="margin:6px 0 0 17px">${
+        ips.what_is_wrong.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}
+      ${(ips.live_members_to_clear || []).length ? `<p class="warn"><b>${s.tLive}:</b> ${
         ips.live_members_to_clear.map(esc).join(' · ')}</p>` : ''}
-      ${ips.still_missing ? `<p class="tiny"><b>Still missing:</b> ${esc(ips.still_missing)}</p>` : ''}` : ''}
-    <p class="tiny">Patent lines are a research signal — not legal advice and not a freedom-to-operate opinion.</p>`;
+      ${ips.still_missing ? `<p class="tiny"><b>${s.tMissing}:</b> ${esc(ips.still_missing)}</p>` : ''}` : ''}
+    <p class="tiny">${s.tDisc}</p>`;
+
+  const gives = say(e, 'gives'), watch = say(e, 'watch'), why = say(e, 'why_not_product');
 
   el('sheet').innerHTML = `
     <div class="grab"><i></i></div>
     <button class="sh-close" id="x" aria-label="Close">✕</button>
-    <div class="sh-crop">${esc(e.crop)} · ${esc(e.category || '')}</div>
-    <div class="sh-trait">${esc(p.ask || e.trait)}</div>
+    <div class="sh-crop">${esc(cropName(e.crop))} · ${esc(e.category || '')}</div>
+    <div class="sh-trait">${esc(say(e, 'ask') || e.trait)}</div>
 
-    ${p.gives ? `<p class="lead"><span class="lead-lab">What you get</span>${esc(p.gives)}</p>` : ''}
-    ${p.watch ? `<p class="warn" style="margin-top:14px"><b>Watch out</b><br>${esc(p.watch)}</p>` : ''}
-    ${p.why_not_product ? `<p class="note"><b>A product with this trait exists — but not by this route.</b><br>${esc(p.why_not_product)}</p>` : ''}
+    ${gives ? `<p class="lead"><span class="lead-lab">${s.whatYouGet}</span>${esc(gives)}</p>` : ''}
+    ${watch ? `<p class="warn" style="margin-top:14px"><b>${s.watchOut}</b><br>${esc(watch)}</p>` : ''}
+    ${why ? `<p class="note"><b>${s.otherRoute}</b><br>${esc(why)}</p>` : ''}
 
-    <h3>Where this stands</h3>
+    <h3>${s.stands}</h3>
     <div class="stand">
-      <div class="sline"><div class="sq">How ready</div><div class="sv">${chip(r.tone, r.label)}<br>${esc(r.means)}</div></div>
-      <div class="sline"><div class="sq">How to get it</div><div class="sv">${chip(rt.tone, rt.label)}<br>${esc(rt.means)}</div></div>
-      <div class="sline"><div class="sq">Patent space</div><div class="sv">${chip(ip.tone, ip.label)}<br>${esc(ip.means)}<br>
-        <span style="color:var(--txt3)">Recorded: ${esc(ipText)}</span></div></div>
+      <div class="sline"><div class="sq">${s.qReady}</div><div class="sv">${chip(r.tone, L(r).label)}<br>${esc(L(r).means)}</div></div>
+      <div class="sline"><div class="sq">${s.qRoute}</div><div class="sv">${chip(rt.tone, L(rt).label)}<br>${esc(L(rt).means)}</div></div>
+      <div class="sline"><div class="sq">${s.qIp}</div><div class="sv">${chip(ip.tone, L(ip).label)}<br>${esc(L(ip).means)}<br>
+        <span style="color:var(--txt3)">${s.recorded}: ${esc(ipText)}</span></div></div>
     </div>
 
-    <h3>Next steps</h3>
+    <h3>${s.next}</h3>
     <ol class="todo">
-      <li><b>Open the gene record and the paper</b> below — check the paper actually shows the phenotype you want, in a background close to yours.</li>
-      <li><b>Check the allele in your own material.</b> BLAST the sequence against your line: the gene being present says nothing about which allele you carry.</li>
-      <li><b>Run the patent search</b> before any plan is costed — <a href="${ipLink}" target="_blank" rel="noopener">start it here</a> — and hand the result to someone who does FTO for a living.</li>
-      ${rt === ROUTE.t2 ? '<li><b>Budget for linkage drag.</b> This route brings the donor\'s neighbouring genes with it; plan the backcross generations or the fine-mapping.</li>' : ''}
-      <li><b>Validate in the target crop.</b> Nothing in this atlas replaces your own trial.</li>
+      <li>${s.step_a}</li>
+      <li>${s.step_b}</li>
+      <li>${s.step_c}<a href="${ipLink}" target="_blank" rel="noopener">${s.step_c2}</a>${s.step_c3}</li>
+      ${rt === ROUTE.t2 ? `<li>${s.step_d}</li>` : ''}
+      <li>${s.step_e}</li>
     </ol>
 
-    <h3>Genes, and where to look</h3>
-    ${genes || '<div class="gbox"><div class="gmeta">No gene symbols parsed for this entry.</div></div>'}
+    <h3>${s.genesWhere}</h3>
+    ${genes || `<div class="gbox"><div class="gmeta">${s.gNoGenes}</div></div>`}
     ${lociBox}
 
-    <details class="tech"><summary>Technical detail — verification, curation, full records</summary>
-      <div class="tbody">${tech}</div></details>`;
+    <details class="tech"><summary>${s.tech}</summary><div class="tbody">${tech}</div></details>`;
 
   el('sheet').classList.add('on');
   el('scrim').classList.add('on');
@@ -495,9 +624,9 @@ function matches(e){
   if (CROP && e.crop !== CROP) return false;
   if (GOAL && plain(e).goal !== GOAL) return false;
   if (Q){
-    const p = plain(e);
-    const hay = [e.trait, e.crop, e.category, e.gene_label, e.id, p.ask, p.gives,
-                 e.claims.gene_function].join(' ').toLowerCase();
+    const p = plain(e), tr = p.tr || {};
+    const hay = [e.trait, e.crop, cropName(e.crop), e.category, e.gene_label, e.id, p.ask, p.gives,
+                 tr.ask, tr.gives, e.claims.gene_function].join(' ').toLowerCase();
     if (!Q.toLowerCase().split(/\s+/).every(w => hay.includes(w))) return false;
   }
   return true;
@@ -506,15 +635,14 @@ function apply(){
   SHOWN = ATLAS.entries.filter(matches).sort((a, b) =>
     (ready(a).order - ready(b).order) || (route(a).order - route(b).order) ||
     a.crop.localeCompare(b.crop));
+  const s = t();
   el('results').innerHTML = SHOWN.length ? SHOWN.map(card).join('')
-    : `<div class="empty">Nothing matches that yet.<br>
-       <span style="font-size:13.5px">The atlas is a seed, not a complete map — an empty result is
-       usually a gap in the atlas, not an answer about the crop.</span></div>`;
+    : `<div class="empty">${s.empty}<br><span style="font-size:13.5px">${s.emptyWhy}</span></div>`;
   const n = SHOWN.length;
-  const onMarket = SHOWN.filter(e => ready(e).label === 'On the market').length;
-  const proven = SHOWN.filter(e => ready(e).label === 'Proven in plants').length;
-  el('count').innerHTML = `<b>${n}</b> ${n === 1 ? 'solution' : 'solutions'}` +
-    (n ? ` · ${onMarket} on the market · ${proven} proven in plants` : '');
+  const used = SHOWN.filter(e => (e.evidence || {}).derived_level === 'Level 1').length;
+  const proven = SHOWN.filter(e => (e.evidence || {}).derived_level === 'Level 2').length;
+  el('count').innerHTML = `<span><b>${n}</b> ${s.solutions[n === 1 ? 0 : 1]}` +
+    (n ? ` · ${used} ${s.ofWhich} · ${proven} ${s.ofWhich2}` : '') + '</span>';
   el('results').querySelectorAll('.card').forEach(b => b.onclick = () => sheet(SHOWN[+b.dataset.i]));
 }
 
@@ -522,8 +650,8 @@ function apply(){
 function drawCrops(){
   const counts = {};
   ATLAS.entries.forEach(e => { counts[e.crop] = (counts[e.crop] || 0) + 1; });
-  const items = [['', 'All crops', ATLAS.entries.length]]
-    .concat(Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([c, n]) => [c, c, n]));
+  const items = [['', t().allCrops, ATLAS.entries.length]]
+    .concat(Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([c, n]) => [c, cropName(c), n]));
   el('crops').innerHTML = items.map(([v, l, n]) =>
     `<button class="pick${v === CROP ? ' on' : ''}" data-v="${esc(v)}">${esc(l)}<b>${n}</b></button>`).join('');
   el('crops').querySelectorAll('.pick').forEach(b => b.onclick = () => {
@@ -534,9 +662,9 @@ function drawGoals(){
   const pool = ATLAS.entries.filter(e => !CROP || e.crop === CROP);
   const counts = {};
   pool.forEach(e => { const g = plain(e).goal; if (g) counts[g] = (counts[g] || 0) + 1; });
-  const items = [['', 'Anything', pool.length]].concat(
-    Object.entries(GOALS).filter(([k]) => counts[k]).map(([k, l]) => [k, l, counts[k]]));
   if (GOAL && !counts[GOAL]) GOAL = '';
+  const items = [['', t().anything, pool.length]].concat(
+    Object.keys(GOALS).filter(k => counts[k]).map(k => [k, goalName(k), counts[k]]));
   el('goals').innerHTML = items.map(([v, l, n]) =>
     `<button class="pick${v === GOAL ? ' on' : ''}" data-v="${esc(v)}">${esc(l)}<b>${n}</b></button>`).join('');
   el('goals').querySelectorAll('.pick').forEach(b => b.onclick = () => {
@@ -550,29 +678,52 @@ el('q').oninput = () => {
 };
 el('clr').onclick = () => { el('q').value = ''; Q = ''; el('clr').classList.remove('on'); apply(); };
 
-function drawLegend(){
-  const row = (o, extra) => `<div class="ldef">${chip(o.tone, o.label)}<span>${esc(o.means)}${extra || ''}</span></div>`;
+/* ---------- static chrome ---------- */
+function drawChrome(){
+  const s = t();
+  document.documentElement.lang = LANG;
+  el('t-sub').textContent = s.sub;
+  el('t-step1').textContent = s.step1;
+  el('t-step2').textContent = s.step2;
+  el('q').placeholder = s.search;
+  el('t-legend').textContent = s.legend;
+  el('t-method').textContent = s.method;
+  el('foot').innerHTML = s.foot.map(p => `<p>${p}</p>`).join('');
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)));
+
+  const row = o => `<div class="ldef">${chip(o.tone, L(o).label)}<span>${esc(L(o).means)}</span></div>`;
   el('legend-body').innerHTML =
-    `<h3 style="margin-top:14px">How ready is it</h3>` +
-    Object.values(READY).filter(r => r.label !== 'Not graded').map(r => row(r)).join('') +
-    `<h3>How you would get it</h3>` + Object.values(ROUTE).map(r => row(r)).join('') +
-    `<h3>Patent space</h3>` + [IP.named, IP.examined, IP.crowded, IP.unchecked, IP.open].map(r => row(r)).join('') +
-    `<p class="tiny" style="margin-top:14px">Readiness is derived from what the verification pipeline could
-     confirm in public databases, not from what a draft claimed. Route and patent lines are a breeder's
-     research signals — not lab results, not legal classifications.</p>`;
+    `<h3 style="margin-top:14px">${s.lgReady}</h3>` +
+    Object.values(READY).filter(r => r.order < 5).map(row).join('') +
+    `<h3>${s.lgRoute}</h3>` + Object.values(ROUTE).map(row).join('') +
+    `<h3>${s.lgIp}</h3>` + [IP.named, IP.examined, IP.crowded, IP.unchecked, IP.open].map(row).join('') +
+    `<p class="tiny" style="margin-top:14px">${s.lgFoot}</p>`;
+
+  const st = ATLAS.stats || {}, sc = ATLAS._schema || {};
+  const nums = [st.total_entries, st.verified, st.partial, st.unverified,
+                st.genes_with_accession, st.last_verified];
+  el('method-body').innerHTML =
+    `<p class="note flat" style="margin-top:12px">${esc(sc.principle || '')}</p>
+     <h3>${s.mState}</h3><dl class="kv">${nums.map((v, i) =>
+       v == null ? '' : `<dt>${esc(s.mStats[i])}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+     <h3>${s.mLimit}</h3><p class="warn">${s.mLimitText}</p>
+     <h3>${s.mRule}</h3><p class="note flat" style="font-size:13px">${esc(sc.level_derivation || '')}</p>`;
+  el('asof').textContent = st.last_verified ? `${s.asof} ${st.last_verified}` : '';
 }
-function method(){
-  const s = ATLAS.stats || {}, sc = ATLAS._schema || {};
-  el('method-text').textContent = sc.principle || '';
-  el('method-rule').textContent = sc.level_derivation || '';
-  el('method-stats').innerHTML = [
-    ['Solutions', s.total_entries], ['Fully verified', s.verified], ['Partly verified', s.partial],
-    ['Unverified', s.unverified], ['Genes with accession', s.genes_with_accession],
-    ['Last checked', s.last_verified]
-  ].filter(r => r[1] != null).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+function setLang(lang){
+  LANG = (lang === 'tr') ? 'tr' : 'en';
+  try { localStorage.setItem('ta-lang', LANG); } catch (err) { /* private mode */ }
+  drawChrome(); drawCrops(); drawGoals(); apply(); close();
 }
+document.querySelectorAll('.lang button').forEach(b => b.onclick = () => setLang(b.dataset.lang));
 
 /* ---------- boot ---------- */
+let start = 'en';
+try { start = localStorage.getItem('ta-lang') || ''; } catch (err) { start = ''; }
+if (!start) start = /^tr\b/i.test(navigator.language || '') ? 'tr' : 'en';
+LANG = start === 'tr' ? 'tr' : 'en';
+
 Promise.all([
   fetch('data/atlas_v3.json', {cache:'no-cache'}).then(r => {
     if (!r.ok) throw new Error('HTTP ' + r.status + ' — data/atlas_v3.json'); return r.json(); }),
@@ -580,10 +731,9 @@ Promise.all([
 ]).then(([atlas, pl]) => {
   ATLAS = atlas;
   PLAIN = pl.entries || {};
-  GOALS = (pl._about || {}).goals || {};
-  el('asof').textContent = atlas.stats && atlas.stats.last_verified
-    ? 'genes and papers last checked ' + atlas.stats.last_verified : '';
-  drawCrops(); drawGoals(); drawLegend(); method(); apply();
+  const a = pl._about || {};
+  GOALS = a.goals || {}; GOALS_TR = a.goals_tr || {}; CROPS_TR = a.crops_tr || {};
+  drawChrome(); drawCrops(); drawGoals(); apply();
 }).catch(err => {
   el('results').innerHTML = `<div class="empty">Could not load the atlas data.<br>
     <span style="font-size:13px">${esc(err.message)}</span></div>`;

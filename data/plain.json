@@ -1,12 +1,13 @@
 {
   "_about": {
-    "what_this_is": "A plain-language layer over data/atlas_v3.json. Every line here is a restatement of fields the entry already carries (trait, gene_function, evidence_note, pleiotropic_effects, correction) in words a breeder or a manager can read without a biotech background. It adds no new facts, no new genes and no new claims: if it is not in the entry, it is not here.",
+    "what_this_is": "A plain-language layer over data/atlas_v3.json, in English and Turkish. Every line here is a restatement of fields the entry already carries (trait, gene_function, evidence_note, pleiotropic_effects, correction) in words a breeder or a manager can read without a biotech background. It adds no new facts, no new genes and no new claims: if it is not in the entry, it is not here. The verification pipeline never writes to this file.",
     "fields": {
       "goal": "Which plain-language goal group the entry answers. Used for the 'what do you want' picker.",
       "ask": "The breeder's own sentence — 'I want X in Y' — in the plainest form.",
       "gives": "What the grower or the line actually gets, in one sentence, no gene names.",
       "watch": "The one thing that most often spoils it, restated from pleiotropic_effects / linkage_drag / evidence_note.",
-      "why_not_product": "Where a product with this trait exists but was NOT made this way, the plain reason — restated from correction.commercial_status."
+      "why_not_product": "Where a product with this trait exists but was NOT made this way, the plain reason — restated from correction.commercial_status.",
+      "tr": "The same four fields in Turkish. A translation of the English line above it, not a second claim."
     },
     "written_by": "maintainer, 2026-11-20",
     "goals": {
@@ -16,6 +17,27 @@
       "shape": "Plant shape, harvest, labour",
       "seed": "Seeds, flowering, hybrid production",
       "climate": "Heat, drought, salinity, bolting"
+    },
+    "goals_tr": {
+      "protect": "Bitkiyi hastalıktan koru — virüs, mantar",
+      "quality": "Meyve kalitesi, sertlik, raf ömrü",
+      "nutrition": "Besin, lezzet, tüketici",
+      "shape": "Bitki şekli, hasat, işçilik",
+      "seed": "Tohum, çiçeklenme, hibrit üretimi",
+      "climate": "Sıcak, kuraklık, tuzluluk, sapa kalkma"
+    },
+    "crops_tr": {
+      "Tomato": "Domates",
+      "Pepper": "Biber",
+      "Cucumber": "Hıyar",
+      "Watermelon": "Karpuz",
+      "Eggplant": "Patlıcan",
+      "Lettuce": "Marul",
+      "Melon": "Kavun",
+      "Carrot": "Havuç",
+      "Onion": "Soğan",
+      "Brassica rapa": "Brassica rapa",
+      "Brassica (Broccoli/Cabbage/Cauliflower)": "Brassica (brokoli/lahana/karnabahar)"
     }
   },
   "entries": {
@@ -23,198 +45,363 @@
       "goal": "nutrition",
       "ask": "I want a tomato with a health claim built into the fruit.",
       "gives": "Fruit that accumulates several times more GABA, a compound sold as a blood-pressure/relaxation benefit in Japan.",
-      "watch": "In some elite backgrounds the plant pays for it with smaller leaves or lighter fruit, so it has to be tested in your own material."
+      "watch": "In some elite backgrounds the plant pays for it with smaller leaves or lighter fruit, so it has to be tested in your own material.",
+      "tr": {
+        "ask": "Domatesin içine sağlık iddiası koymak istiyorum.",
+        "gives": "Meyvede birkaç kat fazla GABA biriktiren domates — Japonya'da tansiyon/rahatlama faydasıyla satılan bileşik.",
+        "watch": "Bazı elit hatlarda bitki bunu küçük yaprak ya da hafif meyveyle ödüyor; kendi materyalinde denemen gerekir."
+      }
     },
     "TOM-VITD-01": {
       "goal": "nutrition",
       "ask": "I want a tomato that carries provitamin D.",
       "gives": "Fruit and leaves that build up provitamin D3, which converts to vitamin D under UVB light.",
-      "watch": "It shifts the fruit's own alkaloid profile; no big yield penalty was reported, but the compound needs UVB exposure to become vitamin D at all."
+      "watch": "It shifts the fruit's own alkaloid profile; no big yield penalty was reported, but the compound needs UVB exposure to become vitamin D at all.",
+      "tr": {
+        "ask": "D vitamini öncüsü taşıyan domates istiyorum.",
+        "gives": "Meyve ve yaprakta provitamin D3 biriktiren bitki; UVB ışığı altında D vitaminine dönüşüyor.",
+        "watch": "Meyvenin kendi alkaloit profilini değiştiriyor; ciddi verim kaybı bildirilmemiş, ama UVB maruziyeti olmadan dönüşüm hiç gerçekleşmiyor."
+      }
     },
     "TOM-TOBRFV-01": {
       "goal": "protect",
       "ask": "I want ToBRFV resistance without dragging in a wild tomato.",
       "gives": "Plants that the virus cannot replicate in, because the host proteins it borrows are switched off.",
-      "watch": "One knockout is not enough — the genes back each other up, so several must go at once, and the resulting plants have to be screened for vigour. Resistance was shown against the isolates tested, not against every tobamovirus."
+      "watch": "One knockout is not enough — the genes back each other up, so several must go at once, and the resulting plants have to be screened for vigour. Resistance was shown against the isolates tested, not against every tobamovirus.",
+      "tr": {
+        "ask": "Yabani domates sürüklemeden ToBRFV dayanıklılığı istiyorum.",
+        "gives": "Virüsün çoğalmak için ödünç aldığı konukçu proteinleri kapalı olduğundan virüsün çoğalamadığı bitkiler.",
+        "watch": "Tek nakavt yetmiyor — genler birbirini yedekliyor, birkaçı birden kapanmalı ve çıkan bitkiler güç bakımından taranmalı. Dayanıklılık test edilen izolatlara karşı gösterildi, her tobamovirüse karşı değil."
+      }
     },
     "TOM-TYLCV-01": {
       "goal": "protect",
       "ask": "I want TYLCV resistance in an elite line without a long backcross.",
       "gives": "The same ty-5 resistance the industry already uses, reached directly in your own line.",
       "watch": "Well tolerated in commercial hybrids; the resistance is recessive, so both copies have to carry it.",
-      "why_not_product": "ty-5 resistance is widely sold, but no source could be found naming a cultivar together with its ty-5 allele — so the atlas does not claim the product proves this route."
+      "why_not_product": "ty-5 resistance is widely sold, but no source could be found naming a cultivar together with its ty-5 allele — so the atlas does not claim the product proves this route.",
+      "tr": {
+        "ask": "Uzun geri melezleme yapmadan elit hatta TYLCV dayanıklılığı istiyorum.",
+        "gives": "Sektörün zaten kullandığı ty-5 dayanıklılığı, doğrudan kendi hattında.",
+        "watch": "Ticari hibritlerde iyi tolere ediliyor; dayanıklılık resesif, yani iki kopyanın da taşıması gerekiyor.",
+        "why_not_product": "ty-5 dayanıklılığı yaygın satılıyor, ama bir çeşidi ty-5 alleliyle birlikte adlandıran kaynak bulunamadı — bu yüzden atlas, ürünün bu yolu kanıtladığını iddia etmiyor."
+      }
     },
     "TOM-MILDEW-01": {
       "goal": "protect",
       "ask": "I want powdery mildew resistance in tomato without a donor line.",
       "gives": "Durable, broad resistance to powdery mildew by removing the gene the fungus needs to get in — shown in transgene-free plants.",
-      "watch": "Some MLO knockouts show minor necrotic flecking under stress."
+      "watch": "Some MLO knockouts show minor necrotic flecking under stress.",
+      "tr": {
+        "ask": "Donör hat kullanmadan domateste külleme dayanıklılığı istiyorum.",
+        "gives": "Mantarın içeri girmek için ihtiyaç duyduğu geni kaldırarak kalıcı ve geniş külleme dayanıklılığı — transgen içermeyen bitkilerde gösterildi.",
+        "watch": "Bazı MLO nakavtlarında stres altında hafif nekrotik lekelenme görülüyor."
+      }
     },
     "TOM-BROAD-01": {
       "goal": "protect",
       "ask": "I want one edit that helps against several diseases.",
       "gives": "Higher natural salicylic acid, and with it resistance to bacterial speck, Phytophthora and powdery mildew at once.",
-      "watch": "Permanently raised defence can cost growth or yield when there is no disease pressure to justify it."
+      "watch": "Permanently raised defence can cost growth or yield when there is no disease pressure to justify it.",
+      "tr": {
+        "ask": "Birkaç hastalığa birden yarayan tek bir düzenleme istiyorum.",
+        "gives": "Doğal salisilik asidin yükselmesi ve onunla birlikte bakteriyel benek, Phytophthora ve küllemeye aynı anda dayanıklılık.",
+        "watch": "Savunmanın sürekli açık kalması, hastalık baskısı yokken büyümeden ya da verimden götürebilir."
+      }
     },
     "TOM-DWARF-01": {
       "goal": "shape",
       "ask": "I want a compact, fast tomato for vertical or high-density growing.",
       "gives": "Short internodes and early flowering — more crop per square metre per week, rather than per plant.",
-      "watch": "Each plant carries less biomass; it only pays off in a high-density or indoor system."
+      "watch": "Each plant carries less biomass; it only pays off in a high-density or indoor system.",
+      "tr": {
+        "ask": "Dikey ya da sık dikim için kompakt ve hızlı domates istiyorum.",
+        "gives": "Kısa boğum araları ve erken çiçeklenme — bitki başına değil, metrekare ve hafta başına daha çok ürün.",
+        "watch": "Her bitki daha az biyokütle taşıyor; yalnızca sık dikim ya da iç mekân sisteminde kazandırıyor."
+      }
     },
     "TOM-PARTH-01": {
       "goal": "seed",
       "ask": "I want fruit set without pollination.",
       "gives": "Fruit that sets and fills without fertilisation — useful when pollination fails.",
-      "watch": "Fruit set without pollination is not heat tolerance: the rest of the plant still suffers. One of the routes also distorts the leaves; the other avoids that."
+      "watch": "Fruit set without pollination is not heat tolerance: the rest of the plant still suffers. One of the routes also distorts the leaves; the other avoids that.",
+      "tr": {
+        "ask": "Tozlanma olmadan meyve tutumu istiyorum.",
+        "gives": "Döllenme olmadan tutan ve dolan meyve — tozlanmanın aksadığı koşullarda işe yarıyor.",
+        "watch": "Tozlanmasız meyve tutumu sıcağa dayanıklılık demek değil: bitkinin geri kalanı yine etkileniyor. Yollardan biri yaprakları da bozuyor, diğeri bundan kaçınıyor."
+      }
     },
     "TOM-SIZE-01": {
       "goal": "quality",
       "ask": "I want bigger fruit with a thicker wall.",
       "gives": "Larger fruit with thicker pericarp, from releasing a brake on cell division.",
-      "watch": "Cup-shaped, enlarged leaves, and the usual trade: bigger fruit often means fewer of them."
+      "watch": "Cup-shaped, enlarged leaves, and the usual trade: bigger fruit often means fewer of them.",
+      "tr": {
+        "ask": "Daha iri ve kalın etli meyve istiyorum.",
+        "gives": "Hücre bölünmesindeki frenin kaldırılmasıyla daha iri meyve ve daha kalın perikarp.",
+        "watch": "Kaşıklaşmış, irileşmiş yapraklar ve bilinen takas: iri meyve çoğu zaman daha az meyve demek."
+      }
     },
     "TOM-FIRM-01": {
       "goal": "quality",
       "ask": "I want a firmer tomato that still ripens and tastes normal.",
       "gives": "Firmer fruit and less postharvest rot without blocking ripening, so colour and Brix stay.",
-      "watch": "An unusually clean profile — this is one of the few with no listed penalty."
+      "watch": "An unusually clean profile — this is one of the few with no listed penalty.",
+      "tr": {
+        "ask": "Normal olgunlaşan, tadı bozulmayan ama daha sert domates istiyorum.",
+        "gives": "Olgunlaşmayı engellemeden daha sert meyve ve hasat sonrası daha az çürük; renk ve briks yerinde kalıyor.",
+        "watch": "Alışılmadık biçimde temiz bir profil — kayıtlı bir bedeli olmayan az sayıdaki çözümden biri."
+      }
     },
     "PEP-PUNG-01": {
       "goal": "nutrition",
       "ask": "I want to turn a hot line sweet without losing its other traits.",
       "gives": "A non-pungent version of a line, by switching off the last step of capsaicin synthesis.",
       "watch": "Capsaicin is also a defence compound; removing it may make the fruit more attractive to some pests.",
-      "why_not_product": "Every sweet bell pepper carries this loss-of-function allele — but it arrived through domestication centuries ago, not because anyone deployed this solution."
+      "why_not_product": "Every sweet bell pepper carries this loss-of-function allele — but it arrived through domestication centuries ago, not because anyone deployed this solution.",
+      "tr": {
+        "ask": "Acı bir hattı diğer özelliklerini kaybetmeden tatlıya çevirmek istiyorum.",
+        "gives": "Kapsaisin sentezinin son adımını kapatarak hattın acısız versiyonu.",
+        "watch": "Kapsaisin aynı zamanda bir savunma bileşiği; kaldırmak meyveyi bazı zararlılar için daha çekici yapabilir.",
+        "why_not_product": "Her ticari dolmalık biber bu işlev kaybı allelini taşıyor — ama bu allel yüzyıllar önce evcilleştirmeyle geldi, biri bu çözümü uyguladığı için değil."
+      }
     },
     "PEP-PAMT-01": {
       "goal": "nutrition",
       "ask": "I want pepper warmth without the burn.",
       "gives": "Fruit that builds capsinoids instead of capsaicinoids — the flavour without the heat.",
-      "watch": "It changes the aroma profile too, so taste panels matter."
+      "watch": "It changes the aroma profile too, so taste panels matter.",
+      "tr": {
+        "ask": "Yakmayan ama biber sıcaklığı veren meyve istiyorum.",
+        "gives": "Kapsaisinoit yerine kapsinoit biriktiren meyve — yanma olmadan aroma.",
+        "watch": "Aroma profilini de değiştiriyor, bu yüzden tat panelleri önemli."
+      }
     },
     "PEP-VIRUS-01": {
       "goal": "protect",
       "ask": "I want potyvirus resistance (PVY, TEV, PepMoV) in pepper.",
       "gives": "The pvr1/pvr2 resistance the market already relies on, reached by a single letter change rather than a knockout.",
-      "watch": "Knocking the genes out entirely stunts the plant. The point edit is the safe route — the full double knockout is not."
+      "watch": "Knocking the genes out entirely stunts the plant. The point edit is the safe route — the full double knockout is not.",
+      "tr": {
+        "ask": "Biberde potyvirüs (PVY, TEV, PepMoV) dayanıklılığı istiyorum.",
+        "gives": "Pazarın zaten dayandığı pvr1/pvr2 dayanıklılığı, nakavt yerine tek harflik değişiklikle.",
+        "watch": "Genleri tamamen nakavt etmek bitkiyi bodurlaştırıyor. Güvenli yol nokta düzenlemesi; çifte nakavt değil."
+      }
     },
     "PEP-MILDEW-01": {
       "goal": "protect",
       "ask": "I want powdery mildew resistance in pepper without an interspecific cross.",
       "gives": "Resistance to Leveillula taurica by removing the susceptibility factor the fungus uses.",
-      "watch": "Not every member of this gene family gives resistance — the right paralogue must be confirmed first. Check for early leaf senescence."
+      "watch": "Not every member of this gene family gives resistance — the right paralogue must be confirmed first. Check for early leaf senescence.",
+      "tr": {
+        "ask": "Türler arası melezleme yapmadan biberde külleme dayanıklılığı istiyorum.",
+        "gives": "Mantarın kullandığı duyarlılık faktörünü kaldırarak Leveillula taurica'ya dayanıklılık.",
+        "watch": "Bu gen ailesinin her üyesi dayanıklılık vermiyor — önce doğru paralog doğrulanmalı. Erken yaprak yaşlanmasına dikkat."
+      }
     },
     "CUC-BITTER-01": {
       "goal": "nutrition",
       "ask": "I want non-bitter cucumber fruit but I still want the leaves to defend themselves.",
       "gives": "Sweet fruit with the leaf's bitter pest defence left intact — bitterness is controlled separately in fruit and leaf.",
       "watch": "Hitting the core pathway gene instead removes bitterness everywhere and with it the pest deterrence. Target the fruit-specific regulator.",
-      "why_not_product": "Non-bitter cucumbers have existed for decades by ordinary selection; that is not the same as the tissue-specific solution described here."
+      "why_not_product": "Non-bitter cucumbers have existed for decades by ordinary selection; that is not the same as the tissue-specific solution described here.",
+      "tr": {
+        "ask": "Hıyar meyvesi acı olmasın ama yaprak kendini savunmaya devam etsin istiyorum.",
+        "gives": "Yaprağın acı zararlı savunması yerinde kalırken tatlı meyve — acılık meyvede ve yaprakta ayrı kontrol ediliyor.",
+        "watch": "Bunun yerine ana yolak genini vurmak acılığı her yerden kaldırır, zararlı caydırıcılığı da gider. Meyveye özgü düzenleyiciyi hedefle.",
+        "why_not_product": "Acısız hıyar onlarca yıldır sıradan seleksiyonla var; bu, burada anlatılan dokuya özgü çözümle aynı şey değil."
+      }
     },
     "CUC-MILDEW-01": {
       "goal": "protect",
       "ask": "I want powdery mildew resistance in cucumber.",
       "gives": "Resistance by removing the susceptibility factor, which also avoids the skin-netting and yellowing that come with the classical donors.",
-      "watch": "Which family member to target is the whole question, and the gene identities here are not fully pinned down. Possible mild chlorosis in older leaves."
+      "watch": "Which family member to target is the whole question, and the gene identities here are not fully pinned down. Possible mild chlorosis in older leaves.",
+      "tr": {
+        "ask": "Hıyarda külleme dayanıklılığı istiyorum.",
+        "gives": "Duyarlılık faktörünün kaldırılmasıyla dayanıklılık; klasik donörlerle gelen kabuk ağsılaşması ve sararmadan da kaçınıyor.",
+        "watch": "Hangi aile üyesinin hedefleneceği meselenin tamamı ve buradaki gen kimlikleri tam oturmuş değil. Yaşlı yapraklarda hafif klorozis olabilir."
+      }
     },
     "CUC-SEX-01": {
       "goal": "seed",
       "ask": "I want an all-female cucumber parent for hybrid seed, fast.",
       "gives": "A gynoecious line — female flowers only — which is what hybrid seed production runs on, plus fruit set without seeds.",
-      "watch": "A fully female line cannot make its own pollen: seed production then needs chemical induction of male flowers."
+      "watch": "A fully female line cannot make its own pollen: seed production then needs chemical induction of male flowers.",
+      "tr": {
+        "ask": "Hibrit tohum için hızlıca tamamen dişi hıyar ebeveyni istiyorum.",
+        "gives": "Ginoik hat — yalnızca dişi çiçek — ki hibrit tohum üretimi buna dayanıyor; ayrıca çekirdeksiz meyve tutumu.",
+        "watch": "Tamamen dişi bir hat kendi polenini üretemez: tohum üretimi için erkek çiçeklerin kimyasal uyarımı gerekir."
+      }
     },
     "MEL-SHELF-01": {
       "goal": "quality",
       "ask": "I want melon that travels without going soft.",
       "gives": "Slower ripening and a longer shelf life, by turning down ethylene production.",
-      "watch": "Switch ethylene off completely and the aroma goes with it. Turning it down partly, not off, is the route."
+      "watch": "Switch ethylene off completely and the aroma goes with it. Turning it down partly, not off, is the route.",
+      "tr": {
+        "ask": "Yolculukta yumuşamayan kavun istiyorum.",
+        "gives": "Etilen üretimini kısarak daha yavaş olgunlaşma ve daha uzun raf ömrü.",
+        "watch": "Etileni tamamen kapatırsan aroma da gider. Yol, kapatmak değil kısmak."
+      }
     },
     "WAT-SEED-01": {
       "goal": "seed",
       "ask": "I want seedless watermelon without the triploid system.",
       "gives": "Nothing yet. This is the documented grape solution, with a watermelon candidate gene identified by sequence — nobody has edited or tested it.",
-      "watch": "A seedless diploid cannot be propagated from seed — that is exactly why the industry uses triploid hybrids. And the IP around this gene family is occupied: see the patent section before planning anything."
+      "watch": "A seedless diploid cannot be propagated from seed — that is exactly why the industry uses triploid hybrids. And the IP around this gene family is occupied: see the patent section before planning anything.",
+      "tr": {
+        "ask": "Triploit sistem olmadan çekirdeksiz karpuz istiyorum.",
+        "gives": "Henüz hiçbir şey. Bu, asmada belgelenmiş çözüm ve dizi benzerliğiyle bulunmuş bir karpuz aday geni — kimse düzenlemedi, kimse denemedi.",
+        "watch": "Çekirdeksiz bir diploit tohumla çoğaltılamaz — sektörün triploit hibrit kullanmasının sebebi tam olarak bu. Ayrıca bu gen ailesinin patent alanı dolu: plan yapmadan önce patent bölümünü oku."
+      }
     },
     "WAT-BRIX-01": {
       "goal": "quality",
       "ask": "I want sweeter watermelon.",
       "gives": "More sugar loaded into the flesh, through the transporter that fills the vacuole.",
-      "watch": "Minimal side effects reported in cultivated backgrounds."
+      "watch": "Minimal side effects reported in cultivated backgrounds.",
+      "tr": {
+        "ask": "Daha tatlı karpuz istiyorum.",
+        "gives": "Vakuolü dolduran taşıyıcı üzerinden ete daha fazla şeker yüklenmesi.",
+        "watch": "Kültür çeşitlerinde kayda değer yan etki bildirilmemiş."
+      }
     },
     "EGG-BROWN-01": {
       "goal": "quality",
       "ask": "I want eggplant that does not brown when it is cut.",
       "gives": "Cut flesh that stays pale — relevant for fresh-cut and processing — with the antioxidant phenolics still in it.",
-      "watch": "Several copies of the gene have to go at once; no yield penalty was seen in greenhouse trials."
+      "watch": "Several copies of the gene have to go at once; no yield penalty was seen in greenhouse trials.",
+      "tr": {
+        "ask": "Kesilince kararmayan patlıcan istiyorum.",
+        "gives": "Kesik etin açık renkte kalması — taze-kesim ve işleme için önemli — fenolik antioksidanlar yerinde kalarak.",
+        "watch": "Genin birkaç kopyası birden kapanmalı; sera denemelerinde verim kaybı görülmemiş."
+      }
     },
     "EGG-PRICKLE-01": {
       "goal": "shape",
       "ask": "I want eggplant without prickles, so picking does not hurt.",
       "gives": "Prickle-free calyx and stem — a labour and harvest-injury trait, not a yield one.",
-      "watch": "The natural prickleless variation sits outside the coding sequence, so a plain knockout is not the route the natural allele uses. Prickle and trichome pathways can overlap with insect deterrence."
+      "watch": "The natural prickleless variation sits outside the coding sequence, so a plain knockout is not the route the natural allele uses. Prickle and trichome pathways can overlap with insect deterrence.",
+      "tr": {
+        "ask": "Hasatta batmayan, dikensiz patlıcan istiyorum.",
+        "gives": "Dikensiz çanak ve sap — verim değil, işçilik ve hasat yaralanması özelliği.",
+        "watch": "Doğal dikensizlik varyasyonu kodlayan dizinin dışında; düz bir nakavt, doğal allelin kullandığı yol değil. Diken ve tüy yolakları böcek caydırıcılığıyla çakışabilir."
+      }
     },
     "LET-BOLT-01": {
       "goal": "climate",
       "ask": "I want lettuce that does not bolt in summer heat.",
       "gives": "A longer harvest window before the plant runs to seed.",
-      "watch": "Bolting depends on genotype, temperature and daylength together, so it has to be trialled across environments. A full knockout also makes your own seed increase difficult."
+      "watch": "Bolting depends on genotype, temperature and daylength together, so it has to be trialled across environments. A full knockout also makes your own seed increase difficult.",
+      "tr": {
+        "ask": "Yaz sıcağında sapa kalkmayan marul istiyorum.",
+        "gives": "Bitki tohuma kaçmadan önce daha uzun hasat penceresi.",
+        "watch": "Sapa kalkma genotip, sıcaklık ve gün uzunluğuna birlikte bağlı; çok ortamlı denenmeli. Tam nakavt kendi tohum üretimini de zorlaştırıyor."
+      }
     },
     "LET-VITC-01": {
       "goal": "nutrition",
       "ask": "I want lettuce with more vitamin C.",
       "gives": "Two to three times the ascorbate, by removing a small brake on the gene's own translation — and with it better oxidative-stress tolerance.",
-      "watch": "The reported effect comes from that specific small edit, not from disabling the gene."
+      "watch": "The reported effect comes from that specific small edit, not from disabling the gene.",
+      "tr": {
+        "ask": "Daha fazla C vitamini olan marul istiyorum.",
+        "gives": "Genin kendi çevirisi üzerindeki küçük freni kaldırarak iki-üç kat askorbat ve beraberinde daha iyi oksidatif stres toleransı.",
+        "watch": "Bildirilen etki geni devre dışı bırakmaktan değil, o küçük düzenlemeden geliyor."
+      }
     },
     "BRA-CLUB-01": {
       "goal": "protect",
       "ask": "I want clubroot resistance in brassicas.",
       "gives": "Resistance from a known immune receptor locus, the one the industry already selects for.",
       "watch": "The resistance is pathotype-specific and single-gene cultivars break down fast — it has to be stacked, not deployed alone. Moderate linkage drag when moving between brassica species.",
-      "why_not_product": "Commercial cultivars do carry a major clubroot locus, but no source could be found naming a cultivar together with this gene — 'carries a major locus' is a weaker claim than 'carries this gene'."
+      "why_not_product": "Commercial cultivars do carry a major clubroot locus, but no source could be found naming a cultivar together with this gene — 'carries a major locus' is a weaker claim than 'carries this gene'.",
+      "tr": {
+        "ask": "Brassikalarda kök uru dayanıklılığı istiyorum.",
+        "gives": "Sektörün zaten seçtiği, bilinen bağışıklık reseptörü lokusundan gelen dayanıklılık.",
+        "watch": "Dayanıklılık patotipe özgü ve tek genli çeşitler hızla kırılıyor — tek başına değil, piramitlenerek kullanılmalı. Brassika türleri arasında taşırken orta düzeyde bağlantı sürüklemesi var.",
+        "why_not_product": "Ticari çeşitler büyük bir kök uru lokusu taşıyor, ama bir çeşidi bu genle birlikte adlandıran kaynak bulunamadı — 'büyük bir lokus taşıyor', 'bu geni taşıyor'dan daha zayıf bir iddia."
+      }
     },
     "BRA-GLUC-01": {
       "goal": "nutrition",
       "ask": "I want high-glucoraphanin broccoli.",
       "gives": "Several times the glucoraphanin — the sulforaphane precursor behind the health-marketed broccoli already on shelves.",
-      "watch": "High glucosinolates change the pungency and the way insects feed on the crop."
+      "watch": "High glucosinolates change the pungency and the way insects feed on the crop.",
+      "tr": {
+        "ask": "Yüksek glukorafaninli brokoli istiyorum.",
+        "gives": "Raflardaki sağlık vurgulu brokolinin arkasındaki sülforafan öncüsünden birkaç kat fazlası.",
+        "watch": "Yüksek glukozinolat, acılığı ve böceklerin bitkiyle beslenme biçimini değiştiriyor."
+      }
     },
     "CAR-COLOR-01": {
       "goal": "nutrition",
       "ask": "I want deeper colour and more beta-carotene in carrot.",
       "gives": "More carotenoid in the taproot, through the regulatory module that controls how the pigment bodies form.",
-      "watch": "A candidate-stage target: the regulators are named but their carrot identities are not fully confirmed here."
+      "watch": "A candidate-stage target: the regulators are named but their carrot identities are not fully confirmed here.",
+      "tr": {
+        "ask": "Havuçta daha koyu renk ve daha çok beta-karoten istiyorum.",
+        "gives": "Pigment cisimlerinin oluşumunu kontrol eden düzenleyici modül üzerinden kök etinde daha fazla karotenoit.",
+        "watch": "Aday aşamasında bir hedef: düzenleyiciler adlandırılmış ama havuçtaki kimlikleri burada tam doğrulanmamış."
+      }
     },
     "ONI-TEAR-01": {
       "goal": "nutrition",
       "ask": "I want an onion that does not make people cry.",
       "gives": "Less of the tear compound and a sweeter onion, by suppressing the enzyme that makes it.",
       "watch": "Not a simple single-gene job: the gene is present in several copies in a very large genome, and low pungency often comes with shorter storage life.",
-      "why_not_product": "A tearless onion is on sale, but its maker states it came from three decades of conventional breeding — same trait, different route. The product does not validate this solution."
+      "why_not_product": "A tearless onion is on sale, but its maker states it came from three decades of conventional breeding — same trait, different route. The product does not validate this solution.",
+      "tr": {
+        "ask": "İnsanı ağlatmayan soğan istiyorum.",
+        "gives": "Gözyaşı bileşiğini üreten enzimi baskılayarak daha az yakıcılık ve daha tatlı soğan.",
+        "watch": "Basit tek gen işi değil: gen çok büyük bir genomda birkaç kopya hâlinde ve düşük acılık çoğu zaman kısa depolama ömrüyle geliyor.",
+        "why_not_product": "Satışta ağlatmayan bir soğan var, ama üreticisi bunun otuz yılı aşkın klasik ıslahtan geldiğini söylüyor — aynı özellik, farklı yol. Ürün bu çözümü doğrulamıyor."
+      }
     },
     "GAP-COMB-01": {
       "goal": "climate",
       "ask": "I want a tomato that holds up to heat, salt and drought together, in the field.",
       "gives": "Nothing ready. This is the gap itself: single-stress lab screens do not predict combined-stress field performance.",
-      "watch": "Switching these networks on permanently stunts the plant. Any route has to be inducible, and the wild-relative crosses carry heavy linkage drag."
+      "watch": "Switching these networks on permanently stunts the plant. Any route has to be inducible, and the wild-relative crosses carry heavy linkage drag.",
+      "tr": {
+        "ask": "Tarlada sıcağa, tuza ve kuraklığa birlikte dayanan domates istiyorum.",
+        "gives": "Hazır bir şey yok. Boşluğun kendisi bu: tek stresli laboratuvar taramaları, birleşik stres altındaki tarla performansını öngörmüyor.",
+        "watch": "Bu ağları kalıcı açık tutmak bitkiyi bodurlaştırıyor. Herhangi bir yol uyarılabilir olmalı; yabani akraba melezleri de ağır bağlantı sürüklemesi taşıyor."
+      }
     },
     "GAP-REPRO-01": {
       "goal": "climate",
       "ask": "I want fruit set to survive a heat wave.",
       "gives": "Nothing ready — a named frontier. Pollen, ovule and stigma function under heat is a separate problem from the plant surviving heat.",
-      "watch": "A plant that looks fine in a heat wave can still set no fruit. Any edit here must not disturb normal flower development."
+      "watch": "A plant that looks fine in a heat wave can still set no fruit. Any edit here must not disturb normal flower development.",
+      "tr": {
+        "ask": "Sıcak dalgasında meyve tutumunun ayakta kalmasını istiyorum.",
+        "gives": "Hazır bir şey yok — adı konmuş bir sınır. Sıcak altında polen, ovül ve stigma işlevi, bitkinin sıcağa dayanmasından ayrı bir problem.",
+        "watch": "Sıcak dalgasında iyi görünen bir bitki yine de meyve tutmayabilir. Buradaki herhangi bir düzenleme normal çiçek gelişimini bozmamalı."
+      }
     },
     "GAP-RECOV-01": {
       "goal": "climate",
       "ask": "I want a crop that bounces back fast after a stress episode.",
       "gives": "Nothing ready — an exploratory idea: how quickly yield recovers once heat or drought passes, as a trait in its own right.",
-      "watch": "Clearing the stress signal too fast leaves the plant exposed to the next episode."
+      "watch": "Clearing the stress signal too fast leaves the plant exposed to the next episode.",
+      "tr": {
+        "ask": "Stres geçtikten sonra hızla toparlanan bir ürün istiyorum.",
+        "gives": "Hazır bir şey yok — keşif aşamasında bir fikir: sıcak ya da kuraklık geçtikten sonra verimin ne kadar hızlı toparlandığı, kendi başına bir özellik olarak.",
+        "watch": "Stres sinyalini fazla hızlı temizlemek bitkiyi bir sonraki epizoda açık bırakıyor."
+      }
     },
     "WAT-SEX-01": {
       "goal": "seed",
       "ask": "I want an all-female watermelon parent for hybrid seed.",
       "gives": "A candidate route to gynoecious watermelon lines, following the pathway already established in cucumber and melon.",
-      "watch": "Changing sex expression changes pollination management: a fully female line needs a pollenizer. Candidate stage in watermelon."
+      "watch": "Changing sex expression changes pollination management: a fully female line needs a pollenizer. Candidate stage in watermelon.",
+      "tr": {
+        "ask": "Hibrit tohum için tamamen dişi karpuz ebeveyni istiyorum.",
+        "gives": "Hıyar ve kavunda zaten kurulmuş yolu izleyerek ginoik karpuz hatlarına aday bir rota.",
+        "watch": "Cinsiyet ifadesini değiştirmek tozlanma yönetimini değiştirir: tamamen dişi bir hat tozlayıcı ister. Karpuzda aday aşamasında."
+      }
     }
   }
 }

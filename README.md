@@ -40,10 +40,12 @@ Gene, source and evidence are sourced. Portability, linkage, side-effects and IP
    candidates, not established orthologs.
 5. **Publish** the site from `data/atlas_v3.json`, with `data/plain.json` layered over it.
 
-`data/plain.json` is the plain-language layer: for each entry, the breeder's own
-sentence ("I want X in Y"), what the line actually gets, and the one thing that most
-often spoils it. Every line there is a restatement of fields the entry already carries
-— it adds no gene, no claim and no fact of its own, and the pipeline never writes to it.
+`data/plain.json` is the plain-language layer, in English and Turkish: for each entry,
+the breeder's own sentence ("I want X in Y"), what the line actually gets, and the one
+thing that most often spoils it. Every line there is a restatement of fields the entry
+already carries — it adds no gene, no claim and no fact of its own, and the pipeline
+never writes to it. The page offers an EN/TR switch; the verification and curation
+records stay in English, because they are what the databases returned.
 
 Run it yourself — after any edit to `data/corrections.json`, rebuild the whole
 atlas with one command:
