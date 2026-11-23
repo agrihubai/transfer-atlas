@@ -1,6 +1,6 @@
 # What is still open, and what would close it
 
-Generated from `data/atlas_v3.json` on 17 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
+Generated from `data/atlas_v3.json` on 23 November 2026 by `scripts/write_gaps.py`. Do not edit by hand — rerun the script.
 
 State: **22 verified, 10 partial, 0 unverified** of 32 entries.
 
@@ -67,7 +67,7 @@ These should be filled with a real source or retired from the atlas.
 
 ## Some genes of an entry resolve, others do not (7)
 
-- **TOM-DWARF-01** — Tomato (3/5 resolved): `SlER`, `SlYTH2`
+- **TOM-DWARF-01** — Tomato (2/5 resolved): `SlER`, `SP`, `SlYTH2`
 - **TOM-SIZE-01** — Tomato (1/3 resolved): `SlKIX8`, `SlKIX9`
 - **CUC-SEX-01** — Cucumber (2/4 resolved): `CsWIP1`, `CsARF8`
 - **MEL-SHELF-01** — Melon (2/3 resolved): `CmNAC-NOR`
@@ -75,7 +75,7 @@ These should be filled with a real source or retired from the atlas.
 - **BRA-GLUC-01** — Brassica (Broccoli/Cabbage/Cauliflower) (1/4 resolved): `HAG1`, `MYB29`, `MYB34`
 - **CAR-COLOR-01** — Carrot (3/5 resolved): `DcRPGE1`, `DcAPRR2`
 
-## Every gene symbol with no identifier, by species (18)
+## Every gene symbol with no identifier, by species (19)
 
 For each: the entry, the symbol as the atlas writes it, and the name that was searched after stripping the species prefix. An accession, a gene ID, or `unknown`.
 
@@ -111,6 +111,7 @@ For each: the entry, the symbol as the atlas writes it, and the name that was se
 **Solanum lycopersicum**
 
 - `SlER` (TOM-DWARF-01) — searched as `ER`
+- `SP` (TOM-DWARF-01) — searched as `SP`
 - `SlYTH2` (TOM-DWARF-01) — searched as `YTH2`
 - `SlKIX8` (TOM-SIZE-01) — searched as `KIX8`
 - `SlKIX9` (TOM-SIZE-01) — searched as `KIX9`
