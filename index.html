@@ -284,7 +284,8 @@ const T = {
     step1:'Crop', step2:'Goal',
     tab1:'Explorer', tab2:'Frontiers', tab3:'Labels & method',
     frontierIntro:'Entries that name gene families rather than a validated locus. They are research questions, not targets ready to edit — kept visible so the gap is explicit.',
-    allCrops:'All crops', anything:'Anything',
+    allCrops:'All crops', anything:'Anything', pickCrop:'Choose a crop…',
+    prompt:'Choose a crop above to see its solutions — or pick <b>All crops</b> to see every one.',
     mVerified:'What is verified, and what is not',
     legend:'What do these labels mean? →',
     lgReady:'How far it has been taken', lgRoute:'How you would get it', lgIp:'Patent space',
@@ -335,7 +336,8 @@ const T = {
     step1:'Ürün', step2:'Hedef',
     tab1:'Keşfet', tab2:'Sınırlar', tab3:'Etiketler ve yöntem',
     frontierIntro:'Doğrulanmış bir lokus yerine gen ailesi adlandıran kayıtlar. Bunlar düzenlenmeye hazır hedefler değil, araştırma soruları — boşluk açıkça görünsün diye burada duruyorlar.',
-    allCrops:'Tüm ürünler', anything:'Her şey',
+    allCrops:'Tüm ürünler', anything:'Her şey', pickCrop:'Ürün seç…',
+    prompt:'Çözümleri görmek için yukarıdan bir ürün seç — hepsini görmek istersen <b>Tüm ürünler</b>i seç.',
     mVerified:'Ne doğrulandı, ne doğrulanmadı',
     legend:'Bu etiketler ne demek? →',
     lgReady:'Nereye kadar götürülmüş', lgRoute:'Nasıl elde edilir', lgIp:'Patent durumu',
@@ -384,7 +386,9 @@ const T = {
 };
 
 let ATLAS = null, PLAIN = {}, GOALS = {}, GOALS_TR = {}, CROPS_TR = {}, SHOWN = [];
+/* CROP: '' = nothing chosen yet (list stays closed), '*' = all crops, else one crop. */
 let CROP = '', GOAL = '', LANG = 'en';
+const ALL = '*';
 
 const el = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c =>
@@ -615,15 +619,23 @@ document.addEventListener('keydown', ev => { if (ev.key === 'Escape') close(); }
 const isFrontier = e => /^GAP-/.test(e.id || '') || (e.evidence || {}).derived_level === 'Level 5';
 
 function matches(e){
-  if (CROP && e.crop !== CROP) return false;
+  if (CROP && CROP !== ALL && e.crop !== CROP) return false;
   if (GOAL && plain(e).goal !== GOAL) return false;
   return true;
 }
 function apply(){
+  const s = t();
+  // Nothing picked yet: keep the list closed and say what to do.
+  if (!CROP && !GOAL) {
+    SHOWN = [];
+    el('results').innerHTML = `<div class="empty">${s.prompt}</div>`;
+    el('count').innerHTML = '<span></span>';
+    return;
+  }
   SHOWN = ATLAS.entries.filter(e => !isFrontier(e) && matches(e)).sort((a, b) =>
     (ready(a).order - ready(b).order) || (route(a).order - route(b).order) ||
     a.crop.localeCompare(b.crop));
-  const s = t(), n = SHOWN.length;
+  const n = SHOWN.length;
   el('results').innerHTML = n ? SHOWN.map((e, i) => card(e, i)).join('')
     : `<div class="empty">${s.empty}<br><span style="font-size:13px">${s.emptyWhy}</span></div>`;
   const used = SHOWN.filter(e => (e.evidence || {}).derived_level === 'Level 1').length;
@@ -655,12 +667,12 @@ function drawCrops(){
   const counts = {};
   ATLAS.entries.filter(e => !isFrontier(e)).forEach(e => { counts[e.crop] = (counts[e.crop] || 0) + 1; });
   const total = ATLAS.entries.filter(e => !isFrontier(e)).length;
-  if (CROP && !counts[CROP]) CROP = '';
-  options(el('f-crop'), [['', t().allCrops, total]].concat(
+  if (CROP && CROP !== ALL && !counts[CROP]) CROP = '';
+  options(el('f-crop'), [['', t().pickCrop, null], [ALL, t().allCrops, total]].concat(
     Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([c, n]) => [c, cropName(c), n])), CROP);
 }
 function drawGoals(){
-  const pool = ATLAS.entries.filter(e => !isFrontier(e) && (!CROP || e.crop === CROP));
+  const pool = ATLAS.entries.filter(e => !isFrontier(e) && (!CROP || CROP === ALL || e.crop === CROP));
   const counts = {};
   pool.forEach(e => { const g = plain(e).goal; if (g) counts[g] = (counts[g] || 0) + 1; });
   if (GOAL && !counts[GOAL]) GOAL = '';
