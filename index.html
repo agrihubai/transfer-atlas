@@ -284,8 +284,8 @@ const T = {
     step1:'Crop', step2:'Goal',
     tab1:'Explorer', tab2:'Frontiers', tab3:'Labels & method',
     frontierIntro:'Entries that name gene families rather than a validated locus. They are research questions, not targets ready to edit — kept visible so the gap is explicit.',
-    allCrops:'All crops', anything:'Anything', pickCrop:'Choose a crop…',
-    prompt:'Choose a crop above to see its solutions — or pick <b>All crops</b> to see every one.',
+    allCrops:'All crops', anything:'Anything', pickCrop:'Choose a crop…', pickGoal:'Choose a goal…',
+    prompt:'Choose a crop or a goal above to see the solutions — or pick <b>All crops</b> to see every one.',
     mVerified:'What is verified, and what is not',
     legend:'What do these labels mean? →',
     lgReady:'How far it has been taken', lgRoute:'How you would get it', lgIp:'Patent space',
@@ -336,8 +336,8 @@ const T = {
     step1:'Ürün', step2:'Hedef',
     tab1:'Keşfet', tab2:'Sınırlar', tab3:'Etiketler ve yöntem',
     frontierIntro:'Doğrulanmış bir lokus yerine gen ailesi adlandıran kayıtlar. Bunlar düzenlenmeye hazır hedefler değil, araştırma soruları — boşluk açıkça görünsün diye burada duruyorlar.',
-    allCrops:'Tüm ürünler', anything:'Her şey', pickCrop:'Ürün seç…',
-    prompt:'Çözümleri görmek için yukarıdan bir ürün seç — hepsini görmek istersen <b>Tüm ürünler</b>i seç.',
+    allCrops:'Tüm ürünler', anything:'Her şey', pickCrop:'Ürün seç…', pickGoal:'Hedef seç…',
+    prompt:'Çözümleri görmek için yukarıdan bir ürün ya da hedef seç — hepsini görmek istersen <b>Tüm ürünler</b>i seç.',
     mVerified:'Ne doğrulandı, ne doğrulanmadı',
     legend:'Bu etiketler ne demek? →',
     lgReady:'Nereye kadar götürülmüş', lgRoute:'Nasıl elde edilir', lgIp:'Patent durumu',
@@ -620,7 +620,7 @@ const isFrontier = e => /^GAP-/.test(e.id || '') || (e.evidence || {}).derived_l
 
 function matches(e){
   if (CROP && CROP !== ALL && e.crop !== CROP) return false;
-  if (GOAL && plain(e).goal !== GOAL) return false;
+  if (GOAL && GOAL !== ALL && plain(e).goal !== GOAL) return false;
   return true;
 }
 function apply(){
@@ -675,8 +675,8 @@ function drawGoals(){
   const pool = ATLAS.entries.filter(e => !isFrontier(e) && (!CROP || CROP === ALL || e.crop === CROP));
   const counts = {};
   pool.forEach(e => { const g = plain(e).goal; if (g) counts[g] = (counts[g] || 0) + 1; });
-  if (GOAL && !counts[GOAL]) GOAL = '';
-  options(el('f-goal'), [['', t().anything, pool.length]].concat(
+  if (GOAL && GOAL !== ALL && !counts[GOAL]) GOAL = '';
+  options(el('f-goal'), [['', t().pickGoal, null], [ALL, t().anything, pool.length]].concat(
     Object.keys(GOALS).filter(k => counts[k]).map(k => [k, goalName(k), counts[k]])), GOAL);
 }
 el('f-crop').onchange = () => { CROP = el('f-crop').value; drawGoals(); apply(); };
